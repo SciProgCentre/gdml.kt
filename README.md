@@ -25,5 +25,4 @@ kotlin {
 dependencies {
     api("scientifik:gdml-jvm:0.1.0")
 }
-
 ```

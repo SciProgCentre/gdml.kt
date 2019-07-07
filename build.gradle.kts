@@ -1,6 +1,6 @@
 plugins {
-    id("scientifik.mpp") version "0.1.1"
-    id("scientifik.publish") version "0.1.1"
+    id("scientifik.mpp") version "0.1.2"
+    id("scientifik.publish") version "0.1.2"
     id("kotlinx-serialization") version "1.3.40"
 }
 

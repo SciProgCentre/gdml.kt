@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        mavenLocal()
         jcenter()
         gradlePluginPortal()
         maven("https://dl.bintray.com/kotlin/kotlin-eap")
