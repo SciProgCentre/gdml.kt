@@ -1,14 +1,11 @@
 plugins {
-    id("scientifik.mpp") version "0.1.0"
-    id("scientifik.publish") version "0.1.0"
+    id("scientifik.mpp") version "0.1.1"
+    id("scientifik.publish") version "0.1.1"
     id("kotlinx-serialization") version "1.3.40"
 }
 
-group = "scietifik"
+group = "scientifik"
 version = "0.1.0"
-
-val bintrayRepo by extra("scientifik")
-val vcs by extra("https://github.com/mipt-npm/gdml.kt")
 
 repositories {
     mavenLocal()
@@ -29,3 +26,7 @@ kotlin {
     }
 }
 
+scientifik {
+    bintrayRepo = "scientifik"
+    vcs = "https://github.com/mipt-npm/gdml.kt"
+}

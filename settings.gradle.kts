@@ -26,5 +26,5 @@ pluginManagement {
 
 enableFeaturePreview("GRADLE_METADATA")
 
-rootProject.name = "gdml.kt"
+rootProject.name = "gdml"
 
