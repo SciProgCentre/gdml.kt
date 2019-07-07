@@ -2,7 +2,11 @@
 
 package scientifik.gdml
 
-import kotlinx.serialization.*
+import kotlinx.serialization.ContextualSerialization
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.UseSerializers
+import nl.adaptivity.xmlutil.serialization.XML
 
 @DslMarker
 annotation class GDMLApi
@@ -12,30 +16,48 @@ annotation class GDMLApi
 @SerialName("gdml")
 class GDML {
     val define = GDMLDefineContainer()
+    val materials = GDMLMaterialContainer()
     val solids = GDMLSolidContainer()
+    val structure = GDMLStructure()
+    val setup = GDMLSetup()
+
 
     fun define(block: GDMLDefineContainer.() -> Unit) {
         define.apply(block)
+    }
+
+    fun materials(block: GDMLMaterialContainer.() -> Unit) {
+        materials.apply(block)
     }
 
     fun solids(block: GDMLSolidContainer.() -> Unit) {
         solids.apply(block)
     }
 
-    fun getPosition(ref: String): GDMLDefine? = define[ref]
-    fun getRotation(ref: String): GDMLRotation? = define[ref]
+    fun structure(block: GDMLStructure.() -> Unit) {
+        structure.apply(block)
+    }
+
+    inline fun <reified T : GDMLDefine> getDefine(ref: String): T? = define[ref]
     inline fun <reified T : GDMLSolid> getSolid(ref: String): T? = solids[ref]
+    inline fun <reified T : GDMLMaterialBase> getMaterial(ref: String): T? = materials[ref]
 
     companion object {
         inline operator fun invoke(block: GDML.() -> Unit): GDML = GDML().apply(block)
+
+        val format = XML(indent = 4, context = gdmlModule)
     }
 }
+
+inline fun <reified T : GDMLDefine> GDMLRef<T>.resolve(root: GDML): T? = root.getDefine(ref)
+inline fun <reified T : GDMLSolid> GDMLRef<T>.resolve(root: GDML): T? = root.getSolid(ref)
+inline fun <reified T : GDMLMaterialBase> GDMLRef<T>.resolve(root: GDML): T? = root.getMaterial(ref)
 
 @GDMLApi
 @Serializable
 @SerialName("define")
 class GDMLDefineContainer {
-    val content = ArrayList<@ContextualSerialization @Polymorphic GDMLDefine>()
+    val content = ArrayList<@ContextualSerialization GDMLDefine>()
 
     inline operator fun <reified T : GDMLDefine> get(ref: String): T? =
         content.filterIsInstance<T>().find { it.name == ref }
@@ -63,6 +85,14 @@ class GDMLDefineContainer {
 
 @GDMLApi
 @Serializable
+@SerialName("materials")
+class GDMLMaterialContainer {
+    //TODO
+    inline operator fun <reified T : GDMLMaterialBase> get(ref: String): T? = TODO()
+}
+
+@GDMLApi
+@Serializable
 @SerialName("solids")
 class GDMLSolidContainer {
     val content = ArrayList<@ContextualSerialization GDMLSolid>()
@@ -71,24 +101,19 @@ class GDMLSolidContainer {
         content.filterIsInstance<T>().find { it.name == ref }
 
     fun box(name: String, x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GDMLBox.() -> Unit = {}): GDMLBox {
-        val box = GDMLBox().apply(block).apply {
-            this.name = name
-            this.x = x
-            this.y = y
-            this.z = z
-        }
+        val box = GDMLBox(name, x, y, z).apply(block)
         content.add(box)
         return box
     }
 
-    fun tube(name: String, block: GDMLTube.() -> Unit): GDMLTube {
-        val tube = GDMLTube().apply(block).apply { this.name = name }
+    fun tube(name: String, rmax: Number, z: Number, block: GDMLTube.() -> Unit): GDMLTube {
+        val tube = GDMLTube(name, rmax, z).apply(block)
         content.add(tube)
         return tube
     }
 
     fun xtru(name: String, block: GDMLXtru.() -> Unit): GDMLXtru {
-        val xtru = GDMLXtru().apply(block).apply { this.name = name }
+        val xtru = GDMLXtru(name).apply(block)
         content.add(xtru)
         return xtru
     }
@@ -99,8 +124,7 @@ class GDMLSolidContainer {
         second: GDMLSolid? = null,
         block: GDMLUnion.() -> Unit
     ): GDMLUnion {
-        val union = GDMLUnion().apply(block).apply {
-            this.name = name
+        val union = GDMLUnion(name).apply(block).apply {
             this.first = first?.ref()
             this.second = second?.ref()
         }
@@ -114,8 +138,7 @@ class GDMLSolidContainer {
         second: GDMLSolid? = null,
         block: GDMLIntersection.() -> Unit
     ): GDMLIntersection {
-        val intersection = GDMLIntersection().apply(block).apply {
-            this.name = name
+        val intersection = GDMLIntersection(name).apply(block).apply {
             this.first = first?.ref()
             this.second = second?.ref()
         }
@@ -129,8 +152,7 @@ class GDMLSolidContainer {
         second: GDMLSolid? = null,
         block: GDMLSubtraction.() -> Unit
     ): GDMLSubtraction {
-        val subtraction = GDMLSubtraction().apply(block).apply {
-            this.name = name
+        val subtraction = GDMLSubtraction(name).apply(block).apply {
             this.first = first?.ref()
             this.second = second?.ref()
         }
@@ -138,3 +160,28 @@ class GDMLSolidContainer {
         return subtraction
     }
 }
+
+@GDMLApi
+@Serializable
+@SerialName("structure")
+class GDMLStructure {
+    val content = ArrayList<GDMLVolume>()
+
+    inline operator fun <reified T : GDMLVolume> get(ref: String): T? =
+        content.filterIsInstance<T>().find { it.name == ref }
+
+    fun volume(
+        name: String,
+        materialref: GDMLRef<GDMLMaterialBase>,
+        solidref: GDMLRef<GDMLSolid>,
+        block: GDMLVolume.() -> Unit
+    ): GDMLVolume {
+        val res = GDMLVolume(name, materialref, solidref).apply(block)
+        content.add(res)
+        return res
+    }
+}
+
+@Serializable
+@SerialName("setup")
+class GDMLSetup(var name: String = "Default", var version: String = "1.0", var world: GDMLRef<GDMLVolume>? = null)

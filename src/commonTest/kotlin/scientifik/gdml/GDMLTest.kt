@@ -1,10 +1,8 @@
 package scientifik.gdml
 
 import kotlinx.serialization.ImplicitReflectionSerializer
-import kotlinx.serialization.serializer
-import nl.adaptivity.xmlutil.serialization.XML
-import org.junit.Test
 import kotlin.math.PI
+import kotlin.test.Test
 
 class GDMLTest {
     @ImplicitReflectionSerializer
@@ -25,10 +23,8 @@ class GDMLTest {
             }
         }
 
-        val serializer = GDML::class.serializer()
-
-        val string = XML(indent = 4).stringify(serializer, gdml)
+        val string = GDML.format.stringify(gdml)
         println(string)
-        val restored: GDML = XML.parse(string)
+     //   val restored: GDML = GDML.format.parse(string)
     }
 }
