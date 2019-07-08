@@ -41,6 +41,12 @@ class GDML {
     inline fun <reified T : GDMLDefine> getDefine(ref: String): T? = define[ref]
     inline fun <reified T : GDMLSolid> getSolid(ref: String): T? = solids[ref]
     inline fun <reified T : GDMLMaterialBase> getMaterial(ref: String): T? = materials[ref]
+    fun getVolume(ref: String): GDMLVolume? = structure[ref]
+
+    val world: GDMLVolume
+        get() = setup.world?.resolve(this)
+            ?: structure.content.firstOrNull()
+            ?: error("The GDML structure is empty")
 
     companion object {
         inline operator fun invoke(block: GDML.() -> Unit): GDML = GDML().apply(block)
@@ -52,6 +58,7 @@ class GDML {
 inline fun <reified T : GDMLDefine> GDMLRef<T>.resolve(root: GDML): T? = root.getDefine(ref)
 inline fun <reified T : GDMLSolid> GDMLRef<T>.resolve(root: GDML): T? = root.getSolid(ref)
 inline fun <reified T : GDMLMaterialBase> GDMLRef<T>.resolve(root: GDML): T? = root.getMaterial(ref)
+fun GDMLRef<GDMLVolume>.resolve(root: GDML): GDMLVolume? = root.getVolume(ref)
 
 @GDMLApi
 @Serializable
@@ -167,8 +174,7 @@ class GDMLSolidContainer {
 class GDMLStructure {
     val content = ArrayList<GDMLVolume>()
 
-    inline operator fun <reified T : GDMLVolume> get(ref: String): T? =
-        content.filterIsInstance<T>().find { it.name == ref }
+    operator fun get(ref: String): GDMLVolume? = content.find { it.name == ref }
 
     fun volume(
         name: String,
