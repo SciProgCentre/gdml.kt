@@ -127,42 +127,33 @@ class GDMLSolidContainer {
 
     fun union(
         name: String,
-        first: GDMLSolid? = null,
-        second: GDMLSolid? = null,
+        first: GDMLSolid,
+        second: GDMLSolid,
         block: GDMLUnion.() -> Unit
     ): GDMLUnion {
-        val union = GDMLUnion(name).apply(block).apply {
-            this.first = first?.ref()
-            this.second = second?.ref()
-        }
+        val union = GDMLUnion(name, first.ref(), second.ref()).apply(block)
         content.add(union)
         return union
     }
 
     fun intersection(
         name: String,
-        first: GDMLSolid? = null,
-        second: GDMLSolid? = null,
+        first: GDMLSolid,
+        second: GDMLSolid,
         block: GDMLIntersection.() -> Unit
     ): GDMLIntersection {
-        val intersection = GDMLIntersection(name).apply(block).apply {
-            this.first = first?.ref()
-            this.second = second?.ref()
-        }
+        val intersection = GDMLIntersection(name, first.ref(), second.ref()).apply(block)
         content.add(intersection)
         return intersection
     }
 
     fun subtraction(
         name: String,
-        first: GDMLSolid? = null,
-        second: GDMLSolid? = null,
+        first: GDMLSolid,
+        second: GDMLSolid,
         block: GDMLSubtraction.() -> Unit
     ): GDMLSubtraction {
-        val subtraction = GDMLSubtraction(name).apply(block).apply {
-            this.first = first?.ref()
-            this.second = second?.ref()
-        }
+        val subtraction = GDMLSubtraction(name, first.ref(), second.ref()).apply(block)
         content.add(subtraction)
         return subtraction
     }

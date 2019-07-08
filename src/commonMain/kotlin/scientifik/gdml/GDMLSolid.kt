@@ -77,7 +77,7 @@ class GDMLPolyhedra(
     val numsides: Int,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
-) : GDMLSolid(){
+) : GDMLSolid() {
     val planes = ArrayList<GDMLZPlane>()
 }
 
@@ -137,10 +137,9 @@ class GDMLScaledSolid(
 @Serializable
 sealed class GDMLBoolSolid : GDMLSolid() {
     @XmlSerialName("first", "", "")
-    var first: GDMLRef<GDMLSolid>? = null
-
+    abstract var first: GDMLRef<GDMLSolid>
     @XmlSerialName("second", "", "")
-    var second: GDMLRef<GDMLSolid>? = null
+    abstract var second: GDMLRef<GDMLSolid>
 
     @XmlSerialName("position", "", "")
     var position: GDMLPosition? = null
@@ -195,12 +194,30 @@ sealed class GDMLBoolSolid : GDMLSolid() {
 
 @Serializable
 @SerialName("union")
-class GDMLUnion(override var name: String) : GDMLBoolSolid()
+class GDMLUnion(
+    override var name: String,
+    @XmlSerialName("first", "", "")
+    override var first: GDMLRef<GDMLSolid>,
+    @XmlSerialName("second", "", "")
+    override var second: GDMLRef<GDMLSolid>
+) : GDMLBoolSolid()
 
 @Serializable
 @SerialName("subtraction")
-class GDMLSubtraction(override var name: String) : GDMLBoolSolid()
+class GDMLSubtraction(
+    override var name: String,
+    @XmlSerialName("first", "", "")
+    override var first: GDMLRef<GDMLSolid>,
+    @XmlSerialName("second", "", "")
+    override var second: GDMLRef<GDMLSolid>
+) : GDMLBoolSolid()
 
 @Serializable
 @SerialName("intersection")
-class GDMLIntersection(override var name: String) : GDMLBoolSolid()
+class GDMLIntersection(
+    override var name: String,
+    @XmlSerialName("first", "", "")
+    override var first: GDMLRef<GDMLSolid>,
+    @XmlSerialName("second", "", "")
+    override var second: GDMLRef<GDMLSolid>
+) : GDMLBoolSolid()

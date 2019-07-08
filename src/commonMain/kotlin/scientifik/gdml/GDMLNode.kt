@@ -17,7 +17,7 @@ data class GDMLRef<T : GDMLNode>(var ref: String)
 /**
  * Get a ref to this node
  */
-fun <T : GDMLNode> T.ref(): GDMLRef<T>? = GDMLRef(name)
+fun <T : GDMLNode> T.ref(): GDMLRef<T> = GDMLRef(name)
 
 // define block members
 
