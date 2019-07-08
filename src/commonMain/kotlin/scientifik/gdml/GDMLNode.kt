@@ -118,7 +118,7 @@ class GDMLPhysVolume(var volumeref: GDMLRef<GDMLVolume>) {
     /**
      * Get the position from either position block or reference (if root is provided)
      */
-    fun resolvePosition(root: GDML): GDMLDefine? = position ?: positionref?.resolve(root)
+    fun resolvePosition(root: GDML): GDMLPosition? = position ?: positionref?.resolve(root)
 
     /**
      * Get the rotation from either position block or reference (if root is provided)
