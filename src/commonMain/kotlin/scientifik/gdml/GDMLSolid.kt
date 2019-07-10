@@ -102,9 +102,9 @@ class GDMLXtru(override var name: String) : GDMLSolid() {
     @Serializable
     @SerialName("section")
     data class Section(
-        var zOrder: Number? = null,
-        var zPosition: Number? = null,
-        var xOffsset: Number = 0.0,
+        var zPosition: Number,
+        var zOrder: Int,
+        var xOffset: Number = 0.0,
         var yOffset: Number = 0.0,
         var scalingFactor: Number = 1.0
     )
@@ -120,7 +120,7 @@ class GDMLXtru(override var name: String) : GDMLSolid() {
     }
 
     fun section(index: Int, z: Double, block: Section.() -> Unit = {}) {
-        sections.add(Section(zOrder = index, zPosition = z).apply(block))
+        sections.add(Section(zPosition = z, zOrder = index).apply(block))
     }
 }
 
