@@ -26,18 +26,23 @@ val gdmlModule = SerializersModule {
         GDMLQuantity::class with GDMLQuantity.serializer()
         GDMLScale::class with GDMLScale.serializer()
     }
-    polymorphic<GDMLMaterialBase> {
+    polymorphic<GDMLMaterial> {
         GDMLIsotope::class with GDMLIsotope.serializer()
         GDMLElement::class with GDMLElement.serializer()
-        GDMLMaterial::class with GDMLMaterial.serializer()
+        GDMLComposite::class with GDMLComposite.serializer()
     }
     polymorphic<GDMLSolid> {
         GDMLBox::class with GDMLBox.serializer()
         GDMLTube::class with GDMLTube.serializer()
         GDMLXtru::class with GDMLXtru.serializer()
+        GDMLPolyhedra::class with GDMLPolyhedra.serializer()
         GDMLUnion::class with GDMLUnion.serializer()
         GDMLSubtraction::class with GDMLSubtraction.serializer()
         GDMLIntersection::class with GDMLIntersection.serializer()
         GDMLScaledSolid::class with GDMLScaledSolid.serializer()
+    }
+    polymorphic<GDMLGroup> {
+        GDMLVolume::class with GDMLVolume.serializer()
+        GDMLAssembly::class with GDMLAssembly.serializer()
     }
 }

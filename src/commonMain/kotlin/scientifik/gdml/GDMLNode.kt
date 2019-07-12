@@ -21,79 +21,6 @@ fun <T : GDMLNode> T.ref(): GDMLRef<T> = GDMLRef(name)
 
 // define block members
 
-@Serializable
-sealed class GDMLDefine : GDMLNode
-
-@Serializable
-@SerialName("constant")
-class GDMLConstant(
-    override var name: String,
-    var value: Number
-) : GDMLDefine()
-
-@Serializable
-@SerialName("quantity")
-class GDMLQuantity(
-    override var name: String,
-    var type: String? = null,
-    var value: Number,
-    var unit: String? = null
-) : GDMLDefine()
-
-@Serializable
-@SerialName("variable")
-class GDMLVariable(
-    override var name: String,
-    var value: String
-) : GDMLDefine()
-
-@Serializable
-@SerialName("position")
-class GDMLPosition(
-    override var name: String = "",
-    var x: Number = 0f,
-    var y: Number = 0f,
-    var z: Number = 0f,
-    var unit: String = "cm"
-) : GDMLDefine()
-
-@Serializable
-@SerialName("rotation")
-class GDMLRotation(
-    override var name: String = "",
-    var x: Number = 0f,
-    var y: Number = 0f,
-    var z: Number = 0f,
-    var unit: String = "deg"
-) : GDMLDefine()
-
-@Serializable
-@SerialName("scale")
-class GDMLScale(override var name: String, var value: Number) : GDMLDefine()
-
-@Serializable
-@SerialName("matrix")
-class GDMLMatrix(
-    override var name: String,
-    var coldim: Int,
-    var values: String
-) : GDMLDefine()
-
-//materials
-@Serializable
-sealed class GDMLMaterialBase : GDMLNode
-
-@Serializable
-@SerialName("isotope")
-class GDMLIsotope(override var name: String) : GDMLMaterialBase()
-
-@Serializable
-@SerialName("element")
-class GDMLElement(override var name: String) : GDMLMaterialBase()
-
-@Serializable
-@SerialName("material")
-class GDMLMaterial(override var name: String) : GDMLMaterialBase()
 
 //Structure elements
 
@@ -102,7 +29,13 @@ class GDMLMaterial(override var name: String) : GDMLMaterialBase()
  */
 @Serializable
 @SerialName("physvol")
-class GDMLPhysVolume(var volumeref: GDMLRef<GDMLVolume>) {
+class GDMLPhysVolume(
+    @XmlSerialName("volumeref", "", "")
+    var volumeref: GDMLRef<GDMLVolume>,
+    var name: String? = null
+) {
+    var copynumber: Int? = null
+
     @XmlSerialName("position", "", "")
     var position: GDMLPosition? = null
 
@@ -114,6 +47,12 @@ class GDMLPhysVolume(var volumeref: GDMLRef<GDMLVolume>) {
 
     @XmlSerialName("rotationref", "", "")
     var rotationref: GDMLRef<GDMLRotation>? = null
+
+    @XmlSerialName("scale", "", "")
+    var scale: GDMLScale? = null
+
+    @XmlSerialName("scaleref", "", "")
+    var scaleref: GDMLRef<GDMLScale>? = null
 
     /**
      * Get the position from either position block or reference (if root is provided)
@@ -127,14 +66,8 @@ class GDMLPhysVolume(var volumeref: GDMLRef<GDMLVolume>) {
 }
 
 @Serializable
-@SerialName("volume")
-class GDMLVolume(
-    override var name: String,
-    @XmlSerialName("materialref", "", "")
-    var materialref: GDMLRef<GDMLMaterialBase>,
-    @XmlSerialName("solidref", "", "")
-    var solidref: GDMLRef<GDMLSolid>
-) : GDMLNode {
+sealed class GDMLGroup : GDMLNode {
+    @XmlSerialName("physvol", "", "")
     val physVolumes = ArrayList<GDMLPhysVolume>()
 
     fun physVolume(volumeref: GDMLRef<GDMLVolume>, block: GDMLPhysVolume.() -> Unit): GDMLPhysVolume {
@@ -142,4 +75,42 @@ class GDMLVolume(
         physVolumes.add(res)
         return res
     }
+}
+
+@Serializable
+@SerialName("assembly")
+class GDMLAssembly(override var name: String) : GDMLGroup()
+
+/**
+    <...
+    axis=" xs:string [1]"
+    number=" ExpressionOrIDREFType [1]"
+    width=" ExpressionOrIDREFType [1]"
+    offset=" ExpressionOrIDREFType [1]"
+    unit=" xs:string [0..1]">
+    <volumeref> ReferenceType </volumeref> [1]
+    </...>
+ */
+@Serializable
+@SerialName("divisionvol")
+class GDMLDivisionVolume(
+    var axis:String,
+    var number: Number,
+    var width: Number,
+    var offset: Number,
+    @XmlSerialName("volumeref", "", "")
+    var volumeref: GDMLRef<GDMLVolume>,
+    var unit: String = "mm"
+)
+
+@Serializable
+@SerialName("volume")
+class GDMLVolume(
+    override var name: String,
+    @XmlSerialName("materialref", "", "")
+    var materialref: GDMLRef<GDMLMaterial>,
+    @XmlSerialName("solidref", "", "")
+    var solidref: GDMLRef<GDMLSolid>
+) : GDMLGroup(){
+    var divisionvol: GDMLDivisionVolume? = null
 }

@@ -1,11 +1,37 @@
 package scientifik.gdml
 
-import kotlinx.serialization.ImplicitReflectionSerializer
+import kotlinx.serialization.parse
+import kotlinx.serialization.serializer
 import kotlin.math.PI
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class GDMLTest {
-    @ImplicitReflectionSerializer
+
+    @Test
+    fun printChildren() {
+        println(
+            GDMLDefine::class.sealedSubclasses.joinToString(
+                prefix = "[\"",
+                separator = "\", \"",
+                postfix = "\"]"
+            ) { it.serializer().descriptor.name })
+
+        println(
+            GDMLMaterial::class.sealedSubclasses.joinToString(
+                prefix = "[\"",
+                separator = "\", \"",
+                postfix = "\"]"
+            ) { it.serializer().descriptor.name })
+
+        println(
+            GDMLSolid::class.sealedSubclasses.joinToString(
+                prefix = "[\"",
+                separator = "\", \"",
+                postfix = "\"]"
+            ) { it.serializer().descriptor.name })
+    }
+
     @Test
     fun testSerialization() {
         val gdml = GDML {
@@ -25,6 +51,8 @@ class GDMLTest {
 
         val string = GDML.format.stringify(gdml)
         println(string)
-     //   val restored: GDML = GDML.format.parse(string)
+        val restored: GDML = GDML.format.parse(string)
+        println(restored.toString())
+        assertEquals(gdml.solids.content.first().name, restored.solids.content.first().name)
     }
 }

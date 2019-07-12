@@ -19,7 +19,7 @@ sealed class GDMLSolid : GDMLNode {
 
 @Serializable
 @SerialName("box")
-class GDMLBox(
+data class GDMLBox(
     override var name: String,
     var x: Number,
     var y: Number,
@@ -28,7 +28,7 @@ class GDMLBox(
 
 @Serializable
 @SerialName("sphere")
-class GDMLSphere(
+data class GDMLSphere(
     override var name: String,
     var rmax: Number,
     var rmin: Number = 0f,
@@ -40,7 +40,7 @@ class GDMLSphere(
 
 @Serializable
 @SerialName("orb")
-class GDMLOrb(
+data class GDMLOrb(
     override var name: String,
     var r: Number
 ) : GDMLSolid()
@@ -53,7 +53,7 @@ rmax=" ExpressionOrIDREFType [1]"/>
  */
 @Serializable
 @SerialName("zplane")
-class GDMLZPlane(
+data class GDMLZPlane(
     var z: Number,
     var rmax: Number,
     var rmin: Number = 0f
@@ -72,18 +72,19 @@ numsides=" ExpressionOrIDREFType [1]">
  */
 @Serializable
 @SerialName("polyhedra")
-class GDMLPolyhedra(
+data class GDMLPolyhedra(
     override var name: String,
     val numsides: Int,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
 ) : GDMLSolid() {
+    @XmlSerialName("zplane", "", "")
     val planes = ArrayList<GDMLZPlane>()
 }
 
 @Serializable
 @SerialName("tube")
-class GDMLTube(
+data class GDMLTube(
     override var name: String,
     var rmax: Number,
     var z: Number,
@@ -94,7 +95,7 @@ class GDMLTube(
 
 @Serializable
 @SerialName("xtru")
-class GDMLXtru(override var name: String) : GDMLSolid() {
+data class GDMLXtru(override var name: String) : GDMLSolid() {
     @Serializable
     @SerialName("twoDimVertex")
     data class TwoDimVertex(val x: Double, val y: Double)
@@ -126,8 +127,9 @@ class GDMLXtru(override var name: String) : GDMLSolid() {
 
 @Serializable
 @SerialName("scaledSolid")
-class GDMLScaledSolid(
+data class GDMLScaledSolid(
     override var name: String,
+    @XmlSerialName("solidref","","")
     val solidref: GDMLRef<GDMLSolid>,
     var scale: GDMLScale
 ) : GDMLSolid()
@@ -194,7 +196,7 @@ sealed class GDMLBoolSolid : GDMLSolid() {
 
 @Serializable
 @SerialName("union")
-class GDMLUnion(
+data class GDMLUnion(
     override var name: String,
     @XmlSerialName("first", "", "")
     override var first: GDMLRef<GDMLSolid>,
@@ -204,7 +206,7 @@ class GDMLUnion(
 
 @Serializable
 @SerialName("subtraction")
-class GDMLSubtraction(
+data class GDMLSubtraction(
     override var name: String,
     @XmlSerialName("first", "", "")
     override var first: GDMLRef<GDMLSolid>,
@@ -214,7 +216,7 @@ class GDMLSubtraction(
 
 @Serializable
 @SerialName("intersection")
-class GDMLIntersection(
+data class GDMLIntersection(
     override var name: String,
     @XmlSerialName("first", "", "")
     override var first: GDMLRef<GDMLSolid>,

@@ -2,11 +2,13 @@
 
 package scientifik.gdml
 
-import kotlinx.serialization.ContextualSerialization
+import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import nl.adaptivity.xmlutil.serialization.XML
+import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
+import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 @DslMarker
 annotation class GDMLApi
@@ -40,13 +42,15 @@ class GDML {
 
     inline fun <reified T : GDMLDefine> getDefine(ref: String): T? = define[ref]
     inline fun <reified T : GDMLSolid> getSolid(ref: String): T? = solids[ref]
-    inline fun <reified T : GDMLMaterialBase> getMaterial(ref: String): T? = materials[ref]
-    fun getVolume(ref: String): GDMLVolume? = structure[ref]
+    inline fun <reified T : GDMLMaterial> getMaterial(ref: String): T? = materials[ref]
+    inline fun <reified T : GDMLGroup> getGroup(ref: String): T? = structure[ref]
 
     val world: GDMLVolume
         get() = setup.world?.resolve(this)
-            ?: structure.content.firstOrNull()
-            ?: error("The GDML structure is empty")
+            ?: structure.content.filterIsInstance<GDMLVolume>().firstOrNull()
+            ?: error("The GDML structure does not contain a volume")
+
+    override fun toString() = format.stringify(this)
 
     companion object {
         inline operator fun invoke(block: GDML.() -> Unit): GDML = GDML().apply(block)
@@ -57,14 +61,16 @@ class GDML {
 
 inline fun <reified T : GDMLDefine> GDMLRef<T>.resolve(root: GDML): T? = root.getDefine(ref)
 inline fun <reified T : GDMLSolid> GDMLRef<T>.resolve(root: GDML): T? = root.getSolid(ref)
-inline fun <reified T : GDMLMaterialBase> GDMLRef<T>.resolve(root: GDML): T? = root.getMaterial(ref)
-fun GDMLRef<GDMLVolume>.resolve(root: GDML): GDMLVolume? = root.getVolume(ref)
+inline fun <reified T : GDMLMaterial> GDMLRef<T>.resolve(root: GDML): T? = root.getMaterial(ref)
+inline fun <reified T : GDMLGroup> GDMLRef<T>.resolve(root: GDML): T? = root.getGroup(ref)
 
 @GDMLApi
 @Serializable
 @SerialName("define")
 class GDMLDefineContainer {
-    val content = ArrayList<@ContextualSerialization GDMLDefine>()
+
+    @XmlPolyChildren(arrayOf("constant", "quantity", "variable", "position", "rotation", "scale", "matrix"))
+    val content = ArrayList<@Polymorphic GDMLDefine>()
 
     inline operator fun <reified T : GDMLDefine> get(ref: String): T? =
         content.filterIsInstance<T>().find { it.name == ref }
@@ -94,15 +100,34 @@ class GDMLDefineContainer {
 @Serializable
 @SerialName("materials")
 class GDMLMaterialContainer {
-    //TODO
-    inline operator fun <reified T : GDMLMaterialBase> get(ref: String): T? = TODO()
+    @XmlPolyChildren(
+        arrayOf("isotope", "element", "material")
+    )
+    val content = ArrayList<@Polymorphic GDMLMaterial>()
+
+    inline operator fun <reified T : GDMLMaterial> get(ref: String): T? =
+        content.filterIsInstance<T>().find { it.name == ref }
 }
 
 @GDMLApi
 @Serializable
 @SerialName("solids")
 class GDMLSolidContainer {
-    val content = ArrayList<@ContextualSerialization GDMLSolid>()
+    @XmlPolyChildren(
+        arrayOf(
+            "box",
+            "sphere",
+            "orb",
+            "polyhedra",
+            "tube",
+            "xtru",
+            "scaledSolid",
+            "union",
+            "intersection",
+            "subtraction"
+        )
+    )
+    val content = ArrayList<@Polymorphic GDMLSolid>()
 
     inline operator fun <reified T : GDMLSolid> get(ref: String): T? =
         content.filterIsInstance<T>().find { it.name == ref }
@@ -163,13 +188,21 @@ class GDMLSolidContainer {
 @Serializable
 @SerialName("structure")
 class GDMLStructure {
-    val content = ArrayList<GDMLVolume>()
 
-    operator fun get(ref: String): GDMLVolume? = content.find { it.name == ref }
+    @XmlPolyChildren(
+        arrayOf(
+            "volume",
+            "assembly"
+        )
+    )
+    val content = ArrayList<@Polymorphic GDMLGroup>()
+
+    inline operator fun <reified T : GDMLGroup> get(ref: String): T? =
+        content.filterIsInstance<T>().find { it.name == ref }
 
     fun volume(
         name: String,
-        materialref: GDMLRef<GDMLMaterialBase>,
+        materialref: GDMLRef<GDMLMaterial>,
         solidref: GDMLRef<GDMLSolid>,
         block: GDMLVolume.() -> Unit
     ): GDMLVolume {
@@ -181,4 +214,9 @@ class GDMLStructure {
 
 @Serializable
 @SerialName("setup")
-class GDMLSetup(var name: String = "Default", var version: String = "1.0", var world: GDMLRef<GDMLVolume>? = null)
+class GDMLSetup(
+    var name: String = "Default",
+    var version: String = "1.0",
+    @XmlSerialName("world","","")
+    var world: GDMLRef<GDMLVolume>? = null
+)

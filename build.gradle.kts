@@ -1,7 +1,7 @@
 plugins {
     id("scientifik.mpp") version "0.1.2"
     id("scientifik.publish") version "0.1.2"
-    id("kotlinx-serialization") version "1.3.40"
+    id("kotlinx-serialization") version "1.3.41"
 }
 
 group = "scientifik"
@@ -21,6 +21,14 @@ kotlin {
             dependencies {
                 api("net.devrieze:xmlutil-serialization:0.11.1.1")
                 api(kotlin("reflect"))
+            }
+        }
+    }
+
+    targets.all {
+        sourceSets.all {
+            languageSettings.apply{
+                useExperimentalAnnotation("kotlinx.serialization.ImplicitReflectionSerializer")
             }
         }
     }
