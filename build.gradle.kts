@@ -1,6 +1,6 @@
 plugins {
-    id("scientifik.mpp") version "0.1.2"
-    id("scientifik.publish") version "0.1.2"
+    id("scientifik.mpp") version "0.1.3"
+    id("scientifik.publish") version "0.1.3"
     id("kotlinx-serialization") version "1.3.41"
 }
 
@@ -19,7 +19,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("net.devrieze:xmlutil-serialization:0.11.1.1")
+                api("net.devrieze:xmlutil-serialization:0.11.1.2-SNAPSHOT")
                 api(kotlin("reflect"))
             }
         }
@@ -36,5 +36,5 @@ kotlin {
 
 scientifik {
     bintrayRepo = "scientifik"
-    vcs = "https://github.com/mipt-npm/gdml.kt"
+    githubProject = "gdml.kt"
 }
