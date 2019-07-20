@@ -6,8 +6,7 @@ import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import nl.adaptivity.xmlutil.EventType
-import nl.adaptivity.xmlutil.QName
+import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
@@ -56,9 +55,12 @@ class GDML {
     companion object {
         inline operator fun invoke(block: GDML.() -> Unit): GDML = GDML().apply(block)
 
-        private val WARNING_UNKNOWN_CHILD_HANDLER: (String?, EventType, QName, Collection<Any>) -> Unit =
+        private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
             { location, ev, name, candidates ->
-                println("Could not find a field for name $name${if (candidates.isNotEmpty()) candidates.joinToString(prefix = "\n  candidates: ") else ""}${location?.let { " at position $it" } ?: ""}")
+                println(
+                    "Could not find a field for name $name${if (candidates.isNotEmpty()) candidates.joinToString(
+                        prefix = "\n  candidates: "
+                    ) else ""} at position $location")
             }
 
         val format = XML(gdmlModule) {
@@ -79,7 +81,6 @@ inline fun <reified T : GDMLGroup> GDMLRef<T>.resolve(root: GDML): T? = root.get
 @SerialName("define")
 class GDMLDefineContainer {
 
-    //@XmlPolyChildren(arrayOf("constant", "quantity", "variable", "position", "rotation", "scale", "matrix"))
     val content = ArrayList<@Polymorphic GDMLDefine>()
 
     inline operator fun <reified T : GDMLDefine> get(ref: String): T? =
@@ -110,9 +111,7 @@ class GDMLDefineContainer {
 @Serializable
 @SerialName("materials")
 class GDMLMaterialContainer {
-//    @XmlPolyChildren(
-//        arrayOf("isotope", "element", "material")
-//    )
+
     val content = ArrayList<@Polymorphic GDMLMaterial>()
 
     inline operator fun <reified T : GDMLMaterial> get(ref: String): T? =
@@ -123,20 +122,7 @@ class GDMLMaterialContainer {
 @Serializable
 @SerialName("solids")
 class GDMLSolidContainer {
-//    @XmlPolyChildren(
-//        arrayOf(
-//            "box",
-//            "sphere",
-//            "orb",
-//            "polyhedra",
-//            "tube",
-//            "xtru",
-//            "scaledSolid",
-//            "union",
-//            "intersection",
-//            "subtraction"
-//        )
-//    )
+
     val content = ArrayList<@Polymorphic GDMLSolid>()
 
     inline operator fun <reified T : GDMLSolid> get(ref: String): T? =
@@ -199,7 +185,6 @@ class GDMLSolidContainer {
 @SerialName("structure")
 class GDMLStructure {
 
-    //@XmlPolyChildren(arrayOf("volume", "assembly"))
     val content = ArrayList<@Polymorphic GDMLGroup>()
 
     inline operator fun <reified T : GDMLGroup> get(ref: String): T? =
