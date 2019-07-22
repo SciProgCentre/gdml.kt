@@ -1,37 +1,11 @@
 package scientifik.gdml
 
 import kotlinx.serialization.parse
-import kotlinx.serialization.serializer
 import kotlin.math.PI
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class GDMLTest {
-
-    @Test
-    fun printChildren() {
-        println(
-            GDMLDefine::class.sealedSubclasses.joinToString(
-                prefix = "[\"",
-                separator = "\", \"",
-                postfix = "\"]"
-            ) { it.serializer().descriptor.name })
-
-        println(
-            GDMLMaterial::class.sealedSubclasses.joinToString(
-                prefix = "[\"",
-                separator = "\", \"",
-                postfix = "\"]"
-            ) { it.serializer().descriptor.name })
-
-        println(
-            GDMLSolid::class.sealedSubclasses.joinToString(
-                prefix = "[\"",
-                separator = "\", \"",
-                postfix = "\"]"
-            ) { it.serializer().descriptor.name })
-    }
-
     @Test
     fun testSerialization() {
         val gdml = GDML {
