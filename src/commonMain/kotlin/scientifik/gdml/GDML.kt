@@ -116,8 +116,12 @@ class GDMLMaterialContainer {
 
     val content = ArrayList<@Polymorphic GDMLMaterial>()
 
-    inline operator fun <reified T : GDMLMaterial> get(ref: String): T? =
-        content.filterIsInstance<T>().find { it.name == ref }
+    @Transient
+    private val cache: MutableMap<String, GDMLMaterial?> = HashMap()
+
+    fun getMaterial(ref: String): GDMLMaterial? = cache.getOrPut(ref) { content.find { it.name == ref } }
+
+    inline operator fun <reified T : GDMLMaterial> get(ref: String): T? = getMaterial(ref) as? T
 }
 
 @GDMLApi
@@ -127,8 +131,12 @@ class GDMLSolidContainer {
 
     val content = ArrayList<@Polymorphic GDMLSolid>()
 
-    inline operator fun <reified T : GDMLSolid> get(ref: String): T? =
-        content.filterIsInstance<T>().find { it.name == ref }
+    @Transient
+    private val cache: MutableMap<String, GDMLSolid?> = HashMap()
+
+    fun getSolid(ref: String): GDMLSolid? = cache.getOrPut(ref) { content.find { it.name == ref } }
+
+    inline operator fun <reified T : GDMLSolid> get(ref: String): T? = getSolid(ref) as? T
 
     fun box(name: String, x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GDMLBox.() -> Unit = {}): GDMLBox {
         val box = GDMLBox(name, x, y, z).apply(block)
@@ -189,8 +197,12 @@ class GDMLStructure {
 
     val content = ArrayList<@Polymorphic GDMLGroup>()
 
-    inline operator fun <reified T : GDMLGroup> get(ref: String): T? =
-        content.filterIsInstance<T>().find { it.name == ref }
+    @Transient
+    private val cache: MutableMap<String, GDMLGroup?> = HashMap()
+
+    fun getGroup(ref: String): GDMLGroup? = cache.getOrPut(ref) { content.find { it.name == ref } }
+
+    inline operator fun <reified T : GDMLGroup> get(ref: String): T? = getGroup(ref) as? T
 
     fun volume(
         name: String,
