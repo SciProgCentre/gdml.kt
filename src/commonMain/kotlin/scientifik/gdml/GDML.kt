@@ -2,10 +2,7 @@
 
 package scientifik.gdml
 
-import kotlinx.serialization.Polymorphic
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
+import kotlinx.serialization.*
 import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
@@ -60,7 +57,8 @@ class GDML {
                 println(
                     "Could not find a field for name $name${if (candidates.isNotEmpty()) candidates.joinToString(
                         prefix = "\n  candidates: "
-                    ) else ""} at position $location")
+                    ) else ""} at position $location"
+                )
             }
 
         val format = XML(gdmlModule) {
@@ -83,8 +81,12 @@ class GDMLDefineContainer {
 
     val content = ArrayList<@Polymorphic GDMLDefine>()
 
-    inline operator fun <reified T : GDMLDefine> get(ref: String): T? =
-        content.filterIsInstance<T>().find { it.name == ref }
+    @Transient
+    private val cache: MutableMap<String, GDMLDefine?> = HashMap()
+
+    fun getDefine(ref: String): GDMLDefine? = cache.getOrPut(ref) { content.find { it.name == ref } }
+
+    inline operator fun <reified T : GDMLDefine> get(ref: String): T? = getDefine(ref) as? T
 
     fun position(name: String, x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GDMLPosition.() -> Unit = {}) {
         content.add(GDMLPosition().apply(block).apply {
