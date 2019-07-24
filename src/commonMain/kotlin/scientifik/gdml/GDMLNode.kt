@@ -2,9 +2,11 @@
 
 package scientifik.gdml
 
+import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 interface GDMLNode {
@@ -23,6 +25,8 @@ fun <T : GDMLNode> T.ref(): GDMLRef<T> = GDMLRef(name)
 
 
 //Structure elements
+@Serializable
+sealed class GDMLPlacement
 
 /**
  * Does not iherit [GDMLNode] since it does not have a name and could not be referenced
@@ -31,9 +35,9 @@ fun <T : GDMLNode> T.ref(): GDMLRef<T> = GDMLRef(name)
 @SerialName("physvol")
 class GDMLPhysVolume(
     @XmlSerialName("volumeref", "", "")
-    var volumeref: GDMLRef<GDMLVolume>,
+    var volumeref: GDMLRef<GDMLGroup>,
     var name: String? = null
-) {
+): GDMLPlacement() {
     var copynumber: Int? = null
 
     @XmlSerialName("position", "", "")
@@ -65,31 +69,15 @@ class GDMLPhysVolume(
     fun resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
 }
 
-@Serializable
-sealed class GDMLGroup : GDMLNode {
-    @XmlSerialName("physvol", "", "")
-    val physVolumes = ArrayList<GDMLPhysVolume>()
-
-    fun physVolume(volumeref: GDMLRef<GDMLVolume>, block: GDMLPhysVolume.() -> Unit): GDMLPhysVolume {
-        val res = GDMLPhysVolume(volumeref).apply(block)
-        physVolumes.add(res)
-        return res
-    }
-}
-
-@Serializable
-@SerialName("assembly")
-class GDMLAssembly(override var name: String) : GDMLGroup()
-
 /**
-    <...
-    axis=" xs:string [1]"
-    number=" ExpressionOrIDREFType [1]"
-    width=" ExpressionOrIDREFType [1]"
-    offset=" ExpressionOrIDREFType [1]"
-    unit=" xs:string [0..1]">
-    <volumeref> ReferenceType </volumeref> [1]
-    </...>
+<...
+axis=" xs:string [1]"
+number=" ExpressionOrIDREFType [1]"
+width=" ExpressionOrIDREFType [1]"
+offset=" ExpressionOrIDREFType [1]"
+unit=" xs:string [0..1]">
+<volumeref> ReferenceType </volumeref> [1]
+</...>
  */
 @Serializable
 @SerialName("divisionvol")
@@ -101,7 +89,23 @@ class GDMLDivisionVolume(
     @XmlSerialName("volumeref", "", "")
     var volumeref: GDMLRef<GDMLVolume>,
     var unit: String = "mm"
-)
+):GDMLPlacement()
+
+@Serializable
+sealed class GDMLGroup : GDMLNode {
+    @XmlSerialName("physvol", "", "")
+    val physVolumes = ArrayList<GDMLPhysVolume>()
+
+    fun physVolume(volumeref: GDMLRef<GDMLGroup>, block: GDMLPhysVolume.() -> Unit): GDMLPhysVolume {
+        val res = GDMLPhysVolume(volumeref).apply(block)
+        physVolumes.add(res)
+        return res
+    }
+}
+
+@Serializable
+@SerialName("assembly")
+class GDMLAssembly(override var name: String) : GDMLGroup()
 
 @Serializable
 @SerialName("volume")
@@ -112,5 +116,8 @@ class GDMLVolume(
     @XmlSerialName("solidref", "", "")
     var solidref: GDMLRef<GDMLSolid>
 ) : GDMLGroup(){
-    var divisionvol: GDMLDivisionVolume? = null
+
+    @XmlPolyChildren(arrayOf("physvol","divisionvol"))
+    @Polymorphic
+    var placement: GDMLPlacement? = null
 }

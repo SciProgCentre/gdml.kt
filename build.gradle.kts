@@ -4,9 +4,9 @@ plugins {
 }
 
 group = "scientifik"
-version = "0.1.2"
+version = "0.1.3"
 
-scientifik{
+scientifik {
     bintrayRepo = "scientifik"
     githubProject = "gdml.kt"
     serialization = true
@@ -17,6 +17,16 @@ repositories {
 }
 
 kotlin {
+    js {
+        browser {
+            testTask {
+                useKarma{
+                    useChrome()
+                }
+            }
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -28,7 +38,7 @@ kotlin {
 
     targets.all {
         sourceSets.all {
-            languageSettings.apply{
+            languageSettings.apply {
                 useExperimentalAnnotation("kotlinx.serialization.ImplicitReflectionSerializer")
             }
         }

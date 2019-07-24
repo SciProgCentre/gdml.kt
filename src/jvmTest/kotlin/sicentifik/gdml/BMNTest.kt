@@ -3,10 +3,7 @@ package sicentifik.gdml
 import kotlinx.serialization.serializer
 import nl.adaptivity.xmlutil.StAXReader
 import org.junit.Test
-import scientifik.gdml.GDML
-import scientifik.gdml.GDMLDefine
-import scientifik.gdml.GDMLMaterial
-import scientifik.gdml.GDMLSolid
+import scientifik.gdml.*
 import java.io.File
 import java.net.URL
 
@@ -47,6 +44,10 @@ class BMNTest {
         }
 
         val xmlReader = StAXReader(stream, "UTF-8")
-        val xml = GDML.format.parse(GDML::class, xmlReader)
+        val gdml = GDML.format.parse(GDML::class, xmlReader)
+        println(gdml.world)
+        val ref = GDMLRef<GDMLAssembly>("Magnet")
+        val magnet = ref.resolve(gdml)!!
+        println(magnet)
     }
 }

@@ -45,4 +45,8 @@ val gdmlModule = SerializersModule {
         GDMLVolume::class with GDMLVolume.serializer()
         GDMLAssembly::class with GDMLAssembly.serializer()
     }
+    polymorphic<GDMLPlacement> {
+        GDMLPhysVolume::class with GDMLPhysVolume.serializer()
+        GDMLDivisionVolume::class with GDMLDivisionVolume.serializer()
+    }
 }
