@@ -67,6 +67,11 @@ class GDMLPhysVolume(
      * Get the rotation from either position block or reference (if root is provided)
      */
     fun resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
+
+    /**
+     * Get the scale from either position block or reference (if root is provided)
+     */
+    fun resolveScale(root: GDML): GDMLScale? = scale ?: scaleref?.resolve(root)
 }
 
 /**

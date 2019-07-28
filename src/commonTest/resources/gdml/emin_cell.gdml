@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gdml>
+	<define>
+		<position name="Detector" unit="mm" x="0.0" y="0.0" z="-1100.0"/>
+		<position name="center" unit="mm" x="0.0" y="0.0" z="0.0"/>
+	</define>
+	<materials/>
+	<solids>
+		<box x="200.0" y="200.0" z="400.0" aunit="radian" luint="mm" name="Target"/>
+		<box x="2000.0" y="2000.0" z="100.0" aunit="radian" luint="mm" name="Detector"/>
+		<box x="1998.0" y="1998.0" z="1998.0" aunit="radian" luint="mm" name="inCont"/>
+		<box x="10000.0" y="10000.0" z="10000.0" aunit="radian" luint="mm" name="World"/>
+		<box x="2000.0" y="2000.0" z="2000.0" aunit="radian" luint="mm" name="outCont"/>
+		<subtraction aunit="radian" luint="mm" name="ContCasing">
+			<first ref="outCont"/>
+			<second ref="inCont"/>
+		</subtraction>
+	</solids>
+	<structure>
+		<volume name="VolTarget">
+			<materialref ref="G4_CELLULOSE_CELLOPHANE"/>
+			<solidref ref="Target"/>
+		</volume>
+		<volume name="VolContCasing">
+			<materialref ref="G4_STAINLESS-STEEL"/>
+			<solidref ref="ContCasing"/>
+		</volume>
+		<volume name="VolDetector">
+			<materialref ref="G4_AIR"/>
+			<solidref ref="Detector"/>
+			<auxiliary auxtype="SensDet" auxvalue="positional"/>
+		</volume>
+		<volume name="VolContainer">
+			<materialref ref="G4_AIR"/>
+			<solidref ref="outCont"/>
+			<physvol>
+				<positionref ref="center"/>
+				<volumeref ref="VolContCasing"/>
+			</physvol>
+			<physvol>
+				<positionref ref="center"/>
+				<volumeref ref="VolTarget"/>
+			</physvol>
+		</volume>
+		<volume name="VolWorld">
+			<materialref ref="G4_AIR"/>
+			<solidref ref="World"/>
+			<physvol>
+				<positionref ref="center"/>
+				<volumeref ref="VolContainer"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Detector"/>
+				<volumeref ref="VolDetector"/>
+			</physvol>
+		</volume>
+	</structure>
+	<setup name="Default" version="1.0">
+		<world ref="VolWorld"/>
+	</setup>
+</gdml>

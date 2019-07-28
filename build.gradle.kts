@@ -1,6 +1,6 @@
 plugins {
-    id("scientifik.mpp") version "0.1.4-dev"
-    id("scientifik.publish") version "0.1.4-dev"
+    id("scientifik.mpp") version "0.1.4"
+    id("scientifik.publish") version "0.1.4"
 }
 
 group = "scientifik"

@@ -122,6 +122,10 @@ class GDMLMaterialContainer {
     fun getMaterial(ref: String): GDMLMaterial? = cache.getOrPut(ref) { content.find { it.name == ref } }
 
     inline operator fun <reified T : GDMLMaterial> get(ref: String): T? = getMaterial(ref) as? T
+
+    companion object{
+        val defaultMaterial = GDMLElement("default")
+    }
 }
 
 @GDMLApi

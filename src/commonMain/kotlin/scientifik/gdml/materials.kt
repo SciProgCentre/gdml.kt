@@ -45,7 +45,7 @@ data class GDMLAtom(var value: Number, var unit: String = "g/mole")
 
 @Serializable
 @SerialName("fraction")
-class GDMLFraction(var n: Double, var ref: String)
+data class GDMLFraction(var n: Double, var ref: String)
 
 @Serializable
 @SerialName("isotope")

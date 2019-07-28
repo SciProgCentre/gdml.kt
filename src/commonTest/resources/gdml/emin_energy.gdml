@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gdml>
+	<define>
+		<position name="Cell_-41" unit="mm" x="-405.0" y="0.0" z="0.0"/>
+		<position name="Cell_79" unit="mm" x="795.0" y="0.0" z="0.0"/>
+		<position name="Cell_-40" unit="mm" x="-395.0" y="0.0" z="0.0"/>
+		<position name="Cell_78" unit="mm" x="785.0" y="0.0" z="0.0"/>
+		<position name="Cell_-43" unit="mm" x="-425.0" y="0.0" z="0.0"/>
+		<position name="Cell_77" unit="mm" x="775.0" y="0.0" z="0.0"/>
+		<position name="Cell_-42" unit="mm" x="-415.0" y="0.0" z="0.0"/>
+		<position name="Cell_76" unit="mm" x="765.0" y="0.0" z="0.0"/>
+		<position name="Cell_75" unit="mm" x="755.0" y="0.0" z="0.0"/>
+		<position name="Cell_74" unit="mm" x="745.0" y="0.0" z="0.0"/>
+		<position name="Cell_73" unit="mm" x="735.0" y="0.0" z="0.0"/>
+		<position name="Cell_72" unit="mm" x="725.0" y="0.0" z="0.0"/>
+		<position name="Cell_71" unit="mm" x="715.0" y="0.0" z="0.0"/>
+		<position name="Cell_70" unit="mm" x="705.0" y="0.0" z="0.0"/>
+		<position name="Cell_-49" unit="mm" x="-485.0" y="0.0" z="0.0"/>
+		<position name="Cell_-48" unit="mm" x="-475.0" y="0.0" z="0.0"/>
+		<position name="Cell_-45" unit="mm" x="-445.0" y="0.0" z="0.0"/>
+		<position name="Cell_-44" unit="mm" x="-435.0" y="0.0" z="0.0"/>
+		<position name="Cell_-47" unit="mm" x="-465.0" y="0.0" z="0.0"/>
+		<position name="Cell_-46" unit="mm" x="-455.0" y="0.0" z="0.0"/>
+		<position name="Cell_69" unit="mm" x="695.0" y="0.0" z="0.0"/>
+		<position name="Cell_-30" unit="mm" x="-295.0" y="0.0" z="0.0"/>
+		<position name="Cell_68" unit="mm" x="685.0" y="0.0" z="0.0"/>
+		<position name="Cell_67" unit="mm" x="675.0" y="0.0" z="0.0"/>
+		<position name="Cell_-32" unit="mm" x="-315.0" y="0.0" z="0.0"/>
+		<position name="Cell_66" unit="mm" x="665.0" y="0.0" z="0.0"/>
+		<position name="Cell_-31" unit="mm" x="-305.0" y="0.0" z="0.0"/>
+		<position name="Cell_65" unit="mm" x="655.0" y="0.0" z="0.0"/>
+		<position name="Cell_64" unit="mm" x="645.0" y="0.0" z="0.0"/>
+		<position name="Cell_63" unit="mm" x="635.0" y="0.0" z="0.0"/>
+		<position name="Cell_62" unit="mm" x="625.0" y="0.0" z="0.0"/>
+		<position name="Cell_61" unit="mm" x="615.0" y="0.0" z="0.0"/>
+		<position name="Cell_60" unit="mm" x="605.0" y="0.0" z="0.0"/>
+		<position name="Cell_-38" unit="mm" x="-375.0" y="0.0" z="0.0"/>
+		<position name="Cell_-37" unit="mm" x="-365.0" y="0.0" z="0.0"/>
+		<position name="Cell_-39" unit="mm" x="-385.0" y="0.0" z="0.0"/>
+		<position name="Cell_-34" unit="mm" x="-335.0" y="0.0" z="0.0"/>
+		<position name="Cell_-33" unit="mm" x="-325.0" y="0.0" z="0.0"/>
+		<position name="Cell_-36" unit="mm" x="-355.0" y="0.0" z="0.0"/>
+		<position name="Cell_59" unit="mm" x="595.0" y="0.0" z="0.0"/>
+		<position name="Cell_-35" unit="mm" x="-345.0" y="0.0" z="0.0"/>
+		<position name="Cell_58" unit="mm" x="585.0" y="0.0" z="0.0"/>
+		<position name="Cell_-63" unit="mm" x="-625.0" y="0.0" z="0.0"/>
+		<position name="Cell_-62" unit="mm" x="-615.0" y="0.0" z="0.0"/>
+		<position name="Cell_-65" unit="mm" x="-645.0" y="0.0" z="0.0"/>
+		<position name="Cell_99" unit="mm" x="995.0" y="0.0" z="0.0"/>
+		<position name="Cell_-64" unit="mm" x="-635.0" y="0.0" z="0.0"/>
+		<position name="Cell_98" unit="mm" x="985.0" y="0.0" z="0.0"/>
+		<position name="Cell_97" unit="mm" x="975.0" y="0.0" z="0.0"/>
+		<position name="Cell_96" unit="mm" x="965.0" y="0.0" z="0.0"/>
+		<position name="Cell_-61" unit="mm" x="-605.0" y="0.0" z="0.0"/>
+		<position name="Cell_95" unit="mm" x="955.0" y="0.0" z="0.0"/>
+		<position name="Cell_-60" unit="mm" x="-595.0" y="0.0" z="0.0"/>
+		<position name="Cell_94" unit="mm" x="945.0" y="0.0" z="0.0"/>
+		<position name="Cell_93" unit="mm" x="935.0" y="0.0" z="0.0"/>
+		<position name="Cell_92" unit="mm" x="925.0" y="0.0" z="0.0"/>
+		<position name="Cell_91" unit="mm" x="915.0" y="0.0" z="0.0"/>
+		<position name="Cell_90" unit="mm" x="905.0" y="0.0" z="0.0"/>
+		<position name="Cell_-67" unit="mm" x="-665.0" y="0.0" z="0.0"/>
+		<position name="Cell_-66" unit="mm" x="-655.0" y="0.0" z="0.0"/>
+		<position name="Cell_-69" unit="mm" x="-685.0" y="0.0" z="0.0"/>
+		<position name="Cell_-68" unit="mm" x="-675.0" y="0.0" z="0.0"/>
+		<position name="Cell_-52" unit="mm" x="-515.0" y="0.0" z="0.0"/>
+		<position name="Cell_-51" unit="mm" x="-505.0" y="0.0" z="0.0"/>
+		<position name="Cell_89" unit="mm" x="895.0" y="0.0" z="0.0"/>
+		<position name="Cell_-54" unit="mm" x="-535.0" y="0.0" z="0.0"/>
+		<position name="Cell_88" unit="mm" x="885.0" y="0.0" z="0.0"/>
+		<position name="Cell_-53" unit="mm" x="-525.0" y="0.0" z="0.0"/>
+		<position name="Cell_87" unit="mm" x="875.0" y="0.0" z="0.0"/>
+		<position name="Cell_86" unit="mm" x="865.0" y="0.0" z="0.0"/>
+		<position name="Cell_85" unit="mm" x="855.0" y="0.0" z="0.0"/>
+		<position name="Cell_-50" unit="mm" x="-495.0" y="0.0" z="0.0"/>
+		<position name="Cell_84" unit="mm" x="845.0" y="0.0" z="0.0"/>
+		<position name="Cell_83" unit="mm" x="835.0" y="0.0" z="0.0"/>
+		<position name="Cell_82" unit="mm" x="825.0" y="0.0" z="0.0"/>
+		<position name="Cell_81" unit="mm" x="815.0" y="0.0" z="0.0"/>
+		<position name="Cell_80" unit="mm" x="805.0" y="0.0" z="0.0"/>
+		<position name="Cell_-59" unit="mm" x="-585.0" y="0.0" z="0.0"/>
+		<position name="Cell_-56" unit="mm" x="-555.0" y="0.0" z="0.0"/>
+		<position name="Cell_-55" unit="mm" x="-545.0" y="0.0" z="0.0"/>
+		<position name="Cell_-58" unit="mm" x="-575.0" y="0.0" z="0.0"/>
+		<position name="Cell_-57" unit="mm" x="-565.0" y="0.0" z="0.0"/>
+		<position name="Cell_-85" unit="mm" x="-845.0" y="0.0" z="0.0"/>
+		<position name="Cell_35" unit="mm" x="355.0" y="0.0" z="0.0"/>
+		<position name="Cell_-84" unit="mm" x="-835.0" y="0.0" z="0.0"/>
+		<position name="Cell_34" unit="mm" x="345.0" y="0.0" z="0.0"/>
+		<position name="Cell_-87" unit="mm" x="-865.0" y="0.0" z="0.0"/>
+		<position name="Cell_33" unit="mm" x="335.0" y="0.0" z="0.0"/>
+		<position name="Cell_-86" unit="mm" x="-855.0" y="0.0" z="0.0"/>
+		<position name="Cell_32" unit="mm" x="325.0" y="0.0" z="0.0"/>
+		<position name="Cell_-81" unit="mm" x="-805.0" y="0.0" z="0.0"/>
+		<position name="Cell_31" unit="mm" x="315.0" y="0.0" z="0.0"/>
+		<position name="Cell_-80" unit="mm" x="-795.0" y="0.0" z="0.0"/>
+		<position name="Cell_30" unit="mm" x="305.0" y="0.0" z="0.0"/>
+		<position name="Cell_-83" unit="mm" x="-825.0" y="0.0" z="0.0"/>
+		<position name="Cell_-82" unit="mm" x="-815.0" y="0.0" z="0.0"/>
+		<position name="Cell_29" unit="mm" x="295.0" y="0.0" z="0.0"/>
+		<position name="Cell_-89" unit="mm" x="-885.0" y="0.0" z="0.0"/>
+		<position name="Cell_28" unit="mm" x="285.0" y="0.0" z="0.0"/>
+		<position name="Cell_-88" unit="mm" x="-875.0" y="0.0" z="0.0"/>
+		<position name="Cell_27" unit="mm" x="275.0" y="0.0" z="0.0"/>
+		<position name="Cell_26" unit="mm" x="265.0" y="0.0" z="0.0"/>
+		<position name="Cell_25" unit="mm" x="255.0" y="0.0" z="0.0"/>
+		<position name="Cell_-74" unit="mm" x="-735.0" y="0.0" z="0.0"/>
+		<position name="Cell_3" unit="mm" x="35.0" y="0.0" z="0.0"/>
+		<position name="Cell_24" unit="mm" x="245.0" y="0.0" z="0.0"/>
+		<position name="Cell_-73" unit="mm" x="-725.0" y="0.0" z="0.0"/>
+		<position name="Cell_4" unit="mm" x="45.0" y="0.0" z="0.0"/>
+		<position name="Cell_23" unit="mm" x="235.0" y="0.0" z="0.0"/>
+		<position name="Cell_-76" unit="mm" x="-755.0" y="0.0" z="0.0"/>
+		<position name="Cell_1" unit="mm" x="15.0" y="0.0" z="0.0"/>
+		<position name="Cell_22" unit="mm" x="225.0" y="0.0" z="0.0"/>
+		<position name="Cell_-75" unit="mm" x="-745.0" y="0.0" z="0.0"/>
+		<position name="Cell_2" unit="mm" x="25.0" y="0.0" z="0.0"/>
+		<position name="Cell_21" unit="mm" x="215.0" y="0.0" z="0.0"/>
+		<position name="Cell_-70" unit="mm" x="-695.0" y="0.0" z="0.0"/>
+		<position name="Cell_20" unit="mm" x="205.0" y="0.0" z="0.0"/>
+		<position name="Cell_0" unit="mm" x="5.0" y="0.0" z="0.0"/>
+		<position name="Cell_-72" unit="mm" x="-715.0" y="0.0" z="0.0"/>
+		<position name="Cell_-71" unit="mm" x="-705.0" y="0.0" z="0.0"/>
+		<position name="Cell_9" unit="mm" x="95.0" y="0.0" z="0.0"/>
+		<position name="Cell_7" unit="mm" x="75.0" y="0.0" z="0.0"/>
+		<position name="Cell_8" unit="mm" x="85.0" y="0.0" z="0.0"/>
+		<position name="Cell_5" unit="mm" x="55.0" y="0.0" z="0.0"/>
+		<position name="Cell_6" unit="mm" x="65.0" y="0.0" z="0.0"/>
+		<position name="Cell_19" unit="mm" x="195.0" y="0.0" z="0.0"/>
+		<position name="Cell_18" unit="mm" x="185.0" y="0.0" z="0.0"/>
+		<position name="Cell_-78" unit="mm" x="-775.0" y="0.0" z="0.0"/>
+		<position name="Cell_17" unit="mm" x="175.0" y="0.0" z="0.0"/>
+		<position name="Cell_-77" unit="mm" x="-765.0" y="0.0" z="0.0"/>
+		<position name="Cell_16" unit="mm" x="165.0" y="0.0" z="0.0"/>
+		<position name="Cell_15" unit="mm" x="155.0" y="0.0" z="0.0"/>
+		<position name="Cell_-79" unit="mm" x="-785.0" y="0.0" z="0.0"/>
+		<position name="Cell_14" unit="mm" x="145.0" y="0.0" z="0.0"/>
+		<position name="Cell_57" unit="mm" x="575.0" y="0.0" z="0.0"/>
+		<position name="Cell_56" unit="mm" x="565.0" y="0.0" z="0.0"/>
+		<position name="Cell_55" unit="mm" x="555.0" y="0.0" z="0.0"/>
+		<position name="Cell_54" unit="mm" x="545.0" y="0.0" z="0.0"/>
+		<position name="Cell_53" unit="mm" x="535.0" y="0.0" z="0.0"/>
+		<position name="Cell_52" unit="mm" x="525.0" y="0.0" z="0.0"/>
+		<position name="Cell_51" unit="mm" x="515.0" y="0.0" z="0.0"/>
+		<position name="Cell_50" unit="mm" x="505.0" y="0.0" z="0.0"/>
+		<position name="Cell_49" unit="mm" x="495.0" y="0.0" z="0.0"/>
+		<position name="Cell_48" unit="mm" x="485.0" y="0.0" z="0.0"/>
+		<position name="Cell_47" unit="mm" x="475.0" y="0.0" z="0.0"/>
+		<position name="Cell_-96" unit="mm" x="-955.0" y="0.0" z="0.0"/>
+		<position name="Cell_46" unit="mm" x="465.0" y="0.0" z="0.0"/>
+		<position name="Cell_-95" unit="mm" x="-945.0" y="0.0" z="0.0"/>
+		<position name="Cell_45" unit="mm" x="455.0" y="0.0" z="0.0"/>
+		<position name="Cell_-98" unit="mm" x="-975.0" y="0.0" z="0.0"/>
+		<position name="Cell_44" unit="mm" x="445.0" y="0.0" z="0.0"/>
+		<position name="Cell_-97" unit="mm" x="-965.0" y="0.0" z="0.0"/>
+		<position name="Cell_43" unit="mm" x="435.0" y="0.0" z="0.0"/>
+		<position name="Cell_-92" unit="mm" x="-915.0" y="0.0" z="0.0"/>
+		<position name="Cell_42" unit="mm" x="425.0" y="0.0" z="0.0"/>
+		<position name="Cell_-91" unit="mm" x="-905.0" y="0.0" z="0.0"/>
+		<position name="Cell_41" unit="mm" x="415.0" y="0.0" z="0.0"/>
+		<position name="Cell_-94" unit="mm" x="-935.0" y="0.0" z="0.0"/>
+		<position name="Cell_40" unit="mm" x="405.0" y="0.0" z="0.0"/>
+		<position name="center" unit="mm" x="0.0" y="0.0" z="0.0"/>
+		<position name="Cell_-93" unit="mm" x="-925.0" y="0.0" z="0.0"/>
+		<position name="Cell_-90" unit="mm" x="-895.0" y="0.0" z="0.0"/>
+		<position name="Cell_39" unit="mm" x="395.0" y="0.0" z="0.0"/>
+		<position name="Cell_-99" unit="mm" x="-985.0" y="0.0" z="0.0"/>
+		<position name="Cell_38" unit="mm" x="385.0" y="0.0" z="0.0"/>
+		<position name="Cell_37" unit="mm" x="375.0" y="0.0" z="0.0"/>
+		<position name="Cell_36" unit="mm" x="365.0" y="0.0" z="0.0"/>
+		<position name="Cell_-9" unit="mm" x="-85.0" y="0.0" z="0.0"/>
+		<position name="Cell_-8" unit="mm" x="-75.0" y="0.0" z="0.0"/>
+		<position name="Cell_-7" unit="mm" x="-65.0" y="0.0" z="0.0"/>
+		<position name="Cell_-6" unit="mm" x="-55.0" y="0.0" z="0.0"/>
+		<position name="Cell_-5" unit="mm" x="-45.0" y="0.0" z="0.0"/>
+		<position name="Cell_-4" unit="mm" x="-35.0" y="0.0" z="0.0"/>
+		<position name="Cell_-3" unit="mm" x="-25.0" y="0.0" z="0.0"/>
+		<position name="Cell_-100" unit="mm" x="-995.0" y="0.0" z="0.0"/>
+		<position name="Cell_-2" unit="mm" x="-15.0" y="0.0" z="0.0"/>
+		<position name="Cell_-1" unit="mm" x="-5.0" y="0.0" z="0.0"/>
+		<position name="Cell_13" unit="mm" x="135.0" y="0.0" z="0.0"/>
+		<position name="Cell_12" unit="mm" x="125.0" y="0.0" z="0.0"/>
+		<position name="Cell_11" unit="mm" x="115.0" y="0.0" z="0.0"/>
+		<position name="Cell_10" unit="mm" x="105.0" y="0.0" z="0.0"/>
+		<position name="Detector" unit="mm" x="0.0" y="0.0" z="-1100.0"/>
+		<position name="Cell_-21" unit="mm" x="-205.0" y="0.0" z="0.0"/>
+		<position name="Cell_-20" unit="mm" x="-195.0" y="0.0" z="0.0"/>
+		<position name="Cell_-27" unit="mm" x="-265.0" y="0.0" z="0.0"/>
+		<position name="Cell_-26" unit="mm" x="-255.0" y="0.0" z="0.0"/>
+		<position name="Cell_-29" unit="mm" x="-285.0" y="0.0" z="0.0"/>
+		<position name="Cell_-28" unit="mm" x="-275.0" y="0.0" z="0.0"/>
+		<position name="Cell_-23" unit="mm" x="-225.0" y="0.0" z="0.0"/>
+		<position name="Cell_-22" unit="mm" x="-215.0" y="0.0" z="0.0"/>
+		<position name="Cell_-25" unit="mm" x="-245.0" y="0.0" z="0.0"/>
+		<position name="Cell_-24" unit="mm" x="-235.0" y="0.0" z="0.0"/>
+		<position name="Cell_-10" unit="mm" x="-95.0" y="0.0" z="0.0"/>
+		<position name="Cell_-19" unit="mm" x="-185.0" y="0.0" z="0.0"/>
+		<position name="Cell_-16" unit="mm" x="-155.0" y="0.0" z="0.0"/>
+		<position name="Cell_-15" unit="mm" x="-145.0" y="0.0" z="0.0"/>
+		<position name="Cell_-18" unit="mm" x="-175.0" y="0.0" z="0.0"/>
+		<position name="Cell_-17" unit="mm" x="-165.0" y="0.0" z="0.0"/>
+		<position name="Cell_-12" unit="mm" x="-115.0" y="0.0" z="0.0"/>
+		<position name="Cell_-11" unit="mm" x="-105.0" y="0.0" z="0.0"/>
+		<position name="Cell_-14" unit="mm" x="-135.0" y="0.0" z="0.0"/>
+		<position name="Cell_-13" unit="mm" x="-125.0" y="0.0" z="0.0"/>
+	</define>
+	<materials/>
+	<solids>
+		<box x="200.0" y="200.0" z="200.0" aunit="radian" lunit="mm" name="Target"/>
+		<box x="2000.0" y="30.0" z="100.0" aunit="radian" lunit="mm" name="Detector"/>
+		<box x="1998.0" y="1998.0" z="1998.0" aunit="radian" lunit="mm" name="inCont"/>
+		<box x="10000.0" y="10000.0" z="10000.0" aunit="radian" lunit="mm" name="World"/>
+		<box x="2000.0" y="2000.0" z="2000.0" aunit="radian" lunit="mm" name="outCont"/>
+		<box x="10.0" y="30.0" z="100.0" aunit="radian" lunit="mm" name="Cell"/>
+		<subtraction aunit="radian" lunit="mm" name="ContCasing">
+			<first ref="outCont"/>
+			<second ref="inCont"/>
+		</subtraction>
+	</solids>
+	<structure>
+		<volume name="VolTarget">
+			<materialref ref="G4_Al"/>
+			<solidref ref="Target"/>
+		</volume>
+		<volume name="VolContCasing">
+			<materialref ref="G4_STAINLESS-STEEL"/>
+			<solidref ref="ContCasing"/>
+		</volume>
+		<volume name="VolCell">
+			<materialref ref="G4_BGO"/>
+			<solidref ref="Cell"/>
+			<auxiliary auxtype="SensDet" auxvalue="energy"/>
+		</volume>
+		<volume name="VolDetector">
+			<materialref ref="G4_BGO"/>
+			<solidref ref="Detector"/>
+			<physvol>
+				<positionref ref="Cell_-100"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-99"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-98"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-97"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-96"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-95"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-94"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-93"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-92"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-91"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-90"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-89"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-88"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-87"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-86"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-85"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-84"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-83"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-82"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-81"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-80"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-79"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-78"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-77"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-76"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-75"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-74"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-73"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-72"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-71"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-70"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-69"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-68"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-67"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-66"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-65"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-64"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-63"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-62"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-61"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-60"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-59"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-58"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-57"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-56"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-55"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-54"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-53"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-52"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-51"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-50"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-49"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-48"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-47"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-46"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-45"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-44"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-43"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-42"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-41"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-40"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-39"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-38"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-37"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-36"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-35"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-34"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-33"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-32"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-31"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-30"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-29"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-28"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-27"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-26"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-25"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-24"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-23"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-22"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-21"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-20"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-19"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-18"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-17"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-16"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-15"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-14"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-13"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-12"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-11"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-10"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-9"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-8"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-7"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-6"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-5"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-4"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-3"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-2"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_-1"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_0"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_1"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_2"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_3"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_4"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_5"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_6"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_7"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_8"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_9"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_10"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_11"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_12"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_13"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_14"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_15"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_16"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_17"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_18"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_19"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_20"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_21"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_22"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_23"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_24"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_25"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_26"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_27"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_28"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_29"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_30"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_31"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_32"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_33"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_34"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_35"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_36"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_37"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_38"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_39"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_40"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_41"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_42"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_43"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_44"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_45"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_46"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_47"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_48"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_49"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_50"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_51"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_52"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_53"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_54"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_55"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_56"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_57"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_58"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_59"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_60"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_61"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_62"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_63"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_64"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_65"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_66"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_67"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_68"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_69"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_70"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_71"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_72"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_73"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_74"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_75"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_76"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_77"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_78"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_79"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_80"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_81"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_82"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_83"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_84"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_85"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_86"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_87"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_88"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_89"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_90"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_91"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_92"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_93"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_94"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_95"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_96"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_97"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_98"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Cell_99"/>
+				<volumeref ref="VolCell"/>
+			</physvol>
+		</volume>
+		<volume name="VolContainer">
+			<materialref ref="G4_AIR"/>
+			<solidref ref="outCont"/>
+			<physvol>
+				<positionref ref="center"/>
+				<volumeref ref="VolContCasing"/>
+			</physvol>
+			<physvol>
+				<positionref ref="center"/>
+				<volumeref ref="VolTarget"/>
+			</physvol>
+		</volume>
+		<volume name="VolWorld">
+			<materialref ref="G4_AIR"/>
+			<solidref ref="World"/>
+			<physvol>
+				<positionref ref="center"/>
+				<volumeref ref="VolContainer"/>
+			</physvol>
+			<physvol>
+				<positionref ref="Detector"/>
+				<volumeref ref="VolDetector"/>
+			</physvol>
+		</volume>
+	</structure>
+	<setup name="Default" version="1.0">
+		<world ref="VolWorld"/>
+	</setup>
+</gdml>
