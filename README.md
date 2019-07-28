@@ -3,7 +3,7 @@
 [ ![Download](https://api.bintray.com/packages/mipt-npm/scientifik/gdml/images/download.svg) ](https://bintray.com/mipt-npm/scientifik/gdml/_latestVersion)
 
 Multiplatform bindings for GDML geometry specification. Utilized kotlinx.serialization
-to read (**does not work yet**) and writing GDML configurations.
+to read and writing GDML configurations.
 
 In future it is possible to add additional module to launch GEANT4 simulations from Kotlin code.
 
@@ -31,4 +31,16 @@ kotlin {
 dependencies {
     api("scientifik:gdml-jvm:0.1.3")
 }
+```
+
+## Usage
+Read: 
+```kotlin
+val gdmlString: String
+val gdml = GDML.format.parse(GDML.serializer(), gdmlString)
+```
+
+write:
+```kotlin
+val gdmlString = GDML.format.stringify(gdml)
 ```
