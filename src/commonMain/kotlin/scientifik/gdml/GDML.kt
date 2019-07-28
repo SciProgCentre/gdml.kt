@@ -88,24 +88,38 @@ class GDMLDefineContainer {
 
     inline operator fun <reified T : GDMLDefine> get(ref: String): T? = getDefine(ref) as? T
 
-    fun position(name: String, x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GDMLPosition.() -> Unit = {}) {
-        content.add(GDMLPosition().apply(block).apply {
+    fun position(
+        name: String,
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GDMLPosition.() -> Unit = {}
+    ): GDMLPosition {
+        return GDMLPosition().apply(block).apply {
             this.name = name
             this.x = x
             this.y = y
             this.z = z
-        })
+        }.also {
+            content.add(it)
+        }
     }
 
-    fun rotation(name: String, x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GDMLRotation.() -> Unit = {}) {
-        content.add(
-            GDMLRotation().apply(block).apply {
-                this.name = name
-                this.x = x
-                this.y = y
-                this.z = z
-            }
-        )
+    fun rotation(
+        name: String,
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GDMLRotation.() -> Unit = {}
+    ): GDMLRotation {
+        return GDMLRotation().apply(block).apply {
+            this.name = name
+            this.x = x
+            this.y = y
+            this.z = z
+        }.also {
+            content.add(it)
+        }
     }
 }
 
@@ -123,7 +137,7 @@ class GDMLMaterialContainer {
 
     inline operator fun <reified T : GDMLMaterial> get(ref: String): T? = getMaterial(ref) as? T
 
-    companion object{
+    companion object {
         val defaultMaterial = GDMLElement("default")
     }
 }

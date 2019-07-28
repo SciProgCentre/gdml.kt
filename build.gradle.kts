@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "scientifik"
-version = "0.1.3"
+version = "0.1.4-dev-1"
 
 scientifik {
     serialization = true
@@ -29,7 +29,7 @@ kotlin {
     js {
         browser {
             testTask {
-                useKarma{
+                useKarma {
                     useChrome()
                 }
             }
@@ -68,7 +68,11 @@ bintray {
 
     pkg.apply {
         userOrg = "mipt-npm"
-        repo = bintrayRepo
+        repo = if (project.version.toString().contains("dev")) {
+            "dev"
+        } else {
+            bintrayRepo
+        }
         name = project.name
         issueTrackerUrl = "$vcs/issues"
         setLicenses("Apache-2.0")
@@ -85,7 +89,7 @@ bintray {
 }
 
 afterEvaluate {
-    tasks.withType<BintrayUploadTask>(){
+    tasks.withType<BintrayUploadTask>() {
         doFirst {
             publishing.publications.filterIsInstance<MavenPublication>()
                 .forEach { publication ->
