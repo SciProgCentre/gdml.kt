@@ -1,8 +1,6 @@
 package scientifik.gdml
 
-fun <T : GDMLNode> ref(ref: String): GDMLRef<T> {
-    return GDMLRef<T>(ref)
-}
+
 
 fun cubes(): GDML = GDML {
 
@@ -14,14 +12,14 @@ fun cubes(): GDML = GDML {
         }
     }
     structure {
-        val matref = GDMLRef<GDMLMaterial>("G4_AIR")
+        val matref = ref<GDMLMaterial>("G4_AIR")
         val segment = solids.tube("InnerTube", 20, 5.0) {
             rmin = 17
             deltaphi = 60
             aunit = DEG
         }
-        val worldBox = solids.box("World", 200, 200, 200)
-        val smallBox = solids.box("World", 30, 30, 30)
+        val worldBox = solids.box("LargeBox", 200, 200, 200)
+        val smallBox = solids.box("smallBox", 30, 30, 30)
         val vol = volume("vol1", matref, segment.ref()) {}
         val circle = volume("Circle", matref, smallBox.ref()) {
             for (i in 0 until 6) {

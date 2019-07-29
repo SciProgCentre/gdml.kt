@@ -16,6 +16,10 @@ interface GDMLNode {
 @Serializable
 data class GDMLRef<T : GDMLNode>(var ref: String)
 
+fun <T : GDMLNode> ref(ref: String): GDMLRef<T> {
+    return GDMLRef<T>(ref)
+}
+
 /**
  * Get a ref to this node
  */

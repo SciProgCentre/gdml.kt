@@ -237,6 +237,14 @@ class GDMLStructure {
     }
 
     @GDMLApi
+    fun volume(
+        name: String,
+        material: GDMLMaterial,
+        solid: GDMLSolid,
+        block: GDMLVolume.() -> Unit
+    ): GDMLVolume = volume(name, material.ref(), solid.ref(), block)
+
+    @GDMLApi
     fun assembly(
         name: String,
         block: GDMLAssembly.() -> Unit
