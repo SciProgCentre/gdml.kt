@@ -10,7 +10,7 @@ fun cubes(): GDML = GDML {
         position("center")
         position("box_position", x = 25.0, y = 50.0, z = 75.0)
         rotation("Rot1", z = 30) {
-            unit = "deg"
+            unit = DEG
         }
     }
     structure {
@@ -18,7 +18,7 @@ fun cubes(): GDML = GDML {
         val segment = solids.tube("InnerTube", 20, 5.0) {
             rmin = 17
             deltaphi = 60
-            aunit = "degree"
+            aunit = DEG
         }
         val worldBox = solids.box("World", 200, 200, 200)
         val smallBox = solids.box("World", 30, 30, 30)
@@ -29,10 +29,10 @@ fun cubes(): GDML = GDML {
                     positionref = ref("center")
                     define {
                         rotation("Rot${i}", z = 60 * i) {
-                            unit = "deg"
+                            unit = DEG
                         }
                     }
-                    rotationref = ref("Rot${i}")
+                    rotationref = ref("Rot$i")
                 }
             }
         }
@@ -42,7 +42,7 @@ fun cubes(): GDML = GDML {
                     for (k in 0 until 3) {
                         define {
                             rotation("Rot$i$j$k", x = i * 120, y = j * 120, z = 120 * k) {
-                                unit = "deg"
+                                unit = DEG
                             }
                             position("Pos$i$j$k", x = (-50 + i * 50), y = (-50 + j * 50), z = (-50 + k * 50))
                         }

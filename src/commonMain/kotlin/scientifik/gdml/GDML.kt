@@ -41,10 +41,9 @@ class GDML {
     inline fun <reified T : GDMLMaterial> getMaterial(ref: String): T? = materials[ref]
     inline fun <reified T : GDMLGroup> getGroup(ref: String): T? = structure[ref]
 
-    val world: GDMLVolume
+    val world: GDMLGroup
         get() = setup.world?.resolve(this)
-            ?: structure.content.filterIsInstance<GDMLVolume>().firstOrNull()
-            ?: error("The GDML structure does not contain a volume")
+            ?: error("The GDML structure does not contain a world volume")
 
     override fun toString() = format.stringify(this)
 
@@ -212,7 +211,6 @@ class GDMLSolidContainer {
     }
 }
 
-@GDMLApi
 @Serializable
 @SerialName("structure")
 class GDMLStructure {
@@ -237,6 +235,16 @@ class GDMLStructure {
         content.add(res)
         return res
     }
+
+    @GDMLApi
+    fun assembly(
+        name: String,
+        block: GDMLAssembly.() -> Unit
+    ): GDMLAssembly {
+        val res = GDMLAssembly(name).apply(block)
+        content.add(res)
+        return res
+    }
 }
 
 @Serializable
@@ -245,5 +253,13 @@ class GDMLSetup(
     var name: String = "Default",
     var version: String = "1.0",
     @XmlSerialName("world", "", "")
-    var world: GDMLRef<GDMLVolume>? = null
+    var world: GDMLRef<GDMLGroup>? = null
 )
+
+@GDMLApi
+fun GDML.world(
+    name: String = "world",
+    block: GDMLAssembly.() -> Unit
+) {
+    structure.assembly(name, block).also { setup.world = it.ref() }
+}
