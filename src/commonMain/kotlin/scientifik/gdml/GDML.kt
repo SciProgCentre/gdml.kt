@@ -10,7 +10,6 @@ import nl.adaptivity.xmlutil.serialization.XmlSerialName
 @DslMarker
 annotation class GDMLApi
 
-@GDMLApi
 @Serializable
 @SerialName("gdml")
 class GDML {
@@ -74,7 +73,6 @@ inline fun <reified T : GDMLSolid> GDMLRef<T>.resolve(root: GDML): T? = root.get
 inline fun <reified T : GDMLMaterial> GDMLRef<T>.resolve(root: GDML): T? = root.getMaterial(ref)
 inline fun <reified T : GDMLGroup> GDMLRef<T>.resolve(root: GDML): T? = root.getGroup(ref)
 
-@GDMLApi
 @Serializable
 @SerialName("define")
 class GDMLDefineContainer {
@@ -88,6 +86,7 @@ class GDMLDefineContainer {
 
     inline operator fun <reified T : GDMLDefine> get(ref: String): T? = getDefine(ref) as? T
 
+    @GDMLApi
     fun position(
         name: String,
         x: Number = 0f,
@@ -105,6 +104,7 @@ class GDMLDefineContainer {
         }
     }
 
+    @GDMLApi
     fun rotation(
         name: String,
         x: Number = 0f,
@@ -123,7 +123,6 @@ class GDMLDefineContainer {
     }
 }
 
-@GDMLApi
 @Serializable
 @SerialName("materials")
 class GDMLMaterialContainer {
@@ -142,7 +141,6 @@ class GDMLMaterialContainer {
     }
 }
 
-@GDMLApi
 @Serializable
 @SerialName("solids")
 class GDMLSolidContainer {
@@ -156,24 +154,28 @@ class GDMLSolidContainer {
 
     inline operator fun <reified T : GDMLSolid> get(ref: String): T? = getSolid(ref) as? T
 
+    @GDMLApi
     fun box(name: String, x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GDMLBox.() -> Unit = {}): GDMLBox {
         val box = GDMLBox(name, x, y, z).apply(block)
         content.add(box)
         return box
     }
 
+    @GDMLApi
     fun tube(name: String, rmax: Number, z: Number, block: GDMLTube.() -> Unit): GDMLTube {
         val tube = GDMLTube(name, rmax, z).apply(block)
         content.add(tube)
         return tube
     }
 
+    @GDMLApi
     fun xtru(name: String, block: GDMLXtru.() -> Unit): GDMLXtru {
         val xtru = GDMLXtru(name).apply(block)
         content.add(xtru)
         return xtru
     }
 
+    @GDMLApi
     fun union(
         name: String,
         first: GDMLSolid,
@@ -185,6 +187,7 @@ class GDMLSolidContainer {
         return union
     }
 
+    @GDMLApi
     fun intersection(
         name: String,
         first: GDMLSolid,
@@ -196,6 +199,7 @@ class GDMLSolidContainer {
         return intersection
     }
 
+    @GDMLApi
     fun subtraction(
         name: String,
         first: GDMLSolid,
@@ -222,6 +226,7 @@ class GDMLStructure {
 
     inline operator fun <reified T : GDMLGroup> get(ref: String): T? = getGroup(ref) as? T
 
+    @GDMLApi
     fun volume(
         name: String,
         materialref: GDMLRef<GDMLMaterial>,
