@@ -2,7 +2,6 @@
     <define>
         <position name="center" x="0.0" y="0.0" z="0.0" unit="cm"></position>
         <position name="box_position" x="25.0" y="50.0" z="75.0" unit="cm"></position>
-        <rotation name="Rot1" x="0.0" y="0.0" z="30.0" unit="deg"></rotation>
         <rotation name="Rot0" x="0.0" y="0.0" z="0.0" unit="deg"></rotation>
         <rotation name="Rot1" x="0.0" y="0.0" z="60.0" unit="deg"></rotation>
         <rotation name="Rot2" x="0.0" y="0.0" z="120.0" unit="deg"></rotation>
@@ -72,7 +71,7 @@
     </solids>
     <structure>
         <volume name="vol1">
-            <materialref ref="G4_AIR"></materialref>
+            <materialref ref="G4_WATER"></materialref>
             <solidref ref="InnerTube"></solidref>
         </volume>
         <volume name="Circle">
