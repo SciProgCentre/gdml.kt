@@ -129,5 +129,15 @@ class GDMLVolume(
 //    @Polymorphic
 //    var placement: GDMLPlacement? = null
 
-    var placement = ArrayList<@Polymorphic GDMLPlacement>()
+    private val _placement = ArrayList<@Polymorphic GDMLPlacement>()
+
+    var placement: GDMLPlacement?
+        get() = _placement.firstOrNull()
+        set(value) {
+            if(value == null){
+                _placement.clear()
+            } else{
+                _placement.add(value)
+            }
+        }
 }
