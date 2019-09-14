@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "scientifik"
-version = "0.1.4-dev-2"
+version = "0.1.4-dev-3"
 
 scientifik {
     withSerialization()

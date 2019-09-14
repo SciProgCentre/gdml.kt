@@ -51,7 +51,7 @@ class GDML {
         inline operator fun invoke(block: GDML.() -> Unit): GDML = GDML().apply(block)
 
         private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
-            { location, ev, name, candidates ->
+            { location, _, name, candidates ->
                 println(
                     "Could not find a field for name $name${if (candidates.isNotEmpty()) candidates.joinToString(
                         prefix = "\n  candidates: "
@@ -126,7 +126,7 @@ class GDMLDefineContainer {
 @SerialName("materials")
 class GDMLMaterialContainer {
 
-    val content = ArrayList<@Polymorphic GDMLMaterial>()
+    private val content = ArrayList<@Polymorphic GDMLMaterial>()
 
     @Transient
     private val cache: MutableMap<String, GDMLMaterial?> = HashMap()

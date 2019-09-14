@@ -1,7 +1,6 @@
 package scientifik.gdml
 
 
-
 fun cubes(): GDML = GDML {
 
     define {

@@ -6,7 +6,6 @@ import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 interface GDMLNode {
@@ -14,7 +13,7 @@ interface GDMLNode {
 }
 
 @Serializable
-data class GDMLRef<T : GDMLNode>(var ref: String)
+data class GDMLRef<out T : GDMLNode>(var ref: String)
 
 fun <T : GDMLNode> ref(ref: String): GDMLRef<T> {
     return GDMLRef<T>(ref)
@@ -41,7 +40,7 @@ class GDMLPhysVolume(
     @XmlSerialName("volumeref", "", "")
     var volumeref: GDMLRef<GDMLGroup>,
     var name: String? = null
-): GDMLPlacement() {
+) : GDMLPlacement() {
     var copynumber: Int? = null
 
     @XmlSerialName("position", "", "")
@@ -91,14 +90,14 @@ unit=" xs:string [0..1]">
 @Serializable
 @SerialName("divisionvol")
 class GDMLDivisionVolume(
-    var axis:String,
+    var axis: String,
     var number: Number,
     var width: Number,
     var offset: Number,
     @XmlSerialName("volumeref", "", "")
     var volumeref: GDMLRef<GDMLVolume>,
     var unit: String = "mm"
-):GDMLPlacement()
+) : GDMLPlacement()
 
 @Serializable
 sealed class GDMLGroup : GDMLNode {
@@ -124,9 +123,11 @@ class GDMLVolume(
     var materialref: GDMLRef<GDMLMaterial>,
     @XmlSerialName("solidref", "", "")
     var solidref: GDMLRef<GDMLSolid>
-) : GDMLGroup(){
+) : GDMLGroup() {
 
-    @XmlPolyChildren(arrayOf("physvol","divisionvol"))
-    @Polymorphic
-    var placement: GDMLPlacement? = null
+//    @XmlPolyChildren(arrayOf("physvol","divisionvol"))
+//    @Polymorphic
+//    var placement: GDMLPlacement? = null
+
+    var placement = ArrayList<@Polymorphic GDMLPlacement>()
 }

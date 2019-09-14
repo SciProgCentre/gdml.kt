@@ -36,7 +36,8 @@ class BMNTest {
     @Test
     fun testRead() {
         val url = URL("https://drive.google.com/open?id=1w5e7fILMN83JGgB8WANJUYm8OW2s0WVO")
-        val file = File("D:\\Work\\Projects\\gdml.kt\\src\\commonTest\\resources\\gdml\\geofile_full.xml")
+        val file = File("D:\\Work\\Projects\\gdml.kt\\gdml-source\\BM@N.gdml")
+        //val file = File("D:\\Work\\Projects\\gdml.kt\\gdml-source\\cubes.gdml")
         val stream = if(file.exists()){
             file.inputStream()
         } else {
