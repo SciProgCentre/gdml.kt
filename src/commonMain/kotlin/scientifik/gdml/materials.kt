@@ -28,6 +28,7 @@ sealed class GDMLMaterial : GDMLNode {
     var densityRef: GDMLRef<GDMLDefine>? = null
 }
 
+@Serializable
 enum class MaterialState {
     @SerialName("gas")
     GAS,

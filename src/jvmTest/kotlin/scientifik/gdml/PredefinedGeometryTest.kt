@@ -1,13 +1,12 @@
-package sicentifik.gdml
+package scientifik.gdml
 
 import kotlinx.serialization.serializer
 import nl.adaptivity.xmlutil.StAXReader
 import org.junit.Test
 import scientifik.gdml.*
 import java.io.File
-import java.net.URL
 
-class BMNTest {
+class PredefinedGeometryTest {
 
     @Test
     fun printChildren() {
@@ -34,21 +33,23 @@ class BMNTest {
     }
 
     @Test
-    fun testRead() {
-        val url = URL("https://drive.google.com/open?id=1w5e7fILMN83JGgB8WANJUYm8OW2s0WVO")
-        val file = File("gdml-source\\BM@N.gdml")
-        //val file = File("D:\\Work\\Projects\\gdml.kt\\gdml-source\\cubes.gdml")
-        val stream = if(file.exists()){
-            file.inputStream()
-        } else {
-            url.openStream()
-        }
+    fun testReadBMN() {
+        val file = File("gdml-source/BM@N.gdml")
 
-        val xmlReader = StAXReader(stream, "UTF-8")
+        val xmlReader = StAXReader(file.inputStream(), "UTF-8")
         val gdml = GDML.format.parse(GDML::class, xmlReader)
         println(gdml.world)
         val ref = GDMLRef<GDMLAssembly>("Magnet")
         val magnet = ref.resolve(gdml)!!
         println(magnet)
+    }
+
+    @Test
+    fun testReadCubes() {
+        val file = File("gdml-source/cubes.gdml")
+
+        val xmlReader = StAXReader(file.inputStream(), "UTF-8")
+        val gdml = GDML.format.parse(GDML::class, xmlReader)
+        println(gdml.world)
     }
 }
