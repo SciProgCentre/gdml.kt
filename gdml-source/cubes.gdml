@@ -65,43 +65,43 @@
     </define>
     <materials/>
     <solids>
-        <tube aunit="degree" name="InnerTube" rmax="20.0" z="5.0" rmin="17.0" startphi="0.0" deltaphi="60.0"/>
-        <box name="largeBox" x="200.0" y="200.0" z="200.0"/>
+        <tube aunit="degree" name="segment" rmax="20.0" z="5.0" rmin="17.0" startphi="0.0" deltaphi="60.0"/>
+        <box name="cave" x="200.0" y="200.0" z="200.0"/>
         <box name="box" x="30.0" y="30.0" z="30.0"/>
     </solids>
     <structure>
-        <volume name="vol1">
+        <volume name="segment_vol">
             <materialref ref="G4_WATER"/>
-            <solidref ref="InnerTube"/>
+            <solidref ref="segment"/>
         </volume>
-        <volume name="Circle">
-            <physvol>
-                <volumeref ref="vol1"/>
+        <volume name="composite">
+            <physvol name="segment_0">
+                <volumeref ref="segment_vol"/>
                 <positionref ref="center"/>
                 <rotationref ref="Rot0"/>
             </physvol>
-            <physvol>
-                <volumeref ref="vol1"/>
+            <physvol name="segment_1">
+                <volumeref ref="segment_vol"/>
                 <positionref ref="center"/>
                 <rotationref ref="Rot1"/>
             </physvol>
-            <physvol>
-                <volumeref ref="vol1"/>
+            <physvol name="segment_2">
+                <volumeref ref="segment_vol"/>
                 <positionref ref="center"/>
                 <rotationref ref="Rot2"/>
             </physvol>
-            <physvol>
-                <volumeref ref="vol1"/>
+            <physvol name="segment_3">
+                <volumeref ref="segment_vol"/>
                 <positionref ref="center"/>
                 <rotationref ref="Rot3"/>
             </physvol>
-            <physvol>
-                <volumeref ref="vol1"/>
+            <physvol name="segment_4">
+                <volumeref ref="segment_vol"/>
                 <positionref ref="center"/>
                 <rotationref ref="Rot4"/>
             </physvol>
-            <physvol>
-                <volumeref ref="vol1"/>
+            <physvol name="segment_5">
+                <volumeref ref="segment_vol"/>
                 <positionref ref="center"/>
                 <rotationref ref="Rot5"/>
             </physvol>
@@ -109,143 +109,143 @@
             <solidref ref="box"/>
         </volume>
         <volume name="world">
-            <physvol>
-                <volumeref ref="Circle"/>
+            <physvol name="composite_000">
+                <volumeref ref="composite"/>
                 <positionref ref="Pos000"/>
                 <rotationref ref="Rot000"/>
             </physvol>
-            <physvol>
-                <volumeref ref="Circle"/>
+            <physvol name="composite_001">
+                <volumeref ref="composite"/>
                 <positionref ref="Pos001"/>
                 <rotationref ref="Rot001"/>
             </physvol>
-            <physvol>
-                <volumeref ref="Circle"/>
+            <physvol name="composite_002">
+                <volumeref ref="composite"/>
                 <positionref ref="Pos002"/>
                 <rotationref ref="Rot002"/>
             </physvol>
-            <physvol>
-                <volumeref ref="Circle"/>
+            <physvol name="composite_003">
+                <volumeref ref="composite"/>
                 <positionref ref="Pos010"/>
                 <rotationref ref="Rot010"/>
             </physvol>
-            <physvol>
-                <volumeref ref="Circle"/>
+            <physvol name="composite_004">
+                <volumeref ref="composite"/>
                 <positionref ref="Pos011"/>
                 <rotationref ref="Rot011"/>
             </physvol>
-            <physvol>
-                <volumeref ref="Circle"/>
+            <physvol name="composite_005">
+                <volumeref ref="composite"/>
                 <positionref ref="Pos012"/>
                 <rotationref ref="Rot012"/>
             </physvol>
-            <physvol>
-                <volumeref ref="Circle"/>
+            <physvol name="composite_006">
+                <volumeref ref="composite"/>
                 <positionref ref="Pos020"/>
                 <rotationref ref="Rot020"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos021"/>
                 <rotationref ref="Rot021"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos022"/>
                 <rotationref ref="Rot022"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos100"/>
                 <rotationref ref="Rot100"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos101"/>
                 <rotationref ref="Rot101"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos102"/>
                 <rotationref ref="Rot102"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos110"/>
                 <rotationref ref="Rot110"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos111"/>
                 <rotationref ref="Rot111"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos112"/>
                 <rotationref ref="Rot112"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos120"/>
                 <rotationref ref="Rot120"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos121"/>
                 <rotationref ref="Rot121"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos122"/>
                 <rotationref ref="Rot122"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos200"/>
                 <rotationref ref="Rot200"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos201"/>
                 <rotationref ref="Rot201"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos202"/>
                 <rotationref ref="Rot202"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos210"/>
                 <rotationref ref="Rot210"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos211"/>
                 <rotationref ref="Rot211"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos212"/>
                 <rotationref ref="Rot212"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos220"/>
                 <rotationref ref="Rot220"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos221"/>
                 <rotationref ref="Rot221"/>
             </physvol>
             <physvol>
-                <volumeref ref="Circle"/>
+                <volumeref ref="composite"/>
                 <positionref ref="Pos222"/>
                 <rotationref ref="Rot222"/>
             </physvol>
             <materialref ref="G4_AIR"/>
-            <solidref ref="box"/>
+            <solidref ref="cave"/>
         </volume>
     </structure>
     <setup name="Default" version="1.0">

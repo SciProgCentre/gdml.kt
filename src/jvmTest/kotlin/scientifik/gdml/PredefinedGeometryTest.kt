@@ -52,4 +52,13 @@ class PredefinedGeometryTest {
         val gdml = GDML.format.parse(GDML::class, xmlReader)
         println(gdml.world)
     }
+
+    @Test
+    fun readIAXO(){
+        val file = File("gdml-source/babyIAXO_modified.gdml")
+
+        val xmlReader = StAXReader(file.inputStream(), "UTF-8")
+        val gdml = GDML.format.parse(GDML::class, xmlReader)
+        println(gdml.world)
+    }
 }

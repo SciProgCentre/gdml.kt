@@ -1,12 +1,12 @@
 import scientifik.useSerialization
 
 plugins {
-    id("scientifik.mpp") version "0.3.1"
-    id("scientifik.publish") version "0.3.1"
+    id("scientifik.mpp") version "0.3.2"
+    id("scientifik.publish") version "0.3.2"
 }
 
 group = "scientifik"
-version = "0.1.4"
+version = "0.1.5"
 
 project.useSerialization()
 
@@ -28,7 +28,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("net.devrieze:xmlutil-serialization:0.14.0.1")
+                api("net.devrieze:xmlutil-serialization:0.14.0.2")
                 api(kotlin("reflect"))
             }
         }

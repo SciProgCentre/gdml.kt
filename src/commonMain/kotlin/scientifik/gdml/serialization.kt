@@ -36,6 +36,7 @@ val gdmlModule = SerializersModule {
         GDMLTube::class with GDMLTube.serializer()
         GDMLXtru::class with GDMLXtru.serializer()
         GDMLPolyhedra::class with GDMLPolyhedra.serializer()
+        addSubclass(GDMLCone.serializer())
         GDMLUnion::class with GDMLUnion.serializer()
         GDMLSubtraction::class with GDMLSubtraction.serializer()
         GDMLIntersection::class with GDMLIntersection.serializer()
