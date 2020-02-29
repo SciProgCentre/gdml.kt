@@ -23,7 +23,8 @@ fun <T : GDMLNode> ref(ref: String): GDMLRef<T> {
 /**
  * Get a ref to this node
  */
-fun <T : GDMLNode> T.ref(): GDMLRef<T> = GDMLRef(name)
+fun <T : GDMLNode> T.ref(): GDMLRef<T> =
+    if (name.isBlank()) error("Can't produce a ref for anonymous node") else GDMLRef(name)
 
 // define block members
 
@@ -61,21 +62,33 @@ class GDMLPhysVolume(
 
     @XmlSerialName("scaleref", "", "")
     var scaleref: GDMLRef<GDMLScale>? = null
+}
 
-    /**
-     * Get the position from either position block or reference (if root is provided)
-     */
-    fun resolvePosition(root: GDML): GDMLPosition? = position ?: positionref?.resolve(root)
+/**
+ * Get the position from either position block or reference (if root is provided)
+ */
+fun GDMLPhysVolume.resolvePosition(root: GDML): GDMLPosition? = position ?: positionref?.resolve(root)
 
-    /**
-     * Get the rotation from either position block or reference (if root is provided)
-     */
-    fun resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
+/**
+ * Get the rotation from either position block or reference (if root is provided)
+ */
+fun GDMLPhysVolume.resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
 
-    /**
-     * Get the scale from either position block or reference (if root is provided)
-     */
-    fun resolveScale(root: GDML): GDMLScale? = scale ?: scaleref?.resolve(root)
+/**
+ * Get the scale from either position block or reference (if root is provided)
+ */
+fun GDMLPhysVolume.resolveScale(root: GDML): GDMLScale? = scale ?: scaleref?.resolve(root)
+
+inline fun GDMLPhysVolume.position(block: GDMLPosition.() -> Unit) {
+    position = GDMLPosition().apply(block)
+}
+
+inline fun GDMLPhysVolume.rotation(block: GDMLRotation.() -> Unit) {
+    rotation = GDMLRotation().apply(block)
+}
+
+inline fun GDMLPhysVolume.scale(block: GDMLScale.() -> Unit) {
+    scale = GDMLScale().apply(block)
 }
 
 /**
@@ -112,6 +125,9 @@ sealed class GDMLGroup : GDMLNode {
     }
 }
 
+fun GDMLGroup.physVolume(volume: GDMLGroup, block: GDMLPhysVolume.() -> Unit): GDMLPhysVolume =
+    physVolume(volume.ref(), block)
+
 @Serializable
 @SerialName("assembly")
 class GDMLAssembly(override var name: String) : GDMLGroup()
@@ -126,7 +142,7 @@ class GDMLVolume(
     var solidref: GDMLRef<GDMLSolid>
 ) : GDMLGroup() {
 
-    @XmlPolyChildren(arrayOf("physvol","divisionvol"))
+    @XmlPolyChildren(arrayOf("physvol", "divisionvol"))
     @Polymorphic
     var placement: GDMLPlacement? = null
 

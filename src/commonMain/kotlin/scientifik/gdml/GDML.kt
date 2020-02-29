@@ -19,20 +19,23 @@ class GDML {
     val structure = GDMLStructure()
     val setup = GDMLSetup()
 
-
-    fun define(block: GDMLDefineContainer.() -> Unit) {
+    @GDMLApi
+    inline fun define(block: GDMLDefineContainer.() -> Unit) {
         define.apply(block)
     }
 
-    fun materials(block: GDMLMaterialContainer.() -> Unit) {
+    @GDMLApi
+    inline fun materials(block: GDMLMaterialContainer.() -> Unit) {
         materials.apply(block)
     }
 
-    fun solids(block: GDMLSolidContainer.() -> Unit) {
+    @GDMLApi
+    inline fun solids(block: GDMLSolidContainer.() -> Unit) {
         solids.apply(block)
     }
 
-    fun structure(block: GDMLStructure.() -> Unit) {
+    @GDMLApi
+    inline fun structure(block: GDMLStructure.() -> Unit) {
         structure.apply(block)
     }
 
@@ -41,9 +44,16 @@ class GDML {
     inline fun <reified T : GDMLMaterial> getMaterial(ref: String): T? = materials[ref]
     inline fun <reified T : GDMLGroup> getGroup(ref: String): T? = structure[ref]
 
-    val world: GDMLGroup
+    var world: GDMLGroup
         get() = setup.world?.resolve(this)
             ?: error("The GDML structure does not contain a world volume")
+        set(value) {
+            //Add world element if it is not registered
+            if (structure.getGroup(value.name) == null) {
+                structure.content.add(value)
+            }
+            setup.world = value.ref()
+        }
 
     override fun toString() = format.stringify(this)
 
@@ -64,6 +74,7 @@ class GDML {
             indent = 4
             unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
         }
+
     }
 }
 
@@ -86,7 +97,7 @@ class GDMLDefineContainer {
     inline operator fun <reified T : GDMLDefine> get(ref: String): T? = getDefine(ref) as? T
 
     @GDMLApi
-    fun position(
+    inline fun position(
         name: String,
         x: Number = 0f,
         y: Number = 0f,
@@ -104,7 +115,7 @@ class GDMLDefineContainer {
     }
 
     @GDMLApi
-    fun rotation(
+    inline fun rotation(
         name: String,
         x: Number = 0f,
         y: Number = 0f,
@@ -175,6 +186,20 @@ class GDMLSolidContainer {
     }
 
     @GDMLApi
+    fun cone(
+        name: String,
+        z: Number,
+        rmax1: Number,
+        rmax2: Number,
+        deltaphi: Number,
+        block: GDMLCone.() -> Unit
+    ): GDMLCone {
+        val cone = GDMLCone(name, z, rmax1, rmax2, deltaphi).apply(block)
+        content.add(cone)
+        return cone
+    }
+
+    @GDMLApi
     fun union(
         name: String,
         first: GDMLSolid,
@@ -225,11 +250,11 @@ class GDMLStructure {
     inline operator fun <reified T : GDMLGroup> get(ref: String): T? = getGroup(ref) as? T
 
     @GDMLApi
-    fun volume(
+    inline fun volume(
         name: String,
         materialref: GDMLRef<GDMLMaterial>,
         solidref: GDMLRef<GDMLSolid>,
-        block: GDMLVolume.() -> Unit
+        block: GDMLVolume.() -> Unit = {}
     ): GDMLVolume {
         val res = GDMLVolume(name, materialref, solidref).apply(block)
         content.add(res)
@@ -237,17 +262,17 @@ class GDMLStructure {
     }
 
     @GDMLApi
-    fun volume(
+    inline fun volume(
         name: String,
         material: GDMLMaterial,
         solid: GDMLSolid,
-        block: GDMLVolume.() -> Unit
+        block: GDMLVolume.() -> Unit = {}
     ): GDMLVolume = volume(name, material.ref(), solid.ref(), block)
 
     @GDMLApi
-    fun assembly(
+    inline fun assembly(
         name: String,
-        block: GDMLAssembly.() -> Unit
+        block: GDMLAssembly.() -> Unit = {}
     ): GDMLAssembly {
         val res = GDMLAssembly(name).apply(block)
         content.add(res)

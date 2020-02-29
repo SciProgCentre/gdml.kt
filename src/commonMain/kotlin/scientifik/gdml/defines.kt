@@ -55,7 +55,7 @@ class GDMLRotation(
 @Serializable
 @SerialName("scale")
 class GDMLScale(
-    override var name: String,
+    override var name: String = "",
     var x: Number = 1.0,
     var y: Number = 1.0,
     var z: Number = 1.0

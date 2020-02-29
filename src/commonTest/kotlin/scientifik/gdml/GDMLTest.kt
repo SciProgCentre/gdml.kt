@@ -7,6 +7,15 @@ import kotlin.test.assertEquals
 
 class GDMLTest {
     @Test
+    fun printCubes(){
+        val gdml = cubes()
+        val string = GDML.format.stringify(gdml)
+        println(string)
+        val restored: GDML = GDML.format.parse(string)
+//        println(restored.toString())
+    }
+
+    @Test
     fun testSerialization() {
         val gdml = GDML {
             define {

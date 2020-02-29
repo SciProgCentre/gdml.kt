@@ -51,3 +51,6 @@ val gdmlModule = SerializersModule {
         GDMLDivisionVolume::class with GDMLDivisionVolume.serializer()
     }
 }
+
+fun GDML.stringify(): String = GDML.format.stringify(GDML.serializer(), this)
+fun GDML.Companion.parse(string: String): GDML = format.parse(GDML.serializer(), string)
