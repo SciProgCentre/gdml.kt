@@ -1,612 +1,1656 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-
-<!--<!DOCTYPE gdml [
+<?xml version="1.0" ?>
+<!DOCTYPE gdml [
     <!ENTITY materials SYSTEM "../../miscellaneous/materials.xml">
-]>-->
-
+]>
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
-    <!-- ********************* -->
-    <!-- ***BEGIN DEFINE*** -->
-    <!-- GLOBAL -->
-    <define>
-        <!-- variables used for looping -->
-        <constant name="PI" value="3.141592653589793" />
-        <constant name="degToRad" value="0.017453292519943295" />
-
-        <!-- World -->
-        <constant name="world_size" value="3500" />
-        <!-- try to keep that small to avoid interactions inside -->
-
-        <!-- Target gas -->
-        <variable name="target_pressure" value="1.4" />
-        <!-- pressure in bar -->
-        <variable name="target_temperature" value="300.0" />
-        <!-- temperature in K -->
-        <variable name="target_quencher" value="2" />
-        <!-- percentage of quencher gas in target gas (e.g. 2% -> 98%target + 2% quencher) -->
-    <!-- CHAMBER -->
-        <!-- Chamber -->
-        <variable name="chamberLength" value="30" />
-        <variable name="chamberRadius" value="50" />
-        <variable name="copperChamberThickness" value="18.5" />
-        <variable name="teflonChamberThickness" value="2" />
-        <variable name="copperChamberTopThickness" value="17" />
-        <variable name="copperChamberTopInnerRadius" value="30" />
-
-        <!-- Readout -->
-        <variable name="kaptonReadoutThickness" value="0.5" />
-        <variable name="copperReadoutThickness" value="0.2" />
-        <variable name="copperReadoutSide" value="60" />
-        <position name="kaptonReadoutPosition" unit="mm" x="0" y="0" z="-15.25" />
-        <position name="copperReadoutPosition" unit="mm" x="0" y="0" z="-15.6" />
-
-        <!-- Backplate (old raquette) -->
-        <variable name="backplateThickness" value="12" />
-
-        <!-- Cathode -->
-        <variable name="cathodeThickness" value="15" />
-        <variable name="cathodeHole" value="15" />
-        <variable name="mylarThickness" value="0.004" />
-        <variable name="copperCathodeThickness" value="15" />
-        <position name="mylarCathodePosition" unit="mm" x="0" y="0" z="14.998" />
-        <variable name="mylarCathodePositionZ" value="14.998" />
-
-        <variable name="cathodePatternThickness" value="3" />
-        <variable name="cathodePattern0Rad" value="4.25" />
-        <variable name="cathodePattern0Width" value="0.3" />
-        <variable name="cathodePattern1Rad" value="8.5" />
-        <variable name="cathodePattern1Width" value="1" />
-        <variable name="cathodePattern2Rad" value="12.5" />
-        <variable name="cathodePattern2Width" value="2.5" />
-        <variable name="cathodePattern2LineWidth" value="2" />
-
-        <rotation name="rotation0" unit="deg" x="0" y="0" z="22.5" />
-        <rotation name="rotation1" unit="deg" x="0" y="0" z="67.5" />
-        <rotation name="rotation2" unit="deg" x="0" y="0" z="112.5" />
-        <rotation name="rotation3" unit="deg" x="0" y="0" z="157.5" />
-        <rotation name="copperReadoutRotation" unit="deg" x="0" y="0" z="45.0" />
-
-        <!-- Pipe -->
-        <variable name="teflonThickness" value="3" />
-        <variable name="copperFlangeThickness" value="20" />
-        <variable name="copperFlangeHole" value="12.5" />
-        <variable name="copperTubeThickness" value="10" />
-        <variable name="copperFlangeExtRad" value="57.5" />
-        <variable name="pipeLength" value="400" />
-        <variable name="pipeThickness" value="10" />
-        <position name="teflonCover2Position" unit="mm" x="0" y="0" z="13.5" />
-        <position name="pipePos0" unit="mm" x="0" y="0" z="-190.0" />
-        <position name="pipePos1" unit="mm" x="0" y="0" z="190.0" />
-    <!-- PIPE -->
-        <!-- teflon -->
-        <variable name="teflonPipeCylinder1of4Length" value="23.9" />
-        <variable name="teflonPipeCylinder1of4Radius" value="10.0" />
-
-        <variable name="teflonPipeCylinder2of4Length" value="28.4" />
-        <variable name="teflonPipeCylinder2of4Radius" value="12.0" />
-
-        <variable name="teflonPipeCylinder3of4Length" value="40.2" />
-        <variable name="teflonPipeCylinder3of4Radius" value="15.0" />
-
-        <variable name="teflonPipeCylinder4of4Length" value="20.4" />
-        <variable name="teflonPipeCylinder4of4Radius" value="16.5" />
-
-        <variable name="teflonPipeCylinderTotalLength" value="112.9" />
-        <variable name="teflonPipeCylinderOutterRadius" value="21.5" />
-
-        <position name="teflonCylinder1of4Position" x="0" y="0" z="0" unit="mm" />
-        <position name="teflonCylinder2of4Position" x="0" y="0" z="26.15" unit="mm" />
-        <position name="teflonCylinder3of4Position" x="0" y="0" z="60.449999999999996" unit="mm" />
-        <position name="teflonCylinder4of4Position" x="0" y="0" z="90.75" unit="mm" />
-
-        <!-- copper pipe outsie -->
-        <variable name="copperPipeDetectorFlangeOutterRadius" value="67.5" />
-        <variable name="copperPipeDetectorFlangeLength" value="17.0" />
-
-        <variable name="copperPipeDetectorToCentralTubeOutterRadius" value="40.0" />
-        <variable name="copperPipeDetectorToCentralTubeLength" value="45" />
-
-        <variable name="copperPipeCentralPieceOutterRadius" value="75.0" />
-        <variable name="copperPipeCentralPieceLength" value="355.0" />
-        <variable name="copperPipeCentralPieceSquareSide" value="119.0" />
-
-        <variable name="copperPipeCentralToOutTubeOutterRadius" value="54.0" />
-        <variable name="copperPipeCentralToOutTubeLength" value="59.0" />
-
-        <variable name="copperPipeOutFlangeOutterRadius" value="75.0" />
-        <variable name="copperPipeOutFlangeLength" value="19.0" />
-
-        <variable name="copperPipeUnion1Z" value="31.0" />
-        <position name="copperPipeUnion1Position" x="0" y="0" z="31.0" unit="mm" />
-        <variable name="copperPipeUnion2Z" value="231.0" />
-        <position name="copperPipeUnion2Position" x="0" y="0" z="231.0" unit="mm" />
-        <variable name="copperPipeUnion3Z" value="438.0" />
-        <position name="copperPipeUnion3Position" x="0" y="0" z="438.0" unit="mm" />
-        <variable name="copperPipeUnion4Z" value="477.0" />
-        <position name="copperPipeUnion4Position" x="0" y="0" z="477.0" unit="mm" />
-
-        <variable name="copperPipeTotalLength" value="495.0" />
-
-        <!-- copper pipe inside (we add some neglectable offset to be able to view the substraction, but no need for it to work, can be set to 0 on simulations) -->
-        <variable name="copperPipeInsideOffset" value="0.005" />
-        <variable name="copperPipeInsideCylinder1Length" value="262.505" />
-        <variable name="copperPipeInsideCylinder1Radius" value="21.5" />
-        <variable name="copperPipeInsideConeUnion1Length" value="12.5" />
-        <variable name="copperPipeInsideCylinder2Length" value="210.0" />
-        <variable name="copperPipeInsideCylinder2Radius" value="34.0" />
-        <variable name="copperPipeInsideConeUnion2Length" value="10.005" />
-        <variable name="copperPipeInsideCylinder3Radius" value="44.0" />
-
-        <variable name="copperPipeInnerUnion1Z" value="137.5025" />
-        <position name="copperPipeInnerUnion1Position" x="0" y="0" z="137.5025" unit="mm" />
-        <variable name="copperPipeInnerUnion2Z" value="248.7525" />
-        <position name="copperPipeInnerUnion2Position" x="0" y="0" z="248.7525" unit="mm" />
-        <variable name="copperPipeInnerUnion3Z" value="358.755" />
-        <position name="copperPipeInnerUnion3Position" x="0" y="0" z="358.755" unit="mm" />
-
-        <!-- copper pipe outside - inner (final) -->
-        <position name="copperPipeOutterInnerSubsPosition" x="0" y="0" z="122.7475" unit="mm" />
-
-        <position name="vacuumPipeTeflonSubsPosition" x="0" y="0" z="-119.3025" unit="mm" />
-
-        <!-- offsets to help positioning and position in world-->
-        <variable name="teflonWithRespectToPipeOffset" value="3.4499999999999993" />
-        <variable name="vacuumWithRespectToPipeOffset" value="122.7475" />
-
-        <variable name="copperPipeZInWorld" value="55.5" />
-        <position name="copperPipeTeflonHoleSubsPosition" unit="mm" x="0" y="0" z="47.95" />
-
-    <!-- SHIELDING -->
-        <variable name="leadBoxSize" value="550" />
-        <variable name="leadBoxShaftShortSide" value="150" />
-        <variable name="leadBoxShaftLongSide" value="360.0" />
-        <!-- we add an offset to make sure the substraction is done correctly -->
-
-        <position name="leadBoxShaftPosition" x="0" y="0" z="105.0" unit="mm" />
-
-        <variable name="detectorToShieldingSeparation" value="16" />
-        <variable name="shieldingOffset" value="-32.0" />
-
-    <!-- STEEL TUBE -->
-        <variable name="steelPipeFlangeHeigth" value="10.0" />
-        <variable name="steelPipeFlangeGenericRadiusOffset" value="10.0" />
-
-        <variable name="steelPipeCylinder1Length" value="120.0" />
-        <variable name="steelPipeCylinder1InnerRadius" value="52.0" />
-        <variable name="steelPipeCylinder1OutterRadius" value="54.0" />
-
-        <position name="steelPipe1Flange1Position" x="0" y="0" z="-55.0" unit="mm" />
-        <position name="steelPipe1Flange2Position" x="0" y="0" z="55.0" unit="mm" />
-
-        <variable name="steelPipeCylinder2Length" value="525.0" />
-        <variable name="steelPipeCylinder2InnerRadius" value="77.5" />
-        <variable name="steelPipeCylinder2OutterRadius" value="79.5" />
-
-        <position name="steelPipe2Flange1Position" x="0" y="0" z="-257.5" unit="mm" />
-        <position name="steelPipe2Flange2Position" x="0" y="0" z="257.5" unit="mm" />
-
-        <position name="steelPipe2WithRespectTo1Position" x="0" y="0" z="322.5" unit="mm" />
-
-        <variable name="steelPipeCylinder3Length" value="67.0" />
-        <variable name="steelPipeCylinder3InnerRadius" value="75.0" />
-        <variable name="steelPipeCylinder3OutterRadius" value="80.0" />
-
-        <position name="steelPipe3Flange1Position" x="0" y="0" z="-28.5" unit="mm" />
-        <position name="steelPipe3Flange2Position" x="0" y="0" z="28.5" unit="mm" />
-
-        <position name="steelPipe3WithRespectTo1Position" x="0" y="0" z="618.5" unit="mm" />
-
-        <variable name="steelPipeCone1Length" value="2229.0" />
-        <variable name="steelPipeCone1Thickness" value="2.0" />
-        <variable name="steelPipeCone1InnerRadius1" value="75.0" />
-        <variable name="steelPipeCone1InnerRadius2" value="190.5" />
-
-        <position name="steelPipeCone1WithRespectTo1Position" x="0" y="0" z="1766.5" unit="mm" />
-
-        <variable name="steelPipeCone2Length" value="3545.0" />
-        <variable name="steelPipeCone2Thickness" value="2.0" />
-        <variable name="steelPipeCone2InnerRadius1" value="190.5" />
-        <variable name="steelPipeCone2InnerRadius2" value="400.0" />
-
-        <position name="steelPipeCone2WithRespectTo1Position" x="0" y="0" z="4653.5" unit="mm" />
-
-
-        <!-- position in world -->
-        <variable name="steelPipeWithRespectToCopperPipeOffset" value="546.5" />
-    <!-- VETOES -->
-        <variable name="scintillatorThickness" value="50" />
-        <variable name="scintillatorLongSide" value="750" />
-        <variable name="scintillatorShortSide" value="200" />
-        <variable name="scintillatorHoleDiameter" value="150" />
-
-        <variable name="scintillatorLongSideNonSensitive" value="3.75" />
-        <variable name="scintillatorShortSideNonSensitive" value="1.0" />
-        <!-- TODO: explanation of "non sensitive" -->
-
-        <position name="scintillatorBoxSolidWithHoleRightHolePosition" x="100.0" y="-100" z="0" unit="mm" />
-        <position name="scintillatorBoxSolidWithHoleLeftHolePosition" x="-100.0" y="-100" z="0" unit="mm" />
-
-        <!-- actual scintillator positions in world-->
-        <variable name="vetoFrontPosX" value="0" />
-        <variable name="vetoFrontPosY" value="100" />
-        <variable name="vetoFrontPosZ" value="375.0" />
-        <rotation name="vetoFrontRotation" unit="deg" x="0" y="0" z="0" />
-
-        <variable name="vetoBackPosX" value="-75" />
-        <variable name="vetoBackPosY" value="25.0" />
-        <variable name="vetoBackPosZ" value="-375.0" />
-        <rotation name="vetoBackRotation" unit="deg" x="0" y="0" z="-90" />
-
-        <variable name="vetoTopPosX" value="-50" />
-        <variable name="vetoTopPosY" value="350.0" />
-        <variable name="vetoTopPosZ" value="-25.0" />
-        <rotation name="vetoTopRotation" unit="deg" x="90" y="0" z="0" />
-
-        <variable name="vetoBottomPosX" value="-50" />
-        <variable name="vetoBottomPosY" value="-355.0" />
-        <variable name="vetoBottomPosZ" value="-25.0" />
-        <rotation name="vetoBottomRotation" unit="deg" x="90" y="0" z="0" />
-
-        <variable name="vetoWestPosX" value="325.0" />
-        <variable name="vetoWestPosY" value="25.0" />
-        <variable name="vetoWestPosZ" value="-25.0" />
-        <rotation name="vetoWestRotation" unit="deg" x="90" y="90" z="0" />
-
-        <variable name="vetoEastPosX" value="-425.0" />
-        <variable name="vetoEastPosY" value="25.0" />
-        <variable name="vetoEastPosZ" value="25.0" />
-        <rotation name="vetoEastRotation" unit="deg" x="-90" y="90" z="0" />
-    </define>
-    <!-- ***END DEFINE*** -->
-    <!-- ********************* -->
-    <!-- ***BEGIN MATERIALS*** -->
-<!--    &materials;-->
-    <!-- ***END MATERIALS*** -->
-    <!-- ********************* -->
-    <!-- ***BEGIN SOLIDS*** -->
-    <!-- WORLD -->
-    <solids>
-        <box name="WorldSolid" x="3500" y="3500" z="3500" lunit="mm" />
-    <!-- CHAMBER -->
-        <!-- Target gas -->
-        <tube name="gasSolidFull" startphi="0" deltaphi="360" rmin="0" rmax="48" z="30" aunit="deg" lunit="mm" />
-
-        <!-- Readout -->
-        <tube name="kaptonReadout" startphi="0" deltaphi="360" rmin="0" rmax="48" z="0.5" aunit="deg" lunit="mm" />
-        <box name="copperReadout" x="60" y="60" z="0.2" lunit="mm" />
-
-        <!-- Raquette -->
-        <tube name="backplate" startphi="0" deltaphi="360" rmin="0" rmax="68.5" z="12" aunit="deg" lunit="mm" />
-
-        <!-- Chamber -->
-        <tube name="copperChamber" startphi="0" deltaphi="360" rmin="50" rmax="68.5" z="45" aunit="deg" lunit="mm" />
-        <tube name="teflonCoverChamber" startphi="0" deltaphi="360" rmin="48" rmax="50" z="45" aunit="deg" lunit="mm" />
-        <tube name="mylarCathode" startphi="0" deltaphi="360" rmin="0" rmax="15" z="0.004" aunit="deg" lunit="mm" />
-        <tube name="copperCathode" startphi="0" deltaphi="360" rmin="15" rmax="48" z="15" aunit="deg" lunit="mm" />
-        <tube name="copperChamberTop" startphi="0" deltaphi="360" rmin="30" rmax="68.5" z="17" aunit="deg" lunit="mm" />
-        <tube name="copperFlangeDetector" startphi="0" deltaphi="360" rmin="12.5" rmax="68.5" z="20" aunit="deg" lunit="mm" />
-        <tube name="copperTube" startphi="0" deltaphi="360" rmin="12.5" rmax="22.5" z="400" aunit="deg" lunit="mm" />
-        <tube name="copperFlangeExt" startphi="0" deltaphi="360" rmin="12.5" rmax="57.5" z="20" aunit="deg" lunit="mm" />
-        <tube name="teflonPipe" startphi="0" deltaphi="360" rmin="9.5" rmax="12.5" z="400" aunit="deg" lunit="mm" />
-        <tube name="teflonCoverCathode" startphi="0" deltaphi="360" rmin="9.5" rmax="15" z="29" aunit="deg" lunit="mm" />
-        <tube name="VacuumPipe" startphi="0" deltaphi="360" rmin="0" rmax="9.5" z="429" aunit="deg" lunit="mm" />
-
-        <!-- Cathode Pattern -->
-        <tube name="Ring0" startphi="0" deltaphi="360" rmin="4.25" rmax="4.55" z="3" aunit="deg" lunit="mm" />
-        <box name="line0" x="25.0" y="0.3" z="3" lunit="mm" />
-        <tube name="Ring1" startphi="0" deltaphi="360" rmin="8.5" rmax="9.5" z="3" aunit="deg" lunit="mm" />
-        <box name="line1" x="25.0" y="2" z="3" lunit="mm" />
-        <tube name="Ring2" startphi="0" deltaphi="360" rmin="12.5" rmax="15.0" z="3" aunit="deg" lunit="mm" />
-        <tube name="Hole0" startphi="0" deltaphi="360" rmin="0" rmax="4.55" z="5" aunit="deg" lunit="mm" />
-        <tube name="Hole1" startphi="0" deltaphi="360" rmin="0" rmax="9.5" z="5" aunit="deg" lunit="mm" />
-
-        <tube name="vacuumCathode" startphi="0" deltaphi="360" rmin="0" rmax="12.5" z="3" aunit="deg" lunit="mm" />
-
-        <union name="copperPipe0">
-            <first ref="copperTube" />
-            <second ref="copperFlangeDetector" />
-            <positionref ref="pipePos0" />
-        </union>
-
-        <union name="copperPipe">
-            <first ref="copperPipe0" />
-            <second ref="copperFlangeExt" />
-            <positionref ref="pipePos1" />
-        </union>
-
-        <subtraction name="gasSolid1">
-            <first ref="gasSolidFull" />
-            <second ref="mylarCathode" />
-            <positionref ref="mylarCathodePosition" />
-        </subtraction>
-
-        <subtraction name="gasSolid2">
-            <first ref="gasSolid1" />
-            <second ref="kaptonReadout" />
-            <positionref ref="kaptonReadoutPosition" />
-        </subtraction>
-
-        <subtraction name="gasSolid">
-            <first ref="gasSolid2" />
-            <second ref="copperReadout" />
-            <positionref ref="copperReadoutPosition" />
-            <rotationref ref="copperReadoutRotation" />
-        </subtraction>
-
-        <union name="cathodePattern1">
-            <first ref="Ring2" />
-            <second ref="line1" />
-            <rotationref ref="rotation0" />
-        </union>
-
-        <union name="cathodePattern2">
-            <first ref="cathodePattern1" />
-            <second ref="line1" />
-            <rotationref ref="rotation1" />
-        </union>
-
-        <union name="cathodePattern3">
-            <first ref="cathodePattern2" />
-            <second ref="line1" />
-            <rotationref ref="rotation2" />
-        </union>
-
-        <union name="cathodePattern4">
-            <first ref="cathodePattern3" />
-            <second ref="line1" />
-            <rotationref ref="rotation3" />
-        </union>
-
-        <subtraction name="cathodePattern5">
-            <first ref="cathodePattern4" />
-            <second ref="Hole1" />
-        </subtraction>
-
-        <union name="cathodePattern6">
-            <first ref="cathodePattern5" />
-            <second ref="Ring1" />
-        </union>
-
-        <union name="cathodePattern7">
-            <first ref="cathodePattern6" />
-            <second ref="line0" />
-            <rotationref ref="rotation0" />
-        </union>
-
-        <union name="cathodePattern8">
-            <first ref="cathodePattern7" />
-            <second ref="line0" />
-            <rotationref ref="rotation1" />
-        </union>
-
-        <union name="cathodePattern9">
-            <first ref="cathodePattern8" />
-            <second ref="line0" />
-            <rotationref ref="rotation2" />
-        </union>
-
-        <union name="cathodePattern10">
-            <first ref="cathodePattern9" />
-            <second ref="line0" />
-            <rotationref ref="rotation3" />
-        </union>
-
-        <subtraction name="cathodePattern11">
-            <first ref="cathodePattern10" />
-            <second ref="Hole0" />
-        </subtraction>
-
-        <union name="cathodePattern">
-            <first ref="cathodePattern11" />
-            <second ref="Ring0" />
-        </union>
-
-        <subtraction name="vacuumCathodePattern">
-            <first ref="vacuumCathode" />
-            <second ref="cathodePattern" />
-        </subtraction>
-
-    <!-- PIPE -->
-        <!-- teflon -->
-        <tube name="teflonCylinder1of4" rmin="10.0" rmax="21.5" z="23.9" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="teflonCylinder2of4" rmin="12.0" rmax="21.5" z="28.4" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="teflonCylinder3of4" rmin="15.0" rmax="21.5" z="40.2" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="teflonCylinder4of4" rmin="16.5" rmax="21.5" z="20.4" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <union name="teflonPipeSolid_v1">
-            <first ref="teflonCylinder1of4" />
-            <second ref="teflonCylinder2of4" />
-            <positionref ref="teflonCylinder2of4Position" />
-        </union>
-
-        <union name="teflonPipeSolid_v2">
-            <first ref="teflonPipeSolid_v1" />
-            <second ref="teflonCylinder3of4" />
-            <positionref ref="teflonCylinder3of4Position" />
-        </union>
-
-        <union name="teflonPipeSolid">
-            <first ref="teflonPipeSolid_v2" />
-            <second ref="teflonCylinder4of4" />
-            <positionref ref="teflonCylinder4of4Position" />
-        </union>
-
-        <!-- copper pipe outsie -->
-        <tube name="copperPipeDetectorFlangeTube" rmin="0" rmax="67.5" z="17.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="copperPipeDetectorToCentralTube" rmin="0" rmax="40.0" z="45" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <union name="copperPipeSolid_v1">
-            <first ref="copperPipeDetectorFlangeTube" />
-            <second ref="copperPipeDetectorToCentralTube" />
-            <positionref ref="copperPipeUnion1Position" />
-        </union>
-
-        <tube name="copperPipeCentralPieceSolid_v1" rmin="0" rmax="75.0" z="355.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <box name="copperPipeCentralPieceBox_v1" x="157.5" y="157.5" z="365.0" lunit="mm" />
-        <box name="copperPipeCentralPieceBoxToSubs" x="119.0" y="119.0" z="365.0" lunit="mm" />
-        <subtraction name="copperPipeCentralPieceBox">
-            <first ref="copperPipeCentralPieceBox_v1" />
-            <second ref="copperPipeCentralPieceBoxToSubs" />
-        </subtraction>
-
-        <subtraction name="copperPipeCentralPieceSolid_v2">
-            <first ref="copperPipeCentralPieceSolid_v1" />
-            <second ref="copperPipeCentralPieceBox" />
-        </subtraction>
-
-        <union name="copperPipeSolid_v2">
-            <first ref="copperPipeSolid_v1" />
-            <second ref="copperPipeCentralPieceSolid_v2" />
-            <positionref ref="copperPipeUnion2Position" />
-        </union>
-
-        <tube name="copperPipeCentralToOutTube" rmin="0" rmax="54.0" z="59.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="copperPipeOutFlangeTube" rmin="0" rmax="75.0" z="19.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <union name="copperPipeSolid_v3">
-            <first ref="copperPipeSolid_v2" />
-            <second ref="copperPipeCentralToOutTube" />
-            <positionref ref="copperPipeUnion3Position" />
-        </union>
-
-        <union name="copperPipeSolid_v4">
-            <first ref="copperPipeSolid_v3" />
-            <second ref="copperPipeOutFlangeTube" />
-            <positionref ref="copperPipeUnion4Position" />
-        </union>
-
-        <!-- copper pipe inside -->
-        <tube name="copperPipeInsideCylinder1Solid" rmin="0" rmax="21.5" z="262.505" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <cone name="copperPipeInsideConeUnion1Solid" rmin1="0" rmax1="21.5" rmin2="0" rmax2="34.0" z="12.5" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="copperPipeInsideCylinder2Solid" rmin="0" rmax="34.0" z="210.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <cone name="copperPipeInsideConeUnion2Solid" rmin1="0" rmax1="34.0" rmin2="0" rmax2="44.0" z="10.005" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <union name="copperPipeInsideSolid_v1">
-            <first ref="copperPipeInsideCylinder1Solid" />
-            <second ref="copperPipeInsideConeUnion1Solid" />
-            <positionref ref="copperPipeInnerUnion1Position" />
-        </union>
-
-        <union name="copperPipeInsideSolid_v2">
-            <first ref="copperPipeInsideSolid_v1" />
-            <second ref="copperPipeInsideCylinder2Solid" />
-            <positionref ref="copperPipeInnerUnion2Position" />
-        </union>
-
-        <union name="copperPipeInsideSolid">
-            <first ref="copperPipeInsideSolid_v2" />
-            <second ref="copperPipeInsideConeUnion2Solid" />
-            <positionref ref="copperPipeInnerUnion3Position" />
-        </union>
-
-        <!-- copper pipe outside - inner (final) -->
-        <subtraction name="copperPipeCentralPieceSolid_v3">
-            <first ref="copperPipeSolid_v4" />
-            <second ref="copperPipeInsideSolid" />
-            <positionref ref="copperPipeOutterInnerSubsPosition" />
-        </subtraction>
-        <!-- vacuum/air/gas pipe filling -->
-        <subtraction name="pipeFillingSolid">
-            <first ref="copperPipeInsideSolid" />
-            <second ref="teflonPipeSolid" />
-            <positionref ref="vacuumPipeTeflonSubsPosition" />
-        </subtraction>
-
-        <subtraction name="copperPipeCentralPieceSolid">
-            <first ref="copperPipeSolid_v4" />
-            <second ref="copperPipeInsideSolid" />
-            <positionref ref="copperPipeOutterInnerSubsPosition" />
-        </subtraction>
-
-        <tube name="teflonHoleSolid" rmin="0" rmax="21.5" z="112.9" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <subtraction name="copperPipeHollowPre">
-            <first ref="copperPipeSolid_v4" />
-            <second ref="teflonHoleSolid" />
-            <positionref ref="copperPipeTeflonHoleSubsPosition" />
-        </subtraction>
-
-        <subtraction name="copperPipeHollow">
-            <first ref="copperPipeHollowPre" />
-            <second ref="pipeFillingSolid" />
-            <positionref ref="copperPipeOutterInnerSubsPosition" />
-        </subtraction>
-    <!-- SHIELDING -->
-        <box name="leadBoxSolid" x="550" y="550" z="550" lunit="mm" />
-        <box name="leadBoxShaft" x="150" y="150" z="360.0" lunit="mm" />
-
-        <subtraction name="leadBoxWithShaft">
-            <first ref="leadBoxSolid" />
-            <second ref="leadBoxShaft" />
-            <positionref ref="leadBoxShaftPosition" />
-        </subtraction>
-
-    <!-- STEEL PIPE -->
-        <!-- steel pipe segment 1 -->
-        <tube name="steelPipe1Tube" rmin="52.0" rmax="54.0" z="120.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="steelPipe1Flange1" rmin="54.0" rmax="75.0" z="10.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="steelPipe1Flange2" rmin="54.0" rmax="89.5" z="10.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <union name="steelPipe1WithFlange_v1">
-            <first ref="steelPipe1Tube" />
-            <second ref="steelPipe1Flange1" />
-            <positionref ref="steelPipe1Flange1Position" />
-        </union>
-        <union name="steelPipe1WithFlange">
-            <first ref="steelPipe1WithFlange_v1" />
-            <second ref="steelPipe1Flange2" />
-            <positionref ref="steelPipe1Flange2Position" />
-        </union>
-
-        <!-- steel pipe segment 2 -->
-        <tube name="steelPipe2Tube" rmin="77.5" rmax="79.5" z="525.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="steelPipe2Flange1" rmin="79.5" rmax="89.5" z="10.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="steelPipe2Flange2" rmin="79.5" rmax="90.0" z="10.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <union name="steelPipe2WithFlange_v1">
-            <first ref="steelPipe2Tube" />
-            <second ref="steelPipe2Flange1" />
-            <positionref ref="steelPipe2Flange1Position" />
-        </union>
-        <union name="steelPipe2WithFlange">
-            <first ref="steelPipe2WithFlange_v1" />
-            <second ref="steelPipe2Flange2" />
-            <positionref ref="steelPipe2Flange2Position" />
-        </union>
-
-        <!-- steel pipe segment 3 -->
-        <tube name="steelPipe3Tube" rmin="75.0" rmax="80.0" z="67.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="steelPipe3Flange1" rmin="80.0" rmax="90.0" z="10.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="steelPipe3Flange2" rmin="80.0" rmax="90.0" z="10.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <union name="steelPipe3WithFlange_v1">
-            <first ref="steelPipe3Tube" />
-            <second ref="steelPipe3Flange1" />
-            <positionref ref="steelPipe3Flange1Position" />
-        </union>
-        <union name="steelPipe3WithFlange">
-            <first ref="steelPipe3WithFlange_v1" />
-            <second ref="steelPipe3Flange2" />
-            <positionref ref="steelPipe3Flange2Position" />
-        </union>
-
-        <!-- steel pipe segment 4 / cone (first part) -->
-        <cone name="steelPipeCone1" rmin1="75.0" rmax1="77.0" rmin2="190.5" rmax2="192.5" z="2229.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <!-- steel pipe segment 5 / cone (second/final part) -->
-        <cone name="steelPipeCone2" rmin1="190.5" rmax1="192.5" rmin2="400.0" rmax2="402.0" z="3545.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-
-        <!-- steel pipe complete -->
-        <union name="steelPipe_v1">
-            <first ref="steelPipe1WithFlange" />
-            <second ref="steelPipe2WithFlange" />
-            <positionref ref="steelPipe2WithRespectTo1Position" />
-        </union>
-        <union name="steelPipe">
-            <first ref="steelPipe_v1" />
-            <second ref="steelPipe3WithFlange" />
-            <positionref ref="steelPipe3WithRespectTo1Position" />
-        </union>
-        <!-- 
+	
+    
+	<!-- ********************* -->
+	
+    
+	<!-- ***BEGIN DEFINE*** -->
+	
+    
+	<!-- GLOBAL -->
+	
+    
+	<define>
+		
+        
+		<!-- variables used for looping -->
+		
+        
+		<constant name="PI" value="3.141592653589793"/>
+		
+        
+		<constant name="degToRad" value="0.017453292519943295"/>
+		
+
+        
+		<!-- World -->
+		
+        
+		<constant name="world_size" value="3500"/>
+		
+        
+		<!-- try to keep that small to avoid interactions inside -->
+		
+
+        
+		<!-- Target gas -->
+		
+        
+		<variable name="target_pressure" value="1.4"/>
+		
+        
+		<!-- pressure in bar -->
+		
+        
+		<variable name="target_temperature" value="300.0"/>
+		
+        
+		<!-- temperature in K -->
+		
+        
+		<variable name="target_quencher" value="2"/>
+		
+        
+		<!-- percentage of quencher gas in target gas (e.g. 2% -> 98%target + 2% quencher) -->
+		
+    
+	</define>
+	
+    
+	<!-- CHAMBER -->
+	
+    
+	<define>
+		
+        
+		<!-- Chamber -->
+		
+        
+		<variable name="chamberLength" value="30"/>
+		
+        
+		<variable name="chamberRadius" value="50"/>
+		
+        
+		<variable name="copperChamberThickness" value="18.5"/>
+		
+        
+		<variable name="teflonChamberThickness" value="2"/>
+		
+        
+		<variable name="copperChamberTopThickness" value="17"/>
+		
+        
+		<variable name="copperChamberTopInnerRadius" value="30"/>
+		
+
+        
+		<!-- Readout -->
+		
+        
+		<variable name="kaptonReadoutThickness" value="0.5"/>
+		
+        
+		<variable name="copperReadoutThickness" value="0.2"/>
+		
+        
+		<variable name="copperReadoutSide" value="60"/>
+		
+        
+		<position name="kaptonReadoutPosition" unit="mm" x="0" y="0" z="-15.25"/>
+		
+        
+		<position name="copperReadoutPosition" unit="mm" x="0" y="0" z="-15.6"/>
+		
+
+        
+		<!-- Backplate (old raquette) -->
+		
+        
+		<variable name="backplateThickness" value="12"/>
+		
+
+        
+		<!-- Cathode -->
+		
+        
+		<variable name="cathodeThickness" value="15"/>
+		
+        
+		<variable name="cathodeHole" value="15"/>
+		
+        
+		<variable name="mylarThickness" value="0.004"/>
+		
+        
+		<variable name="copperCathodeThickness" value="15"/>
+		
+        
+		<position name="mylarCathodePosition" unit="mm" x="0" y="0" z="14.998"/>
+		
+        
+		<variable name="mylarCathodePositionZ" value="14.998"/>
+		
+
+        
+		<variable name="cathodePatternThickness" value="3"/>
+		
+        
+		<variable name="cathodePattern0Rad" value="4.25"/>
+		
+        
+		<variable name="cathodePattern0Width" value="0.3"/>
+		
+        
+		<variable name="cathodePattern1Rad" value="8.5"/>
+		
+        
+		<variable name="cathodePattern1Width" value="1"/>
+		
+        
+		<variable name="cathodePattern2Rad" value="12.5"/>
+		
+        
+		<variable name="cathodePattern2Width" value="2.5"/>
+		
+        
+		<variable name="cathodePattern2LineWidth" value="2"/>
+		
+
+        
+		<rotation name="rotation0" unit="deg" x="0" y="0" z="22.5"/>
+		
+        
+		<rotation name="rotation1" unit="deg" x="0" y="0" z="67.5"/>
+		
+        
+		<rotation name="rotation2" unit="deg" x="0" y="0" z="112.5"/>
+		
+        
+		<rotation name="rotation3" unit="deg" x="0" y="0" z="157.5"/>
+		
+        
+		<rotation name="copperReadoutRotation" unit="deg" x="0" y="0" z="45.0"/>
+		
+
+        
+		<!-- Pipe -->
+		
+        
+		<variable name="teflonThickness" value="3"/>
+		
+        
+		<variable name="copperFlangeThickness" value="20"/>
+		
+        
+		<variable name="copperFlangeHole" value="12.5"/>
+		
+        
+		<variable name="copperTubeThickness" value="10"/>
+		
+        
+		<variable name="copperFlangeExtRad" value="57.5"/>
+		
+        
+		<variable name="pipeLength" value="400"/>
+		
+        
+		<variable name="pipeThickness" value="10"/>
+		
+        
+		<position name="teflonCover2Position" unit="mm" x="0" y="0" z="13.5"/>
+		
+        
+		<position name="pipePos0" unit="mm" x="0" y="0" z="-190.0"/>
+		
+        
+		<position name="pipePos1" unit="mm" x="0" y="0" z="190.0"/>
+		
+    
+	</define>
+	
+    
+	<!-- PIPE -->
+	
+    
+	<define>
+		
+        
+		<!-- teflon -->
+		
+        
+		<variable name="teflonPipeCylinder1of4Length" value="23.9"/>
+		
+        
+		<variable name="teflonPipeCylinder1of4Radius" value="10.0"/>
+		
+
+        
+		<variable name="teflonPipeCylinder2of4Length" value="28.4"/>
+		
+        
+		<variable name="teflonPipeCylinder2of4Radius" value="12.0"/>
+		
+
+        
+		<variable name="teflonPipeCylinder3of4Length" value="40.2"/>
+		
+        
+		<variable name="teflonPipeCylinder3of4Radius" value="15.0"/>
+		
+
+        
+		<variable name="teflonPipeCylinder4of4Length" value="20.4"/>
+		
+        
+		<variable name="teflonPipeCylinder4of4Radius" value="16.5"/>
+		
+
+        
+		<variable name="teflonPipeCylinderTotalLength" value="112.9"/>
+		
+        
+		<variable name="teflonPipeCylinderOutterRadius" value="21.5"/>
+		
+
+        
+		<position name="teflonCylinder1of4Position" unit="mm" x="0" y="0" z="0"/>
+		
+        
+		<position name="teflonCylinder2of4Position" unit="mm" x="0" y="0" z="26.15"/>
+		
+        
+		<position name="teflonCylinder3of4Position" unit="mm" x="0" y="0" z="60.449999999999996"/>
+		
+        
+		<position name="teflonCylinder4of4Position" unit="mm" x="0" y="0" z="90.75"/>
+		
+
+        
+		<!-- copper pipe outsie -->
+		
+        
+		<variable name="copperPipeDetectorFlangeOutterRadius" value="67.5"/>
+		
+        
+		<variable name="copperPipeDetectorFlangeLength" value="17.0"/>
+		
+
+        
+		<variable name="copperPipeDetectorToCentralTubeOutterRadius" value="40.0"/>
+		
+        
+		<variable name="copperPipeDetectorToCentralTubeLength" value="45"/>
+		
+
+        
+		<variable name="copperPipeCentralPieceOutterRadius" value="75.0"/>
+		
+        
+		<variable name="copperPipeCentralPieceLength" value="355.0"/>
+		
+        
+		<variable name="copperPipeCentralPieceSquareSide" value="119.0"/>
+		
+
+        
+		<variable name="copperPipeCentralToOutTubeOutterRadius" value="54.0"/>
+		
+        
+		<variable name="copperPipeCentralToOutTubeLength" value="59.0"/>
+		
+
+        
+		<variable name="copperPipeOutFlangeOutterRadius" value="75.0"/>
+		
+        
+		<variable name="copperPipeOutFlangeLength" value="19.0"/>
+		
+
+        
+		<variable name="copperPipeUnion1Z" value="31.0"/>
+		
+        
+		<position name="copperPipeUnion1Position" unit="mm" x="0" y="0" z="31.0"/>
+		
+        
+		<variable name="copperPipeUnion2Z" value="231.0"/>
+		
+        
+		<position name="copperPipeUnion2Position" unit="mm" x="0" y="0" z="231.0"/>
+		
+        
+		<variable name="copperPipeUnion3Z" value="438.0"/>
+		
+        
+		<position name="copperPipeUnion3Position" unit="mm" x="0" y="0" z="438.0"/>
+		
+        
+		<variable name="copperPipeUnion4Z" value="477.0"/>
+		
+        
+		<position name="copperPipeUnion4Position" unit="mm" x="0" y="0" z="477.0"/>
+		
+
+        
+		<variable name="copperPipeTotalLength" value="495.0"/>
+		
+
+        
+		<!-- copper pipe inside (we add some neglectable offset to be able to view the substraction, but no need for it to work, can be set to 0 on simulations) -->
+		
+        
+		<variable name="copperPipeInsideOffset" value="0.005"/>
+		
+        
+		<variable name="copperPipeInsideCylinder1Length" value="262.505"/>
+		
+        
+		<variable name="copperPipeInsideCylinder1Radius" value="21.5"/>
+		
+        
+		<variable name="copperPipeInsideConeUnion1Length" value="12.5"/>
+		
+        
+		<variable name="copperPipeInsideCylinder2Length" value="210.0"/>
+		
+        
+		<variable name="copperPipeInsideCylinder2Radius" value="34.0"/>
+		
+        
+		<variable name="copperPipeInsideConeUnion2Length" value="10.005"/>
+		
+        
+		<variable name="copperPipeInsideCylinder3Radius" value="44.0"/>
+		
+
+        
+		<variable name="copperPipeInnerUnion1Z" value="137.5025"/>
+		
+        
+		<position name="copperPipeInnerUnion1Position" unit="mm" x="0" y="0" z="137.5025"/>
+		
+        
+		<variable name="copperPipeInnerUnion2Z" value="248.7525"/>
+		
+        
+		<position name="copperPipeInnerUnion2Position" unit="mm" x="0" y="0" z="248.7525"/>
+		
+        
+		<variable name="copperPipeInnerUnion3Z" value="358.755"/>
+		
+        
+		<position name="copperPipeInnerUnion3Position" unit="mm" x="0" y="0" z="358.755"/>
+		
+
+        
+		<!-- copper pipe outside - inner (final) -->
+		
+        
+		<position name="copperPipeOutterInnerSubsPosition" unit="mm" x="0" y="0" z="122.7475"/>
+		
+
+        
+		<position name="vacuumPipeTeflonSubsPosition" unit="mm" x="0" y="0" z="-119.3025"/>
+		
+
+        
+		<!-- offsets to help positioning and position in world-->
+		
+        
+		<variable name="teflonWithRespectToPipeOffset" value="3.4499999999999993"/>
+		
+        
+		<variable name="vacuumWithRespectToPipeOffset" value="122.7475"/>
+		
+
+        
+		<variable name="copperPipeZInWorld" value="55.5"/>
+		
+        
+		<position name="copperPipeTeflonHoleSubsPosition" unit="mm" x="0" y="0" z="47.95"/>
+		
+
+    
+	</define>
+	
+    
+	<!-- SHIELDING -->
+	
+    
+	<define>
+		
+        
+		<variable name="leadBoxSize" value="550"/>
+		
+        
+		<variable name="leadBoxShaftShortSide" value="150"/>
+		
+        
+		<variable name="leadBoxShaftLongSide" value="360.0"/>
+		
+        
+		<!-- we add an offset to make sure the substraction is done correctly -->
+		
+
+        
+		<position name="leadBoxShaftPosition" unit="mm" x="0" y="0" z="105.0"/>
+		
+
+        
+		<variable name="detectorToShieldingSeparation" value="16"/>
+		
+        
+		<variable name="shieldingOffset" value="-32.0"/>
+		
+
+    
+	</define>
+	
+    
+	<!-- STEEL TUBE -->
+	
+    
+	<define>
+		
+        
+		<variable name="steelPipeFlangeHeigth" value="10.0"/>
+		
+        
+		<variable name="steelPipeFlangeGenericRadiusOffset" value="10.0"/>
+		
+
+        
+		<variable name="steelPipeCylinder1Length" value="120.0"/>
+		
+        
+		<variable name="steelPipeCylinder1InnerRadius" value="52.0"/>
+		
+        
+		<variable name="steelPipeCylinder1OutterRadius" value="54.0"/>
+		
+
+        
+		<position name="steelPipe1Flange1Position" unit="mm" x="0" y="0" z="-55.0"/>
+		
+        
+		<position name="steelPipe1Flange2Position" unit="mm" x="0" y="0" z="55.0"/>
+		
+
+        
+		<variable name="steelPipeCylinder2Length" value="525.0"/>
+		
+        
+		<variable name="steelPipeCylinder2InnerRadius" value="77.5"/>
+		
+        
+		<variable name="steelPipeCylinder2OutterRadius" value="79.5"/>
+		
+
+        
+		<position name="steelPipe2Flange1Position" unit="mm" x="0" y="0" z="-257.5"/>
+		
+        
+		<position name="steelPipe2Flange2Position" unit="mm" x="0" y="0" z="257.5"/>
+		
+
+        
+		<position name="steelPipe2WithRespectTo1Position" unit="mm" x="0" y="0" z="322.5"/>
+		
+
+        
+		<variable name="steelPipeCylinder3Length" value="67.0"/>
+		
+        
+		<variable name="steelPipeCylinder3InnerRadius" value="75.0"/>
+		
+        
+		<variable name="steelPipeCylinder3OutterRadius" value="80.0"/>
+		
+
+        
+		<position name="steelPipe3Flange1Position" unit="mm" x="0" y="0" z="-28.5"/>
+		
+        
+		<position name="steelPipe3Flange2Position" unit="mm" x="0" y="0" z="28.5"/>
+		
+
+        
+		<position name="steelPipe3WithRespectTo1Position" unit="mm" x="0" y="0" z="618.5"/>
+		
+
+        
+		<variable name="steelPipeCone1Length" value="2229.0"/>
+		
+        
+		<variable name="steelPipeCone1Thickness" value="2.0"/>
+		
+        
+		<variable name="steelPipeCone1InnerRadius1" value="75.0"/>
+		
+        
+		<variable name="steelPipeCone1InnerRadius2" value="190.5"/>
+		
+
+        
+		<position name="steelPipeCone1WithRespectTo1Position" unit="mm" x="0" y="0" z="1766.5"/>
+		
+
+        
+		<variable name="steelPipeCone2Length" value="3545.0"/>
+		
+        
+		<variable name="steelPipeCone2Thickness" value="2.0"/>
+		
+        
+		<variable name="steelPipeCone2InnerRadius1" value="190.5"/>
+		
+        
+		<variable name="steelPipeCone2InnerRadius2" value="400.0"/>
+		
+
+        
+		<position name="steelPipeCone2WithRespectTo1Position" unit="mm" x="0" y="0" z="4653.5"/>
+		
+
+
+        
+		<!-- position in world -->
+		
+        
+		<variable name="steelPipeWithRespectToCopperPipeOffset" value="546.5"/>
+		
+    
+	</define>
+	
+    
+	<!-- VETOES -->
+	
+    
+	<define>
+		
+        
+		<variable name="scintillatorThickness" value="50"/>
+		
+        
+		<variable name="scintillatorLongSide" value="750"/>
+		
+        
+		<variable name="scintillatorShortSide" value="200"/>
+		
+        
+		<variable name="scintillatorHoleDiameter" value="150"/>
+		
+
+        
+		<variable name="scintillatorLongSideNonSensitive" value="3.75"/>
+		
+        
+		<variable name="scintillatorShortSideNonSensitive" value="1.0"/>
+		
+        
+		<!-- TODO: explanation of "non sensitive" -->
+		
+
+        
+		<position name="scintillatorBoxSolidWithHoleRightHolePosition" unit="mm" x="100.0" y="-100" z="0"/>
+		
+        
+		<position name="scintillatorBoxSolidWithHoleLeftHolePosition" unit="mm" x="-100.0" y="-100" z="0"/>
+		
+
+        
+		<!-- actual scintillator positions in world-->
+		
+        
+		<variable name="vetoFrontPosX" value="0"/>
+		
+        
+		<variable name="vetoFrontPosY" value="100"/>
+		
+        
+		<variable name="vetoFrontPosZ" value="375.0"/>
+		
+        
+		<rotation name="vetoFrontRotation" unit="deg" x="0" y="0" z="0"/>
+		
+
+        
+		<variable name="vetoBackPosX" value="-75"/>
+		
+        
+		<variable name="vetoBackPosY" value="25.0"/>
+		
+        
+		<variable name="vetoBackPosZ" value="-375.0"/>
+		
+        
+		<rotation name="vetoBackRotation" unit="deg" x="0" y="0" z="-90"/>
+		
+
+        
+		<variable name="vetoTopPosX" value="-50"/>
+		
+        
+		<variable name="vetoTopPosY" value="350.0"/>
+		
+        
+		<variable name="vetoTopPosZ" value="-25.0"/>
+		
+        
+		<rotation name="vetoTopRotation" unit="deg" x="90" y="0" z="0"/>
+		
+
+        
+		<variable name="vetoBottomPosX" value="-50"/>
+		
+        
+		<variable name="vetoBottomPosY" value="-355.0"/>
+		
+        
+		<variable name="vetoBottomPosZ" value="-25.0"/>
+		
+        
+		<rotation name="vetoBottomRotation" unit="deg" x="90" y="0" z="0"/>
+		
+
+        
+		<variable name="vetoWestPosX" value="325.0"/>
+		
+        
+		<variable name="vetoWestPosY" value="25.0"/>
+		
+        
+		<variable name="vetoWestPosZ" value="-25.0"/>
+		
+        
+		<rotation name="vetoWestRotation" unit="deg" x="90" y="90" z="0"/>
+		
+
+        
+		<variable name="vetoEastPosX" value="-425.0"/>
+		
+        
+		<variable name="vetoEastPosY" value="25.0"/>
+		
+        
+		<variable name="vetoEastPosZ" value="25.0"/>
+		
+        
+		<rotation name="vetoEastRotation" unit="deg" x="-90" y="90" z="0"/>
+		
+    
+	</define>
+	
+    
+	<!-- ***END DEFINE*** -->
+	
+    
+	<!-- ********************* -->
+	
+    
+	<!-- ***BEGIN MATERIALS*** -->
+	
+    
+    
+	<!-- ***END MATERIALS*** -->
+	
+    
+	<!-- ********************* -->
+	
+    
+	<!-- ***BEGIN SOLIDS*** -->
+	
+    
+	<!-- WORLD -->
+	
+    
+	<solids>
+		
+        
+		<box lunit="mm" name="WorldSolid" x="3500" y="3500" z="3500"/>
+		
+    
+	</solids>
+	
+    
+	<!-- CHAMBER -->
+	
+    
+	<solids>
+		
+        
+		<!-- Target gas -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="gasSolidFull" rmax="48" rmin="0" startphi="0" z="30"/>
+		
+
+        
+		<!-- Readout -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="kaptonReadout" rmax="48" rmin="0" startphi="0" z="0.5"/>
+		
+        
+		<box lunit="mm" name="copperReadout" x="60" y="60" z="0.2"/>
+		
+
+        
+		<!-- Raquette -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="backplate" rmax="68.5" rmin="0" startphi="0" z="12"/>
+		
+
+        
+		<!-- Chamber -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperChamber" rmax="68.5" rmin="50" startphi="0" z="45"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="teflonCoverChamber" rmax="50" rmin="48" startphi="0" z="45"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="mylarCathode" rmax="15" rmin="0" startphi="0" z="0.004"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperCathode" rmax="48" rmin="15" startphi="0" z="15"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperChamberTop" rmax="68.5" rmin="30" startphi="0" z="17"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperFlangeDetector" rmax="68.5" rmin="12.5" startphi="0" z="20"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperTube" rmax="22.5" rmin="12.5" startphi="0" z="400"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperFlangeExt" rmax="57.5" rmin="12.5" startphi="0" z="20"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="teflonPipe" rmax="12.5" rmin="9.5" startphi="0" z="400"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="teflonCoverCathode" rmax="15" rmin="9.5" startphi="0" z="29"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="VacuumPipe" rmax="9.5" rmin="0" startphi="0" z="429"/>
+		
+
+        
+		<!-- Cathode Pattern -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="Ring0" rmax="4.55" rmin="4.25" startphi="0" z="3"/>
+		
+        
+		<box lunit="mm" name="line0" x="25.0" y="0.3" z="3"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="Ring1" rmax="9.5" rmin="8.5" startphi="0" z="3"/>
+		
+        
+		<box lunit="mm" name="line1" x="25.0" y="2" z="3"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="Ring2" rmax="15.0" rmin="12.5" startphi="0" z="3"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="Hole0" rmax="4.55" rmin="0" startphi="0" z="5"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="Hole1" rmax="9.5" rmin="0" startphi="0" z="5"/>
+		
+
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="vacuumCathode" rmax="12.5" rmin="0" startphi="0" z="3"/>
+		
+
+        
+		<union name="copperPipe0">
+			
+            
+			<first ref="copperTube"/>
+			
+            
+			<second ref="copperFlangeDetector"/>
+			
+            
+			<positionref ref="pipePos0"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="copperPipe">
+			
+            
+			<first ref="copperPipe0"/>
+			
+            
+			<second ref="copperFlangeExt"/>
+			
+            
+			<positionref ref="pipePos1"/>
+			
+        
+		</union>
+		
+
+        
+		<subtraction name="gasSolid1">
+			
+            
+			<first ref="gasSolidFull"/>
+			
+            
+			<second ref="mylarCathode"/>
+			
+            
+			<positionref ref="mylarCathodePosition"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<subtraction name="gasSolid2">
+			
+            
+			<first ref="gasSolid1"/>
+			
+            
+			<second ref="kaptonReadout"/>
+			
+            
+			<positionref ref="kaptonReadoutPosition"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<subtraction name="gasSolid">
+			
+            
+			<first ref="gasSolid2"/>
+			
+            
+			<second ref="copperReadout"/>
+			
+            
+			<positionref ref="copperReadoutPosition"/>
+			
+            
+			<rotationref ref="copperReadoutRotation"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<union name="cathodePattern1">
+			
+            
+			<first ref="Ring2"/>
+			
+            
+			<second ref="line1"/>
+			
+            
+			<rotationref ref="rotation0"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="cathodePattern2">
+			
+            
+			<first ref="cathodePattern1"/>
+			
+            
+			<second ref="line1"/>
+			
+            
+			<rotationref ref="rotation1"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="cathodePattern3">
+			
+            
+			<first ref="cathodePattern2"/>
+			
+            
+			<second ref="line1"/>
+			
+            
+			<rotationref ref="rotation2"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="cathodePattern4">
+			
+            
+			<first ref="cathodePattern3"/>
+			
+            
+			<second ref="line1"/>
+			
+            
+			<rotationref ref="rotation3"/>
+			
+        
+		</union>
+		
+
+        
+		<subtraction name="cathodePattern5">
+			
+            
+			<first ref="cathodePattern4"/>
+			
+            
+			<second ref="Hole1"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<union name="cathodePattern6">
+			
+            
+			<first ref="cathodePattern5"/>
+			
+            
+			<second ref="Ring1"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="cathodePattern7">
+			
+            
+			<first ref="cathodePattern6"/>
+			
+            
+			<second ref="line0"/>
+			
+            
+			<rotationref ref="rotation0"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="cathodePattern8">
+			
+            
+			<first ref="cathodePattern7"/>
+			
+            
+			<second ref="line0"/>
+			
+            
+			<rotationref ref="rotation1"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="cathodePattern9">
+			
+            
+			<first ref="cathodePattern8"/>
+			
+            
+			<second ref="line0"/>
+			
+            
+			<rotationref ref="rotation2"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="cathodePattern10">
+			
+            
+			<first ref="cathodePattern9"/>
+			
+            
+			<second ref="line0"/>
+			
+            
+			<rotationref ref="rotation3"/>
+			
+        
+		</union>
+		
+
+        
+		<subtraction name="cathodePattern11">
+			
+            
+			<first ref="cathodePattern10"/>
+			
+            
+			<second ref="Hole0"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<union name="cathodePattern">
+			
+            
+			<first ref="cathodePattern11"/>
+			
+            
+			<second ref="Ring0"/>
+			
+        
+		</union>
+		
+
+        
+		<subtraction name="vacuumCathodePattern">
+			
+            
+			<first ref="vacuumCathode"/>
+			
+            
+			<second ref="cathodePattern"/>
+			
+        
+		</subtraction>
+		
+
+    
+	</solids>
+	
+    
+	<!-- PIPE -->
+	
+    
+	<solids>
+		
+        
+		<!-- teflon -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="teflonCylinder1of4" rmax="21.5" rmin="10.0" startphi="0" z="23.9"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="teflonCylinder2of4" rmax="21.5" rmin="12.0" startphi="0" z="28.4"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="teflonCylinder3of4" rmax="21.5" rmin="15.0" startphi="0" z="40.2"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="teflonCylinder4of4" rmax="21.5" rmin="16.5" startphi="0" z="20.4"/>
+		
+
+        
+		<union name="teflonPipeSolid_v1">
+			
+            
+			<first ref="teflonCylinder1of4"/>
+			
+            
+			<second ref="teflonCylinder2of4"/>
+			
+            
+			<positionref ref="teflonCylinder2of4Position"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="teflonPipeSolid_v2">
+			
+            
+			<first ref="teflonPipeSolid_v1"/>
+			
+            
+			<second ref="teflonCylinder3of4"/>
+			
+            
+			<positionref ref="teflonCylinder3of4Position"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="teflonPipeSolid">
+			
+            
+			<first ref="teflonPipeSolid_v2"/>
+			
+            
+			<second ref="teflonCylinder4of4"/>
+			
+            
+			<positionref ref="teflonCylinder4of4Position"/>
+			
+        
+		</union>
+		
+
+        
+		<!-- copper pipe outsie -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperPipeDetectorFlangeTube" rmax="67.5" rmin="0" startphi="0" z="17.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperPipeDetectorToCentralTube" rmax="40.0" rmin="0" startphi="0" z="45"/>
+		
+
+        
+		<union name="copperPipeSolid_v1">
+			
+            
+			<first ref="copperPipeDetectorFlangeTube"/>
+			
+            
+			<second ref="copperPipeDetectorToCentralTube"/>
+			
+            
+			<positionref ref="copperPipeUnion1Position"/>
+			
+        
+		</union>
+		
+
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperPipeCentralPieceSolid_v1" rmax="75.0" rmin="0" startphi="0" z="355.0"/>
+		
+        
+		<box lunit="mm" name="copperPipeCentralPieceBox_v1" x="157.5" y="157.5" z="365.0"/>
+		
+        
+		<box lunit="mm" name="copperPipeCentralPieceBoxToSubs" x="119.0" y="119.0" z="365.0"/>
+		
+        
+		<subtraction name="copperPipeCentralPieceBox">
+			
+            
+			<first ref="copperPipeCentralPieceBox_v1"/>
+			
+            
+			<second ref="copperPipeCentralPieceBoxToSubs"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<subtraction name="copperPipeCentralPieceSolid_v2">
+			
+            
+			<first ref="copperPipeCentralPieceSolid_v1"/>
+			
+            
+			<second ref="copperPipeCentralPieceBox"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<union name="copperPipeSolid_v2">
+			
+            
+			<first ref="copperPipeSolid_v1"/>
+			
+            
+			<second ref="copperPipeCentralPieceSolid_v2"/>
+			
+            
+			<positionref ref="copperPipeUnion2Position"/>
+			
+        
+		</union>
+		
+
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperPipeCentralToOutTube" rmax="54.0" rmin="0" startphi="0" z="59.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperPipeOutFlangeTube" rmax="75.0" rmin="0" startphi="0" z="19.0"/>
+		
+
+        
+		<union name="copperPipeSolid_v3">
+			
+            
+			<first ref="copperPipeSolid_v2"/>
+			
+            
+			<second ref="copperPipeCentralToOutTube"/>
+			
+            
+			<positionref ref="copperPipeUnion3Position"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="copperPipeSolid_v4">
+			
+            
+			<first ref="copperPipeSolid_v3"/>
+			
+            
+			<second ref="copperPipeOutFlangeTube"/>
+			
+            
+			<positionref ref="copperPipeUnion4Position"/>
+			
+        
+		</union>
+		
+
+        
+		<!-- copper pipe inside -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperPipeInsideCylinder1Solid" rmax="21.5" rmin="0" startphi="0" z="262.505"/>
+		
+        
+		<cone aunit="deg" deltaphi="360" lunit="mm" name="copperPipeInsideConeUnion1Solid" rmax1="21.5" rmax2="34.0" rmin1="0" rmin2="0" startphi="0" z="12.5"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="copperPipeInsideCylinder2Solid" rmax="34.0" rmin="0" startphi="0" z="210.0"/>
+		
+        
+		<cone aunit="deg" deltaphi="360" lunit="mm" name="copperPipeInsideConeUnion2Solid" rmax1="34.0" rmax2="44.0" rmin1="0" rmin2="0" startphi="0" z="10.005"/>
+		
+
+        
+		<union name="copperPipeInsideSolid_v1">
+			
+            
+			<first ref="copperPipeInsideCylinder1Solid"/>
+			
+            
+			<second ref="copperPipeInsideConeUnion1Solid"/>
+			
+            
+			<positionref ref="copperPipeInnerUnion1Position"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="copperPipeInsideSolid_v2">
+			
+            
+			<first ref="copperPipeInsideSolid_v1"/>
+			
+            
+			<second ref="copperPipeInsideCylinder2Solid"/>
+			
+            
+			<positionref ref="copperPipeInnerUnion2Position"/>
+			
+        
+		</union>
+		
+
+        
+		<union name="copperPipeInsideSolid">
+			
+            
+			<first ref="copperPipeInsideSolid_v2"/>
+			
+            
+			<second ref="copperPipeInsideConeUnion2Solid"/>
+			
+            
+			<positionref ref="copperPipeInnerUnion3Position"/>
+			
+        
+		</union>
+		
+
+        
+		<!-- copper pipe outside - inner (final) -->
+		
+        
+		<subtraction name="copperPipeCentralPieceSolid_v3">
+			
+            
+			<first ref="copperPipeSolid_v4"/>
+			
+            
+			<second ref="copperPipeInsideSolid"/>
+			
+            
+			<positionref ref="copperPipeOutterInnerSubsPosition"/>
+			
+        
+		</subtraction>
+		
+        
+		<!-- vacuum/air/gas pipe filling -->
+		
+        
+		<subtraction name="pipeFillingSolid">
+			
+            
+			<first ref="copperPipeInsideSolid"/>
+			
+            
+			<second ref="teflonPipeSolid"/>
+			
+            
+			<positionref ref="vacuumPipeTeflonSubsPosition"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<subtraction name="copperPipeCentralPieceSolid">
+			
+            
+			<first ref="copperPipeSolid_v4"/>
+			
+            
+			<second ref="copperPipeInsideSolid"/>
+			
+            
+			<positionref ref="copperPipeOutterInnerSubsPosition"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="teflonHoleSolid" rmax="21.5" rmin="0" startphi="0" z="112.9"/>
+		
+
+        
+		<subtraction name="copperPipeHollowPre">
+			
+            
+			<first ref="copperPipeSolid_v4"/>
+			
+            
+			<second ref="teflonHoleSolid"/>
+			
+            
+			<positionref ref="copperPipeTeflonHoleSubsPosition"/>
+			
+        
+		</subtraction>
+		
+
+        
+		<subtraction name="copperPipeHollow">
+			
+            
+			<first ref="copperPipeHollowPre"/>
+			
+            
+			<second ref="pipeFillingSolid"/>
+			
+            
+			<positionref ref="copperPipeOutterInnerSubsPosition"/>
+			
+        
+		</subtraction>
+		
+    
+	</solids>
+	
+    
+	<!-- SHIELDING -->
+	
+    
+	<solids>
+		
+        
+		<box lunit="mm" name="leadBoxSolid" x="550" y="550" z="550"/>
+		
+        
+		<box lunit="mm" name="leadBoxShaft" x="150" y="150" z="360.0"/>
+		
+
+        
+		<subtraction name="leadBoxWithShaft">
+			
+            
+			<first ref="leadBoxSolid"/>
+			
+            
+			<second ref="leadBoxShaft"/>
+			
+            
+			<positionref ref="leadBoxShaftPosition"/>
+			
+        
+		</subtraction>
+		
+
+    
+	</solids>
+	
+    
+	<!-- STEEL PIPE -->
+	
+    
+	<solids>
+		
+        
+		<!-- steel pipe segment 1 -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe1Tube" rmax="54.0" rmin="52.0" startphi="0" z="120.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe1Flange1" rmax="75.0" rmin="54.0" startphi="0" z="10.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe1Flange2" rmax="89.5" rmin="54.0" startphi="0" z="10.0"/>
+		
+
+        
+		<union name="steelPipe1WithFlange_v1">
+			
+            
+			<first ref="steelPipe1Tube"/>
+			
+            
+			<second ref="steelPipe1Flange1"/>
+			
+            
+			<positionref ref="steelPipe1Flange1Position"/>
+			
+        
+		</union>
+		
+        
+		<union name="steelPipe1WithFlange">
+			
+            
+			<first ref="steelPipe1WithFlange_v1"/>
+			
+            
+			<second ref="steelPipe1Flange2"/>
+			
+            
+			<positionref ref="steelPipe1Flange2Position"/>
+			
+        
+		</union>
+		
+
+        
+		<!-- steel pipe segment 2 -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe2Tube" rmax="79.5" rmin="77.5" startphi="0" z="525.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe2Flange1" rmax="89.5" rmin="79.5" startphi="0" z="10.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe2Flange2" rmax="90.0" rmin="79.5" startphi="0" z="10.0"/>
+		
+
+        
+		<union name="steelPipe2WithFlange_v1">
+			
+            
+			<first ref="steelPipe2Tube"/>
+			
+            
+			<second ref="steelPipe2Flange1"/>
+			
+            
+			<positionref ref="steelPipe2Flange1Position"/>
+			
+        
+		</union>
+		
+        
+		<union name="steelPipe2WithFlange">
+			
+            
+			<first ref="steelPipe2WithFlange_v1"/>
+			
+            
+			<second ref="steelPipe2Flange2"/>
+			
+            
+			<positionref ref="steelPipe2Flange2Position"/>
+			
+        
+		</union>
+		
+
+        
+		<!-- steel pipe segment 3 -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe3Tube" rmax="80.0" rmin="75.0" startphi="0" z="67.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe3Flange1" rmax="90.0" rmin="80.0" startphi="0" z="10.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe3Flange2" rmax="90.0" rmin="80.0" startphi="0" z="10.0"/>
+		
+
+        
+		<union name="steelPipe3WithFlange_v1">
+			
+            
+			<first ref="steelPipe3Tube"/>
+			
+            
+			<second ref="steelPipe3Flange1"/>
+			
+            
+			<positionref ref="steelPipe3Flange1Position"/>
+			
+        
+		</union>
+		
+        
+		<union name="steelPipe3WithFlange">
+			
+            
+			<first ref="steelPipe3WithFlange_v1"/>
+			
+            
+			<second ref="steelPipe3Flange2"/>
+			
+            
+			<positionref ref="steelPipe3Flange2Position"/>
+			
+        
+		</union>
+		
+
+        
+		<!-- steel pipe segment 4 / cone (first part) -->
+		
+        
+		<cone aunit="deg" deltaphi="360" lunit="mm" name="steelPipeCone1" rmax1="77.0" rmax2="192.5" rmin1="75.0" rmin2="190.5" startphi="0" z="2229.0"/>
+		
+        
+		<!-- steel pipe segment 5 / cone (second/final part) -->
+		
+        
+		<cone aunit="deg" deltaphi="360" lunit="mm" name="steelPipeCone2" rmax1="192.5" rmax2="402.0" rmin1="190.5" rmin2="400.0" startphi="0" z="3545.0"/>
+		
+
+        
+		<!-- steel pipe complete -->
+		
+        
+		<union name="steelPipe_v1">
+			
+            
+			<first ref="steelPipe1WithFlange"/>
+			
+            
+			<second ref="steelPipe2WithFlange"/>
+			
+            
+			<positionref ref="steelPipe2WithRespectTo1Position"/>
+			
+        
+		</union>
+		
+        
+		<union name="steelPipe">
+			
+            
+			<first ref="steelPipe_v1"/>
+			
+            
+			<second ref="steelPipe3WithFlange"/>
+			
+            
+			<positionref ref="steelPipe3WithRespectTo1Position"/>
+			
+        
+		</union>
+		
+        
+		<!-- 
         CHECK NO REPEATING NAMES!
         <union name="steelPipe">
             <first ref="steelPipe" />
@@ -619,24 +1663,58 @@
             <positionref ref="steelPipeCone2WithRespectTo1Position" />
         </union>
         -->
-        <!-- steel pipe vacuum/air/gas filling -->
-        <tube name="steelPipe1TubeFilling" rmin="0" rmax="52.0" z="120.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="steelPipe2TubeFilling" rmin="0" rmax="77.5" z="525.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <tube name="steelPipe3TubeFilling" rmin="0" rmax="75.0" z="67.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <cone name="steelPipeCone1Filling" rmin1="0" rmax1="75.0" rmin2="0" rmax2="190.5" z="2229.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
-        <cone name="steelPipeCone2Filling" rmin1="0" rmax1="190.5" rmin2="0" rmax2="400.0" z="3545.0" startphi="0" deltaphi="360" aunit="deg" lunit="mm" />
+		
+        
+		<!-- steel pipe vacuum/air/gas filling -->
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe1TubeFilling" rmax="52.0" rmin="0" startphi="0" z="120.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe2TubeFilling" rmax="77.5" rmin="0" startphi="0" z="525.0"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="steelPipe3TubeFilling" rmax="75.0" rmin="0" startphi="0" z="67.0"/>
+		
+        
+		<cone aunit="deg" deltaphi="360" lunit="mm" name="steelPipeCone1Filling" rmax1="75.0" rmax2="190.5" rmin1="0" rmin2="0" startphi="0" z="2229.0"/>
+		
+        
+		<cone aunit="deg" deltaphi="360" lunit="mm" name="steelPipeCone2Filling" rmax1="190.5" rmax2="400.0" rmin1="0" rmin2="0" startphi="0" z="3545.0"/>
+		
 
-        <union name="steelPipeFilling_v1">
-            <first ref="steelPipe1TubeFilling" />
-            <second ref="steelPipe2TubeFilling" />
-            <positionref ref="steelPipe2WithRespectTo1Position" />
-        </union>
-        <union name="steelPipeFilling">
-            <first ref="steelPipeFilling_v1" />
-            <second ref="steelPipe3TubeFilling" />
-            <positionref ref="steelPipe3WithRespectTo1Position" />
-        </union>
-        <!-- 
+        
+		<union name="steelPipeFilling_v1">
+			
+            
+			<first ref="steelPipe1TubeFilling"/>
+			
+            
+			<second ref="steelPipe2TubeFilling"/>
+			
+            
+			<positionref ref="steelPipe2WithRespectTo1Position"/>
+			
+        
+		</union>
+		
+        
+		<union name="steelPipeFilling">
+			
+            
+			<first ref="steelPipeFilling_v1"/>
+			
+            
+			<second ref="steelPipe3TubeFilling"/>
+			
+            
+			<positionref ref="steelPipe3WithRespectTo1Position"/>
+			
+        
+		</union>
+		
+        
+		<!-- 
         <union name="steelPipeFilling">
             <first ref="steelPipeFilling" />
             <second ref="steelPipeCone1Filling" />
@@ -648,388 +1726,1093 @@
             <positionref ref="steelPipeCone2WithRespectTo1Position" />
         </union>
         -->
+		
 
-    <!-- VETOES -->
-        <box name="scintillatorBoxSolid" x="198.0" y="742.5" z="50" lunit="mm" />
-        <tube name="photoMultiplierTube" z="50" startphi="0" deltaphi="360" rmin="0" rmax="20" aunit="deg" lunit="mm" />
+    
+	</solids>
+	
+    
+	<!-- VETOES -->
+	
+    
+	<solids>
+		
+        
+		<box lunit="mm" name="scintillatorBoxSolid" x="198.0" y="742.5" z="50"/>
+		
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="photoMultiplierTube" rmax="20.0" rmin="0" startphi="0" z="50"/>
+		
 
-        <!-- the following instruction can be used to draw the scintillator tube for display pourposes to check orientation and to take pictures, it should be commented on simulations -->
-        <!--
+        
+		<!-- the following instruction can be used to draw the scintillator tube for display pourposes to check orientation and to take pictures, it should be commented on simulations -->
+		
+        
+		<!--
             <union name="scintillatorBoxSolid">
                 <first ref="scintillatorBoxSolid"/>
                 <second ref="photoMultiplierTube"/>
                 <rotation name="photoMultiplierTubeRotation" unit="deg" x="90" y="0" z="0"/>
-                <position name="photoMultiplierTubePosition" x="0" y="396.25" z="0" unit="mm"/>
+                <position name="photoMultiplierTubePosition" x="0" y="scintillatorLongSide/2 + scintillatorThickness/2 - scintillatorLongSideNonSensitive" z="0" unit="mm"/>
             </union>
             -->
+		
 
-        <tube name="scintillatorHoleCircular" x="100.0" y="375.0" z="60.0" startphi="0" deltaphi="360" rmin="0" rmax="75.0" aunit="deg" lunit="mm" />
-        <box name="scintillatorHoleSquare" x="150" y="150" z="60.0" lunit="mm" />
-        <subtraction name="scintillatorBoxSolidWithRightHole">
-            <first ref="scintillatorBoxSolid" />
-            <second ref="scintillatorHoleSquare" />
-            <positionref ref="scintillatorBoxSolidWithHoleRightHolePosition" />
-        </subtraction>
-        <subtraction name="scintillatorBoxSolidWithLeftHole">
-            <first ref="scintillatorBoxSolid" />
-            <second ref="scintillatorHoleSquare" />
-            <positionref ref="scintillatorBoxSolidWithHoleLeftHolePosition" />
-        </subtraction>
-
-
-    </solids>
-    <!-- ***END SOLIDS*** -->
-    <!-- ********************* -->
-    <!-- ***BEGIN STRUCTURE*** -->
-    <!-- CHAMBER -->
-    <structure>
-        <volume name="gasVolume">
-            <materialref ref="Ar_iC4H10" />
-            <solidref ref="gasSolid" />
-        </volume>
-
-        <volume name="kaptonReadoutVolume">
-            <materialref ref="Kapton" />
-            <solidref ref="kaptonReadout" />
-        </volume>
-
-        <volume name="copperReadoutVolume">
-            <materialref ref="Copper" />
-            <solidref ref="copperReadout" />
-        </volume>
-
-        <volume name="mylarCathodeVolume">
-            <materialref ref="Mylar" />
-            <solidref ref="mylarCathode" />
-        </volume>
-
-        <volume name="backplateVolume">
-            <materialref ref="Copper" />
-            <solidref ref="backplate" />
-        </volume>
-
-        <volume name="copperChamberVolume">
-            <materialref ref="Copper" />
-            <solidref ref="copperChamber" />
-        </volume>
-
-        <volume name="teflonCoverChamberVolume">
-            <materialref ref="PTFE" />
-            <solidref ref="teflonCoverChamber" />
-        </volume>
-
-        <volume name="copperCathodeVolume">
-            <materialref ref="Copper" />
-            <solidref ref="copperCathode" />
-        </volume>
-
-        <volume name="copperChamberTopVolume">
-            <materialref ref="Copper" />
-            <solidref ref="copperChamberTop" />
-        </volume>
-
-        <volume name="copperPipeVolume">
-            <materialref ref="Copper" />
-            <solidref ref="copperPipe" />
-        </volume>
-
-        <volume name="teflonPipeVolume">
-            <materialref ref="PTFE" />
-            <solidref ref="teflonPipe" />
-        </volume>
-
-        <volume name="teflonCoverCathodeVolume">
-            <materialref ref="PTFE" />
-            <solidref ref="teflonCoverCathode" />
-        </volume>
-
-        <volume name="VacuumPipeVolume">
-            <materialref ref="Vacuum" />
-            <solidref ref="VacuumPipe" />
-        </volume>
-
-        <volume name="cathodePatternVolume">
-            <materialref ref="Copper" />
-            <solidref ref="cathodePattern" />
-        </volume>
-
-        <volume name="vacuumCathodePatternVolume">
-            <materialref ref="Vacuum" />
-            <solidref ref="vacuumCathodePattern" />
-        </volume>
-    <!-- PIPE -->
-        <volume name="detectorCopperPipe">
-            <materialref ref="Copper" />
-            <solidref ref="copperPipeHollow" />
-        </volume>
-
-        <volume name="teflonPipeInCopper">
-            <materialref ref="PTFE" />
-            <solidref ref="teflonPipeSolid" />
-        </volume>
-
-        <volume name="pipeFilling">
-            <materialref ref="Vacuum" />
-            <solidref ref="pipeFillingSolid" />
-        </volume>
-    <!-- SHIELDING -->
-        <volume name="leadBoxVolume">
-            <materialref ref="Lead" />
-            <solidref ref="leadBoxWithShaft" />
-        </volume>
-    <!-- STEEL PIPE -->
-        <volume name="steelPipeVolume">
-            <materialref ref="Stainlesssteel" />
-            <solidref ref="steelPipe" />
-        </volume>
-        <volume name="steelPipeVacuum">
-            <materialref ref="Vacuum" />
-            <solidref ref="steelPipeFilling" />
-        </volume>
-    <!-- VETOES -->
-        <volume name="scintillatorVolume">
-            <materialref ref="BC408" />
-            <solidref ref="scintillatorBoxSolid" />
-        </volume>
-
-        <volume name="scintillatorVolumeWithRightHole">
-            <materialref ref="BC408" />
-            <solidref ref="scintillatorBoxSolidWithRightHole" />
-        </volume>
-
-        <volume name="scintillatorVolumeWithLeftHole">
-            <materialref ref="BC408" />
-            <solidref ref="scintillatorBoxSolidWithLeftHole" />
-        </volume>
-
-    <!-- WORLD (physical volumes) -->
-        <volume name="World">
-            <!-- WORLD -->
-            <materialref ref="Air" />
-            <solidref ref="WorldSolid" />
-            <!-- CHAMBER -->
-            <physvol name="gas">
-                <volumeref ref="gasVolume" />
-                <position name="gasPosition" unit="mm" x="0" y="0" z="0" />
-            </physvol>
-
-            <physvol name="kapton4Readout">
-                <volumeref ref="kaptonReadoutVolume" />
-                <positionref ref="kaptonReadoutPosition" />
-            </physvol>
-
-            <physvol name="CuReadout">
-                <volumeref ref="copperReadoutVolume" />
-                <positionref ref="copperReadoutPosition" />
-                <rotationref ref="copperReadoutRotation" />
-            </physvol>
-
-            <physvol name="CuBackplate">
-                <volumeref ref="backplateVolume" />
-                <position name="backplatePosition" unit="mm" x="0" y="0" z="-21.0" />
-            </physvol>
-
-            <physvol name="CuChamber">
-                <volumeref ref="copperChamberVolume" />
-                <position name="copperChamberPosition" unit="mm" x="0" y="0" z="7.5" />
-            </physvol>
-
-            <physvol name="PTFECoverChamber">
-                <volumeref ref="teflonCoverChamberVolume" />
-                <position name="teflonCoverChamberPosition" unit="mm" x="0" y="0" z="7.5" />
-            </physvol>
-
-            <physvol name="mylarCat">
-                <volumeref ref="mylarCathodeVolume" />
-                <position name="mylarCathodePositionVolume" unit="mm" x="0" y="0" z="14.998" />
-            </physvol>
-
-            <physvol name="CuCathode">
-                <volumeref ref="copperCathodeVolume" />
-                <position name="copperCathodePosition" unit="mm" x="0" y="0" z="22.5" />
-            </physvol>
-
-            <physvol name="CuChamberTop">
-                <volumeref ref="copperChamberTopVolume" />
-                <position name="copperChamberTopPosition" unit="mm" x="0" y="0" z="38.5" />
-            </physvol>
+        
+		<tube aunit="deg" deltaphi="360" lunit="mm" name="scintillatorHoleCircular" rmax="75.0" rmin="0" startphi="0" x="100.0" y="375.0" z="60.0"/>
+		
+        
+		<box lunit="mm" name="scintillatorHoleSquare" x="150" y="150" z="60.0"/>
+		
+        
+		<subtraction name="scintillatorBoxSolidWithRightHole">
+			
+            
+			<first ref="scintillatorBoxSolid"/>
+			
+            
+			<second ref="scintillatorHoleSquare"/>
+			
+            
+			<positionref ref="scintillatorBoxSolidWithHoleRightHolePosition"/>
+			
+        
+		</subtraction>
+		
+        
+		<subtraction name="scintillatorBoxSolidWithLeftHole">
+			
+            
+			<first ref="scintillatorBoxSolid"/>
+			
+            
+			<second ref="scintillatorHoleSquare"/>
+			
+            
+			<positionref ref="scintillatorBoxSolidWithHoleLeftHolePosition"/>
+			
+        
+		</subtraction>
+		
 
 
-            <physvol name="PTFECoverCathode">
-                <volumeref ref="teflonCoverCathodeVolume" />
-                <position name="teflonCoverCathodePosition" unit="mm" x="0" y="0" z="32.5" />
-            </physvol>
+    
+	</solids>
+	
+    
+	<!-- ***END SOLIDS*** -->
+	
+    
+	<!-- ********************* -->
+	
+    
+	<!-- ***BEGIN STRUCTURE*** -->
+	
+    
+	<!-- CHAMBER -->
+	
+    
+	<structure>
+		
+        
+		<volume name="gasVolume">
+			
+            
+			<materialref ref="Ar_iC4H10"/>
+			
+            
+			<solidref ref="gasSolid"/>
+			
+        
+		</volume>
+		
 
-            <physvol name="CuCathodePattern">
-                <volumeref ref="cathodePatternVolume" />
-                <position name="cathodePatternPosition" unit="mm" x="0" y="0" z="16.5" />
-            </physvol>
+        
+		<volume name="kaptonReadoutVolume">
+			
+            
+			<materialref ref="Kapton"/>
+			
+            
+			<solidref ref="kaptonReadout"/>
+			
+        
+		</volume>
+		
 
-            <physvol name="VacCathodePattern">
-                <volumeref ref="vacuumCathodePatternVolume" />
-                <position name="vacuumCathodePatternPosition" unit="mm" x="0" y="0" z="16.5" />
-            </physvol>
-            <!-- PIPE -->
-            <physvol name="DetectorTeflonPipe">
-                <volumeref ref="teflonPipeInCopper" />
-                <position name="detectorTeflonPipePosition" unit="mm" x="0" y="0" z="58.95" />
-            </physvol>
+        
+		<volume name="copperReadoutVolume">
+			
+            
+			<materialref ref="Copper"/>
+			
+            
+			<solidref ref="copperReadout"/>
+			
+        
+		</volume>
+		
 
-            <physvol name="DetectorCopperPipe">
-                <volumeref ref="detectorCopperPipe" />
-                <position name="detectorCopperPipePosition" unit="mm" x="0" y="0" z="55.5" />
-            </physvol>
+        
+		<volume name="mylarCathodeVolume">
+			
+            
+			<materialref ref="Mylar"/>
+			
+            
+			<solidref ref="mylarCathode"/>
+			
+        
+		</volume>
+		
 
-            <physvol name="PipeFilling">
-                <volumeref ref="pipeFilling" />
-                <position name="detectorFillingPipePosition" unit="mm" x="0" y="0" z="178.2475" />
-            </physvol>
-            <!-- SHIELDING -->
-            <physvol name="LeadShielding">
-                <volumeref ref="leadBoxVolume" />
-                <position name="leadBoxPosition" unit="mm" x="0" y="0" z="32.0" />
-            </physvol>
-            <!-- STEEL PIPE -->
-            <physvol name="SteelPipe">
-                <volumeref ref="steelPipeVolume" />
-                <position name="steelPipePosition" unit="mm" x="0" y="0" z="602.0" />
-            </physvol>
-            <physvol name="SteelPipeVacuum">
-                <volumeref ref="steelPipeVacuum" />
-                <position name="steelPipePositionVacuum" unit="mm" x="0" y="0" z="602.0" />
-            </physvol>
-            <!-- BEGIN VETOES -->
-            <!-- BEGIN veto front-->
-            <physvol name="vetoFront1of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoFront1of4Position" unit="mm" x="-300.0" y="100" z="407.0" />
-                <rotationref ref="vetoFrontRotation" />
-            </physvol>
-            <physvol name="vetoFront2of4">
-                <volumeref ref="scintillatorVolumeWithRightHole" />
-                <position name="vetoFront2of4Position" unit="mm" x="-100.0" y="100" z="407.0" />
-                <rotationref ref="vetoFrontRotation" />
-            </physvol>
-            <physvol name="vetoFront3of4">
-                <volumeref ref="scintillatorVolumeWithLeftHole" />
-                <position name="vetoFront3of4Position" unit="mm" x="100.0" y="100" z="407.0" />
-                <rotationref ref="vetoFrontRotation" />
-            </physvol>
-            <physvol name="vetoFront4of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoFront4of4Position" unit="mm" x="300.0" y="100" z="407.0" />
-                <rotationref ref="vetoFrontRotation" />
-            </physvol>
-            <!-- END veto front-->
+        
+		<volume name="backplateVolume">
+			
+            
+			<materialref ref="Copper"/>
+			
+            
+			<solidref ref="backplate"/>
+			
+        
+		</volume>
+		
 
-            <!-- BEGIN veto back-->
-            <physvol name="vetoBack1of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoBack1of3Position" unit="mm" x="-75" y="-175.0" z="-343.0" />
-                <rotationref ref="vetoBackRotation" />
-            </physvol>
-            <physvol name="vetoBack2of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoBack2of3Position" unit="mm" x="-75" y="25.0" z="-343.0" />
-                <rotationref ref="vetoBackRotation" />
-            </physvol>
-            <physvol name="vetoBack3of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoBack3of3Position" unit="mm" x="-75" y="225.0" z="-343.0" />
-                <rotationref ref="vetoBackRotation" />
-            </physvol>
-            <!-- END veto back-->
+        
+		<volume name="copperChamberVolume">
+			
+            
+			<materialref ref="Copper"/>
+			
+            
+			<solidref ref="copperChamber"/>
+			
+        
+		</volume>
+		
 
-            <!-- BEGIN veto top-->
-            <physvol name="vetoTop1of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoTop1of4Position" unit="mm" x="-350.0" y="350.0" z="7.0" />
-                <rotationref ref="vetoTopRotation" />
-            </physvol>
-            <physvol name="vetoTop2of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoTop2of4Position" unit="mm" x="-150.0" y="350.0" z="7.0" />
-                <rotationref ref="vetoTopRotation" />
-            </physvol>
-            <physvol name="vetoTop3of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoTop3of4Position" unit="mm" x="50.0" y="350.0" z="7.0" />
-                <rotationref ref="vetoTopRotation" />
-            </physvol>
-            <physvol name="vetoTop4of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoTop4of4Position" unit="mm" x="250.0" y="350.0" z="7.0" />
-                <rotationref ref="vetoTopRotation" />
-            </physvol>
-            <!-- END veto top-->
+        
+		<volume name="teflonCoverChamberVolume">
+			
+            
+			<materialref ref="PTFE"/>
+			
+            
+			<solidref ref="teflonCoverChamber"/>
+			
+        
+		</volume>
+		
 
-            <!-- BEGIN veto bottom-->
-            <physvol name="vetoBottom1of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoBottom1of4Position" unit="mm" x="-350.0" y="-355.0" z="7.0" />
-                <rotationref ref="vetoBottomRotation" />
-            </physvol>
-            <physvol name="vetoBottom2of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoBottom2of4Position" unit="mm" x="-150.0" y="-355.0" z="7.0" />
-                <rotationref ref="vetoBottomRotation" />
-            </physvol>
-            <physvol name="vetoBottom3of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoBottom3of4Position" unit="mm" x="50.0" y="-355.0" z="7.0" />
-                <rotationref ref="vetoBottomRotation" />
-            </physvol>
-            <physvol name="vetoBottom4of4">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoBottom4of4Position" unit="mm" x="250.0" y="-355.0" z="7.0" />
-                <rotationref ref="vetoBottomRotation" />
-            </physvol>
-            <!-- END veto bottom-->
+        
+		<volume name="copperCathodeVolume">
+			
+            
+			<materialref ref="Copper"/>
+			
+            
+			<solidref ref="copperCathode"/>
+			
+        
+		</volume>
+		
 
-            <!-- BEGIN veto east-->
-            <physvol name="vetoEast1of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoEast1of3Position" unit="mm" x="-425.0" y="-175.0" z="57.0" />
-                <rotationref ref="vetoEastRotation" />
-            </physvol>
-            <physvol name="vetoEast2of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoEast2of3Position" unit="mm" x="-425.0" y="25.0" z="57.0" />
-                <rotationref ref="vetoEastRotation" />
-            </physvol>
-            <physvol name="vetoEast3of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoEast3of3Position" unit="mm" x="-425.0" y="225.0" z="57.0" />
-                <rotationref ref="vetoEastRotation" />
-            </physvol>
-            <!-- END veto east-->
+        
+		<volume name="copperChamberTopVolume">
+			
+            
+			<materialref ref="Copper"/>
+			
+            
+			<solidref ref="copperChamberTop"/>
+			
+        
+		</volume>
+		
 
-            <!-- BEGIN veto west-->
-            <physvol name="vetoWest1of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoWest1of3Position" unit="mm" x="325.0" y="-175.0" z="7.0" />
-                <rotationref ref="vetoWestRotation" />
-            </physvol>
-            <physvol name="vetoWest2of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoWest2of3Position" unit="mm" x="325.0" y="25.0" z="7.0" />
-                <rotationref ref="vetoWestRotation" />
-            </physvol>
-            <physvol name="vetoWest3of3">
-                <volumeref ref="scintillatorVolume" />
-                <position name="vetoWest3of3Position" unit="mm" x="325.0" y="225.0" z="7.0" />
-                <rotationref ref="vetoWestRotation" />
-            </physvol>
-            <!-- END veto west-->
-            <!-- END VETOES -->
-        </volume>
-    </structure>
-    <!-- ***END STRUCTURE*** -->
-    <!-- ********************* -->
-    <!-- ***BEGIN SETUP*** -->
-    <setup name="Default" version="1.0">
-        <world ref="World" />
-    </setup>
-    <!-- ***END SETUP*** -->
+        
+		<volume name="copperPipeVolume">
+			
+            
+			<materialref ref="Copper"/>
+			
+            
+			<solidref ref="copperPipe"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="teflonPipeVolume">
+			
+            
+			<materialref ref="PTFE"/>
+			
+            
+			<solidref ref="teflonPipe"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="teflonCoverCathodeVolume">
+			
+            
+			<materialref ref="PTFE"/>
+			
+            
+			<solidref ref="teflonCoverCathode"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="VacuumPipeVolume">
+			
+            
+			<materialref ref="Vacuum"/>
+			
+            
+			<solidref ref="VacuumPipe"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="cathodePatternVolume">
+			
+            
+			<materialref ref="Copper"/>
+			
+            
+			<solidref ref="cathodePattern"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="vacuumCathodePatternVolume">
+			
+            
+			<materialref ref="Vacuum"/>
+			
+            
+			<solidref ref="vacuumCathodePattern"/>
+			
+        
+		</volume>
+		
+    
+	</structure>
+	
+    
+	<!-- PIPE -->
+	
+    
+	<structure>
+		
+        
+		<volume name="detectorCopperPipe">
+			
+            
+			<materialref ref="Copper"/>
+			
+            
+			<solidref ref="copperPipeHollow"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="teflonPipeInCopper">
+			
+            
+			<materialref ref="PTFE"/>
+			
+            
+			<solidref ref="teflonPipeSolid"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="pipeFilling">
+			
+            
+			<materialref ref="Vacuum"/>
+			
+            
+			<solidref ref="pipeFillingSolid"/>
+			
+        
+		</volume>
+		
+    
+	</structure>
+	
+    
+	<!-- SHIELDING -->
+	
+    
+	<structure>
+		
+        
+		<volume name="leadBoxVolume">
+			
+            
+			<materialref ref="Lead"/>
+			
+            
+			<solidref ref="leadBoxWithShaft"/>
+			
+        
+		</volume>
+		
+    
+	</structure>
+	
+    
+	<!-- STEEL PIPE -->
+	
+    
+	<structure>
+		
+        
+		<volume name="steelPipeVolume">
+			
+            
+			<materialref ref="Stainlesssteel"/>
+			
+            
+			<solidref ref="steelPipe"/>
+			
+        
+		</volume>
+		
+        
+		<volume name="steelPipeVacuum">
+			
+            
+			<materialref ref="Vacuum"/>
+			
+            
+			<solidref ref="steelPipeFilling"/>
+			
+        
+		</volume>
+		
+    
+	</structure>
+	
+    
+	<!-- VETOES -->
+	
+    
+	<structure>
+		
+        
+		<volume name="scintillatorVolume">
+			
+            
+			<materialref ref="BC408"/>
+			
+            
+			<solidref ref="scintillatorBoxSolid"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="scintillatorVolumeWithRightHole">
+			
+            
+			<materialref ref="BC408"/>
+			
+            
+			<solidref ref="scintillatorBoxSolidWithRightHole"/>
+			
+        
+		</volume>
+		
+
+        
+		<volume name="scintillatorVolumeWithLeftHole">
+			
+            
+			<materialref ref="BC408"/>
+			
+            
+			<solidref ref="scintillatorBoxSolidWithLeftHole"/>
+			
+        
+		</volume>
+		
+
+    
+	</structure>
+	
+    
+	<!-- WORLD (physical volumes) -->
+	
+    
+	<structure>
+		
+        
+		<volume name="World">
+			
+            
+			<!-- WORLD -->
+			
+            
+			<materialref ref="Air"/>
+			
+            
+			<solidref ref="WorldSolid"/>
+			
+            
+			<!-- CHAMBER -->
+			
+            
+			<physvol name="gas">
+				
+                
+				<volumeref ref="gasVolume"/>
+				
+                
+				<position name="gasPosition" unit="mm" x="0" y="0" z="0"/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="kapton4Readout">
+				
+                
+				<volumeref ref="kaptonReadoutVolume"/>
+				
+                
+				<positionref ref="kaptonReadoutPosition"/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="CuReadout">
+				
+                
+				<volumeref ref="copperReadoutVolume"/>
+				
+                
+				<positionref ref="copperReadoutPosition"/>
+				
+                
+				<rotationref ref="copperReadoutRotation"/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="CuBackplate">
+				
+                
+				<volumeref ref="backplateVolume"/>
+				
+                
+				<position name="backplatePosition" unit="mm" x="0" y="0" z="-chamberLength/2. - backplateThickness/2."/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="CuChamber">
+				
+                
+				<volumeref ref="copperChamberVolume"/>
+				
+                
+				<position name="copperChamberPosition" unit="mm" x="0" y="0" z="cathodeThickness/2."/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="PTFECoverChamber">
+				
+                
+				<volumeref ref="teflonCoverChamberVolume"/>
+				
+                
+				<position name="teflonCoverChamberPosition" unit="mm" x="0" y="0" z="copperCathodeThickness/2."/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="mylarCat">
+				
+                
+				<volumeref ref="mylarCathodeVolume"/>
+				
+                
+				<position name="mylarCathodePositionVolume" unit="mm" x="0" y="0" z="mylarCathodePositionZ"/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="CuCathode">
+				
+                
+				<volumeref ref="copperCathodeVolume"/>
+				
+                
+				<position name="copperCathodePosition" unit="mm" x="0" y="0" z="chamberLength/2.+copperCathodeThickness/2."/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="CuChamberTop">
+				
+                
+				<volumeref ref="copperChamberTopVolume"/>
+				
+                
+				<position name="copperChamberTopPosition" unit="mm" x="0" y="0" z="chamberLength/2.+copperCathodeThickness+copperChamberTopThickness/2."/>
+				
+            
+			</physvol>
+			
+
+
+            
+			<physvol name="PTFECoverCathode">
+				
+                
+				<volumeref ref="teflonCoverCathodeVolume"/>
+				
+                
+				<position name="teflonCoverCathodePosition" unit="mm" x="0" y="0" z="chamberLength/2.+ cathodePatternThickness/2.+copperCathodeThickness/2.+copperChamberTopThickness/2."/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="CuCathodePattern">
+				
+                
+				<volumeref ref="cathodePatternVolume"/>
+				
+                
+				<position name="cathodePatternPosition" unit="mm" x="0" y="0" z="chamberLength/2.+cathodePatternThickness/2."/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="VacCathodePattern">
+				
+                
+				<volumeref ref="vacuumCathodePatternVolume"/>
+				
+                
+				<position name="vacuumCathodePatternPosition" unit="mm" x="0" y="0" z="chamberLength/2.+cathodePatternThickness/2."/>
+				
+            
+			</physvol>
+			
+            
+			<!-- PIPE -->
+			
+            
+			<physvol name="DetectorTeflonPipe">
+				
+                
+				<volumeref ref="teflonPipeInCopper"/>
+				
+                
+				<position name="detectorTeflonPipePosition" unit="mm" x="0" y="0" z="copperPipeZInWorld + teflonWithRespectToPipeOffset"/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="DetectorCopperPipe">
+				
+                
+				<volumeref ref="detectorCopperPipe"/>
+				
+                
+				<position name="detectorCopperPipePosition" unit="mm" x="0" y="0" z="copperPipeZInWorld"/>
+				
+            
+			</physvol>
+			
+
+            
+			<physvol name="PipeFilling">
+				
+                
+				<volumeref ref="pipeFilling"/>
+				
+                
+				<position name="detectorFillingPipePosition" unit="mm" x="0" y="0" z="copperPipeZInWorld + vacuumWithRespectToPipeOffset"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- SHIELDING -->
+			
+            
+			<physvol name="LeadShielding">
+				
+                
+				<volumeref ref="leadBoxVolume"/>
+				
+                
+				<position name="leadBoxPosition" unit="mm" x="0" y="0" z="0 - shieldingOffset"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- STEEL PIPE -->
+			
+            
+			<physvol name="SteelPipe">
+				
+                
+				<volumeref ref="steelPipeVolume"/>
+				
+                
+				<position name="steelPipePosition" unit="mm" x="0" y="0" z="copperPipeZInWorld + steelPipeWithRespectToCopperPipeOffset"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="SteelPipeVacuum">
+				
+                
+				<volumeref ref="steelPipeVacuum"/>
+				
+                
+				<position name="steelPipePositionVacuum" unit="mm" x="0" y="0" z="copperPipeZInWorld + steelPipeWithRespectToCopperPipeOffset"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- BEGIN VETOES -->
+			
+            
+			<!-- BEGIN veto front-->
+			
+            
+			<physvol name="vetoFront1of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoFront1of4Position" unit="mm" x="vetoFrontPosX - 1.5*scintillatorShortSide" y="vetoFrontPosY" z="vetoFrontPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoFrontRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoFront2of4">
+				
+                
+				<volumeref ref="scintillatorVolumeWithRightHole"/>
+				
+                
+				<position name="vetoFront2of4Position" unit="mm" x="vetoFrontPosX - 0.5*scintillatorShortSide" y="vetoFrontPosY" z="vetoFrontPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoFrontRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoFront3of4">
+				
+                
+				<volumeref ref="scintillatorVolumeWithLeftHole"/>
+				
+                
+				<position name="vetoFront3of4Position" unit="mm" x="vetoFrontPosX + 0.5*scintillatorShortSide" y="vetoFrontPosY" z="vetoFrontPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoFrontRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoFront4of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoFront4of4Position" unit="mm" x="vetoFrontPosX + 1.5*scintillatorShortSide" y="vetoFrontPosY" z="vetoFrontPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoFrontRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- END veto front-->
+			
+
+            
+			<!-- BEGIN veto back-->
+			
+            
+			<physvol name="vetoBack1of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoBack1of3Position" unit="mm" x="vetoBackPosX" y="vetoBackPosY - 1*scintillatorShortSide" z="vetoBackPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoBackRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoBack2of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoBack2of3Position" unit="mm" x="vetoBackPosX" y="vetoBackPosY - 0*scintillatorShortSide" z="vetoBackPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoBackRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoBack3of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoBack3of3Position" unit="mm" x="vetoBackPosX" y="vetoBackPosY + 1*scintillatorShortSide" z="vetoBackPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoBackRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- END veto back-->
+			
+
+            
+			<!-- BEGIN veto top-->
+			
+            
+			<physvol name="vetoTop1of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoTop1of4Position" unit="mm" x="vetoTopPosX - 1.5*scintillatorShortSide" y="vetoTopPosY" z="vetoTopPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoTopRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoTop2of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoTop2of4Position" unit="mm" x="vetoTopPosX - 0.5*scintillatorShortSide" y="vetoTopPosY" z="vetoTopPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoTopRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoTop3of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoTop3of4Position" unit="mm" x="vetoTopPosX + 0.5*scintillatorShortSide" y="vetoTopPosY" z="vetoTopPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoTopRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoTop4of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoTop4of4Position" unit="mm" x="vetoTopPosX + 1.5*scintillatorShortSide" y="vetoTopPosY" z="vetoTopPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoTopRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- END veto top-->
+			
+
+            
+			<!-- BEGIN veto bottom-->
+			
+            
+			<physvol name="vetoBottom1of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoBottom1of4Position" unit="mm" x="vetoBottomPosX - 1.5*scintillatorShortSide" y="vetoBottomPosY" z="vetoBottomPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoBottomRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoBottom2of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoBottom2of4Position" unit="mm" x="vetoBottomPosX - 0.5*scintillatorShortSide" y="vetoBottomPosY" z="vetoBottomPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoBottomRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoBottom3of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoBottom3of4Position" unit="mm" x="vetoBottomPosX + 0.5*scintillatorShortSide" y="vetoBottomPosY" z="vetoBottomPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoBottomRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoBottom4of4">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoBottom4of4Position" unit="mm" x="vetoBottomPosX + 1.5*scintillatorShortSide" y="vetoBottomPosY" z="vetoBottomPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoBottomRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- END veto bottom-->
+			
+
+            
+			<!-- BEGIN veto east-->
+			
+            
+			<physvol name="vetoEast1of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoEast1of3Position" unit="mm" x="vetoEastPosX" y="vetoEastPosY - 1*scintillatorShortSide" z="vetoEastPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoEastRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoEast2of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoEast2of3Position" unit="mm" x="vetoEastPosX" y="vetoEastPosY + 0*scintillatorShortSide" z="vetoEastPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoEastRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoEast3of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoEast3of3Position" unit="mm" x="vetoEastPosX" y="vetoEastPosY  + 1*scintillatorShortSide" z="vetoEastPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoEastRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- END veto east-->
+			
+
+            
+			<!-- BEGIN veto west-->
+			
+            
+			<physvol name="vetoWest1of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoWest1of3Position" unit="mm" x="vetoWestPosX" y="vetoWestPosY - 1*scintillatorShortSide" z="vetoWestPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoWestRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoWest2of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoWest2of3Position" unit="mm" x="vetoWestPosX" y="vetoWestPosY + 0*scintillatorShortSide" z="vetoWestPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoWestRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<physvol name="vetoWest3of3">
+				
+                
+				<volumeref ref="scintillatorVolume"/>
+				
+                
+				<position name="vetoWest3of3Position" unit="mm" x="vetoWestPosX" y="vetoWestPosY  + 1*scintillatorShortSide" z="vetoWestPosZ - shieldingOffset"/>
+				
+                
+				<rotationref ref="vetoWestRotation"/>
+				
+            
+			</physvol>
+			
+            
+			<!-- END veto west-->
+			
+            
+			<!-- END VETOES -->
+			
+        
+		</volume>
+		
+    
+	</structure>
+	
+    
+	<!-- ***END STRUCTURE*** -->
+	
+    
+	<!-- ********************* -->
+	
+    
+	<!-- ***BEGIN SETUP*** -->
+	
+    
+	<setup name="Default" version="1.0">
+		
+        
+		<world ref="World"/>
+		
+    
+	</setup>
+	
+    
+	<!-- ***END SETUP*** -->
+	
+
 
 </gdml>
+<!-- <?xml version="1.0" encoding="UTF-8" standalone="no" ?> -->

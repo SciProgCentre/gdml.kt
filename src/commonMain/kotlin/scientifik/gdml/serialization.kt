@@ -1,23 +1,28 @@
 package scientifik.gdml
 
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.DoubleDescriptor
 import kotlinx.serialization.modules.SerializersModule
 
 @Serializer(Number::class)
 object NumberSerializer : KSerializer<Number> {
-    override val descriptor: SerialDescriptor = DoubleDescriptor
+    override val descriptor: SerialDescriptor = PrimitiveDescriptor("kotlin.Number", PrimitiveKind.DOUBLE)
 
     override fun deserialize(decoder: Decoder): Number {
         return decoder.decodeDouble()
     }
 
-    override fun serialize(encoder: Encoder, obj: Number) {
-        encoder.encodeDouble(obj.toDouble())
+    override fun serialize(encoder: Encoder, value: Number) {
+        encoder.encodeDouble(value.toDouble())
     }
 }
 
 val gdmlModule = SerializersModule {
+    polymorphic<GDMLContainer> {
+        subclass(GDMLDefineContainer.serializer())
+        subclass(GDMLMaterialContainer.serializer())
+        subclass(GDMLSolidContainer.serializer())
+        subclass(GDMLStructure.serializer())
+    }
     polymorphic<GDMLDefine> {
         GDMLRotation::class with GDMLRotation.serializer()
         GDMLPosition::class with GDMLPosition.serializer()
@@ -36,7 +41,7 @@ val gdmlModule = SerializersModule {
         GDMLTube::class with GDMLTube.serializer()
         GDMLXtru::class with GDMLXtru.serializer()
         GDMLPolyhedra::class with GDMLPolyhedra.serializer()
-        addSubclass(GDMLCone.serializer())
+        subclass(GDMLCone.serializer())
         GDMLUnion::class with GDMLUnion.serializer()
         GDMLSubtraction::class with GDMLSubtraction.serializer()
         GDMLIntersection::class with GDMLIntersection.serializer()

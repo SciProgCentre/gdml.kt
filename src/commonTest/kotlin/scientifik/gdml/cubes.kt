@@ -7,6 +7,7 @@ fun cubes(): GDML = GDML {
         val air = ref<GDMLMaterial>("G4_AIR")
         val tubeMaterial = ref<GDMLMaterial>("tube")
         val boxMaterial = ref<GDMLMaterial>("box")
+
         val segment = solids.tube("segment", 20, 5.0) {
             rmin = 17
             deltaphi = 60
@@ -26,6 +27,7 @@ fun cubes(): GDML = GDML {
                 }
             }
         }
+
         world = volume("world", air, worldBox.ref()) {
             for (i in 0 until 3) {
                 for (j in 0 until 3) {

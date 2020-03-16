@@ -13,11 +13,29 @@ annotation class GDMLApi
 @Serializable
 @SerialName("gdml")
 class GDML {
-    val define = GDMLDefineContainer()
-    val materials = GDMLMaterialContainer()
-    val solids = GDMLSolidContainer()
-    val structure = GDMLStructure()
+
+    //@XmlPolyChildren(["define", "materials", "solids", "structure"])
+    val containers: ArrayList<@Polymorphic GDMLContainer> = arrayListOf(
+        GDMLDefineContainer(),
+        GDMLMaterialContainer(),
+        GDMLSolidContainer(),
+        GDMLStructure()
+    )
+
     val setup = GDMLSetup()
+
+    val define: GDMLDefineContainer
+        get() = (containers.filterIsInstance<GDMLDefineContainer>().firstOrNull()
+            ?: GDMLDefineContainer().also { containers.add(0, it) })
+    val materials: GDMLMaterialContainer
+        get() = (containers.filterIsInstance<GDMLMaterialContainer>().firstOrNull()
+            ?: GDMLMaterialContainer().also { containers.add(it) })
+    val solids: GDMLSolidContainer
+        get() = (containers.filterIsInstance<GDMLSolidContainer>().firstOrNull()
+            ?: GDMLSolidContainer().also { containers.add(it) })
+    val structure: GDMLStructure
+        get() = (containers.filterIsInstance<GDMLStructure>().firstOrNull()
+            ?: GDMLStructure().also { containers.add(it) })
 
     @GDMLApi
     inline fun define(block: GDMLDefineContainer.() -> Unit) {
@@ -39,18 +57,27 @@ class GDML {
         structure.apply(block)
     }
 
-    inline fun <reified T : GDMLDefine> getDefine(ref: String): T? = define[ref]
-    inline fun <reified T : GDMLSolid> getSolid(ref: String): T? = solids[ref]
-    inline fun <reified T : GDMLMaterial> getMaterial(ref: String): T? = materials[ref]
-    inline fun <reified T : GDMLGroup> getGroup(ref: String): T? = structure[ref]
+    inline fun <reified T : GDMLDefine> getDefine(ref: String): T? =
+        containers.filterIsInstance<GDMLDefineContainer>().map { it.get<T>(ref) }.single()
+
+    inline fun <reified T : GDMLMaterial> getMaterial(ref: String): T? =
+        containers.filterIsInstance<GDMLMaterialContainer>().map { it.get<T>(ref) }.single()
+
+    inline fun <reified T : GDMLSolid> getSolid(ref: String): T? =
+        containers.filterIsInstance<GDMLSolidContainer>().map { it.get<T>(ref) }.single()
+
+    inline fun <reified T : GDMLGroup> getGroup(ref: String): T? =
+        containers.filterIsInstance<GDMLStructure>().map { it.get<T>(ref) }.single()
 
     var world: GDMLGroup
         get() = setup.world?.resolve(this)
             ?: error("The GDML structure does not contain a world volume")
         set(value) {
             //Add world element if it is not registered
-            if (structure.getGroup(value.name) == null) {
-                structure.content.add(value)
+            structure {
+                if (getGroup(value.name) == null) {
+                    content.add(value)
+                }
             }
             setup.world = value.ref()
         }
@@ -84,8 +111,11 @@ inline fun <reified T : GDMLMaterial> GDMLRef<T>.resolve(root: GDML): T? = root.
 inline fun <reified T : GDMLGroup> GDMLRef<T>.resolve(root: GDML): T? = root.getGroup(ref)
 
 @Serializable
+sealed class GDMLContainer
+
+@Serializable
 @SerialName("define")
-class GDMLDefineContainer {
+class GDMLDefineContainer : GDMLContainer() {
 
     val content = ArrayList<@Polymorphic GDMLDefine>()
 
@@ -135,7 +165,7 @@ class GDMLDefineContainer {
 
 @Serializable
 @SerialName("materials")
-class GDMLMaterialContainer {
+class GDMLMaterialContainer : GDMLContainer() {
 
     private val content = ArrayList<@Polymorphic GDMLMaterial>()
 
@@ -153,7 +183,7 @@ class GDMLMaterialContainer {
 
 @Serializable
 @SerialName("solids")
-class GDMLSolidContainer {
+class GDMLSolidContainer : GDMLContainer() {
 
     val content = ArrayList<@Polymorphic GDMLSolid>()
 
@@ -238,7 +268,7 @@ class GDMLSolidContainer {
 
 @Serializable
 @SerialName("structure")
-class GDMLStructure {
+class GDMLStructure : GDMLContainer() {
 
     val content = ArrayList<@Polymorphic GDMLGroup>()
 
@@ -294,5 +324,7 @@ fun GDML.world(
     name: String = "world",
     block: GDMLAssembly.() -> Unit
 ) {
-    structure.assembly(name, block).also { setup.world = it.ref() }
+    structure {
+        assembly(name, block).also { setup.world = it.ref() }
+    }
 }

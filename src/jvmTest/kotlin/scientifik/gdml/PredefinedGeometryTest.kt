@@ -15,21 +15,21 @@ class PredefinedGeometryTest {
                 prefix = "[\"",
                 separator = "\", \"",
                 postfix = "\"]"
-            ) { it.serializer().descriptor.name })
+            ) { it.serializer().descriptor.serialName })
 
         println(
             GDMLMaterial::class.sealedSubclasses.joinToString(
                 prefix = "[\"",
                 separator = "\", \"",
                 postfix = "\"]"
-            ) { it.serializer().descriptor.name })
+            ) { it.serializer().descriptor.serialName })
 
         println(
             GDMLSolid::class.sealedSubclasses.joinToString(
                 prefix = "[\"",
                 separator = "\", \"",
                 postfix = "\"]"
-            ) { it.serializer().descriptor.name })
+            ) { it.serializer().descriptor.serialName })
     }
 
     @Test
