@@ -24,9 +24,15 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
+        commonMain{
             dependencies {
                 api(kotlin("reflect"))
+            }
+        }
+
+        jvmMain{
+            dependencies {
+                runtimeOnly("com.fasterxml.woodstox:woodstox-core:5.0.3")
             }
         }
     }

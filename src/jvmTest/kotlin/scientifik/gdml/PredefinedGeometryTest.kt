@@ -5,6 +5,7 @@ import nl.adaptivity.xmlutil.StAXReader
 import org.junit.Test
 import scientifik.gdml.*
 import java.io.File
+import kotlin.test.Ignore
 
 class PredefinedGeometryTest {
 
@@ -54,8 +55,9 @@ class PredefinedGeometryTest {
     }
 
     @Test
-    fun readIAXO(){
-        val file = File("gdml-source/babyIAXO_modified.gdml")
+    @Ignore
+    fun readIAXO() {
+        val file = File("gdml-source/babyIAXO.gdml")
 
         val xmlReader = StAXReader(file.inputStream(), "UTF-8")
         val gdml = GDML.format.parse(GDML::class, xmlReader)
