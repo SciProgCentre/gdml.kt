@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "scientifik"
-version = "0.1.7"
+version = "0.1.8"
 
 serialization {
     xml()
@@ -32,7 +32,7 @@ kotlin {
 
         jvmMain{
             dependencies {
-                runtimeOnly("com.fasterxml.woodstox:woodstox-core:5.0.3")
+                api("com.fasterxml.woodstox:woodstox-core:5.0.3")
             }
         }
     }

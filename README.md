@@ -36,11 +36,16 @@ dependencies {
 ## Usage
 Read: 
 ```kotlin
+import scientifik.gdml.parse
+
 val gdmlString: String
-val gdml = GDML.format.parse(GDML.serializer(), gdmlString)
+val gdml = GDML.parse(gdmlString)
 ```
 
 write:
 ```kotlin
-val gdmlString = GDML.format.stringify(gdml)
+import scientifik.gdml.stringify
+
+val gdml = GDML{}
+val gdmlString = gdml.stringify()
 ```
