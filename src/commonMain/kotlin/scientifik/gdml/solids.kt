@@ -45,6 +45,79 @@ data class GDMLOrb(
     var r: Number
 ) : GDMLSolid()
 
+@Serializable
+@SerialName("ellipsoid")
+data class GDMLEllipsoid(
+    override var name: String,
+    var ax: Number,
+    var by: Number,
+    var cz: Number,
+    var zcut1: Number? = null,
+    var zcut2: Number? = null
+) : GDMLSolid()
+
+@Serializable
+@SerialName("eltube")
+data class GDMLElTube(
+    override var name: String,
+    var dx: Number,
+    var dy: Number,
+    var dz: Number
+) : GDMLSolid()
+
+@Serializable
+@SerialName("elcone")
+data class GDMLElCone(
+    override var name: String,
+    var dx: Number,
+    var dy: Number,
+    var zmax: Number,
+    var zcut: Number
+) : GDMLSolid()
+
+@Serializable
+@SerialName("paraboloid")
+data class GDMLParaboloid(
+    override var name: String,
+    var rlo: Number,
+    var rhi: Number,
+    var dz: Number
+) : GDMLSolid()
+
+@Serializable
+@SerialName("para")
+data class GDMLParallelepiped(
+    override var name: String,
+    var x: Number,
+    var y: Number,
+    var z: Number,
+    var alpha: Number,
+    var theta: Number,
+    var phi: Number
+) : GDMLSolid()
+
+@Serializable
+@SerialName("torus")
+data class GDMLTorus(
+    override var name: String,
+    var rmin: Number,
+    var rmax: Number,
+    var rtor: Number,
+    var startphi: Number = 0f,
+    var deltaphi: Number = 2 * PI
+) : GDMLSolid()
+
+@Serializable
+@SerialName("trd")
+data class GDMLTrapezoid(
+    override var name: String,
+    var x1: Number,
+    var x2: Number,
+    var y1: Number,
+    var y2: Number,
+    var z: Number
+) : GDMLSolid()
+
 /**
 <...
 z=" ExpressionOrIDREFType [1]"
@@ -75,6 +148,17 @@ numsides=" ExpressionOrIDREFType [1]">
 data class GDMLPolyhedra(
     override var name: String,
     val numsides: Int,
+    var startphi: Number = 0f,
+    var deltaphi: Number = 2 * PI
+) : GDMLSolid() {
+    @XmlSerialName("zplane", "", "")
+    val planes = ArrayList<GDMLZPlane>()
+}
+
+@Serializable
+@SerialName("polycone")
+data class GDMLPolycone(
+    override var name: String,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
 ) : GDMLSolid() {
