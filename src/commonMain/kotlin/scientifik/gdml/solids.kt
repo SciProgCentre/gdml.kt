@@ -52,8 +52,8 @@ data class GDMLEllipsoid(
     var ax: Number,
     var by: Number,
     var cz: Number,
-    var zcut1: Number = -1000000.0,
-    var zcut2: Number = 1000000.0
+    var zcut1: Number? = null,
+    var zcut2: Number? = null
 ) : GDMLSolid()
 
 @Serializable
