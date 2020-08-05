@@ -9,7 +9,6 @@ import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import kotlin.math.PI
 
 //solids block members
-//TODO add remaining solids
 
 @Serializable
 sealed class GDMLSolid : GDMLNode {
