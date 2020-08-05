@@ -1,16 +1,19 @@
-import scientifik.serialization
+import scientifik.useSerialization
 
 plugins {
-    id("scientifik.mpp") version "0.4.0"
-    id("scientifik.publish") version "0.4.0"
+    id("scientifik.mpp") version "0.5.2"
+    id("scientifik.publish") version "0.5.2"
 }
 
 group = "scientifik"
-version = "0.1.8-dev"
+version = "0.1.8"
 
-serialization {
+useSerialization {
     xml()
 }
+
+val bintrayRepo by extra("scientifik")
+val githubProject by extra("gdml.kt")
 
 kotlin {
     js {

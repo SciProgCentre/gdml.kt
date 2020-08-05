@@ -2,7 +2,7 @@ package scientifik.gdml
 
 import kotlinx.serialization.serializer
 import nl.adaptivity.xmlutil.StAXReader
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import scientifik.gdml.*
 import java.io.File
 import kotlin.test.Ignore

@@ -2,6 +2,7 @@ package scientifik.gdml
 
 import nl.adaptivity.xmlutil.StAXReader
 import nl.adaptivity.xmlutil.StAXWriter
+import nl.adaptivity.xmlutil.XmlDeclMode
 import java.io.InputStream
 import java.io.OutputStream
 import java.nio.file.Files
@@ -20,7 +21,7 @@ fun GDML.Companion.parseFile(path: Path): GDML {
 }
 
 fun GDML.dump(stream: OutputStream) {
-    val xmlWriter = StAXWriter(stream, "UTF-8", false)
+    val xmlWriter = StAXWriter(stream, "UTF-8", false, XmlDeclMode.Auto)
     GDML.format.toXml(xmlWriter, GDML.serializer(), this)
 }
 
