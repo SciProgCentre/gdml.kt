@@ -6,6 +6,7 @@ import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 interface GDMLNode {
@@ -141,20 +142,7 @@ class GDMLVolume(
     var solidref: GDMLRef<GDMLSolid>
 ) : GDMLGroup() {
 
-    //@XmlPolyChildren(["physvol", "divisionvol"])
+    @XmlPolyChildren(["physvol", "divisionvol"])
     @Polymorphic
     var placement: GDMLPlacement? = null
-
-//    //Workaround for bug in XML
-//    private val _placement = ArrayList<@Polymorphic GDMLPlacement>()
-//
-//    var placement: GDMLPlacement?
-//        get() = _placement.firstOrNull()
-//        set(value) {
-//            if(value == null){
-//                _placement.clear()
-//            } else{
-//                _placement.add(value)
-//            }
-//        }
 }

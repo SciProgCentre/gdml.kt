@@ -1,4 +1,5 @@
 @file:UseSerializers(NumberSerializer::class)
+
 package scientifik.gdml
 
 import kotlinx.serialization.SerialName
@@ -13,30 +14,37 @@ data class GDMLDensity(var value: Double, var unit: String = "g/cm3")
 @Serializable
 sealed class GDMLMaterial : GDMLNode {
     var formula: String? = null
-    @SerialName("Z")
+
+    @XmlSerialName("Z", "", "")
     var z: Number? = null
-    @SerialName("N")
+
+    @XmlSerialName("N", "", "")
     var n: Number? = null
 
     val state: MaterialState = MaterialState.UNKNOWN
 
+    @XmlSerialName("atom", "", "")
     var atom: GDMLAtom? = null
 
     @XmlSerialName("D", "", "")
     var density: GDMLDensity? = null
+
     @XmlSerialName("Dref", "", "")
     var densityRef: GDMLRef<GDMLDefine>? = null
 }
 
 @Serializable
 enum class MaterialState {
-    @SerialName("gas")
+    @XmlSerialName("gas","","")
     GAS,
-    @SerialName("liquid")
+
+    @XmlSerialName("liquid","","")
     LIQUID,
-    @SerialName("solid")
+
+    @XmlSerialName("solid","","")
     SOLID,
-    @SerialName("unknown")
+
+    @XmlSerialName("unknown","","")
     UNKNOWN
 }
 
@@ -59,6 +67,6 @@ data class GDMLElement(override var name: String) : GDMLMaterial()
 @Serializable
 @SerialName("material")
 data class GDMLComposite(override var name: String) : GDMLMaterial() {
-    @SerialName("fraction")
+    @XmlSerialName("fraction","","")
     val fractions = ArrayList<GDMLFraction>()
 }

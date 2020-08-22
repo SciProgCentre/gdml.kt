@@ -180,11 +180,11 @@ data class GDMLTube(
 @SerialName("xtru")
 data class GDMLXtru(override var name: String) : GDMLSolid() {
     @Serializable
-    @SerialName("twoDimVertex")
+    @XmlSerialName("twoDimVertex","","")
     data class TwoDimVertex(val x: Double, val y: Double)
 
     @Serializable
-    @SerialName("section")
+    @XmlSerialName("section","","")
     data class Section(
         var zPosition: Number,
         var zOrder: Int,
@@ -193,10 +193,10 @@ data class GDMLXtru(override var name: String) : GDMLSolid() {
         var scalingFactor: Number = 1.0
     )
 
-    @SerialName("twoDimVertex")
+    @XmlSerialName("twoDimVertex","","")
     val vertices = ArrayList<TwoDimVertex>()
 
-    @SerialName("section")
+    @XmlSerialName("section","","")
     val sections = ArrayList<Section>()
 
     fun vertex(x: Double, y: Double) {
