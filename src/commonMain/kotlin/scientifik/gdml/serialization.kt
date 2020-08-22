@@ -3,6 +3,7 @@ package scientifik.gdml
 import kotlinx.serialization.*
 import kotlinx.serialization.modules.SerializersModule
 
+
 @Serializer(Number::class)
 object NumberSerializer : KSerializer<Number> {
     override val descriptor: SerialDescriptor = PrimitiveDescriptor("kotlin.Number", PrimitiveKind.DOUBLE)

@@ -1,18 +1,19 @@
-import scientifik.useSerialization
 
 plugins {
-    id("scientifik.mpp") version "0.5.2"
-    id("scientifik.publish") version "0.5.2"
+    id("kscience.mpp") version "0.6.0"
+    id("kscience.publish") version "0.6.0"
 }
 
-group = "scientifik"
-version = "0.1.9"
+group = "ru.mipt.npm"
+version = "0.2.0"
 
-useSerialization {
-    xml()
+kscience {
+    useSerialization {
+        xml()
+    }
 }
 
-val bintrayRepo by extra("scientifik")
+val bintrayRepo by extra("kscience")
 val githubProject by extra("gdml.kt")
 
 kotlin {

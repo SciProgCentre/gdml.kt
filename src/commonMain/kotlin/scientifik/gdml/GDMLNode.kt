@@ -142,7 +142,7 @@ class GDMLVolume(
     var solidref: GDMLRef<GDMLSolid>
 ) : GDMLGroup() {
 
-    @XmlPolyChildren(["physvol", "divisionvol"])
+    @XmlPolyChildren(arrayOf("physvol", "divisionvol"))
     @Polymorphic
     var placement: GDMLPlacement? = null
 }

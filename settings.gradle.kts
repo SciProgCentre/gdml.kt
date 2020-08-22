@@ -12,7 +12,7 @@ pluginManagement {
         eachPlugin {
             when (requested.id.id) {
                 "kotlinx-atomicfu" -> useModule("org.jetbrains.kotlinx:atomicfu-gradle-plugin:${requested.version}")
-                "scientifik.mpp", "scientifik.publish" -> useModule("scientifik:gradle-tools:${requested.version}")
+                "kscience.mpp", "kscience.publish" -> useModule("ru.mipt.npm:gradle-tools:${requested.version}")
             }
         }
     }

@@ -1,6 +1,6 @@
 package scientifik.gdml
 
-import kotlin.browser.window
+import kotlinx.browser.window
 import kotlin.test.Test
 
 
