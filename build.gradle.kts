@@ -1,7 +1,7 @@
 
 plugins {
-    id("kscience.mpp") version "0.6.0"
-    id("kscience.publish") version "0.6.0"
+    id("ru.mipt.npm.mpp") version "0.6.0-dev-3"
+    id("ru.mipt.npm.publish") version "0.6.0-dev-3"
 }
 
 group = "ru.mipt.npm"
@@ -13,11 +13,15 @@ kscience {
     }
 }
 
+repositories{
+    mavenLocal()
+}
+
 val bintrayRepo by extra("kscience")
 val githubProject by extra("gdml.kt")
 
 kotlin {
-    js {
+    js(IR) {
         browser {
             testTask {
                 useKarma {
@@ -30,21 +34,13 @@ kotlin {
     sourceSets {
         commonMain{
             dependencies {
-                api(kotlin("reflect"))
+//                api(kotlin("reflect"))
             }
         }
 
         jvmMain{
             dependencies {
                 api("com.fasterxml.woodstox:woodstox-core:5.0.3")
-            }
-        }
-    }
-
-    targets.all {
-        sourceSets.all {
-            languageSettings.apply {
-                useExperimentalAnnotation("kotlinx.serialization.ImplicitReflectionSerializer")
             }
         }
     }

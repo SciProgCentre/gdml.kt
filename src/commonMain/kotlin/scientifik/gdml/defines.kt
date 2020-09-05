@@ -7,22 +7,22 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 
 @Serializable
-sealed class GDMLDefine : GDMLNode
+public sealed class GDMLDefine : GDMLNode
 
 @Serializable
 @SerialName("constant")
-class GDMLConstant(
+public class GDMLConstant(
     override var name: String,
-    var value: Number
+    public var value: Number
 ) : GDMLDefine()
 
 @Serializable
 @SerialName("quantity")
-class GDMLQuantity(
+public class GDMLQuantity(
     override var name: String,
-    var type: String? = null,
-    var value: Number,
-    var unit: String? = null
+    public var type: String? = null,
+    public var value: Number,
+    public var unit: String? = null
 ) : GDMLDefine()
 
 @Serializable
@@ -34,37 +34,37 @@ class GDMLVariable(
 
 @Serializable
 @SerialName("position")
-class GDMLPosition(
+public class GDMLPosition(
     override var name: String = "",
-    var x: Number = 0f,
-    var y: Number = 0f,
-    var z: Number = 0f,
-    var unit: String = "cm"
+    public var x: Number = 0f,
+    public var y: Number = 0f,
+    public var z: Number = 0f,
+    public var unit: String = "cm"
 ) : GDMLDefine()
 
 @Serializable
 @SerialName("rotation")
-class GDMLRotation(
+public class GDMLRotation(
     override var name: String = "",
-    var x: Number = 0f,
-    var y: Number = 0f,
-    var z: Number = 0f,
-    var unit: String = "deg"
+    public var x: Number = 0f,
+    public var y: Number = 0f,
+    public var z: Number = 0f,
+    public var unit: String = "deg"
 ) : GDMLDefine()
 
 @Serializable
 @SerialName("scale")
-class GDMLScale(
+public class GDMLScale(
     override var name: String = "",
-    var x: Number = 1.0,
-    var y: Number = 1.0,
-    var z: Number = 1.0
+    public var x: Number = 1.0,
+    public var y: Number = 1.0,
+    public var z: Number = 1.0
 ) : GDMLDefine()
 
 @Serializable
 @SerialName("matrix")
-class GDMLMatrix(
+public class GDMLMatrix(
     override var name: String,
-    var coldim: Int,
-    var values: String
+    public var coldim: Int,
+    public var values: String
 ) : GDMLDefine()

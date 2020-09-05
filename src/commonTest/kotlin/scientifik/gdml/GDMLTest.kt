@@ -1,6 +1,6 @@
 package scientifik.gdml
 
-import kotlinx.serialization.parse
+import kotlinx.serialization.decodeFromString
 import kotlin.math.PI
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -11,7 +11,7 @@ class GDMLTest {
         val gdml = cubes()
         val string = GDML.format.stringify(gdml)
         println(string)
-        val restored: GDML = GDML.format.parse(string)
+        val restored: GDML = GDML.format.decodeFromString(string)
 //        println(restored.toString())
     }
 
@@ -34,7 +34,7 @@ class GDMLTest {
 
         val string = GDML.format.stringify(gdml)
         println(string)
-        val restored: GDML = GDML.format.parse(string)
+        val restored: GDML = GDML.format.decodeFromString(string)
         println(restored.toString())
         assertEquals(gdml.solids.content.first().name, restored.solids.content.first().name)
     }
