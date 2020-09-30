@@ -1,4 +1,4 @@
-package scientifik.gdml
+package kscience.gdml
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer

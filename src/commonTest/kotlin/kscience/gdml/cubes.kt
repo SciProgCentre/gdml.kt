@@ -1,4 +1,4 @@
-package scientifik.gdml
+package kscience.gdml
 
 
 fun cubes(): GDML = GDML {

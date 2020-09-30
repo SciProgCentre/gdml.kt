@@ -1,4 +1,4 @@
-package scientifik.gdml
+package kscience.gdml
 
 import nl.adaptivity.xmlutil.StAXReader
 import org.junit.jupiter.api.Test

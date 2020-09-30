@@ -6,7 +6,7 @@ plugins {
     id("ru.mipt.npm.publish") version toolsVersion
 }
 
-group = "ru.mipt.npm"
+group = "kscience.gdml"
 version = "0.2.0-dev-2"
 
 kscience {

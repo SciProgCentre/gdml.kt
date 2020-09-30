@@ -1,6 +1,6 @@
 @file:UseSerializers(NumberSerializer::class)
 
-package scientifik.gdml
+package kscience.gdml
 
 import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.SerialName
