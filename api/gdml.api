@@ -1,0 +1,1958 @@
+public final class scientifik/gdml/AUnit : java/lang/Enum {
+	public static final field DEG Lscientifik/gdml/AUnit;
+	public static final field DEGREE Lscientifik/gdml/AUnit;
+	public static final field RAD Lscientifik/gdml/AUnit;
+	public static final field RADIAN Lscientifik/gdml/AUnit;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getValue ()F
+	public static fun valueOf (Ljava/lang/String;)Lscientifik/gdml/AUnit;
+	public static fun values ()[Lscientifik/gdml/AUnit;
+}
+
+public final class scientifik/gdml/GDML {
+	public static final field Companion Lscientifik/gdml/GDML$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/util/ArrayList;Lscientifik/gdml/GDMLSetup;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun define (Lkotlin/jvm/functions/Function1;)V
+	public final fun getContainers ()Ljava/util/ArrayList;
+	public final fun getDefine ()Lscientifik/gdml/GDMLDefineContainer;
+	public final fun getMaterials ()Lscientifik/gdml/GDMLMaterialContainer;
+	public final fun getSetup ()Lscientifik/gdml/GDMLSetup;
+	public final fun getSolids ()Lscientifik/gdml/GDMLSolidContainer;
+	public final fun getStructure ()Lscientifik/gdml/GDMLStructure;
+	public final fun getWorld ()Lscientifik/gdml/GDMLGroup;
+	public final fun materials (Lkotlin/jvm/functions/Function1;)V
+	public final fun setWorld (Lscientifik/gdml/GDMLGroup;)V
+	public final fun solids (Lkotlin/jvm/functions/Function1;)V
+	public final fun structure (Lkotlin/jvm/functions/Function1;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDML;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDML$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDML$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDML;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDML;)Lscientifik/gdml/GDML;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDML;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDML$Companion {
+	public final fun getFormat ()Lnl/adaptivity/xmlutil/serialization/XML;
+	public final fun invoke (Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDML;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface annotation class scientifik/gdml/GDMLApi : java/lang/annotation/Annotation {
+}
+
+public final class scientifik/gdml/GDMLAssembly : scientifik/gdml/GDMLGroup {
+	public static final field Companion Lscientifik/gdml/GDMLAssembly$Companion;
+	public synthetic fun <init> (ILjava/util/ArrayList;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;)V
+	public fun getName ()Ljava/lang/String;
+	public fun setName (Ljava/lang/String;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLAssembly;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLAssembly$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLAssembly$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLAssembly;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLAssembly;)Lscientifik/gdml/GDMLAssembly;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLAssembly;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLAssembly$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLAtom {
+	public static final field Companion Lscientifik/gdml/GDMLAtom$Companion;
+	public synthetic fun <init> (ILjava/lang/Number;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/Number;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/Number;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Number;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Number;Ljava/lang/String;)Lscientifik/gdml/GDMLAtom;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLAtom;Ljava/lang/Number;Ljava/lang/String;ILjava/lang/Object;)Lscientifik/gdml/GDMLAtom;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getUnit ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setUnit (Ljava/lang/String;)V
+	public final fun setValue (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLAtom;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLAtom$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLAtom$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLAtom;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLAtom;)Lscientifik/gdml/GDMLAtom;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLAtom;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLAtom$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract class scientifik/gdml/GDMLBoolSolid : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLBoolSolid$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public abstract fun getFirst ()Lscientifik/gdml/GDMLRef;
+	public final fun getFirstposition ()Lscientifik/gdml/GDMLPosition;
+	public final fun getFirstpositionref ()Lscientifik/gdml/GDMLRef;
+	public final fun getFirstrotation ()Lscientifik/gdml/GDMLRotation;
+	public final fun getFirstrotationref ()Lscientifik/gdml/GDMLRef;
+	public final fun getPosition ()Lscientifik/gdml/GDMLPosition;
+	public final fun getPositionref ()Lscientifik/gdml/GDMLRef;
+	public final fun getRotation ()Lscientifik/gdml/GDMLRotation;
+	public final fun getRotationref ()Lscientifik/gdml/GDMLRef;
+	public abstract fun getSecond ()Lscientifik/gdml/GDMLRef;
+	public final fun position (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLPosition;
+	public static synthetic fun position$default (Lscientifik/gdml/GDMLBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLPosition;
+	public final fun resolveFirstPosition (Lscientifik/gdml/GDML;)Lscientifik/gdml/GDMLPosition;
+	public final fun resolveFirstRotation (Lscientifik/gdml/GDML;)Lscientifik/gdml/GDMLRotation;
+	public final fun resolvePosition (Lscientifik/gdml/GDML;)Lscientifik/gdml/GDMLPosition;
+	public final fun resolveRotation (Lscientifik/gdml/GDML;)Lscientifik/gdml/GDMLRotation;
+	public final fun rotation (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLRotation;
+	public static synthetic fun rotation$default (Lscientifik/gdml/GDMLBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLRotation;
+	public abstract fun setFirst (Lscientifik/gdml/GDMLRef;)V
+	public final fun setFirstposition (Lscientifik/gdml/GDMLPosition;)V
+	public final fun setFirstpositionref (Lscientifik/gdml/GDMLRef;)V
+	public final fun setFirstrotation (Lscientifik/gdml/GDMLRotation;)V
+	public final fun setFirstrotationref (Lscientifik/gdml/GDMLRef;)V
+	public final fun setPosition (Lscientifik/gdml/GDMLPosition;)V
+	public final fun setPositionref (Lscientifik/gdml/GDMLRef;)V
+	public final fun setRotation (Lscientifik/gdml/GDMLRotation;)V
+	public final fun setRotationref (Lscientifik/gdml/GDMLRef;)V
+	public abstract fun setSecond (Lscientifik/gdml/GDMLRef;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLBoolSolid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLBoolSolid$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLBox : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLBox$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLBox;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLBox;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLBox;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public final fun getX ()Ljava/lang/Number;
+	public final fun getY ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public fun setName (Ljava/lang/String;)V
+	public final fun setX (Ljava/lang/Number;)V
+	public final fun setY (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLBox;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLBox$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLBox$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLBox;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLBox;)Lscientifik/gdml/GDMLBox;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLBox;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLBox$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLComposite : scientifik/gdml/GDMLMaterial {
+	public static final field Companion Lscientifik/gdml/GDMLComposite$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lscientifik/gdml/MaterialState;Lscientifik/gdml/GDMLAtom;Lscientifik/gdml/GDMLDensity;Lscientifik/gdml/GDMLRef;Ljava/lang/String;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lscientifik/gdml/GDMLComposite;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLComposite;Ljava/lang/String;ILjava/lang/Object;)Lscientifik/gdml/GDMLComposite;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFractions ()Ljava/util/ArrayList;
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun setName (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLComposite;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLComposite$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLComposite$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLComposite;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLComposite;)Lscientifik/gdml/GDMLComposite;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLComposite;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLComposite$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLCone : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLCone$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun component6 ()Ljava/lang/Number;
+	public final fun component7 ()Ljava/lang/Number;
+	public final fun component8 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLCone;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLCone;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLCone;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeltaphi ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getRmax1 ()Ljava/lang/Number;
+	public final fun getRmax2 ()Ljava/lang/Number;
+	public final fun getRmin1 ()Ljava/lang/Number;
+	public final fun getRmin2 ()Ljava/lang/Number;
+	public final fun getStartphi ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setDeltaphi (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setRmax1 (Ljava/lang/Number;)V
+	public final fun setRmax2 (Ljava/lang/Number;)V
+	public final fun setRmin1 (Ljava/lang/Number;)V
+	public final fun setRmin2 (Ljava/lang/Number;)V
+	public final fun setStartphi (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLCone;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLCone$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLCone$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLCone;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLCone;)Lscientifik/gdml/GDMLCone;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLCone;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLCone$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLConstant : scientifik/gdml/GDMLDefine {
+	public static final field Companion Lscientifik/gdml/GDMLConstant$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;)V
+	public fun getName ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Number;
+	public fun setName (Ljava/lang/String;)V
+	public final fun setValue (Ljava/lang/Number;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLConstant;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLConstant$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLConstant$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLConstant;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLConstant;)Lscientifik/gdml/GDMLConstant;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLConstant;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLConstant$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract class scientifik/gdml/GDMLContainer {
+	public static final field Companion Lscientifik/gdml/GDMLContainer$Companion;
+	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLContainer;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLContainer$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract class scientifik/gdml/GDMLDefine : scientifik/gdml/GDMLNode {
+	public static final field Companion Lscientifik/gdml/GDMLDefine$Companion;
+	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLDefine;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLDefine$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLDefineContainer : scientifik/gdml/GDMLContainer {
+	public static final field Companion Lscientifik/gdml/GDMLDefineContainer$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun getContent ()Ljava/util/ArrayList;
+	public final fun getDefine (Ljava/lang/String;)Lscientifik/gdml/GDMLDefine;
+	public final fun position (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLPosition;
+	public static synthetic fun position$default (Lscientifik/gdml/GDMLDefineContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lscientifik/gdml/GDMLPosition;
+	public final fun rotation (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLRotation;
+	public static synthetic fun rotation$default (Lscientifik/gdml/GDMLDefineContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lscientifik/gdml/GDMLRotation;
+	public static final fun write$Self (Lscientifik/gdml/GDMLDefineContainer;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLDefineContainer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLDefineContainer$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLDefineContainer;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLDefineContainer;)Lscientifik/gdml/GDMLDefineContainer;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLDefineContainer;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLDefineContainer$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLDensity {
+	public static final field Companion Lscientifik/gdml/GDMLDensity$Companion;
+	public fun <init> (DLjava/lang/String;)V
+	public synthetic fun <init> (DLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IDLjava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun component1 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (DLjava/lang/String;)Lscientifik/gdml/GDMLDensity;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLDensity;DLjava/lang/String;ILjava/lang/Object;)Lscientifik/gdml/GDMLDensity;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getUnit ()Ljava/lang/String;
+	public final fun getValue ()D
+	public fun hashCode ()I
+	public final fun setUnit (Ljava/lang/String;)V
+	public final fun setValue (D)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLDensity;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLDensity$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLDensity$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLDensity;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLDensity;)Lscientifik/gdml/GDMLDensity;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLDensity;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLDensity$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLDivisionVolume : scientifik/gdml/GDMLPlacement {
+	public static final field Companion Lscientifik/gdml/GDMLDivisionVolume$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lscientifik/gdml/GDMLRef;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lscientifik/gdml/GDMLRef;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lscientifik/gdml/GDMLRef;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAxis ()Ljava/lang/String;
+	public final fun getNumber ()Ljava/lang/Number;
+	public final fun getOffset ()Ljava/lang/Number;
+	public final fun getUnit ()Ljava/lang/String;
+	public final fun getVolumeref ()Lscientifik/gdml/GDMLRef;
+	public final fun getWidth ()Ljava/lang/Number;
+	public final fun setAxis (Ljava/lang/String;)V
+	public final fun setNumber (Ljava/lang/Number;)V
+	public final fun setOffset (Ljava/lang/Number;)V
+	public final fun setUnit (Ljava/lang/String;)V
+	public final fun setVolumeref (Lscientifik/gdml/GDMLRef;)V
+	public final fun setWidth (Ljava/lang/Number;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLDivisionVolume;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLDivisionVolume$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLDivisionVolume$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLDivisionVolume;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLDivisionVolume;)Lscientifik/gdml/GDMLDivisionVolume;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLDivisionVolume;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLDivisionVolume$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLElCone : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLElCone$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLElCone;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLElCone;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLElCone;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDx ()Ljava/lang/Number;
+	public final fun getDy ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getZcut ()Ljava/lang/Number;
+	public final fun getZmax ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setDx (Ljava/lang/Number;)V
+	public final fun setDy (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setZcut (Ljava/lang/Number;)V
+	public final fun setZmax (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLElCone;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLElCone$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLElCone$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLElCone;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLElCone;)Lscientifik/gdml/GDMLElCone;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLElCone;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLElCone$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLElTube : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLElTube$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLElTube;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLElTube;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLElTube;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDx ()Ljava/lang/Number;
+	public final fun getDy ()Ljava/lang/Number;
+	public final fun getDz ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun setDx (Ljava/lang/Number;)V
+	public final fun setDy (Ljava/lang/Number;)V
+	public final fun setDz (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLElTube;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLElTube$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLElTube$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLElTube;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLElTube;)Lscientifik/gdml/GDMLElTube;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLElTube;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLElTube$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLElement : scientifik/gdml/GDMLMaterial {
+	public static final field Companion Lscientifik/gdml/GDMLElement$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lscientifik/gdml/MaterialState;Lscientifik/gdml/GDMLAtom;Lscientifik/gdml/GDMLDensity;Lscientifik/gdml/GDMLRef;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lscientifik/gdml/GDMLElement;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLElement;Ljava/lang/String;ILjava/lang/Object;)Lscientifik/gdml/GDMLElement;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun setName (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLElement;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLElement$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLElement$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLElement;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLElement;)Lscientifik/gdml/GDMLElement;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLElement;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLElement$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLEllipsoid : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLEllipsoid$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun component6 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLEllipsoid;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLEllipsoid;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLEllipsoid;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAx ()Ljava/lang/Number;
+	public final fun getBy ()Ljava/lang/Number;
+	public final fun getCz ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getZcut1 ()Ljava/lang/Number;
+	public final fun getZcut2 ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setAx (Ljava/lang/Number;)V
+	public final fun setBy (Ljava/lang/Number;)V
+	public final fun setCz (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setZcut1 (Ljava/lang/Number;)V
+	public final fun setZcut2 (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLEllipsoid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLEllipsoid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLEllipsoid$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLEllipsoid;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLEllipsoid;)Lscientifik/gdml/GDMLEllipsoid;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLEllipsoid;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLEllipsoid$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLFraction {
+	public static final field Companion Lscientifik/gdml/GDMLFraction$Companion;
+	public fun <init> (DLjava/lang/String;)V
+	public synthetic fun <init> (IDLjava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun component1 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (DLjava/lang/String;)Lscientifik/gdml/GDMLFraction;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLFraction;DLjava/lang/String;ILjava/lang/Object;)Lscientifik/gdml/GDMLFraction;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getN ()D
+	public final fun getRef ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun setN (D)V
+	public final fun setRef (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLFraction;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLFraction$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLFraction$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLFraction;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLFraction;)Lscientifik/gdml/GDMLFraction;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLFraction;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLFraction$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract class scientifik/gdml/GDMLGroup : scientifik/gdml/GDMLNode {
+	public static final field Companion Lscientifik/gdml/GDMLGroup$Companion;
+	public synthetic fun <init> (ILjava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun getPhysVolumes ()Ljava/util/ArrayList;
+	public final fun physVolume (Lscientifik/gdml/GDMLRef;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLPhysVolume;
+	public static final fun write$Self (Lscientifik/gdml/GDMLGroup;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLGroup$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLIntersection : scientifik/gdml/GDMLBoolSolid {
+	public static final field Companion Lscientifik/gdml/GDMLIntersection$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lscientifik/gdml/GDMLRef;
+	public final fun component3 ()Lscientifik/gdml/GDMLRef;
+	public final fun copy (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;)Lscientifik/gdml/GDMLIntersection;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLIntersection;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;ILjava/lang/Object;)Lscientifik/gdml/GDMLIntersection;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getFirst ()Lscientifik/gdml/GDMLRef;
+	public fun getName ()Ljava/lang/String;
+	public fun getSecond ()Lscientifik/gdml/GDMLRef;
+	public fun hashCode ()I
+	public fun setFirst (Lscientifik/gdml/GDMLRef;)V
+	public fun setName (Ljava/lang/String;)V
+	public fun setSecond (Lscientifik/gdml/GDMLRef;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLIntersection;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLIntersection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLIntersection$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLIntersection;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLIntersection;)Lscientifik/gdml/GDMLIntersection;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLIntersection;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLIntersection$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLIsotope : scientifik/gdml/GDMLMaterial {
+	public static final field Companion Lscientifik/gdml/GDMLIsotope$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lscientifik/gdml/MaterialState;Lscientifik/gdml/GDMLAtom;Lscientifik/gdml/GDMLDensity;Lscientifik/gdml/GDMLRef;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lscientifik/gdml/GDMLIsotope;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLIsotope;Ljava/lang/String;ILjava/lang/Object;)Lscientifik/gdml/GDMLIsotope;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun setName (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLIsotope;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLIsotope$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLIsotope$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLIsotope;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLIsotope;)Lscientifik/gdml/GDMLIsotope;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLIsotope;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLIsotope$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLKt {
+	public static final fun world (Lscientifik/gdml/GDML;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun world$default (Lscientifik/gdml/GDML;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
+public abstract class scientifik/gdml/GDMLMaterial : scientifik/gdml/GDMLNode {
+	public static final field Companion Lscientifik/gdml/GDMLMaterial$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lscientifik/gdml/MaterialState;Lscientifik/gdml/GDMLAtom;Lscientifik/gdml/GDMLDensity;Lscientifik/gdml/GDMLRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun getAtom ()Lscientifik/gdml/GDMLAtom;
+	public final fun getDensity ()Lscientifik/gdml/GDMLDensity;
+	public final fun getDensityRef ()Lscientifik/gdml/GDMLRef;
+	public final fun getFormula ()Ljava/lang/String;
+	public final fun getN ()Ljava/lang/Number;
+	public final fun getState ()Lscientifik/gdml/MaterialState;
+	public final fun getZ ()Ljava/lang/Number;
+	public final fun setAtom (Lscientifik/gdml/GDMLAtom;)V
+	public final fun setDensity (Lscientifik/gdml/GDMLDensity;)V
+	public final fun setDensityRef (Lscientifik/gdml/GDMLRef;)V
+	public final fun setFormula (Ljava/lang/String;)V
+	public final fun setN (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLMaterial;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLMaterial$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLMaterialContainer : scientifik/gdml/GDMLContainer {
+	public static final field Companion Lscientifik/gdml/GDMLMaterialContainer$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun getMaterial (Ljava/lang/String;)Lscientifik/gdml/GDMLMaterial;
+	public static final fun write$Self (Lscientifik/gdml/GDMLMaterialContainer;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLMaterialContainer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLMaterialContainer$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLMaterialContainer;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLMaterialContainer;)Lscientifik/gdml/GDMLMaterialContainer;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLMaterialContainer;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLMaterialContainer$Companion {
+	public final fun getDefaultMaterial ()Lscientifik/gdml/GDMLElement;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLMatrix : scientifik/gdml/GDMLDefine {
+	public static final field Companion Lscientifik/gdml/GDMLMatrix$Companion;
+	public synthetic fun <init> (ILjava/lang/String;ILjava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;ILjava/lang/String;)V
+	public final fun getColdim ()I
+	public fun getName ()Ljava/lang/String;
+	public final fun getValues ()Ljava/lang/String;
+	public final fun setColdim (I)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setValues (Ljava/lang/String;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLMatrix;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLMatrix$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLMatrix$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLMatrix;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLMatrix;)Lscientifik/gdml/GDMLMatrix;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLMatrix;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLMatrix$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class scientifik/gdml/GDMLNode {
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun setName (Ljava/lang/String;)V
+}
+
+public final class scientifik/gdml/GDMLNodeKt {
+	public static final fun physVolume (Lscientifik/gdml/GDMLGroup;Lscientifik/gdml/GDMLGroup;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLPhysVolume;
+	public static final fun position (Lscientifik/gdml/GDMLPhysVolume;Lkotlin/jvm/functions/Function1;)V
+	public static final fun ref (Ljava/lang/String;)Lscientifik/gdml/GDMLRef;
+	public static final fun ref (Lscientifik/gdml/GDMLNode;)Lscientifik/gdml/GDMLRef;
+	public static final fun resolvePosition (Lscientifik/gdml/GDMLPhysVolume;Lscientifik/gdml/GDML;)Lscientifik/gdml/GDMLPosition;
+	public static final fun resolveRotation (Lscientifik/gdml/GDMLPhysVolume;Lscientifik/gdml/GDML;)Lscientifik/gdml/GDMLRotation;
+	public static final fun resolveScale (Lscientifik/gdml/GDMLPhysVolume;Lscientifik/gdml/GDML;)Lscientifik/gdml/GDMLScale;
+	public static final fun rotation (Lscientifik/gdml/GDMLPhysVolume;Lkotlin/jvm/functions/Function1;)V
+	public static final fun scale (Lscientifik/gdml/GDMLPhysVolume;Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class scientifik/gdml/GDMLOrb : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLOrb$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;)Lscientifik/gdml/GDMLOrb;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLOrb;Ljava/lang/String;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLOrb;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public final fun getR ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public fun setName (Ljava/lang/String;)V
+	public final fun setR (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLOrb;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLOrb$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLOrb$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLOrb;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLOrb;)Lscientifik/gdml/GDMLOrb;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLOrb;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLOrb$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLParaboloid : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLParaboloid$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLParaboloid;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLParaboloid;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLParaboloid;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDz ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getRhi ()Ljava/lang/Number;
+	public final fun getRlo ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setDz (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setRhi (Ljava/lang/Number;)V
+	public final fun setRlo (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLParaboloid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLParaboloid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLParaboloid$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLParaboloid;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLParaboloid;)Lscientifik/gdml/GDMLParaboloid;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLParaboloid;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLParaboloid$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLParallelepiped : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLParallelepiped$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun component6 ()Ljava/lang/Number;
+	public final fun component7 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLParallelepiped;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLParallelepiped;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLParallelepiped;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlpha ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getPhi ()Ljava/lang/Number;
+	public final fun getTheta ()Ljava/lang/Number;
+	public final fun getX ()Ljava/lang/Number;
+	public final fun getY ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setAlpha (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setPhi (Ljava/lang/Number;)V
+	public final fun setTheta (Ljava/lang/Number;)V
+	public final fun setX (Ljava/lang/Number;)V
+	public final fun setY (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLParallelepiped;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLParallelepiped$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLParallelepiped$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLParallelepiped;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLParallelepiped;)Lscientifik/gdml/GDMLParallelepiped;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLParallelepiped;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLParallelepiped$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLPhysVolume : scientifik/gdml/GDMLPlacement {
+	public static final field Companion Lscientifik/gdml/GDMLPhysVolume$Companion;
+	public synthetic fun <init> (ILscientifik/gdml/GDMLRef;Ljava/lang/String;Ljava/lang/Integer;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLScale;Lscientifik/gdml/GDMLRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Lscientifik/gdml/GDMLRef;Ljava/lang/String;)V
+	public synthetic fun <init> (Lscientifik/gdml/GDMLRef;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getCopynumber ()Ljava/lang/Integer;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPosition ()Lscientifik/gdml/GDMLPosition;
+	public final fun getPositionref ()Lscientifik/gdml/GDMLRef;
+	public final fun getRotation ()Lscientifik/gdml/GDMLRotation;
+	public final fun getRotationref ()Lscientifik/gdml/GDMLRef;
+	public final fun getScale ()Lscientifik/gdml/GDMLScale;
+	public final fun getScaleref ()Lscientifik/gdml/GDMLRef;
+	public final fun getVolumeref ()Lscientifik/gdml/GDMLRef;
+	public final fun setCopynumber (Ljava/lang/Integer;)V
+	public final fun setName (Ljava/lang/String;)V
+	public final fun setPosition (Lscientifik/gdml/GDMLPosition;)V
+	public final fun setPositionref (Lscientifik/gdml/GDMLRef;)V
+	public final fun setRotation (Lscientifik/gdml/GDMLRotation;)V
+	public final fun setRotationref (Lscientifik/gdml/GDMLRef;)V
+	public final fun setScale (Lscientifik/gdml/GDMLScale;)V
+	public final fun setScaleref (Lscientifik/gdml/GDMLRef;)V
+	public final fun setVolumeref (Lscientifik/gdml/GDMLRef;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLPhysVolume;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLPhysVolume$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLPhysVolume$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLPhysVolume;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLPhysVolume;)Lscientifik/gdml/GDMLPhysVolume;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLPhysVolume;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLPhysVolume$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract class scientifik/gdml/GDMLPlacement {
+	public static final field Companion Lscientifik/gdml/GDMLPlacement$Companion;
+	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLPlacement;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLPlacement$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLPolycone : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLPolycone$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLPolycone;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLPolycone;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLPolycone;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeltaphi ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getPlanes ()Ljava/util/ArrayList;
+	public final fun getStartphi ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setDeltaphi (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setStartphi (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLPolycone;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLPolycone$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLPolycone$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLPolycone;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLPolycone;)Lscientifik/gdml/GDMLPolycone;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLPolycone;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLPolycone$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLPolyhedra : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLPolyhedra$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLPolyhedra;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLPolyhedra;Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLPolyhedra;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeltaphi ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getNumsides ()I
+	public final fun getPlanes ()Ljava/util/ArrayList;
+	public final fun getStartphi ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setDeltaphi (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setStartphi (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLPolyhedra;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLPolyhedra$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLPolyhedra$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLPolyhedra;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLPolyhedra;)Lscientifik/gdml/GDMLPolyhedra;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLPolyhedra;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLPolyhedra$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLPosition : scientifik/gdml/GDMLDefine {
+	public static final field Companion Lscientifik/gdml/GDMLPosition$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getName ()Ljava/lang/String;
+	public final fun getUnit ()Ljava/lang/String;
+	public final fun getX ()Ljava/lang/Number;
+	public final fun getY ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun setName (Ljava/lang/String;)V
+	public final fun setUnit (Ljava/lang/String;)V
+	public final fun setX (Ljava/lang/Number;)V
+	public final fun setY (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLPosition;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLPosition$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLPosition$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLPosition;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLPosition;)Lscientifik/gdml/GDMLPosition;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLPosition;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLPosition$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLQuantity : scientifik/gdml/GDMLDefine {
+	public static final field Companion Lscientifik/gdml/GDMLQuantity$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getName ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public final fun getUnit ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Number;
+	public fun setName (Ljava/lang/String;)V
+	public final fun setType (Ljava/lang/String;)V
+	public final fun setUnit (Ljava/lang/String;)V
+	public final fun setValue (Ljava/lang/Number;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLQuantity;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLQuantity$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLQuantity$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLQuantity;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLQuantity;)Lscientifik/gdml/GDMLQuantity;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLQuantity;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLQuantity$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLRef {
+	public static final field Companion Lscientifik/gdml/GDMLRef$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lscientifik/gdml/GDMLRef;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLRef;Ljava/lang/String;ILjava/lang/Object;)Lscientifik/gdml/GDMLRef;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRef ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun setRef (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLRef;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlinx/serialization/KSerializer;)V
+}
+
+public final class scientifik/gdml/GDMLRef$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public synthetic fun <init> (Lkotlinx/serialization/KSerializer;)V
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLRef;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLRef;)Lscientifik/gdml/GDMLRef;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLRef;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLRef$Companion {
+	public final fun serializer (Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLRotation : scientifik/gdml/GDMLDefine {
+	public static final field Companion Lscientifik/gdml/GDMLRotation$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getName ()Ljava/lang/String;
+	public final fun getUnit ()Ljava/lang/String;
+	public final fun getX ()Ljava/lang/Number;
+	public final fun getY ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun setName (Ljava/lang/String;)V
+	public final fun setUnit (Ljava/lang/String;)V
+	public final fun setX (Ljava/lang/Number;)V
+	public final fun setY (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLRotation;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLRotation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLRotation$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLRotation;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLRotation;)Lscientifik/gdml/GDMLRotation;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLRotation;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLRotation$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLScale : scientifik/gdml/GDMLDefine {
+	public static final field Companion Lscientifik/gdml/GDMLScale$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getName ()Ljava/lang/String;
+	public final fun getX ()Ljava/lang/Number;
+	public final fun getY ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun setName (Ljava/lang/String;)V
+	public final fun setX (Ljava/lang/Number;)V
+	public final fun setY (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLScale;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLScale$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLScale$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLScale;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLScale;)Lscientifik/gdml/GDMLScale;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLScale;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLScale$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLScaledSolid : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLScaledSolid$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLScale;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLScale;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lscientifik/gdml/GDMLRef;
+	public final fun component3 ()Lscientifik/gdml/GDMLScale;
+	public final fun copy (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLScale;)Lscientifik/gdml/GDMLScaledSolid;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLScaledSolid;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLScale;ILjava/lang/Object;)Lscientifik/gdml/GDMLScaledSolid;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public final fun getScale ()Lscientifik/gdml/GDMLScale;
+	public final fun getSolidref ()Lscientifik/gdml/GDMLRef;
+	public fun hashCode ()I
+	public fun setName (Ljava/lang/String;)V
+	public final fun setScale (Lscientifik/gdml/GDMLScale;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLScaledSolid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLScaledSolid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLScaledSolid$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLScaledSolid;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLScaledSolid;)Lscientifik/gdml/GDMLScaledSolid;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLScaledSolid;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLScaledSolid$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLSetup {
+	public static final field Companion Lscientifik/gdml/GDMLSetup$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lscientifik/gdml/GDMLRef;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lscientifik/gdml/GDMLRef;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getName ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/String;
+	public final fun getWorld ()Lscientifik/gdml/GDMLRef;
+	public final fun setName (Ljava/lang/String;)V
+	public final fun setVersion (Ljava/lang/String;)V
+	public final fun setWorld (Lscientifik/gdml/GDMLRef;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLSetup;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLSetup$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLSetup$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLSetup;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLSetup;)Lscientifik/gdml/GDMLSetup;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLSetup;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLSetup$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract class scientifik/gdml/GDMLSolid : scientifik/gdml/GDMLNode {
+	public static final field Companion Lscientifik/gdml/GDMLSolid$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun getAunit ()Ljava/lang/String;
+	public final fun getLunit ()Ljava/lang/String;
+	public final fun setAunit (Ljava/lang/String;)V
+	public final fun setLunit (Ljava/lang/String;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLSolid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLSolid$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLSolidContainer : scientifik/gdml/GDMLContainer {
+	public static final field Companion Lscientifik/gdml/GDMLSolidContainer$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun box (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLBox;
+	public static synthetic fun box$default (Lscientifik/gdml/GDMLSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lscientifik/gdml/GDMLBox;
+	public final fun cone (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLCone;
+	public final fun getContent ()Ljava/util/ArrayList;
+	public final fun getSolid (Ljava/lang/String;)Lscientifik/gdml/GDMLSolid;
+	public final fun intersection (Ljava/lang/String;Lscientifik/gdml/GDMLSolid;Lscientifik/gdml/GDMLSolid;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLIntersection;
+	public final fun subtraction (Ljava/lang/String;Lscientifik/gdml/GDMLSolid;Lscientifik/gdml/GDMLSolid;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLSubtraction;
+	public final fun tube (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLTube;
+	public final fun union (Ljava/lang/String;Lscientifik/gdml/GDMLSolid;Lscientifik/gdml/GDMLSolid;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLUnion;
+	public static final fun write$Self (Lscientifik/gdml/GDMLSolidContainer;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+	public final fun xtru (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLXtru;
+}
+
+public final class scientifik/gdml/GDMLSolidContainer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLSolidContainer$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLSolidContainer;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLSolidContainer;)Lscientifik/gdml/GDMLSolidContainer;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLSolidContainer;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLSolidContainer$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLSphere : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLSphere$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun component6 ()Ljava/lang/Number;
+	public final fun component7 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLSphere;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLSphere;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLSphere;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeltaphi ()Ljava/lang/Number;
+	public final fun getDeltatheta ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getRmax ()Ljava/lang/Number;
+	public final fun getRmin ()Ljava/lang/Number;
+	public final fun getStartphi ()Ljava/lang/Number;
+	public final fun getStarttheta ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setDeltaphi (Ljava/lang/Number;)V
+	public final fun setDeltatheta (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setRmax (Ljava/lang/Number;)V
+	public final fun setRmin (Ljava/lang/Number;)V
+	public final fun setStartphi (Ljava/lang/Number;)V
+	public final fun setStarttheta (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLSphere;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLSphere$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLSphere$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLSphere;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLSphere;)Lscientifik/gdml/GDMLSphere;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLSphere;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLSphere$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLStructure : scientifik/gdml/GDMLContainer {
+	public static final field Companion Lscientifik/gdml/GDMLStructure$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun assembly (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLAssembly;
+	public static synthetic fun assembly$default (Lscientifik/gdml/GDMLStructure;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lscientifik/gdml/GDMLAssembly;
+	public final fun getContent ()Ljava/util/ArrayList;
+	public final fun getGroup (Ljava/lang/String;)Lscientifik/gdml/GDMLGroup;
+	public final fun volume (Ljava/lang/String;Lscientifik/gdml/GDMLMaterial;Lscientifik/gdml/GDMLSolid;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLVolume;
+	public final fun volume (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;Lkotlin/jvm/functions/Function1;)Lscientifik/gdml/GDMLVolume;
+	public static synthetic fun volume$default (Lscientifik/gdml/GDMLStructure;Ljava/lang/String;Lscientifik/gdml/GDMLMaterial;Lscientifik/gdml/GDMLSolid;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lscientifik/gdml/GDMLVolume;
+	public static synthetic fun volume$default (Lscientifik/gdml/GDMLStructure;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lscientifik/gdml/GDMLVolume;
+	public static final fun write$Self (Lscientifik/gdml/GDMLStructure;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLStructure$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLStructure$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLStructure;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLStructure;)Lscientifik/gdml/GDMLStructure;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLStructure;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLStructure$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLSubtraction : scientifik/gdml/GDMLBoolSolid {
+	public static final field Companion Lscientifik/gdml/GDMLSubtraction$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lscientifik/gdml/GDMLRef;
+	public final fun component3 ()Lscientifik/gdml/GDMLRef;
+	public final fun copy (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;)Lscientifik/gdml/GDMLSubtraction;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLSubtraction;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;ILjava/lang/Object;)Lscientifik/gdml/GDMLSubtraction;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getFirst ()Lscientifik/gdml/GDMLRef;
+	public fun getName ()Ljava/lang/String;
+	public fun getSecond ()Lscientifik/gdml/GDMLRef;
+	public fun hashCode ()I
+	public fun setFirst (Lscientifik/gdml/GDMLRef;)V
+	public fun setName (Ljava/lang/String;)V
+	public fun setSecond (Lscientifik/gdml/GDMLRef;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLSubtraction;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLSubtraction$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLSubtraction$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLSubtraction;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLSubtraction;)Lscientifik/gdml/GDMLSubtraction;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLSubtraction;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLSubtraction$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLTorus : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLTorus$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun component6 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLTorus;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLTorus;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLTorus;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeltaphi ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getRmax ()Ljava/lang/Number;
+	public final fun getRmin ()Ljava/lang/Number;
+	public final fun getRtor ()Ljava/lang/Number;
+	public final fun getStartphi ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setDeltaphi (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setRmax (Ljava/lang/Number;)V
+	public final fun setRmin (Ljava/lang/Number;)V
+	public final fun setRtor (Ljava/lang/Number;)V
+	public final fun setStartphi (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLTorus;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLTorus$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLTorus$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLTorus;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLTorus;)Lscientifik/gdml/GDMLTorus;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLTorus;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLTorus$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLTrapezoid : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLTrapezoid$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun component6 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLTrapezoid;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLTrapezoid;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLTrapezoid;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public final fun getX1 ()Ljava/lang/Number;
+	public final fun getX2 ()Ljava/lang/Number;
+	public final fun getY1 ()Ljava/lang/Number;
+	public final fun getY2 ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public fun setName (Ljava/lang/String;)V
+	public final fun setX1 (Ljava/lang/Number;)V
+	public final fun setX2 (Ljava/lang/Number;)V
+	public final fun setY1 (Ljava/lang/Number;)V
+	public final fun setY2 (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLTrapezoid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLTrapezoid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLTrapezoid$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLTrapezoid;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLTrapezoid;)Lscientifik/gdml/GDMLTrapezoid;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLTrapezoid;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLTrapezoid$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLTube : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLTube$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun component6 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLTube;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLTube;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLTube;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeltaphi ()Ljava/lang/Number;
+	public fun getName ()Ljava/lang/String;
+	public final fun getRmax ()Ljava/lang/Number;
+	public final fun getRmin ()Ljava/lang/Number;
+	public final fun getStartphi ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setDeltaphi (Ljava/lang/Number;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setRmax (Ljava/lang/Number;)V
+	public final fun setRmin (Ljava/lang/Number;)V
+	public final fun setStartphi (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLTube;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLTube$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLTube$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLTube;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLTube;)Lscientifik/gdml/GDMLTube;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLTube;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLTube$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLUnion : scientifik/gdml/GDMLBoolSolid {
+	public static final field Companion Lscientifik/gdml/GDMLUnion$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/GDMLRef;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lscientifik/gdml/GDMLRef;
+	public final fun component3 ()Lscientifik/gdml/GDMLRef;
+	public final fun copy (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;)Lscientifik/gdml/GDMLUnion;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLUnion;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;ILjava/lang/Object;)Lscientifik/gdml/GDMLUnion;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getFirst ()Lscientifik/gdml/GDMLRef;
+	public fun getName ()Ljava/lang/String;
+	public fun getSecond ()Lscientifik/gdml/GDMLRef;
+	public fun hashCode ()I
+	public fun setFirst (Lscientifik/gdml/GDMLRef;)V
+	public fun setName (Ljava/lang/String;)V
+	public fun setSecond (Lscientifik/gdml/GDMLRef;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLUnion;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLUnion$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLUnion$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLUnion;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLUnion;)Lscientifik/gdml/GDMLUnion;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLUnion;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLUnion$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLVariable : scientifik/gdml/GDMLDefine {
+	public static final field Companion Lscientifik/gdml/GDMLVariable$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun getName ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/String;
+	public fun setName (Ljava/lang/String;)V
+	public final fun setValue (Ljava/lang/String;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLVariable;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLVariable$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLVariable$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLVariable;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLVariable;)Lscientifik/gdml/GDMLVariable;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLVariable;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLVariable$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLVolume : scientifik/gdml/GDMLGroup {
+	public static final field Companion Lscientifik/gdml/GDMLVolume$Companion;
+	public synthetic fun <init> (ILjava/util/ArrayList;Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLPlacement;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Lscientifik/gdml/GDMLRef;Lscientifik/gdml/GDMLRef;)V
+	public final fun getMaterialref ()Lscientifik/gdml/GDMLRef;
+	public fun getName ()Ljava/lang/String;
+	public final fun getPlacement ()Lscientifik/gdml/GDMLPlacement;
+	public final fun getSolidref ()Lscientifik/gdml/GDMLRef;
+	public final fun setMaterialref (Lscientifik/gdml/GDMLRef;)V
+	public fun setName (Ljava/lang/String;)V
+	public final fun setPlacement (Lscientifik/gdml/GDMLPlacement;)V
+	public final fun setSolidref (Lscientifik/gdml/GDMLRef;)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLVolume;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLVolume$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLVolume$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLVolume;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLVolume;)Lscientifik/gdml/GDMLVolume;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLVolume;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLVolume$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLXtru : scientifik/gdml/GDMLSolid {
+	public static final field Companion Lscientifik/gdml/GDMLXtru$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lscientifik/gdml/GDMLXtru;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLXtru;Ljava/lang/String;ILjava/lang/Object;)Lscientifik/gdml/GDMLXtru;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public final fun getSections ()Ljava/util/ArrayList;
+	public final fun getVertices ()Ljava/util/ArrayList;
+	public fun hashCode ()I
+	public final fun section (IDLkotlin/jvm/functions/Function1;)V
+	public static synthetic fun section$default (Lscientifik/gdml/GDMLXtru;IDLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public fun setName (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public final fun vertex (DD)V
+	public static final fun write$Self (Lscientifik/gdml/GDMLXtru;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLXtru$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLXtru$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLXtru;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLXtru;)Lscientifik/gdml/GDMLXtru;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLXtru;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLXtru$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLXtru$Section {
+	public static final field Companion Lscientifik/gdml/GDMLXtru$Section$Companion;
+	public synthetic fun <init> (ILjava/lang/Number;ILjava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/Number;ILjava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/Number;ILjava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Number;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun component4 ()Ljava/lang/Number;
+	public final fun component5 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/Number;ILjava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLXtru$Section;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLXtru$Section;Ljava/lang/Number;ILjava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLXtru$Section;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getScalingFactor ()Ljava/lang/Number;
+	public final fun getXOffset ()Ljava/lang/Number;
+	public final fun getYOffset ()Ljava/lang/Number;
+	public final fun getZOrder ()I
+	public final fun getZPosition ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setScalingFactor (Ljava/lang/Number;)V
+	public final fun setXOffset (Ljava/lang/Number;)V
+	public final fun setYOffset (Ljava/lang/Number;)V
+	public final fun setZOrder (I)V
+	public final fun setZPosition (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLXtru$Section;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLXtru$Section$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLXtru$Section$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLXtru$Section;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLXtru$Section;)Lscientifik/gdml/GDMLXtru$Section;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLXtru$Section;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLXtru$Section$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLXtru$TwoDimVertex {
+	public static final field Companion Lscientifik/gdml/GDMLXtru$TwoDimVertex$Companion;
+	public fun <init> (DD)V
+	public synthetic fun <init> (IDDLkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun component1 ()D
+	public final fun component2 ()D
+	public final fun copy (DD)Lscientifik/gdml/GDMLXtru$TwoDimVertex;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLXtru$TwoDimVertex;DDILjava/lang/Object;)Lscientifik/gdml/GDMLXtru$TwoDimVertex;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getX ()D
+	public final fun getY ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLXtru$TwoDimVertex;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLXtru$TwoDimVertex$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLXtru$TwoDimVertex$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLXtru$TwoDimVertex;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLXtru$TwoDimVertex;)Lscientifik/gdml/GDMLXtru$TwoDimVertex;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLXtru$TwoDimVertex;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLXtru$TwoDimVertex$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLZPlane {
+	public static final field Companion Lscientifik/gdml/GDMLZPlane$Companion;
+	public synthetic fun <init> (ILjava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
+	public synthetic fun <init> (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Number;
+	public final fun component2 ()Ljava/lang/Number;
+	public final fun component3 ()Ljava/lang/Number;
+	public final fun copy (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)Lscientifik/gdml/GDMLZPlane;
+	public static synthetic fun copy$default (Lscientifik/gdml/GDMLZPlane;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)Lscientifik/gdml/GDMLZPlane;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRmax ()Ljava/lang/Number;
+	public final fun getRmin ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Number;
+	public fun hashCode ()I
+	public final fun setRmax (Ljava/lang/Number;)V
+	public final fun setRmin (Ljava/lang/Number;)V
+	public final fun setZ (Ljava/lang/Number;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lscientifik/gdml/GDMLZPlane;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class scientifik/gdml/GDMLZPlane$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/GDMLZPlane$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/GDMLZPlane;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/GDMLZPlane;)Lscientifik/gdml/GDMLZPlane;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/GDMLZPlane;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/GDMLZPlane$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/LUnit : java/lang/Enum {
+	public static final field CM Lscientifik/gdml/LUnit;
+	public static final field M Lscientifik/gdml/LUnit;
+	public static final field MM Lscientifik/gdml/LUnit;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getValue ()F
+	public static fun valueOf (Ljava/lang/String;)Lscientifik/gdml/LUnit;
+	public static fun values ()[Lscientifik/gdml/LUnit;
+}
+
+public final class scientifik/gdml/MaterialState : java/lang/Enum {
+	public static final field Companion Lscientifik/gdml/MaterialState$Companion;
+	public static final field GAS Lscientifik/gdml/MaterialState;
+	public static final field LIQUID Lscientifik/gdml/MaterialState;
+	public static final field SOLID Lscientifik/gdml/MaterialState;
+	public static final field UNKNOWN Lscientifik/gdml/MaterialState;
+	public static fun valueOf (Ljava/lang/String;)Lscientifik/gdml/MaterialState;
+	public static fun values ()[Lscientifik/gdml/MaterialState;
+}
+
+public final class scientifik/gdml/MaterialState$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lscientifik/gdml/MaterialState$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lscientifik/gdml/MaterialState;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lscientifik/gdml/MaterialState;)Lscientifik/gdml/MaterialState;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lscientifik/gdml/MaterialState;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/MaterialState$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class scientifik/gdml/NumberSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lscientifik/gdml/NumberSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Number;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Number;)Ljava/lang/Number;
+	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Number;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class scientifik/gdml/SerializationKt {
+	public static final fun decodeFromString (Lscientifik/gdml/GDML$Companion;Ljava/lang/String;)Lscientifik/gdml/GDML;
+	public static final fun encodeToString (Lscientifik/gdml/GDML;)Ljava/lang/String;
+	public static final fun getGdmlModule ()Lkotlinx/serialization/modules/SerializersModule;
+}
+
+public final class scientifik/gdml/StreamIOKt {
+	public static final fun dump (Lscientifik/gdml/GDML;Ljava/io/OutputStream;)V
+	public static final fun dumpToFile (Lscientifik/gdml/GDML;Ljava/nio/file/Path;)V
+	public static final fun parse (Lscientifik/gdml/GDML$Companion;Ljava/io/InputStream;)Lscientifik/gdml/GDML;
+	public static final fun parseFile (Lscientifik/gdml/GDML$Companion;Ljava/nio/file/Path;)Lscientifik/gdml/GDML;
+}
+
+public final class scientifik/gdml/UnitsKt {
+	public static final fun ascale (Lscientifik/gdml/GDMLSolid;Lscientifik/gdml/AUnit;)F
+	public static synthetic fun ascale$default (Lscientifik/gdml/GDMLSolid;Lscientifik/gdml/AUnit;ILjava/lang/Object;)F
+	public static final fun lscale (Lscientifik/gdml/GDMLSolid;Lscientifik/gdml/LUnit;)F
+	public static final fun unit (Lscientifik/gdml/GDMLPosition;)Lscientifik/gdml/LUnit;
+	public static final fun unit (Lscientifik/gdml/GDMLRotation;)Lscientifik/gdml/AUnit;
+	public static final fun x (Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/LUnit;)F
+	public static final fun x (Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/AUnit;)F
+	public static synthetic fun x$default (Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/AUnit;ILjava/lang/Object;)F
+	public static final fun y (Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/LUnit;)F
+	public static final fun y (Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/AUnit;)F
+	public static synthetic fun y$default (Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/AUnit;ILjava/lang/Object;)F
+	public static final fun z (Lscientifik/gdml/GDMLPosition;Lscientifik/gdml/LUnit;)F
+	public static final fun z (Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/AUnit;)F
+	public static synthetic fun z$default (Lscientifik/gdml/GDMLRotation;Lscientifik/gdml/AUnit;ILjava/lang/Object;)F
+}
+

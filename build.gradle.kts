@@ -1,12 +1,13 @@
 plugins {
-    val toolsVersion = "0.6.1-dev-1.4.20-M1"
+    val toolsVersion = "0.6.2-dev-1.4.20-M1"
     id("ru.mipt.npm.project") version toolsVersion
     id("ru.mipt.npm.mpp") version toolsVersion
+//    id("ru.mipt.npm.native") version toolsVersion
     id("ru.mipt.npm.publish") version toolsVersion
 }
 
 group = "ru.mipt.npm"
-version = "0.2.1"
+version = "0.2.0-dev-2"
 
 kscience {
     useSerialization {
@@ -27,15 +28,6 @@ val bintrayRepo by extra("kscience")
 val githubProject by extra("gdml.kt")
 
 kotlin {
-    js {
-        browser {
-            testTask {
-                useKarma {
-                    useChrome()
-                }
-            }
-        }
-    }
 
     sourceSets {
         commonMain {

@@ -27,9 +27,9 @@ public class GDMLQuantity(
 
 @Serializable
 @SerialName("variable")
-class GDMLVariable(
+public class GDMLVariable(
     override var name: String,
-    var value: String
+    public var value: String
 ) : GDMLDefine()
 
 @Serializable

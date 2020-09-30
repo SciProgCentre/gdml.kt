@@ -9,21 +9,21 @@ import kotlinx.serialization.UseSerializers
 import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
-interface GDMLNode {
-    var name: String
+public interface GDMLNode {
+    public var name: String
 }
 
 @Serializable
-data class GDMLRef<out T : GDMLNode>(var ref: String)
+public data class GDMLRef<out T : GDMLNode>(var ref: String)
 
-fun <T : GDMLNode> ref(ref: String): GDMLRef<T> {
+public fun <T : GDMLNode> ref(ref: String): GDMLRef<T> {
     return GDMLRef<T>(ref)
 }
 
 /**
  * Get a ref to this node
  */
-fun <T : GDMLNode> T.ref(): GDMLRef<T> =
+public fun <T : GDMLNode> T.ref(): GDMLRef<T> =
     if (name.isBlank()) error("Can't produce a ref for anonymous node") else GDMLRef(name)
 
 // define block members
@@ -31,63 +31,63 @@ fun <T : GDMLNode> T.ref(): GDMLRef<T> =
 
 //Structure elements
 @Serializable
-sealed class GDMLPlacement
+public sealed class GDMLPlacement
 
 /**
  * Does not iherit [GDMLNode] since it does not have a name and could not be referenced
  */
 @Serializable
 @SerialName("physvol")
-class GDMLPhysVolume(
+public class GDMLPhysVolume(
     @XmlSerialName("volumeref", "", "")
-    var volumeref: GDMLRef<GDMLGroup>,
-    var name: String? = null
+    public var volumeref: GDMLRef<GDMLGroup>,
+    public var name: String? = null
 ) : GDMLPlacement() {
-    var copynumber: Int? = null
+    public var copynumber: Int? = null
 
     @XmlSerialName("position", "", "")
-    var position: GDMLPosition? = null
+    public var position: GDMLPosition? = null
 
     @XmlSerialName("positionref", "", "")
-    var positionref: GDMLRef<GDMLPosition>? = null
+    public var positionref: GDMLRef<GDMLPosition>? = null
 
     @XmlSerialName("rotation", "", "")
-    var rotation: GDMLRotation? = null
+    public var rotation: GDMLRotation? = null
 
     @XmlSerialName("rotationref", "", "")
-    var rotationref: GDMLRef<GDMLRotation>? = null
+    public var rotationref: GDMLRef<GDMLRotation>? = null
 
     @XmlSerialName("scale", "", "")
-    var scale: GDMLScale? = null
+    public var scale: GDMLScale? = null
 
     @XmlSerialName("scaleref", "", "")
-    var scaleref: GDMLRef<GDMLScale>? = null
+    public var scaleref: GDMLRef<GDMLScale>? = null
 }
 
 /**
  * Get the position from either position block or reference (if root is provided)
  */
-fun GDMLPhysVolume.resolvePosition(root: GDML): GDMLPosition? = position ?: positionref?.resolve(root)
+public fun GDMLPhysVolume.resolvePosition(root: GDML): GDMLPosition? = position ?: positionref?.resolve(root)
 
 /**
  * Get the rotation from either position block or reference (if root is provided)
  */
-fun GDMLPhysVolume.resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
+public fun GDMLPhysVolume.resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
 
 /**
  * Get the scale from either position block or reference (if root is provided)
  */
-fun GDMLPhysVolume.resolveScale(root: GDML): GDMLScale? = scale ?: scaleref?.resolve(root)
+public fun GDMLPhysVolume.resolveScale(root: GDML): GDMLScale? = scale ?: scaleref?.resolve(root)
 
-inline fun GDMLPhysVolume.position(block: GDMLPosition.() -> Unit) {
+public inline fun GDMLPhysVolume.position(block: GDMLPosition.() -> Unit) {
     position = GDMLPosition().apply(block)
 }
 
-inline fun GDMLPhysVolume.rotation(block: GDMLRotation.() -> Unit) {
+public inline fun GDMLPhysVolume.rotation(block: GDMLRotation.() -> Unit) {
     rotation = GDMLRotation().apply(block)
 }
 
-inline fun GDMLPhysVolume.scale(block: GDMLScale.() -> Unit) {
+public inline fun GDMLPhysVolume.scale(block: GDMLScale.() -> Unit) {
     scale = GDMLScale().apply(block)
 }
 
@@ -103,46 +103,46 @@ unit=" xs:string [0..1]">
  */
 @Serializable
 @SerialName("divisionvol")
-class GDMLDivisionVolume(
-    var axis: String,
-    var number: Number,
-    var width: Number,
-    var offset: Number,
+public class GDMLDivisionVolume(
+    public var axis: String,
+    public var number: Number,
+    public var width: Number,
+    public var offset: Number,
     @XmlSerialName("volumeref", "", "")
-    var volumeref: GDMLRef<GDMLVolume>,
-    var unit: String = "mm"
+    public var volumeref: GDMLRef<GDMLVolume>,
+    public var unit: String = "mm"
 ) : GDMLPlacement()
 
 @Serializable
-sealed class GDMLGroup : GDMLNode {
+public sealed class GDMLGroup : GDMLNode {
     @XmlSerialName("physvol", "", "")
-    val physVolumes = ArrayList<GDMLPhysVolume>()
+    public val physVolumes: ArrayList<GDMLPhysVolume> = ArrayList<GDMLPhysVolume>()
 
-    fun physVolume(volumeref: GDMLRef<GDMLGroup>, block: GDMLPhysVolume.() -> Unit): GDMLPhysVolume {
+    public fun physVolume(volumeref: GDMLRef<GDMLGroup>, block: GDMLPhysVolume.() -> Unit): GDMLPhysVolume {
         val res = GDMLPhysVolume(volumeref).apply(block)
         physVolumes.add(res)
         return res
     }
 }
 
-fun GDMLGroup.physVolume(volume: GDMLGroup, block: GDMLPhysVolume.() -> Unit): GDMLPhysVolume =
+public fun GDMLGroup.physVolume(volume: GDMLGroup, block: GDMLPhysVolume.() -> Unit): GDMLPhysVolume =
     physVolume(volume.ref(), block)
 
 @Serializable
 @SerialName("assembly")
-class GDMLAssembly(override var name: String) : GDMLGroup()
+public class GDMLAssembly(override var name: String) : GDMLGroup()
 
 @Serializable
 @SerialName("volume")
-class GDMLVolume(
+public class GDMLVolume(
     override var name: String,
     @XmlSerialName("materialref", "", "")
-    var materialref: GDMLRef<GDMLMaterial>,
+    public var materialref: GDMLRef<GDMLMaterial>,
     @XmlSerialName("solidref", "", "")
-    var solidref: GDMLRef<GDMLSolid>
+    public var solidref: GDMLRef<GDMLSolid>
 ) : GDMLGroup() {
 
     @XmlPolyChildren(arrayOf("physvol", "divisionvol"))
     @Polymorphic
-    var placement: GDMLPlacement? = null
+    public var placement: GDMLPlacement? = null
 }

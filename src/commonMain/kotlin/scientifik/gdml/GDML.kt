@@ -8,68 +8,68 @@ import nl.adaptivity.xmlutil.serialization.XML
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 @DslMarker
-annotation class GDMLApi
+public annotation class GDMLApi
 
 @Serializable
 @SerialName("gdml")
-class GDML {
+public class GDML {
 
     //@XmlPolyChildren(["define", "materials", "solids", "structure"])
-    val containers: ArrayList<@Polymorphic GDMLContainer> = arrayListOf(
+    public val containers: ArrayList<@Polymorphic GDMLContainer> = arrayListOf(
         GDMLDefineContainer(),
         GDMLMaterialContainer(),
         GDMLSolidContainer(),
         GDMLStructure()
     )
 
-    val setup = GDMLSetup()
+    public val setup: GDMLSetup = GDMLSetup()
 
-    val define: GDMLDefineContainer
+    public val define: GDMLDefineContainer
         get() = (containers.filterIsInstance<GDMLDefineContainer>().firstOrNull()
             ?: GDMLDefineContainer().also { containers.add(0, it) })
-    val materials: GDMLMaterialContainer
+    public val materials: GDMLMaterialContainer
         get() = (containers.filterIsInstance<GDMLMaterialContainer>().firstOrNull()
             ?: GDMLMaterialContainer().also { containers.add(it) })
-    val solids: GDMLSolidContainer
+    public val solids: GDMLSolidContainer
         get() = (containers.filterIsInstance<GDMLSolidContainer>().firstOrNull()
             ?: GDMLSolidContainer().also { containers.add(it) })
-    val structure: GDMLStructure
+    public val structure: GDMLStructure
         get() = (containers.filterIsInstance<GDMLStructure>().firstOrNull()
             ?: GDMLStructure().also { containers.add(it) })
 
     @GDMLApi
-    inline fun define(block: GDMLDefineContainer.() -> Unit) {
+    public inline fun define(block: GDMLDefineContainer.() -> Unit) {
         define.apply(block)
     }
 
     @GDMLApi
-    inline fun materials(block: GDMLMaterialContainer.() -> Unit) {
+    public inline fun materials(block: GDMLMaterialContainer.() -> Unit) {
         materials.apply(block)
     }
 
     @GDMLApi
-    inline fun solids(block: GDMLSolidContainer.() -> Unit) {
+    public inline fun solids(block: GDMLSolidContainer.() -> Unit) {
         solids.apply(block)
     }
 
     @GDMLApi
-    inline fun structure(block: GDMLStructure.() -> Unit) {
+    public inline fun structure(block: GDMLStructure.() -> Unit) {
         structure.apply(block)
     }
 
-    inline fun <reified T : GDMLDefine> getDefine(ref: String): T? =
+    public inline fun <reified T : GDMLDefine> getDefine(ref: String): T? =
         containers.filterIsInstance<GDMLDefineContainer>().map { it.get<T>(ref) }.single()
 
-    inline fun <reified T : GDMLMaterial> getMaterial(ref: String): T? =
+    public inline fun <reified T : GDMLMaterial> getMaterial(ref: String): T? =
         containers.filterIsInstance<GDMLMaterialContainer>().map { it.get<T>(ref) }.single()
 
-    inline fun <reified T : GDMLSolid> getSolid(ref: String): T? =
+    public inline fun <reified T : GDMLSolid> getSolid(ref: String): T? =
         containers.filterIsInstance<GDMLSolidContainer>().map { it.get<T>(ref) }.single()
 
-    inline fun <reified T : GDMLGroup> getGroup(ref: String): T? =
+    public inline fun <reified T : GDMLGroup> getGroup(ref: String): T? =
         containers.filterIsInstance<GDMLStructure>().map { it.get<T>(ref) }.single()
 
-    var world: GDMLGroup
+    public var world: GDMLGroup
         get() = setup.world?.resolve(this)
             ?: error("The GDML structure does not contain a world volume")
         set(value) {
@@ -82,10 +82,10 @@ class GDML {
             setup.world = value.ref()
         }
 
-    override fun toString() = format.stringify(this)
+    override fun toString(): String = format.stringify(this)
 
-    companion object {
-        inline operator fun invoke(block: GDML.() -> Unit): GDML = GDML().apply(block)
+    public companion object {
+        public inline operator fun invoke(block: GDML.() -> Unit): GDML = GDML().apply(block)
 
         private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
             { location, _, name, candidates ->
@@ -96,7 +96,7 @@ class GDML {
                 )
             }
 
-        val format = XML(gdmlModule) {
+        public val format: XML = XML(gdmlModule) {
             autoPolymorphic = true
             indent = 4
             unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
@@ -107,29 +107,29 @@ class GDML {
     }
 }
 
-inline fun <reified T : GDMLDefine> GDMLRef<T>.resolve(root: GDML): T? = root.getDefine(ref)
-inline fun <reified T : GDMLSolid> GDMLRef<T>.resolve(root: GDML): T? = root.getSolid(ref)
-inline fun <reified T : GDMLMaterial> GDMLRef<T>.resolve(root: GDML): T? = root.getMaterial(ref)
-inline fun <reified T : GDMLGroup> GDMLRef<T>.resolve(root: GDML): T? = root.getGroup(ref)
+public inline fun <reified T : GDMLDefine> GDMLRef<T>.resolve(root: GDML): T? = root.getDefine(ref)
+public inline fun <reified T : GDMLSolid> GDMLRef<T>.resolve(root: GDML): T? = root.getSolid(ref)
+public inline fun <reified T : GDMLMaterial> GDMLRef<T>.resolve(root: GDML): T? = root.getMaterial(ref)
+public inline fun <reified T : GDMLGroup> GDMLRef<T>.resolve(root: GDML): T? = root.getGroup(ref)
 
 @Serializable
-sealed class GDMLContainer
+public sealed class GDMLContainer
 
 @Serializable
 @SerialName("define")
-class GDMLDefineContainer : GDMLContainer() {
+public class GDMLDefineContainer : GDMLContainer() {
 
-    val content = ArrayList<@Polymorphic GDMLDefine>()
+    public val content: ArrayList<GDMLDefine> = ArrayList<@Polymorphic GDMLDefine>()
 
     @Transient
     private val cache: MutableMap<String, GDMLDefine?> = HashMap()
 
-    fun getDefine(ref: String): GDMLDefine? = cache.getOrPut(ref) { content.find { it.name == ref } }
+    public fun getDefine(ref: String): GDMLDefine? = cache.getOrPut(ref) { content.find { it.name == ref } }
 
-    inline operator fun <reified T : GDMLDefine> get(ref: String): T? = getDefine(ref) as? T
+    public inline operator fun <reified T : GDMLDefine> get(ref: String): T? = getDefine(ref) as? T
 
     @GDMLApi
-    inline fun position(
+    public inline fun position(
         name: String,
         x: Number = 0f,
         y: Number = 0f,
@@ -147,7 +147,7 @@ class GDMLDefineContainer : GDMLContainer() {
     }
 
     @GDMLApi
-    inline fun rotation(
+    public inline fun rotation(
         name: String,
         x: Number = 0f,
         y: Number = 0f,
@@ -167,58 +167,58 @@ class GDMLDefineContainer : GDMLContainer() {
 
 @Serializable
 @SerialName("materials")
-class GDMLMaterialContainer : GDMLContainer() {
+public class GDMLMaterialContainer : GDMLContainer() {
 
     private val content = ArrayList<@Polymorphic GDMLMaterial>()
 
     @Transient
     private val cache: MutableMap<String, GDMLMaterial?> = HashMap()
 
-    fun getMaterial(ref: String): GDMLMaterial? = cache.getOrPut(ref) { content.find { it.name == ref } }
+    public fun getMaterial(ref: String): GDMLMaterial? = cache.getOrPut(ref) { content.find { it.name == ref } }
 
-    inline operator fun <reified T : GDMLMaterial> get(ref: String): T? = getMaterial(ref) as? T
+    public inline operator fun <reified T : GDMLMaterial> get(ref: String): T? = getMaterial(ref) as? T
 
-    companion object {
-        val defaultMaterial = GDMLElement("default")
+    public companion object {
+        public val defaultMaterial: GDMLElement = GDMLElement("default")
     }
 }
 
 @Serializable
 @SerialName("solids")
-class GDMLSolidContainer : GDMLContainer() {
+public class GDMLSolidContainer : GDMLContainer() {
 
-    val content = ArrayList<@Polymorphic GDMLSolid>()
+    public val content: ArrayList<GDMLSolid> = ArrayList<@Polymorphic GDMLSolid>()
 
     @Transient
     private val cache: MutableMap<String, GDMLSolid?> = HashMap()
 
-    fun getSolid(ref: String): GDMLSolid? = cache.getOrPut(ref) { content.find { it.name == ref } }
+    public fun getSolid(ref: String): GDMLSolid? = cache.getOrPut(ref) { content.find { it.name == ref } }
 
-    inline operator fun <reified T : GDMLSolid> get(ref: String): T? = getSolid(ref) as? T
+    public inline operator fun <reified T : GDMLSolid> get(ref: String): T? = getSolid(ref) as? T
 
     @GDMLApi
-    fun box(name: String, x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GDMLBox.() -> Unit = {}): GDMLBox {
+    public fun box(name: String, x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GDMLBox.() -> Unit = {}): GDMLBox {
         val box = GDMLBox(name, x, y, z).apply(block)
         content.add(box)
         return box
     }
 
     @GDMLApi
-    fun tube(name: String, rmax: Number, z: Number, block: GDMLTube.() -> Unit): GDMLTube {
+    public fun tube(name: String, rmax: Number, z: Number, block: GDMLTube.() -> Unit): GDMLTube {
         val tube = GDMLTube(name, rmax, z).apply(block)
         content.add(tube)
         return tube
     }
 
     @GDMLApi
-    fun xtru(name: String, block: GDMLXtru.() -> Unit): GDMLXtru {
+    public fun xtru(name: String, block: GDMLXtru.() -> Unit): GDMLXtru {
         val xtru = GDMLXtru(name).apply(block)
         content.add(xtru)
         return xtru
     }
 
     @GDMLApi
-    fun cone(
+    public fun cone(
         name: String,
         z: Number,
         rmax1: Number,
@@ -232,7 +232,7 @@ class GDMLSolidContainer : GDMLContainer() {
     }
 
     @GDMLApi
-    fun union(
+    public fun union(
         name: String,
         first: GDMLSolid,
         second: GDMLSolid,
@@ -244,7 +244,7 @@ class GDMLSolidContainer : GDMLContainer() {
     }
 
     @GDMLApi
-    fun intersection(
+    public fun intersection(
         name: String,
         first: GDMLSolid,
         second: GDMLSolid,
@@ -256,7 +256,7 @@ class GDMLSolidContainer : GDMLContainer() {
     }
 
     @GDMLApi
-    fun subtraction(
+    public fun subtraction(
         name: String,
         first: GDMLSolid,
         second: GDMLSolid,
@@ -270,19 +270,19 @@ class GDMLSolidContainer : GDMLContainer() {
 
 @Serializable
 @SerialName("structure")
-class GDMLStructure : GDMLContainer() {
+public class GDMLStructure : GDMLContainer() {
 
-    val content = ArrayList<@Polymorphic GDMLGroup>()
+    public val content: ArrayList<GDMLGroup> = ArrayList<@Polymorphic GDMLGroup>()
 
     @Transient
     private val cache: MutableMap<String, GDMLGroup?> = HashMap()
 
-    fun getGroup(ref: String): GDMLGroup? = cache.getOrPut(ref) { content.find { it.name == ref } }
+    public fun getGroup(ref: String): GDMLGroup? = cache.getOrPut(ref) { content.find { it.name == ref } }
 
-    inline operator fun <reified T : GDMLGroup> get(ref: String): T? = getGroup(ref) as? T
+    public inline operator fun <reified T : GDMLGroup> get(ref: String): T? = getGroup(ref) as? T
 
     @GDMLApi
-    inline fun volume(
+    public inline fun volume(
         name: String,
         materialref: GDMLRef<GDMLMaterial>,
         solidref: GDMLRef<GDMLSolid>,
@@ -294,7 +294,7 @@ class GDMLStructure : GDMLContainer() {
     }
 
     @GDMLApi
-    inline fun volume(
+    public inline fun volume(
         name: String,
         material: GDMLMaterial,
         solid: GDMLSolid,
@@ -302,7 +302,7 @@ class GDMLStructure : GDMLContainer() {
     ): GDMLVolume = volume(name, material.ref(), solid.ref(), block)
 
     @GDMLApi
-    inline fun assembly(
+    public inline fun assembly(
         name: String,
         block: GDMLAssembly.() -> Unit = {}
     ): GDMLAssembly {
@@ -314,15 +314,15 @@ class GDMLStructure : GDMLContainer() {
 
 @Serializable
 @SerialName("setup")
-class GDMLSetup(
-    var name: String = "Default",
-    var version: String = "1.0",
+public class GDMLSetup(
+    public var name: String = "Default",
+    public var version: String = "1.0",
     @XmlSerialName("world", "", "")
-    var world: GDMLRef<GDMLGroup>? = null
+    public var world: GDMLRef<GDMLGroup>? = null
 )
 
 @GDMLApi
-fun GDML.world(
+public fun GDML.world(
     name: String = "world",
     block: GDMLAssembly.() -> Unit
 ) {

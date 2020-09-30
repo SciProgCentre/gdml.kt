@@ -11,14 +11,14 @@ import kotlin.math.PI
 //solids block members
 
 @Serializable
-sealed class GDMLSolid : GDMLNode {
-    var lunit: String? = null
-    var aunit: String? = null
+public sealed class GDMLSolid : GDMLNode {
+    public var lunit: String? = null
+    public var aunit: String? = null
 }
 
 @Serializable
 @SerialName("box")
-data class GDMLBox(
+public data class GDMLBox(
     override var name: String,
     var x: Number,
     var y: Number,
@@ -27,7 +27,7 @@ data class GDMLBox(
 
 @Serializable
 @SerialName("sphere")
-data class GDMLSphere(
+public data class GDMLSphere(
     override var name: String,
     var rmax: Number,
     var rmin: Number = 0f,
@@ -39,14 +39,14 @@ data class GDMLSphere(
 
 @Serializable
 @SerialName("orb")
-data class GDMLOrb(
+public data class GDMLOrb(
     override var name: String,
     var r: Number
 ) : GDMLSolid()
 
 @Serializable
 @SerialName("ellipsoid")
-data class GDMLEllipsoid(
+public data class GDMLEllipsoid(
     override var name: String,
     var ax: Number,
     var by: Number,
@@ -57,7 +57,7 @@ data class GDMLEllipsoid(
 
 @Serializable
 @SerialName("eltube")
-data class GDMLElTube(
+public data class GDMLElTube(
     override var name: String,
     var dx: Number,
     var dy: Number,
@@ -66,7 +66,7 @@ data class GDMLElTube(
 
 @Serializable
 @SerialName("elcone")
-data class GDMLElCone(
+public data class GDMLElCone(
     override var name: String,
     var dx: Number,
     var dy: Number,
@@ -76,7 +76,7 @@ data class GDMLElCone(
 
 @Serializable
 @SerialName("paraboloid")
-data class GDMLParaboloid(
+public data class GDMLParaboloid(
     override var name: String,
     var rlo: Number,
     var rhi: Number,
@@ -85,7 +85,7 @@ data class GDMLParaboloid(
 
 @Serializable
 @SerialName("para")
-data class GDMLParallelepiped(
+public data class GDMLParallelepiped(
     override var name: String,
     var x: Number,
     var y: Number,
@@ -97,7 +97,7 @@ data class GDMLParallelepiped(
 
 @Serializable
 @SerialName("torus")
-data class GDMLTorus(
+public data class GDMLTorus(
     override var name: String,
     var rmin: Number,
     var rmax: Number,
@@ -108,7 +108,7 @@ data class GDMLTorus(
 
 @Serializable
 @SerialName("trd")
-data class GDMLTrapezoid(
+public data class GDMLTrapezoid(
     override var name: String,
     var x1: Number,
     var x2: Number,
@@ -125,7 +125,7 @@ rmax=" ExpressionOrIDREFType [1]"/>
  */
 @Serializable
 @SerialName("zplane")
-data class GDMLZPlane(
+public data class GDMLZPlane(
     var z: Number,
     var rmax: Number,
     var rmin: Number = 0f
@@ -144,30 +144,30 @@ numsides=" ExpressionOrIDREFType [1]">
  */
 @Serializable
 @SerialName("polyhedra")
-data class GDMLPolyhedra(
+public data class GDMLPolyhedra(
     override var name: String,
     val numsides: Int,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
 ) : GDMLSolid() {
     @XmlSerialName("zplane", "", "")
-    val planes = ArrayList<GDMLZPlane>()
+    public val planes: ArrayList<GDMLZPlane> = ArrayList<GDMLZPlane>()
 }
 
 @Serializable
 @SerialName("polycone")
-data class GDMLPolycone(
+public data class GDMLPolycone(
     override var name: String,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
 ) : GDMLSolid() {
     @XmlSerialName("zplane", "", "")
-    val planes = ArrayList<GDMLZPlane>()
+    public val planes: ArrayList<GDMLZPlane> = ArrayList()
 }
 
 @Serializable
 @SerialName("tube")
-data class GDMLTube(
+public data class GDMLTube(
     override var name: String,
     var rmax: Number,
     var z: Number,
@@ -178,14 +178,14 @@ data class GDMLTube(
 
 @Serializable
 @SerialName("xtru")
-data class GDMLXtru(override var name: String) : GDMLSolid() {
+public data class GDMLXtru(override var name: String) : GDMLSolid() {
     @Serializable
     @XmlSerialName("twoDimVertex","","")
-    data class TwoDimVertex(val x: Double, val y: Double)
+    public data class TwoDimVertex(val x: Double, val y: Double)
 
     @Serializable
     @XmlSerialName("section","","")
-    data class Section(
+    public data class Section(
         var zPosition: Number,
         var zOrder: Int,
         var xOffset: Number = 0.0,
@@ -194,23 +194,23 @@ data class GDMLXtru(override var name: String) : GDMLSolid() {
     )
 
     @XmlSerialName("twoDimVertex","","")
-    val vertices = ArrayList<TwoDimVertex>()
+    public val vertices: ArrayList<TwoDimVertex> = ArrayList()
 
     @XmlSerialName("section","","")
-    val sections = ArrayList<Section>()
+    public val sections: ArrayList<Section> = ArrayList()
 
-    fun vertex(x: Double, y: Double) {
+    public fun vertex(x: Double, y: Double) {
         vertices.add(TwoDimVertex(x, y))
     }
 
-    fun section(index: Int, z: Double, block: Section.() -> Unit = {}) {
+    public fun section(index: Int, z: Double, block: Section.() -> Unit = {}) {
         sections.add(Section(zPosition = z, zOrder = index).apply(block))
     }
 }
 
 @Serializable
 @SerialName("scaledSolid")
-data class GDMLScaledSolid(
+public data class GDMLScaledSolid(
     override var name: String,
     @XmlSerialName("solidref", "", "")
     val solidref: GDMLRef<GDMLSolid>,
@@ -241,7 +241,7 @@ data class GDMLScaledSolid(
  */
 @Serializable
 @SerialName("cone")
-data class GDMLCone(
+public data class GDMLCone(
     override var name: String,
     var z: Number,
     var rmax1: Number,
@@ -255,57 +255,57 @@ data class GDMLCone(
 //boolean solids
 
 @Serializable
-sealed class GDMLBoolSolid : GDMLSolid() {
+public sealed class GDMLBoolSolid : GDMLSolid() {
     @XmlSerialName("first", "", "")
-    abstract var first: GDMLRef<GDMLSolid>
+    public abstract var first: GDMLRef<GDMLSolid>
 
     @XmlSerialName("second", "", "")
-    abstract var second: GDMLRef<GDMLSolid>
+    public abstract var second: GDMLRef<GDMLSolid>
 
     @XmlSerialName("position", "", "")
-    var position: GDMLPosition? = null
+    public var position: GDMLPosition? = null
 
     @XmlSerialName("positionref", "", "")
-    var positionref: GDMLRef<GDMLPosition>? = null
+    public var positionref: GDMLRef<GDMLPosition>? = null
 
     @XmlSerialName("rotation", "", "")
-    var rotation: GDMLRotation? = null
+    public var rotation: GDMLRotation? = null
 
     @XmlSerialName("rotationref", "", "")
-    var rotationref: GDMLRef<GDMLRotation>? = null
+    public var rotationref: GDMLRef<GDMLRotation>? = null
 
     @XmlSerialName("firstposition", "", "")
-    var firstposition: GDMLPosition? = null
+    public var firstposition: GDMLPosition? = null
 
     @XmlSerialName("firstpositionref", "", "")
-    var firstpositionref: GDMLRef<GDMLPosition>? = null
+    public var firstpositionref: GDMLRef<GDMLPosition>? = null
 
     @XmlSerialName("firstrotation", "", "")
-    var firstrotation: GDMLRotation? = null
+    public var firstrotation: GDMLRotation? = null
 
     @XmlSerialName("firstrotationref", "", "")
-    var firstrotationref: GDMLRef<GDMLRotation>? = null
+    public var firstrotationref: GDMLRef<GDMLRotation>? = null
 
     /**
      * Get the position from either position block or reference (if root is provided)
      */
-    fun resolvePosition(root: GDML): GDMLPosition? = position ?: positionref?.resolve(root)
+    public fun resolvePosition(root: GDML): GDMLPosition? = position ?: positionref?.resolve(root)
 
     /**
      * Get the rotation from either position block or reference (if root is provided)
      */
-    fun resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
+    public fun resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
 
-    fun resolveFirstPosition(root: GDML): GDMLPosition? = firstposition ?: firstpositionref?.resolve(root)
-    fun resolveFirstRotation(root: GDML): GDMLRotation? = firstrotation ?: firstrotationref?.resolve(root)
+    public fun resolveFirstPosition(root: GDML): GDMLPosition? = firstposition ?: firstpositionref?.resolve(root)
+    public fun resolveFirstRotation(root: GDML): GDMLRotation? = firstrotation ?: firstrotationref?.resolve(root)
 
-    fun position(x: Number = 0f, y: Number = 0f, z: Number = 0f): GDMLPosition = GDMLPosition().apply {
+    public fun position(x: Number = 0f, y: Number = 0f, z: Number = 0f): GDMLPosition = GDMLPosition().apply {
         this.x = x
         this.y = y
         this.z = z
     }
 
-    fun rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f): GDMLRotation = GDMLRotation().apply {
+    public fun rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f): GDMLRotation = GDMLRotation().apply {
         this.x = x
         this.y = y
         this.z = z
@@ -315,7 +315,7 @@ sealed class GDMLBoolSolid : GDMLSolid() {
 
 @Serializable
 @SerialName("union")
-data class GDMLUnion(
+public data class GDMLUnion(
     override var name: String,
     @XmlSerialName("first", "", "")
     override var first: GDMLRef<GDMLSolid>,
@@ -325,7 +325,7 @@ data class GDMLUnion(
 
 @Serializable
 @SerialName("subtraction")
-data class GDMLSubtraction(
+public data class GDMLSubtraction(
     override var name: String,
     @XmlSerialName("first", "", "")
     override var first: GDMLRef<GDMLSolid>,
@@ -335,7 +335,7 @@ data class GDMLSubtraction(
 
 @Serializable
 @SerialName("intersection")
-data class GDMLIntersection(
+public data class GDMLIntersection(
     override var name: String,
     @XmlSerialName("first", "", "")
     override var first: GDMLRef<GDMLSolid>,
