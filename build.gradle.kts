@@ -1,5 +1,5 @@
 plugins {
-    val toolsVersion = "0.6.2-dev-1.4.20-M1"
+    val toolsVersion = "0.6.4-dev-1.4.20-M2"
     id("ru.mipt.npm.project") version toolsVersion
     id("ru.mipt.npm.mpp") version toolsVersion
 //    id("ru.mipt.npm.native") version toolsVersion
@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "kscience.gdml"
-version = "0.2.0-dev-2"
+version = "0.2.0-dev-3"
 
 kscience {
     useSerialization {
@@ -16,7 +16,7 @@ kscience {
 }
 
 repositories {
-    mavenLocal()
+    maven("https://dl.bintray.com/pdvrieze/maven")
 }
 
 ksciencePublish {

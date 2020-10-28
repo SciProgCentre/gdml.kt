@@ -35,8 +35,6 @@ public final class kscience/gdml/GDML$$serializer : kotlinx/serialization/intern
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDML;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDML;)Lkscience/gdml/GDML;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDML;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -66,8 +64,6 @@ public final class kscience/gdml/GDMLAssembly$$serializer : kotlinx/serializatio
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLAssembly;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLAssembly;)Lkscience/gdml/GDMLAssembly;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLAssembly;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -102,8 +98,6 @@ public final class kscience/gdml/GDMLAtom$$serializer : kotlinx/serialization/in
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLAtom;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLAtom;)Lkscience/gdml/GDMLAtom;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLAtom;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -181,8 +175,6 @@ public final class kscience/gdml/GDMLBox$$serializer : kotlinx/serialization/int
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLBox;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLBox;)Lkscience/gdml/GDMLBox;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLBox;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -214,8 +206,6 @@ public final class kscience/gdml/GDMLComposite$$serializer : kotlinx/serializati
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLComposite;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLComposite;)Lkscience/gdml/GDMLComposite;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLComposite;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -268,8 +258,6 @@ public final class kscience/gdml/GDMLCone$$serializer : kotlinx/serialization/in
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLCone;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLCone;)Lkscience/gdml/GDMLCone;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLCone;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -296,8 +284,6 @@ public final class kscience/gdml/GDMLConstant$$serializer : kotlinx/serializatio
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLConstant;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLConstant;)Lkscience/gdml/GDMLConstant;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLConstant;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -346,8 +332,6 @@ public final class kscience/gdml/GDMLDefineContainer$$serializer : kotlinx/seria
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLDefineContainer;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLDefineContainer;)Lkscience/gdml/GDMLDefineContainer;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLDefineContainer;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -382,8 +366,6 @@ public final class kscience/gdml/GDMLDensity$$serializer : kotlinx/serialization
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLDensity;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLDensity;)Lkscience/gdml/GDMLDensity;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLDensity;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -419,8 +401,6 @@ public final class kscience/gdml/GDMLDivisionVolume$$serializer : kotlinx/serial
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLDivisionVolume;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLDivisionVolume;)Lkscience/gdml/GDMLDivisionVolume;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLDivisionVolume;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -463,8 +443,6 @@ public final class kscience/gdml/GDMLElCone$$serializer : kotlinx/serialization/
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLElCone;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLElCone;)Lkscience/gdml/GDMLElCone;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLElCone;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -504,8 +482,6 @@ public final class kscience/gdml/GDMLElTube$$serializer : kotlinx/serialization/
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLElTube;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLElTube;)Lkscience/gdml/GDMLElTube;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLElTube;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -536,8 +512,6 @@ public final class kscience/gdml/GDMLElement$$serializer : kotlinx/serialization
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLElement;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLElement;)Lkscience/gdml/GDMLElement;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLElement;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -584,8 +558,6 @@ public final class kscience/gdml/GDMLEllipsoid$$serializer : kotlinx/serializati
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLEllipsoid;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLEllipsoid;)Lkscience/gdml/GDMLEllipsoid;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLEllipsoid;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -619,8 +591,6 @@ public final class kscience/gdml/GDMLFraction$$serializer : kotlinx/serializatio
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLFraction;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLFraction;)Lkscience/gdml/GDMLFraction;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLFraction;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -669,8 +639,6 @@ public final class kscience/gdml/GDMLIntersection$$serializer : kotlinx/serializ
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLIntersection;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLIntersection;)Lkscience/gdml/GDMLIntersection;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLIntersection;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -701,8 +669,6 @@ public final class kscience/gdml/GDMLIsotope$$serializer : kotlinx/serialization
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLIsotope;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLIsotope;)Lkscience/gdml/GDMLIsotope;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLIsotope;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -754,8 +720,6 @@ public final class kscience/gdml/GDMLMaterialContainer$$serializer : kotlinx/ser
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLMaterialContainer;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLMaterialContainer;)Lkscience/gdml/GDMLMaterialContainer;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLMaterialContainer;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -785,8 +749,6 @@ public final class kscience/gdml/GDMLMatrix$$serializer : kotlinx/serialization/
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLMatrix;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLMatrix;)Lkscience/gdml/GDMLMatrix;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLMatrix;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -837,8 +799,6 @@ public final class kscience/gdml/GDMLOrb$$serializer : kotlinx/serialization/int
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLOrb;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLOrb;)Lkscience/gdml/GDMLOrb;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLOrb;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -878,8 +838,6 @@ public final class kscience/gdml/GDMLParaboloid$$serializer : kotlinx/serializat
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLParaboloid;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLParaboloid;)Lkscience/gdml/GDMLParaboloid;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLParaboloid;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -928,8 +886,6 @@ public final class kscience/gdml/GDMLParallelepiped$$serializer : kotlinx/serial
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLParallelepiped;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLParallelepiped;)Lkscience/gdml/GDMLParallelepiped;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLParallelepiped;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -971,8 +927,6 @@ public final class kscience/gdml/GDMLPhysVolume$$serializer : kotlinx/serializat
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLPhysVolume;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLPhysVolume;)Lkscience/gdml/GDMLPhysVolume;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLPhysVolume;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1021,8 +975,6 @@ public final class kscience/gdml/GDMLPolycone$$serializer : kotlinx/serializatio
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLPolycone;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLPolycone;)Lkscience/gdml/GDMLPolycone;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLPolycone;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1063,8 +1015,6 @@ public final class kscience/gdml/GDMLPolyhedra$$serializer : kotlinx/serializati
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLPolyhedra;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLPolyhedra;)Lkscience/gdml/GDMLPolyhedra;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLPolyhedra;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1099,8 +1049,6 @@ public final class kscience/gdml/GDMLPosition$$serializer : kotlinx/serializatio
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLPosition;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLPosition;)Lkscience/gdml/GDMLPosition;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLPosition;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1132,8 +1080,6 @@ public final class kscience/gdml/GDMLQuantity$$serializer : kotlinx/serializatio
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLQuantity;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLQuantity;)Lkscience/gdml/GDMLQuantity;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLQuantity;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1164,8 +1110,6 @@ public final class kscience/gdml/GDMLRef$$serializer : kotlinx/serialization/int
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLRef;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLRef;)Lkscience/gdml/GDMLRef;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLRef;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1200,8 +1144,6 @@ public final class kscience/gdml/GDMLRotation$$serializer : kotlinx/serializatio
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLRotation;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLRotation;)Lkscience/gdml/GDMLRotation;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLRotation;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1234,8 +1176,6 @@ public final class kscience/gdml/GDMLScale$$serializer : kotlinx/serialization/i
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLScale;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLScale;)Lkscience/gdml/GDMLScale;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLScale;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1271,8 +1211,6 @@ public final class kscience/gdml/GDMLScaledSolid$$serializer : kotlinx/serializa
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLScaledSolid;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLScaledSolid;)Lkscience/gdml/GDMLScaledSolid;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLScaledSolid;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1303,8 +1241,6 @@ public final class kscience/gdml/GDMLSetup$$serializer : kotlinx/serialization/i
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLSetup;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLSetup;)Lkscience/gdml/GDMLSetup;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLSetup;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1351,8 +1287,6 @@ public final class kscience/gdml/GDMLSolidContainer$$serializer : kotlinx/serial
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLSolidContainer;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLSolidContainer;)Lkscience/gdml/GDMLSolidContainer;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLSolidContainer;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1402,8 +1336,6 @@ public final class kscience/gdml/GDMLSphere$$serializer : kotlinx/serialization/
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLSphere;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLSphere;)Lkscience/gdml/GDMLSphere;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLSphere;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1434,8 +1366,6 @@ public final class kscience/gdml/GDMLStructure$$serializer : kotlinx/serializati
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLStructure;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLStructure;)Lkscience/gdml/GDMLStructure;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLStructure;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1472,8 +1402,6 @@ public final class kscience/gdml/GDMLSubtraction$$serializer : kotlinx/serializa
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLSubtraction;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLSubtraction;)Lkscience/gdml/GDMLSubtraction;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLSubtraction;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1520,8 +1448,6 @@ public final class kscience/gdml/GDMLTorus$$serializer : kotlinx/serialization/i
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLTorus;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLTorus;)Lkscience/gdml/GDMLTorus;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLTorus;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1567,8 +1493,6 @@ public final class kscience/gdml/GDMLTrapezoid$$serializer : kotlinx/serializati
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLTrapezoid;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLTrapezoid;)Lkscience/gdml/GDMLTrapezoid;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLTrapezoid;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1615,8 +1539,6 @@ public final class kscience/gdml/GDMLTube$$serializer : kotlinx/serialization/in
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLTube;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLTube;)Lkscience/gdml/GDMLTube;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLTube;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1653,8 +1575,6 @@ public final class kscience/gdml/GDMLUnion$$serializer : kotlinx/serialization/i
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLUnion;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLUnion;)Lkscience/gdml/GDMLUnion;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLUnion;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1681,8 +1601,6 @@ public final class kscience/gdml/GDMLVariable$$serializer : kotlinx/serializatio
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLVariable;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLVariable;)Lkscience/gdml/GDMLVariable;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLVariable;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1713,8 +1631,6 @@ public final class kscience/gdml/GDMLVolume$$serializer : kotlinx/serialization/
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLVolume;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLVolume;)Lkscience/gdml/GDMLVolume;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLVolume;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1750,8 +1666,6 @@ public final class kscience/gdml/GDMLXtru$$serializer : kotlinx/serialization/in
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLXtru;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLXtru;)Lkscience/gdml/GDMLXtru;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLXtru;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1795,8 +1709,6 @@ public final class kscience/gdml/GDMLXtru$Section$$serializer : kotlinx/serializ
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLXtru$Section;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLXtru$Section;)Lkscience/gdml/GDMLXtru$Section;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLXtru$Section;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1828,8 +1740,6 @@ public final class kscience/gdml/GDMLXtru$TwoDimVertex$$serializer : kotlinx/ser
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLXtru$TwoDimVertex;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLXtru$TwoDimVertex;)Lkscience/gdml/GDMLXtru$TwoDimVertex;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLXtru$TwoDimVertex;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1867,8 +1777,6 @@ public final class kscience/gdml/GDMLZPlane$$serializer : kotlinx/serialization/
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/GDMLZPlane;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/GDMLZPlane;)Lkscience/gdml/GDMLZPlane;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/GDMLZPlane;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1904,8 +1812,6 @@ public final class kscience/gdml/MaterialState$$serializer : kotlinx/serializati
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkscience/gdml/MaterialState;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Lkscience/gdml/MaterialState;)Lkscience/gdml/MaterialState;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lkscience/gdml/MaterialState;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
@@ -1920,8 +1826,6 @@ public final class kscience/gdml/NumberSerializer : kotlinx/serialization/KSeria
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Number;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Number;)Ljava/lang/Number;
-	public synthetic fun patch (Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Number;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
