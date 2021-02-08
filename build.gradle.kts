@@ -1,5 +1,5 @@
 plugins {
-    val toolsVersion = "0.6.4-dev-1.4.20-M2"
+    val toolsVersion = "0.7.6"
     id("ru.mipt.npm.project") version toolsVersion
     id("ru.mipt.npm.mpp") version toolsVersion
 //    id("ru.mipt.npm.native") version toolsVersion
@@ -7,10 +7,10 @@ plugins {
 }
 
 group = "kscience.gdml"
-version = "0.2.0-dev-3"
+version = "0.2.0"
 
 kscience {
-    useSerialization {
+    useSerialization("1.0.1") {
         xml()
     }
 }
