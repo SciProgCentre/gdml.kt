@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "kscience.gdml"
-version = "0.2.0"
+version = "0.2.0-dev-4"
 
 kscience {
     useSerialization("1.0.1") {
@@ -28,14 +28,7 @@ val bintrayRepo by extra("kscience")
 val githubProject by extra("gdml.kt")
 
 kotlin {
-
     sourceSets {
-        commonMain {
-            dependencies {
-//                api(kotlin("reflect"))
-            }
-        }
-
         jvmMain {
             dependencies {
                 api("com.fasterxml.woodstox:woodstox-core:5.0.3")
