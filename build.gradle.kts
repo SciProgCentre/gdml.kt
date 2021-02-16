@@ -31,7 +31,7 @@ kotlin {
     sourceSets {
         jvmMain {
             dependencies {
-                api("com.fasterxml.woodstox:woodstox-core:5.0.3")
+                api("com.fasterxml.woodstox:woodstox-core:6.2.3")
             }
         }
     }
