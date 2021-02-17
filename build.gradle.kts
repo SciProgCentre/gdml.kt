@@ -7,11 +7,11 @@ plugins {
 }
 
 group = "kscience.gdml"
-version = "0.2.0-dev-4"
+version = "0.2.0-dev-5"
 
 kscience {
-    useSerialization("1.0.1") {
-        xml()
+    useSerialization{
+        xml("0.81.0")
     }
 }
 
