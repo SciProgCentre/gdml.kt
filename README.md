@@ -13,9 +13,7 @@ The artifacts could be accessed via following configurations:
 ```kotlin
 repository{
     jcenter()
-    maven("https://dl.bintray.com/mipt-npm/scientifik")
-    maven("https://dl.bintray.com/pdvrieze/maven")
-    maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    maven("https://repo.kotlin.link")
 }
 
 //for multiplatform with gradle-metadata:
@@ -23,7 +21,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("scientifik:gdml:0.1.3")
+                api("scientifik:gdml:0.2.0")
             }
         }
     }
@@ -31,23 +29,23 @@ kotlin {
 
 //for jvm
 dependencies {
-    api("scientifik:gdml-jvm:0.1.3")
+    api("scientifik:gdml-jvm:0.2.0")
 }
 ```
 
 ## Usage
 Read: 
 ```kotlin
-import scientifik.gdml.parse
+import space.kscience.gdml.decodeFromString
 
 val gdmlString: String
-val gdml = Gdml.parse(gdmlString)
+val gdml = Gdml.decodeFromString(gdmlString)
 ```
 
 write:
 ```kotlin
-import scientifik.gdml.stringify
+import space.kscience.gdml.encodeToString
 
 val gdml = Gdml{}
-val gdmlString = gdml.stringify()
+val gdmlString = gdml.encodeToString()
 ```
