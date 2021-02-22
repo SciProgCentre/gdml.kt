@@ -4,10 +4,10 @@ job("Build") {
             interpreter = "/bin/bash"
 
             content = """
-                sudo apt update
-                sudo apt install -y libappindicator1 fonts-liberation
+                apt update
+                apt install -y libappindicator1 fonts-liberation
                 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-                sudo dpkg -i google-chrome*.deb
+                dpkg -i google-chrome*.deb
                 ./gradlew --no-daemon build
             """.trimIndent()
         }
