@@ -1,11 +1,12 @@
 #!/usr/bin/python
 """
 """
-import xml.dom.minidom as md
 import sys
+import xml.dom.minidom as md
+
 
 class Vars:
-    # Dict of variables defined in GDML file
+    # Dict of variables defined in Gdml file
     def __init__(self, defines):
         self.var = {}
         for v in defines:

@@ -1,49 +1,34 @@
-import scientifik.useSerialization
-
 plugins {
-    id("scientifik.mpp") version "0.5.2"
-    id("scientifik.publish") version "0.5.2"
+    val toolsVersion = "0.8.0"
+    id("ru.mipt.npm.gradle.project") version toolsVersion
+    id("ru.mipt.npm.gradle.mpp") version toolsVersion
+//    id("ru.mipt.npm.native") version toolsVersion
+    id("ru.mipt.npm.gradle.publish") version toolsVersion
 }
 
-group = "scientifik"
-version = "0.1.9"
+group = "space.kscience"
+version = "0.2.0"
 
-useSerialization {
-    xml()
+kscience {
+    useSerialization{
+        xml()
+    }
 }
 
-val bintrayRepo by extra("scientifik")
-val githubProject by extra("gdml.kt")
+repositories {
+    maven("https://dl.bintray.com/pdvrieze/maven")
+}
+
+internal val githubProject by extra("gdml.kt")
+internal val spaceRepo by extra("https://maven.pkg.jetbrains.space/mipt-npm/p/sci/maven")
+internal val bintrayRepo by extra("kscience")
 
 kotlin {
-    js {
-        browser {
-            testTask {
-                useKarma {
-                    useChrome()
-                }
-            }
-        }
-    }
-
     sourceSets {
-        commonMain{
+        jvmMain {
             dependencies {
-                api(kotlin("reflect"))
-            }
-        }
-
-        jvmMain{
-            dependencies {
-                api("com.fasterxml.woodstox:woodstox-core:5.0.3")
-            }
-        }
-    }
-
-    targets.all {
-        sourceSets.all {
-            languageSettings.apply {
-                useExperimentalAnnotation("kotlinx.serialization.ImplicitReflectionSerializer")
+                api("com.fasterxml.woodstox:woodstox-core:6.2.3")
+                implementation("com.github.h0tk3y.betterParse:better-parse:0.4.1")
             }
         }
     }

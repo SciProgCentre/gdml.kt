@@ -1,61 +1,61 @@
-package scientifik.gdml
+package space.kscience.gdml
 
 import kotlin.math.PI
 
-enum class LUnit(val title: String, val value: Float) {
+public enum class LUnit(public val title: String, public val value: Float) {
     MM("mm", 1f),
     CM("cm", 10f),
     M("m", 1000f)
 }
 
-enum class AUnit(val title: String,val value: Float) {
+public enum class AUnit(public val title: String, public val value: Float) {
     DEG("deg", PI.toFloat() / 180),
     DEGREE("deg", PI.toFloat() / 180),
     RAD("rad", 1f),
     RADIAN("rad", 1f)
 }
 
-fun GDMLPosition.unit(): LUnit = LUnit.valueOf(unit.toUpperCase())
+public fun GdmlPosition.unit(): LUnit = LUnit.valueOf(unit.toUpperCase())
 
-fun GDMLPosition.x(unit: LUnit): Float = if (unit.name == this.unit) {
+public fun GdmlPosition.x(unit: LUnit): Float = if (unit.name == this.unit) {
     x.toFloat()
 } else {
     x.toFloat() / unit.value * unit().value
 }
 
-fun GDMLPosition.y(unit: LUnit): Float = if (unit.name == this.unit) {
+public fun GdmlPosition.y(unit: LUnit): Float = if (unit.name == this.unit) {
     y.toFloat()
 } else {
     y.toFloat() / unit.value * unit().value
 }
 
-fun GDMLPosition.z(unit: LUnit): Float = if (unit.name == this.unit) {
+public fun GdmlPosition.z(unit: LUnit): Float = if (unit.name == this.unit) {
     z.toFloat()
 } else {
     z.toFloat() / unit.value * unit().value
 }
 
-fun GDMLRotation.unit(): AUnit = AUnit.valueOf(unit.toUpperCase())
+public fun GdmlRotation.unit(): AUnit = AUnit.valueOf(unit.toUpperCase())
 
-fun GDMLRotation.x(unit: AUnit = AUnit.RAD): Float = if (unit.name == this.unit) {
+public fun GdmlRotation.x(unit: AUnit = AUnit.RAD): Float = if (unit.name == this.unit) {
     x.toFloat()
 } else {
     x.toFloat() / unit.value * unit().value
 }
 
-fun GDMLRotation.y(unit: AUnit = AUnit.RAD): Float = if (unit.name == this.unit) {
+public fun GdmlRotation.y(unit: AUnit = AUnit.RAD): Float = if (unit.name == this.unit) {
     y.toFloat()
 } else {
     y.toFloat() / unit.value * unit().value
 }
 
-fun GDMLRotation.z(unit: AUnit = AUnit.RAD): Float = if (unit.name == this.unit) {
+public fun GdmlRotation.z(unit: AUnit = AUnit.RAD): Float = if (unit.name == this.unit) {
     z.toFloat()
 } else {
     z.toFloat() / unit.value * unit().value
 }
 
-fun GDMLSolid.lscale(unit: LUnit): Float {
+public fun GdmlSolid.lscale(unit: LUnit): Float {
     val solidUnit = lunit?.let { LUnit.valueOf(it.toUpperCase()) } ?: return 1f
     return if (solidUnit == unit) {
         1f
@@ -64,7 +64,7 @@ fun GDMLSolid.lscale(unit: LUnit): Float {
     }
 }
 
-fun GDMLSolid.ascale(unit: AUnit = AUnit.RAD): Float {
+public fun GdmlSolid.ascale(unit: AUnit = AUnit.RAD): Float {
     val solidUnit = aunit?.let { AUnit.valueOf(it.toUpperCase()) } ?: return 1f
     return if (solidUnit == unit) {
         1f
