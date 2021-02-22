@@ -16,6 +16,7 @@ kscience {
 }
 
 repositories {
+    jcenter()
     maven("https://dl.bintray.com/pdvrieze/maven")
 }
 
