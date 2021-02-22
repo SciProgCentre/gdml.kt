@@ -1,6 +1,6 @@
 @file:UseSerializers(NumberSerializer::class)
 
-package kscience.gdml
+package space.kscience.gdml
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -11,23 +11,23 @@ import kotlin.math.PI
 //solids block members
 
 @Serializable
-public sealed class GDMLSolid : GDMLNode {
+public sealed class GdmlSolid : GdmlNode {
     public var lunit: String? = null
     public var aunit: String? = null
 }
 
 @Serializable
 @SerialName("box")
-public data class GDMLBox(
+public data class GdmlBox(
     override var name: String,
     var x: Number,
     var y: Number,
     var z: Number
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("sphere")
-public data class GDMLSphere(
+public data class GdmlSphere(
     override var name: String,
     var rmax: Number,
     var rmin: Number = 0f,
@@ -35,57 +35,57 @@ public data class GDMLSphere(
     var deltaphi: Number = 2 * PI,
     var starttheta: Number = 0f,
     var deltatheta: Number = PI
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("orb")
-public data class GDMLOrb(
+public data class GdmlOrb(
     override var name: String,
     var r: Number
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("ellipsoid")
-public data class GDMLEllipsoid(
+public data class GdmlEllipsoid(
     override var name: String,
     var ax: Number,
     var by: Number,
     var cz: Number,
     var zcut1: Number? = null,
     var zcut2: Number? = null
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("eltube")
-public data class GDMLElTube(
+public data class GdmlElTube(
     override var name: String,
     var dx: Number,
     var dy: Number,
     var dz: Number
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("elcone")
-public data class GDMLElCone(
+public data class GdmlElCone(
     override var name: String,
     var dx: Number,
     var dy: Number,
     var zmax: Number,
     var zcut: Number
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("paraboloid")
-public data class GDMLParaboloid(
+public data class GdmlParaboloid(
     override var name: String,
     var rlo: Number,
     var rhi: Number,
     var dz: Number
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("para")
-public data class GDMLParallelepiped(
+public data class GdmlParallelepiped(
     override var name: String,
     var x: Number,
     var y: Number,
@@ -93,29 +93,29 @@ public data class GDMLParallelepiped(
     var alpha: Number,
     var theta: Number,
     var phi: Number
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("torus")
-public data class GDMLTorus(
+public data class GdmlTorus(
     override var name: String,
     var rmin: Number,
     var rmax: Number,
     var rtor: Number,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("trd")
-public data class GDMLTrapezoid(
+public data class GdmlTrapezoid(
     override var name: String,
     var x1: Number,
     var x2: Number,
     var y1: Number,
     var y2: Number,
     var z: Number
-) : GDMLSolid()
+) : GdmlSolid()
 
 /**
 <...
@@ -125,7 +125,7 @@ rmax=" ExpressionOrIDREFType [1]"/>
  */
 @Serializable
 @SerialName("zplane")
-public data class GDMLZPlane(
+public data class GdmlZPlane(
     var z: Number,
     var rmax: Number,
     var rmin: Number = 0f
@@ -144,41 +144,41 @@ numsides=" ExpressionOrIDREFType [1]">
  */
 @Serializable
 @SerialName("polyhedra")
-public data class GDMLPolyhedra(
+public data class GdmlPolyhedra(
     override var name: String,
     val numsides: Int,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
-) : GDMLSolid() {
+) : GdmlSolid() {
     @XmlSerialName("zplane", "", "")
-    public val planes: ArrayList<GDMLZPlane> = ArrayList<GDMLZPlane>()
+    public val planes: ArrayList<GdmlZPlane> = ArrayList<GdmlZPlane>()
 }
 
 @Serializable
 @SerialName("polycone")
-public data class GDMLPolycone(
+public data class GdmlPolycone(
     override var name: String,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
-) : GDMLSolid() {
+) : GdmlSolid() {
     @XmlSerialName("zplane", "", "")
-    public val planes: ArrayList<GDMLZPlane> = ArrayList()
+    public val planes: ArrayList<GdmlZPlane> = ArrayList()
 }
 
 @Serializable
 @SerialName("tube")
-public data class GDMLTube(
+public data class GdmlTube(
     override var name: String,
     var rmax: Number,
     var z: Number,
     var rmin: Number = 0f,
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI
-) : GDMLSolid()
+) : GdmlSolid()
 
 @Serializable
 @SerialName("xtru")
-public data class GDMLXtru(override var name: String) : GDMLSolid() {
+public data class GdmlXtru(override var name: String) : GdmlSolid() {
     @Serializable
     @XmlSerialName("twoDimVertex","","")
     public data class TwoDimVertex(val x: Double, val y: Double)
@@ -210,12 +210,12 @@ public data class GDMLXtru(override var name: String) : GDMLSolid() {
 
 @Serializable
 @SerialName("scaledSolid")
-public data class GDMLScaledSolid(
+public data class GdmlScaledSolid(
     override var name: String,
     @XmlSerialName("solidref", "", "")
-    val solidref: GDMLRef<GDMLSolid>,
-    var scale: GDMLScale
-) : GDMLSolid()
+    val solidref: GdmlRef<GdmlSolid>,
+    var scale: GdmlScale
+) : GdmlSolid()
 
 /*
 <xs:element name="cone" substitutionGroup="Solid">
@@ -241,7 +241,7 @@ public data class GDMLScaledSolid(
  */
 @Serializable
 @SerialName("cone")
-public data class GDMLCone(
+public data class GdmlCone(
     override var name: String,
     var z: Number,
     var rmax1: Number,
@@ -250,62 +250,62 @@ public data class GDMLCone(
     var rmin1: Number = 0f,
     var rmin2: Number = 0f,
     var startphi: Number = 0f
-) : GDMLSolid()
+) : GdmlSolid()
 
 //boolean solids
 
 @Serializable
-public sealed class GDMLBoolSolid : GDMLSolid() {
+public sealed class GdmlBoolSolid : GdmlSolid() {
     @XmlSerialName("first", "", "")
-    public abstract var first: GDMLRef<GDMLSolid>
+    public abstract var first: GdmlRef<GdmlSolid>
 
     @XmlSerialName("second", "", "")
-    public abstract var second: GDMLRef<GDMLSolid>
+    public abstract var second: GdmlRef<GdmlSolid>
 
     @XmlSerialName("position", "", "")
-    public var position: GDMLPosition? = null
+    public var position: GdmlPosition? = null
 
     @XmlSerialName("positionref", "", "")
-    public var positionref: GDMLRef<GDMLPosition>? = null
+    public var positionref: GdmlRef<GdmlPosition>? = null
 
     @XmlSerialName("rotation", "", "")
-    public var rotation: GDMLRotation? = null
+    public var rotation: GdmlRotation? = null
 
     @XmlSerialName("rotationref", "", "")
-    public var rotationref: GDMLRef<GDMLRotation>? = null
+    public var rotationref: GdmlRef<GdmlRotation>? = null
 
     @XmlSerialName("firstposition", "", "")
-    public var firstposition: GDMLPosition? = null
+    public var firstposition: GdmlPosition? = null
 
     @XmlSerialName("firstpositionref", "", "")
-    public var firstpositionref: GDMLRef<GDMLPosition>? = null
+    public var firstpositionref: GdmlRef<GdmlPosition>? = null
 
     @XmlSerialName("firstrotation", "", "")
-    public var firstrotation: GDMLRotation? = null
+    public var firstrotation: GdmlRotation? = null
 
     @XmlSerialName("firstrotationref", "", "")
-    public var firstrotationref: GDMLRef<GDMLRotation>? = null
+    public var firstrotationref: GdmlRef<GdmlRotation>? = null
 
     /**
      * Get the position from either position block or reference (if root is provided)
      */
-    public fun resolvePosition(root: GDML): GDMLPosition? = position ?: positionref?.resolve(root)
+    public fun resolvePosition(root: Gdml): GdmlPosition? = position ?: positionref?.resolve(root)
 
     /**
      * Get the rotation from either position block or reference (if root is provided)
      */
-    public fun resolveRotation(root: GDML): GDMLRotation? = rotation ?: rotationref?.resolve(root)
+    public fun resolveRotation(root: Gdml): GdmlRotation? = rotation ?: rotationref?.resolve(root)
 
-    public fun resolveFirstPosition(root: GDML): GDMLPosition? = firstposition ?: firstpositionref?.resolve(root)
-    public fun resolveFirstRotation(root: GDML): GDMLRotation? = firstrotation ?: firstrotationref?.resolve(root)
+    public fun resolveFirstPosition(root: Gdml): GdmlPosition? = firstposition ?: firstpositionref?.resolve(root)
+    public fun resolveFirstRotation(root: Gdml): GdmlRotation? = firstrotation ?: firstrotationref?.resolve(root)
 
-    public fun position(x: Number = 0f, y: Number = 0f, z: Number = 0f): GDMLPosition = GDMLPosition().apply {
+    public fun position(x: Number = 0f, y: Number = 0f, z: Number = 0f): GdmlPosition = GdmlPosition().apply {
         this.x = x
         this.y = y
         this.z = z
     }
 
-    public fun rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f): GDMLRotation = GDMLRotation().apply {
+    public fun rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f): GdmlRotation = GdmlRotation().apply {
         this.x = x
         this.y = y
         this.z = z
@@ -315,30 +315,30 @@ public sealed class GDMLBoolSolid : GDMLSolid() {
 
 @Serializable
 @SerialName("union")
-public data class GDMLUnion(
+public data class GdmlUnion(
     override var name: String,
     @XmlSerialName("first", "", "")
-    override var first: GDMLRef<GDMLSolid>,
+    override var first: GdmlRef<GdmlSolid>,
     @XmlSerialName("second", "", "")
-    override var second: GDMLRef<GDMLSolid>
-) : GDMLBoolSolid()
+    override var second: GdmlRef<GdmlSolid>
+) : GdmlBoolSolid()
 
 @Serializable
 @SerialName("subtraction")
-public data class GDMLSubtraction(
+public data class GdmlSubtraction(
     override var name: String,
     @XmlSerialName("first", "", "")
-    override var first: GDMLRef<GDMLSolid>,
+    override var first: GdmlRef<GdmlSolid>,
     @XmlSerialName("second", "", "")
-    override var second: GDMLRef<GDMLSolid>
-) : GDMLBoolSolid()
+    override var second: GdmlRef<GdmlSolid>
+) : GdmlBoolSolid()
 
 @Serializable
 @SerialName("intersection")
-public data class GDMLIntersection(
+public data class GdmlIntersection(
     override var name: String,
     @XmlSerialName("first", "", "")
-    override var first: GDMLRef<GDMLSolid>,
+    override var first: GdmlRef<GdmlSolid>,
     @XmlSerialName("second", "", "")
-    override var second: GDMLRef<GDMLSolid>
-) : GDMLBoolSolid()
+    override var second: GdmlRef<GdmlSolid>
+) : GdmlBoolSolid()

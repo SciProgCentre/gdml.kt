@@ -1,9 +1,7 @@
-package kscience.gdml
+package space.kscience.gdml
 
-import nl.adaptivity.xmlutil.StAXReader
 import org.junit.jupiter.api.Test
 import java.io.File
-import kotlin.test.Ignore
 
 class PredefinedGeometryTest {
 
@@ -11,21 +9,21 @@ class PredefinedGeometryTest {
 //    @Test
 //    fun printChildren() {
 //        println(
-//            GDMLDefine::class.sealedSubclasses.joinToString(
+//            GdmlDefine::class.sealedSubclasses.joinToString(
 //                prefix = "[\"",
 //                separator = "\", \"",
 //                postfix = "\"]"
 //            ) { it.serializer().descriptor.serialName })
 //
 //        println(
-//            GDMLMaterial::class.sealedSubclasses.joinToString(
+//            GdmlMaterial::class.sealedSubclasses.joinToString(
 //                prefix = "[\"",
 //                separator = "\", \"",
 //                postfix = "\"]"
 //            ) { it.serializer().descriptor.serialName })
 //
 //        println(
-//            GDMLSolid::class.sealedSubclasses.joinToString(
+//            GdmlSolid::class.sealedSubclasses.joinToString(
 //                prefix = "[\"",
 //                separator = "\", \"",
 //                postfix = "\"]"
@@ -36,10 +34,9 @@ class PredefinedGeometryTest {
     fun testReadBMN() {
         val file = File("gdml-source/BM@N.gdml")
 
-        val xmlReader = StAXReader(file.inputStream(), "UTF-8")
-        val gdml = GDML.format.parse(GDML.serializer(), xmlReader)
+        val gdml = Gdml.decodeFromStream(file.inputStream())
         println(gdml.world)
-        val ref = GDMLRef<GDMLAssembly>("Magnet")
+        val ref = GdmlRef<GdmlAssembly>("Magnet")
         val magnet = ref.resolve(gdml)!!
         println(magnet)
     }
@@ -48,18 +45,14 @@ class PredefinedGeometryTest {
     fun testReadCubes() {
         val file = File("gdml-source/cubes.gdml")
 
-        val xmlReader = StAXReader(file.inputStream(), "UTF-8")
-        val gdml = GDML.format.parse(GDML.serializer(), xmlReader)
+        val gdml = Gdml.decodeFromStream(file.inputStream())
         println(gdml.world)
     }
 
     @Test
-    @Ignore
     fun readIAXO() {
         val file = File("gdml-source/babyIAXO.gdml")
-
-        val xmlReader = StAXReader(file.inputStream(), "UTF-8")
-        val gdml = GDML.format.parse(GDML.serializer(), xmlReader)
+        val gdml = Gdml.decodeFromStream(file.inputStream(),true)
         println(gdml.world)
     }
 }

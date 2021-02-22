@@ -1,6 +1,6 @@
 @file:UseSerializers(NumberSerializer::class)
 
-package kscience.gdml
+package space.kscience.gdml
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -8,11 +8,11 @@ import kotlinx.serialization.UseSerializers
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 @Serializable
-public data class GDMLDensity(var value: Double, var unit: String = "g/cm3")
+public data class GdmlDensity(var value: Double, var unit: String = "g/cm3")
 
 //materials
 @Serializable
-public sealed class GDMLMaterial : GDMLNode {
+public sealed class GdmlMaterial : GdmlNode {
     public var formula: String? = null
 
     @XmlSerialName("Z", "", "")
@@ -24,13 +24,13 @@ public sealed class GDMLMaterial : GDMLNode {
     public val state: MaterialState = MaterialState.UNKNOWN
 
     @XmlSerialName("atom", "", "")
-    public var atom: GDMLAtom? = null
+    public var atom: GdmlAtom? = null
 
     @XmlSerialName("D", "", "")
-    public var density: GDMLDensity? = null
+    public var density: GdmlDensity? = null
 
     @XmlSerialName("Dref", "", "")
-    public var densityRef: GDMLRef<GDMLDefine>? = null
+    public var densityRef: GdmlRef<GdmlDefine>? = null
 }
 
 @Serializable
@@ -50,23 +50,23 @@ public enum class MaterialState {
 
 @Serializable
 @SerialName("atom")
-public data class GDMLAtom(var value: Number, var unit: String = "g/mole")
+public data class GdmlAtom(var value: Number, var unit: String = "g/mole")
 
 @Serializable
 @SerialName("fraction")
-public data class GDMLFraction(var n: Double, var ref: String)
+public data class GdmlFraction(var n: Double, var ref: String)
 
 @Serializable
 @SerialName("isotope")
-public data class GDMLIsotope(override var name: String) : GDMLMaterial()
+public data class GdmlIsotope(override var name: String) : GdmlMaterial()
 
 @Serializable
 @SerialName("element")
-public data class GDMLElement(override var name: String) : GDMLMaterial()
+public data class GdmlElement(override var name: String) : GdmlMaterial()
 
 @Serializable
 @SerialName("material")
-public data class GDMLComposite(override var name: String) : GDMLMaterial() {
+public data class GdmlComposite(override var name: String) : GdmlMaterial() {
     @XmlSerialName("fraction","","")
-    public val fractions: ArrayList<GDMLFraction> = ArrayList()
+    public val fractions: ArrayList<GdmlFraction> = ArrayList()
 }

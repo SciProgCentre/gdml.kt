@@ -1,70 +1,70 @@
 @file:UseSerializers(NumberSerializer::class)
 
-package kscience.gdml
+package space.kscience.gdml
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 
 @Serializable
-public sealed class GDMLDefine : GDMLNode
+public sealed class GdmlDefine : GdmlNode
 
 @Serializable
 @SerialName("constant")
-public class GDMLConstant(
+public class GdmlConstant(
     override var name: String,
     public var value: Number
-) : GDMLDefine()
+) : GdmlDefine()
 
 @Serializable
 @SerialName("quantity")
-public class GDMLQuantity(
+public class GdmlQuantity(
     override var name: String,
     public var type: String? = null,
     public var value: Number,
     public var unit: String? = null
-) : GDMLDefine()
+) : GdmlDefine()
 
 @Serializable
 @SerialName("variable")
-public class GDMLVariable(
+public class GdmlVariable(
     override var name: String,
     public var value: String
-) : GDMLDefine()
+) : GdmlDefine()
 
 @Serializable
 @SerialName("position")
-public class GDMLPosition(
+public class GdmlPosition(
     override var name: String = "",
     public var x: Number = 0f,
     public var y: Number = 0f,
     public var z: Number = 0f,
     public var unit: String = "cm"
-) : GDMLDefine()
+) : GdmlDefine()
 
 @Serializable
 @SerialName("rotation")
-public class GDMLRotation(
+public class GdmlRotation(
     override var name: String = "",
     public var x: Number = 0f,
     public var y: Number = 0f,
     public var z: Number = 0f,
     public var unit: String = "deg"
-) : GDMLDefine()
+) : GdmlDefine()
 
 @Serializable
 @SerialName("scale")
-public class GDMLScale(
+public class GdmlScale(
     override var name: String = "",
     public var x: Number = 1.0,
     public var y: Number = 1.0,
     public var z: Number = 1.0
-) : GDMLDefine()
+) : GdmlDefine()
 
 @Serializable
 @SerialName("matrix")
-public class GDMLMatrix(
+public class GdmlMatrix(
     override var name: String,
     public var coldim: Int,
     public var values: String
-) : GDMLDefine()
+) : GdmlDefine()
