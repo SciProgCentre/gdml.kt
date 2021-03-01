@@ -2,11 +2,8 @@
 
 ## [Unreleased]
 ### Added
-- ZPlane builders for plyhedra and polycone
-- GDML builders for all solid primitives
 
 ### Changed
-- GDML builders return refs instead of actual nodes
 
 ### Deprecated
 
@@ -16,6 +13,13 @@
 
 ### Security
 
+## [0.3.0]
+### Added
+- ZPlane builders for plyhedra and polycone
+- GDML builders for all solid primitives
+
+### Changed
+- GDML builders return refs instead of actual nodes
 
 ## [0.2.0]
 ### Added
