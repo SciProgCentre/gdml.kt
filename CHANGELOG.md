@@ -1,5 +1,22 @@
 # Changelog
 
+## [Unreleased]
+### Added
+- ZPlane builders for plyhedra and polycone
+- GDML builders for all solid primitives
+
+### Changed
+- GDML builders return refs instead of actual nodes
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+
 ## [0.2.0]
 ### Added
 - Equality for gdml nodes

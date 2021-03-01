@@ -22,7 +22,7 @@ public data class GdmlBox(
     override var name: String,
     var x: Number,
     var y: Number,
-    var z: Number
+    var z: Number,
 ) : GdmlSolid()
 
 @Serializable
@@ -34,14 +34,14 @@ public data class GdmlSphere(
     var startphi: Number = 0f,
     var deltaphi: Number = 2 * PI,
     var starttheta: Number = 0f,
-    var deltatheta: Number = PI
+    var deltatheta: Number = PI,
 ) : GdmlSolid()
 
 @Serializable
 @SerialName("orb")
 public data class GdmlOrb(
     override var name: String,
-    var r: Number
+    var r: Number,
 ) : GdmlSolid()
 
 @Serializable
@@ -52,7 +52,7 @@ public data class GdmlEllipsoid(
     var by: Number,
     var cz: Number,
     var zcut1: Number? = null,
-    var zcut2: Number? = null
+    var zcut2: Number? = null,
 ) : GdmlSolid()
 
 @Serializable
@@ -61,7 +61,7 @@ public data class GdmlElTube(
     override var name: String,
     var dx: Number,
     var dy: Number,
-    var dz: Number
+    var dz: Number,
 ) : GdmlSolid()
 
 @Serializable
@@ -71,7 +71,7 @@ public data class GdmlElCone(
     var dx: Number,
     var dy: Number,
     var zmax: Number,
-    var zcut: Number
+    var zcut: Number,
 ) : GdmlSolid()
 
 @Serializable
@@ -80,7 +80,7 @@ public data class GdmlParaboloid(
     override var name: String,
     var rlo: Number,
     var rhi: Number,
-    var dz: Number
+    var dz: Number,
 ) : GdmlSolid()
 
 @Serializable
@@ -92,7 +92,7 @@ public data class GdmlParallelepiped(
     var z: Number,
     var alpha: Number,
     var theta: Number,
-    var phi: Number
+    var phi: Number,
 ) : GdmlSolid()
 
 @Serializable
@@ -103,7 +103,7 @@ public data class GdmlTorus(
     var rmax: Number,
     var rtor: Number,
     var startphi: Number = 0f,
-    var deltaphi: Number = 2 * PI
+    var deltaphi: Number = 2 * PI,
 ) : GdmlSolid()
 
 @Serializable
@@ -114,7 +114,7 @@ public data class GdmlTrapezoid(
     var x2: Number,
     var y1: Number,
     var y2: Number,
-    var z: Number
+    var z: Number,
 ) : GdmlSolid()
 
 /**
@@ -128,8 +128,17 @@ rmax=" ExpressionOrIDREFType [1]"/>
 public data class GdmlZPlane(
     var z: Number,
     var rmax: Number,
-    var rmin: Number = 0f
+    var rmin: Number = 0f,
 )
+
+public interface ZPlaneHolder {
+    @XmlSerialName("zplane", "", "")
+    public val planes: MutableList<GdmlZPlane>
+}
+
+public fun ZPlaneHolder.plane(z: Number, rmax: Number, block: GdmlZPlane.() -> Unit) {
+    planes.add(GdmlZPlane(z, rmax).apply(block))
+}
 
 /**
 <polyhedra
@@ -148,10 +157,10 @@ public data class GdmlPolyhedra(
     override var name: String,
     val numsides: Int,
     var startphi: Number = 0f,
-    var deltaphi: Number = 2 * PI
-) : GdmlSolid() {
+    var deltaphi: Number = 2 * PI,
+) : GdmlSolid(), ZPlaneHolder {
     @XmlSerialName("zplane", "", "")
-    public val planes: ArrayList<GdmlZPlane> = ArrayList<GdmlZPlane>()
+    public override val planes: ArrayList<GdmlZPlane> = ArrayList()
 }
 
 @Serializable
@@ -159,10 +168,10 @@ public data class GdmlPolyhedra(
 public data class GdmlPolycone(
     override var name: String,
     var startphi: Number = 0f,
-    var deltaphi: Number = 2 * PI
-) : GdmlSolid() {
+    var deltaphi: Number = 2 * PI,
+) : GdmlSolid(), ZPlaneHolder {
     @XmlSerialName("zplane", "", "")
-    public val planes: ArrayList<GdmlZPlane> = ArrayList()
+    public override val planes: ArrayList<GdmlZPlane> = ArrayList()
 }
 
 @Serializable
@@ -173,30 +182,30 @@ public data class GdmlTube(
     var z: Number,
     var rmin: Number = 0f,
     var startphi: Number = 0f,
-    var deltaphi: Number = 2 * PI
+    var deltaphi: Number = 2 * PI,
 ) : GdmlSolid()
 
 @Serializable
 @SerialName("xtru")
 public data class GdmlXtru(override var name: String) : GdmlSolid() {
     @Serializable
-    @XmlSerialName("twoDimVertex","","")
+    @XmlSerialName("twoDimVertex", "", "")
     public data class TwoDimVertex(val x: Double, val y: Double)
 
     @Serializable
-    @XmlSerialName("section","","")
+    @XmlSerialName("section", "", "")
     public data class Section(
         var zPosition: Number,
         var zOrder: Int,
         var xOffset: Number = 0.0,
         var yOffset: Number = 0.0,
-        var scalingFactor: Number = 1.0
+        var scalingFactor: Number = 1.0,
     )
 
-    @XmlSerialName("twoDimVertex","","")
+    @XmlSerialName("twoDimVertex", "", "")
     public val vertices: ArrayList<TwoDimVertex> = ArrayList()
 
-    @XmlSerialName("section","","")
+    @XmlSerialName("section", "", "")
     public val sections: ArrayList<Section> = ArrayList()
 
     public fun vertex(x: Double, y: Double) {
@@ -249,7 +258,7 @@ public data class GdmlCone(
     var deltaphi: Number,
     var rmin1: Number = 0f,
     var rmin2: Number = 0f,
-    var startphi: Number = 0f
+    var startphi: Number = 0f,
 ) : GdmlSolid()
 
 //boolean solids
@@ -320,7 +329,7 @@ public data class GdmlUnion(
     @XmlSerialName("first", "", "")
     override var first: GdmlRef<GdmlSolid>,
     @XmlSerialName("second", "", "")
-    override var second: GdmlRef<GdmlSolid>
+    override var second: GdmlRef<GdmlSolid>,
 ) : GdmlBoolSolid()
 
 @Serializable
@@ -330,7 +339,7 @@ public data class GdmlSubtraction(
     @XmlSerialName("first", "", "")
     override var first: GdmlRef<GdmlSolid>,
     @XmlSerialName("second", "", "")
-    override var second: GdmlRef<GdmlSolid>
+    override var second: GdmlRef<GdmlSolid>,
 ) : GdmlBoolSolid()
 
 @Serializable
@@ -340,5 +349,5 @@ public data class GdmlIntersection(
     @XmlSerialName("first", "", "")
     override var first: GdmlRef<GdmlSolid>,
     @XmlSerialName("second", "", "")
-    override var second: GdmlRef<GdmlSolid>
+    override var second: GdmlRef<GdmlSolid>,
 ) : GdmlBoolSolid()

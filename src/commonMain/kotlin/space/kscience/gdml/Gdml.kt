@@ -145,6 +145,11 @@ public sealed class GdmlContainer<T : GdmlNode> {
         content.add(item)
     }
 
+    public fun <R : T> register(solid: R): GdmlRef<R> {
+        add(solid)
+        return solid.ref()
+    }
+
     public fun getMember(ref: String): T? = cache.getOrPut(ref) { content.find { it.name == ref } }
 
     public inline operator fun <reified R : T> get(ref: String): R? = getMember(ref) as? R
@@ -166,15 +171,15 @@ public class GdmlDefineContainer : GdmlContainer<GdmlDefine>() {
         y: Number = 0f,
         z: Number = 0f,
         block: GdmlPosition.() -> Unit = {},
-    ): GdmlPosition {
-        return GdmlPosition().apply(block).apply {
+    ): GdmlRef<GdmlPosition> {
+        val position = GdmlPosition().apply(block).apply {
             this.name = name
             this.x = x
             this.y = y
             this.z = z
-        }.also {
-            add(it)
         }
+
+        return register(position)
     }
 
     @GdmlApi
@@ -184,15 +189,15 @@ public class GdmlDefineContainer : GdmlContainer<GdmlDefine>() {
         y: Number = 0f,
         z: Number = 0f,
         block: GdmlRotation.() -> Unit = {},
-    ): GdmlRotation {
-        return GdmlRotation().apply(block).apply {
+    ): GdmlRef<GdmlRotation> {
+        val rotation = GdmlRotation().apply(block).apply {
             this.name = name
             this.x = x
             this.y = y
             this.z = z
-        }.also {
-            add(it)
         }
+
+        return register(rotation)
     }
 }
 
@@ -201,14 +206,14 @@ public class GdmlDefineContainer : GdmlContainer<GdmlDefine>() {
 public class GdmlMaterialContainer : GdmlContainer<GdmlMaterial>() {
     override val content: MutableList<GdmlMaterial> = ArrayList()
 
-    public inline fun isotope(name: String, build: GdmlIsotope.() -> Unit): GdmlIsotope =
-        GdmlIsotope(name).apply(build).also(::add)
+    public inline fun isotope(name: String, build: GdmlIsotope.() -> Unit): GdmlRef<GdmlIsotope> =
+        register(GdmlIsotope(name).apply(build))
 
-    public inline fun element(name: String, build: GdmlElement.() -> Unit): GdmlElement =
-        GdmlElement(name).apply(build).also(::add)
+    public inline fun element(name: String, build: GdmlElement.() -> Unit): GdmlRef<GdmlElement> =
+        register(GdmlElement(name).apply(build))
 
-    public inline fun composite(name: String, build: GdmlComposite.() -> Unit): GdmlComposite =
-        GdmlComposite(name).apply(build).also(::add)
+    public inline fun composite(name: String, build: GdmlComposite.() -> Unit): GdmlRef<GdmlComposite> =
+        register(GdmlComposite(name).apply(build))
 
     public companion object {
         public val defaultMaterial: GdmlElement = GdmlElement("default")
@@ -223,29 +228,125 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
     @GdmlApi
     public inline fun box(
         name: String,
-        x: Number = 0f,
-        y: Number = 0f,
-        z: Number = 0f,
+        x: Number,
+        y: Number,
+        z: Number,
         block: GdmlBox.() -> Unit = {},
-    ): GdmlBox {
-        val box = GdmlBox(name, x, y, z).apply(block)
-        add(box)
-        return box
-    }
+    ): GdmlRef<GdmlBox> = register(GdmlBox(name, x, y, z).apply(block))
 
     @GdmlApi
-    public inline fun tube(name: String, rmax: Number, z: Number, block: GdmlTube.() -> Unit): GdmlTube {
-        val tube = GdmlTube(name, rmax, z).apply(block)
-        add(tube)
-        return tube
-    }
+    public inline fun sphere(
+        name: String,
+        rmax: Number,
+        block: GdmlSphere.() -> Unit = {},
+    ): GdmlRef<GdmlSphere> = register(GdmlSphere(name, rmax = rmax).apply(block))
+
 
     @GdmlApi
-    public inline fun xtru(name: String, block: GdmlXtru.() -> Unit): GdmlXtru {
-        val xtru = GdmlXtru(name).apply(block)
-        add(xtru)
-        return xtru
-    }
+    public inline fun orb(
+        name: String,
+        r: Number,
+        block: GdmlOrb.() -> Unit = {},
+    ): GdmlRef<GdmlOrb> = register(GdmlOrb(name, r).apply(block))
+
+    @GdmlApi
+    public inline fun ellipsoid(
+        name: String,
+        ax: Number,
+        by: Number,
+        cz: Number,
+        block: GdmlEllipsoid.() -> Unit = {},
+    ): GdmlRef<GdmlEllipsoid> = register(GdmlEllipsoid(name, ax, by, cz).apply(block))
+
+
+    @GdmlApi
+    public inline fun eltube(
+        name: String,
+        dx: Number,
+        dy: Number,
+        dz: Number,
+        block: GdmlElTube.() -> Unit = {},
+    ): GdmlRef<GdmlElTube> = register(GdmlElTube(name, dx, dy, dz).apply(block))
+
+    @GdmlApi
+    public inline fun elcone(
+        name: String,
+        dx: Number,
+        dy: Number,
+        zmax: Number,
+        zcut: Number,
+        block: GdmlElCone.() -> Unit = {},
+    ): GdmlRef<GdmlElCone> = register(GdmlElCone(name, dx, dy, zmax, zcut).apply(block))
+
+    @GdmlApi
+    public inline fun paraboloid(
+        name: String,
+        rlo: Number,
+        rhi: Number,
+        dz: Number,
+        block: GdmlParaboloid.() -> Unit = {},
+    ): GdmlRef<GdmlParaboloid> = register(GdmlParaboloid(name, rlo, rhi, dz).apply(block))
+
+    @GdmlApi
+    public inline fun para(
+        name: String,
+        x: Number,
+        y: Number,
+        z: Number,
+        alpha: Number,
+        theta: Number,
+        phi: Number,
+        block: GdmlParallelepiped.() -> Unit = {},
+    ): GdmlRef<GdmlParallelepiped> = register(GdmlParallelepiped(name, x, y, z, alpha, theta, phi).apply(block))
+
+    @GdmlApi
+    public inline fun torus(
+        name: String,
+        rmin: Number,
+        rmax: Number,
+        rtor: Number,
+        block: GdmlTorus.() -> Unit = {},
+    ): GdmlRef<GdmlTorus> = register(GdmlTorus(name, rmin, rmax, rtor).apply(block))
+
+    @GdmlApi
+    public inline fun trd(
+        name: String,
+        x1: Number,
+        x2: Number,
+        y1: Number,
+        y2: Number,
+        z: Number,
+        block: GdmlTrapezoid.() -> Unit = {},
+    ): GdmlRef<GdmlTrapezoid> = register(GdmlTrapezoid(name, x1, x2, y1, y2, z).apply(block))
+
+    @GdmlApi
+    public inline fun polyhedra(
+        name: String,
+        numsides: Int,
+        block: GdmlPolyhedra.() -> Unit = {},
+    ): GdmlRef<GdmlPolyhedra> = register(GdmlPolyhedra(name, numsides).apply(block))
+
+    @GdmlApi
+    public inline fun polycone(
+        name: String,
+        block: GdmlPolycone.() -> Unit = {},
+    ): GdmlRef<GdmlPolycone> = register(GdmlPolycone(name).apply(block))
+
+    @GdmlApi
+    public inline fun scaledSolid(
+        name: String,
+        solidref: GdmlRef<GdmlSolid>,
+        scale: GdmlScale,
+        block: GdmlScaledSolid.() -> Unit = {},
+    ): GdmlRef<GdmlScaledSolid> = register(GdmlScaledSolid(name, solidref, scale).apply(block))
+
+    @GdmlApi
+    public inline fun tube(name: String, rmax: Number, z: Number, block: GdmlTube.() -> Unit): GdmlRef<GdmlTube> =
+        register(GdmlTube(name, rmax, z).apply(block))
+
+    @GdmlApi
+    public inline fun xtru(name: String, block: GdmlXtru.() -> Unit): GdmlRef<GdmlXtru> =
+        register(GdmlXtru(name).apply(block))
 
     @GdmlApi
     public inline fun cone(
@@ -255,46 +356,42 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
         rmax2: Number,
         deltaphi: Number,
         block: GdmlCone.() -> Unit,
-    ): GdmlCone {
+    ): GdmlRef<GdmlCone> {
         val cone = GdmlCone(name, z, rmax1, rmax2, deltaphi).apply(block)
-        add(cone)
-        return cone
+        return register(cone)
     }
 
     @GdmlApi
     public inline fun union(
         name: String,
-        first: GdmlSolid,
-        second: GdmlSolid,
+        first: GdmlRef<GdmlSolid>,
+        second: GdmlRef<GdmlSolid>,
         block: GdmlUnion.() -> Unit,
-    ): GdmlUnion {
-        val union = GdmlUnion(name, first.ref(), second.ref()).apply(block)
-        add(union)
-        return union
+    ): GdmlRef<GdmlUnion> {
+        val union = GdmlUnion(name, first, second).apply(block)
+        return register(union)
     }
 
     @GdmlApi
     public inline fun intersection(
         name: String,
-        first: GdmlSolid,
-        second: GdmlSolid,
+        first: GdmlRef<GdmlSolid>,
+        second: GdmlRef<GdmlSolid>,
         block: GdmlIntersection.() -> Unit,
-    ): GdmlIntersection {
-        val intersection = GdmlIntersection(name, first.ref(), second.ref()).apply(block)
-        add(intersection)
-        return intersection
+    ): GdmlRef<GdmlIntersection> {
+        val intersection = GdmlIntersection(name, first, second).apply(block)
+        return register(intersection)
     }
 
     @GdmlApi
     public inline fun subtraction(
         name: String,
-        first: GdmlSolid,
-        second: GdmlSolid,
+        first: GdmlRef<GdmlSolid>,
+        second: GdmlRef<GdmlSolid>,
         block: GdmlSubtraction.() -> Unit,
-    ): GdmlSubtraction {
-        val subtraction = GdmlSubtraction(name, first.ref(), second.ref()).apply(block)
-        add(subtraction)
-        return subtraction
+    ): GdmlRef<GdmlSubtraction> {
+        val subtraction = GdmlSubtraction(name, first, second).apply(block)
+        return register(subtraction)
     }
 }
 
@@ -315,14 +412,6 @@ public class GdmlStructure : GdmlContainer<GdmlGroup>() {
         add(res)
         return res
     }
-
-    @GdmlApi
-    public inline fun volume(
-        name: String,
-        material: GdmlMaterial,
-        solid: GdmlSolid,
-        block: GdmlVolume.() -> Unit = {},
-    ): GdmlVolume = volume(name, material.ref(), solid.ref(), block)
 
     @GdmlApi
     public inline fun assembly(
