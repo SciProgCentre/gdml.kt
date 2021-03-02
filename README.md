@@ -46,7 +46,7 @@ In the future, it will be possible to add additional module to launch GEANT4 sim
 ## Usage
 Read:
 ```kotlin
-import space.kscience.gdml.parse
+import space.kscience.gdml.decodeFromString
 
 val gdmlString: String
 val gdml = Gdml.decodeFromString(gdmlString)
@@ -54,7 +54,7 @@ val gdml = Gdml.decodeFromString(gdmlString)
 
 write:
 ```kotlin
-import space.kscience.gdml.stringify
+import space.kscience.gdml.encodeToString
 
 val gdml = Gdml{}
 val gdmlString = gdml.encodeToString()
