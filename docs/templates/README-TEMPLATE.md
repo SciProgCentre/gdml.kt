@@ -11,36 +11,9 @@ to read and writing Gdml configurations.
 
 In the future, it will be possible to add additional module to launch GEANT4 simulations from Kotlin code.
 
-> #### Artifact:
->
-> This module artifact: `space.kscience:gdml:0.3.0`.
->
->
-> **Gradle:**
->
-> ```groovy
-> repositories {
->     maven { url 'https://repo.kotlin.link' }
-> //    maven { url "https://dl.bintray.com/kotlin/kotlin-eap" } // include for builds based on kotlin-eap
-> }
-> 
-> dependencies {
->     implementation 'space.kscience:gdml:0.3.0'
-> }
-> ```
-> **Gradle Kotlin DSL:**
->
-> ```kotlin
-> repositories {
->     maven("https://repo.kotlin.link")
-> //    maven("https://dl.bintray.com/kotlin/kotlin-eap") // include for builds based on kotlin-eap
-> }
-> 
-> dependencies {
->     implementation("space.kscience:gdml:0.3.0")
-> }
-> ```
+${features}
 
+${artifact}
 
 ## Usage
 Read:

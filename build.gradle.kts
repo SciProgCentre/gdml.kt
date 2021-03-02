@@ -1,13 +1,13 @@
 plugins {
-    val toolsVersion = "0.8.0"
+    val toolsVersion = "0.8.3"
     id("ru.mipt.npm.gradle.project") version toolsVersion
     id("ru.mipt.npm.gradle.mpp") version toolsVersion
-//    id("ru.mipt.npm.native") version toolsVersion
+//    id("ru.mipt.npm.gradle.native") version toolsVersion
     id("ru.mipt.npm.gradle.publish") version toolsVersion
 }
 
 group = "space.kscience"
-version = "0.2.0"
+version = "0.3.0"
 
 kscience {
     useSerialization{
@@ -16,6 +16,7 @@ kscience {
 }
 
 repositories {
+    jcenter()
     maven("https://dl.bintray.com/pdvrieze/maven")
 }
 
@@ -32,4 +33,10 @@ kotlin {
             }
         }
     }
+}
+
+readme {
+    readmeTemplate = file("docs/templates/README-TEMPLATE.md")
+    maturity = ru.mipt.npm.gradle.Maturity.DEVELOPMENT
+    propertyByTemplate("artifact", rootProject.file("docs/templates/ARTIFACT-TEMPLATE.md"))
 }

@@ -11,6 +11,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
+import nl.adaptivity.xmlutil.XmlWriter
 
 
 @OptIn(ExperimentalSerializationApi::class)
@@ -47,7 +48,7 @@ public val gdmlModule: SerializersModule = SerializersModule {
         subclass(GdmlElement.serializer())
         subclass(GdmlComposite.serializer())
     }
-    polymorphic(GdmlSolid::class  ) {
+    polymorphic(GdmlSolid::class) {
         subclass(GdmlBox.serializer())
         subclass(GdmlTube.serializer())
         subclass(GdmlXtru.serializer())
@@ -66,15 +67,16 @@ public val gdmlModule: SerializersModule = SerializersModule {
         subclass(GdmlIntersection.serializer())
         subclass(GdmlScaledSolid.serializer())
     }
-    polymorphic(GdmlGroup::class  ) {
+    polymorphic(GdmlGroup::class) {
         subclass(GdmlVolume.serializer())
         subclass(GdmlAssembly.serializer())
     }
-    polymorphic(GdmlPlacement::class  ) {
+    polymorphic(GdmlPlacement::class) {
         subclass(GdmlPhysVolume.serializer())
         subclass(GdmlDivisionVolume.serializer())
     }
 }
 
 public fun Gdml.encodeToString(): String = Gdml.format.encodeToString(Gdml.serializer(), this)
+public fun Gdml.encodeToWriter(writer: XmlWriter): Unit = Gdml.format.encodeToWriter(writer, Gdml.serializer(), this)
 public fun Gdml.Companion.decodeFromString(string: String): Gdml = format.decodeFromString(Gdml.serializer(), string)

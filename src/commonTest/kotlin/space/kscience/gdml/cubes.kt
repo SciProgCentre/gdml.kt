@@ -15,11 +15,11 @@ fun cubes(): Gdml = Gdml {
         }
         val worldBox = solids.box("LargeBox", 200, 200, 200)
         val smallBox = solids.box("smallBox", 30, 30, 30)
-        val segmentVolume = volume("segment", tubeMaterial, segment.ref()) {}
-        val circle = volume("composite", boxMaterial, smallBox.ref()) {
+        val segmentVolume = volume("segment", tubeMaterial, segment)
+        val circle = volume("composite", boxMaterial, smallBox) {
             for (i in 0 until 6) {
                 physVolume(segmentVolume) {
-                    positionref = center.ref()
+                    positionref = center
                     rotation {
                         z = 60 * i
                         unit = AUnit.DEG.title
@@ -28,7 +28,7 @@ fun cubes(): Gdml = Gdml {
             }
         }
 
-        world = volume("world", air, worldBox.ref()) {
+        world = volume("world", air, worldBox) {
             for (i in 0 until 3) {
                 for (j in 0 until 3) {
                     for (k in 0 until 3) {

@@ -1,9 +1,8 @@
-/**
-* JetBrains Space Automation
-* This Kotlin-script file lets you automate build activities
-* For more info, see https://www.jetbrains.com/help/space/automation.html
-*/
-
-job("Build and run tests") {
-   gradlew("openjdk:11", "build")
+job("Build") {
+    container("mipt-npm.registry.jetbrains.space/p/sci/containers/ci-environment:1.0.1") {
+        shellScript {
+            interpreter = "/bin/bash"
+            content = "./gradlew --no-daemon build"
+        }
+    }
 }
