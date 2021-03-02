@@ -11,8 +11,6 @@ to read and writing Gdml configurations.
 
 In the future, it will be possible to add additional module to launch GEANT4 simulations from Kotlin code.
 
-
-
 > #### Artifact:
 >
 > This module artifact: `space.kscience:gdml:0.3.0`.
@@ -42,6 +40,7 @@ In the future, it will be possible to add additional module to launch GEANT4 sim
 >     implementation("space.kscience:gdml:0.3.0")
 > }
 > ```
+
 
 ## Usage
 Read:
