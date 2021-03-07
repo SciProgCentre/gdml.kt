@@ -19,56 +19,56 @@ public enum class AUnit(public val title: String, public val value: Float) {
 }
 
 
-public fun GdmlPosition.x(unit: LUnit): Float = if (unit == this.unit) {
+public fun GdmlPosition.x(targetUnit: LUnit): Float = if (targetUnit == unit) {
     x.toFloat()
 } else {
-    x.toFloat() / unit.value * unit.value
+    x.toFloat() / targetUnit.value * unit.value
 }
 
-public fun GdmlPosition.y(unit: LUnit): Float = if (unit == this.unit) {
+public fun GdmlPosition.y(targetUnit: LUnit): Float = if (targetUnit == unit) {
     y.toFloat()
 } else {
-    y.toFloat() / unit.value * unit.value
+    y.toFloat() / targetUnit.value * unit.value
 }
 
-public fun GdmlPosition.z(unit: LUnit): Float = if (unit == this.unit) {
+public fun GdmlPosition.z(targetUnit: LUnit): Float = if (targetUnit == this.unit) {
     z.toFloat()
 } else {
-    z.toFloat() / unit.value * unit.value
+    z.toFloat() / targetUnit.value * unit.value
 }
 
-public fun GdmlRotation.x(unit: AUnit = AUnit.RAD): Float = if (unit == this.unit) {
+public fun GdmlRotation.x(targetUnit: AUnit = AUnit.RAD): Float = if (targetUnit == this.unit) {
     x.toFloat()
 } else {
-    x.toFloat() / unit.value * unit.value
+    x.toFloat() / targetUnit.value * unit.value
 }
 
-public fun GdmlRotation.y(unit: AUnit = AUnit.RAD): Float = if (unit == this.unit) {
+public fun GdmlRotation.y(targetUnit: AUnit = AUnit.RAD): Float = if (targetUnit == this.unit) {
     y.toFloat()
 } else {
-    y.toFloat() / unit.value * unit.value
+    y.toFloat() / targetUnit.value * unit.value
 }
 
-public fun GdmlRotation.z(unit: AUnit = AUnit.RAD): Float = if (unit == this.unit) {
+public fun GdmlRotation.z(targetUnit: AUnit = AUnit.RAD): Float = if (targetUnit == this.unit) {
     z.toFloat()
 } else {
-    z.toFloat() / unit.value * unit.value
+    z.toFloat() / targetUnit.value * unit.value
 }
 
-public fun GdmlSolid.lscale(unit: LUnit): Float {
+public fun GdmlSolid.lscale(targetUnit: LUnit): Float {
     val solidUnit = lunit ?: return 1f
-    return if (solidUnit == unit) {
+    return if (solidUnit == targetUnit) {
         1f
     } else {
-        solidUnit.value / unit.value
+        solidUnit.value / targetUnit.value
     }
 }
 
-public fun GdmlSolid.ascale(unit: AUnit = AUnit.RAD): Float {
+public fun GdmlSolid.ascale(targetUnit: AUnit = AUnit.RAD): Float {
     val solidUnit = aunit ?: return 1f
-    return if (solidUnit == unit) {
+    return if (solidUnit == targetUnit) {
         1f
     } else {
-        solidUnit.value / unit.value
+        solidUnit.value / targetUnit.value
     }
 }
