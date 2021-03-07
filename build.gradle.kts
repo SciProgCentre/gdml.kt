@@ -20,9 +20,11 @@ repositories {
     maven("https://dl.bintray.com/pdvrieze/maven")
 }
 
-internal val githubProject by extra("gdml.kt")
-internal val spaceRepo by extra("https://maven.pkg.jetbrains.space/mipt-npm/p/sci/maven")
-internal val bintrayRepo by extra("kscience")
+ksciencePublish{
+    github("gdml.kt")
+    space()
+    sonatype()
+}
 
 kotlin {
     sourceSets {
