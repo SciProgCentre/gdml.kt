@@ -12,8 +12,8 @@ import kotlin.math.PI
 
 @Serializable
 public sealed class GdmlSolid : GdmlNode {
-    public var lunit: String? = null
-    public var aunit: String? = null
+    public var lunit: LUnit? = null
+    public var aunit: AUnit? = null
 }
 
 @Serializable

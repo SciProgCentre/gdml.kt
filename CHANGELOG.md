@@ -13,6 +13,11 @@
 
 ### Security
 
+## [0.3.1]
+
+### Changed
+- Used LUnit/AUnit for serialization instead of strings
+
 ## [0.3.0]
 ### Added
 - ZPlane builders for plyhedra and polycone
@@ -34,10 +39,3 @@
 - Kotlinx-serialization 1.1.0
 - XmlUtil 0.81.0
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security

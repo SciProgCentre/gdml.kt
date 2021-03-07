@@ -9,6 +9,15 @@ public final class space/kscience/gdml/AUnit : java/lang/Enum {
 	public static fun values ()[Lspace/kscience/gdml/AUnit;
 }
 
+public final class space/kscience/gdml/AUnitSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lspace/kscience/gdml/AUnitSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/AUnit;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lspace/kscience/gdml/AUnit;)V
+}
+
 public final class space/kscience/gdml/Gdml {
 	public static final field Companion Lspace/kscience/gdml/Gdml$Companion;
 	public fun <init> ()V
@@ -111,7 +120,7 @@ public final class space/kscience/gdml/GdmlAtom$Companion {
 
 public abstract class space/kscience/gdml/GdmlBoolSolid : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlBoolSolid$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public abstract fun getFirst ()Lspace/kscience/gdml/GdmlRef;
 	public final fun getFirstposition ()Lspace/kscience/gdml/GdmlPosition;
 	public final fun getFirstpositionref ()Lspace/kscience/gdml/GdmlRef;
@@ -148,7 +157,7 @@ public final class space/kscience/gdml/GdmlBoolSolid$Companion {
 
 public final class space/kscience/gdml/GdmlBox : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlBox$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/Number;
@@ -218,7 +227,7 @@ public final class space/kscience/gdml/GdmlComposite$Companion {
 
 public final class space/kscience/gdml/GdmlCone : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlCone$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
@@ -416,7 +425,7 @@ public final class space/kscience/gdml/GdmlDivisionVolume$Companion {
 
 public final class space/kscience/gdml/GdmlElCone : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlElCone$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/Number;
@@ -458,7 +467,7 @@ public final class space/kscience/gdml/GdmlElCone$Companion {
 
 public final class space/kscience/gdml/GdmlElTube : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlElTube$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/Number;
@@ -527,7 +536,7 @@ public final class space/kscience/gdml/GdmlElement$Companion {
 
 public final class space/kscience/gdml/GdmlEllipsoid : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlEllipsoid$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
@@ -617,7 +626,7 @@ public final class space/kscience/gdml/GdmlGroup$Companion {
 
 public final class space/kscience/gdml/GdmlIntersection : space/kscience/gdml/GdmlBoolSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlIntersection$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Lspace/kscience/gdml/GdmlRef;
@@ -782,7 +791,7 @@ public final class space/kscience/gdml/GdmlNodeKt {
 
 public final class space/kscience/gdml/GdmlOrb : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlOrb$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/Number;
@@ -815,7 +824,7 @@ public final class space/kscience/gdml/GdmlOrb$Companion {
 
 public final class space/kscience/gdml/GdmlParaboloid : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlParaboloid$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/Number;
@@ -854,7 +863,7 @@ public final class space/kscience/gdml/GdmlParaboloid$Companion {
 
 public final class space/kscience/gdml/GdmlParallelepiped : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlParallelepiped$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/Number;
@@ -952,7 +961,7 @@ public final class space/kscience/gdml/GdmlPlacement$Companion {
 
 public final class space/kscience/gdml/GdmlPolycone : space/kscience/gdml/GdmlSolid, space/kscience/gdml/ZPlaneHolder {
 	public static final field Companion Lspace/kscience/gdml/GdmlPolycone$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
@@ -991,7 +1000,7 @@ public final class space/kscience/gdml/GdmlPolycone$Companion {
 
 public final class space/kscience/gdml/GdmlPolyhedra : space/kscience/gdml/GdmlSolid, space/kscience/gdml/ZPlaneHolder {
 	public static final field Companion Lspace/kscience/gdml/GdmlPolyhedra$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;)V
 	public synthetic fun <init> (Ljava/lang/String;ILjava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
@@ -1033,16 +1042,16 @@ public final class space/kscience/gdml/GdmlPolyhedra$Companion {
 public final class space/kscience/gdml/GdmlPosition : space/kscience/gdml/GdmlDefine {
 	public static final field Companion Lspace/kscience/gdml/GdmlPosition$Companion;
 	public fun <init> ()V
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/LUnit;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/LUnit;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/LUnit;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun getName ()Ljava/lang/String;
-	public final fun getUnit ()Ljava/lang/String;
+	public final fun getUnit ()Lspace/kscience/gdml/LUnit;
 	public final fun getX ()Ljava/lang/Number;
 	public final fun getY ()Ljava/lang/Number;
 	public final fun getZ ()Ljava/lang/Number;
 	public fun setName (Ljava/lang/String;)V
-	public final fun setUnit (Ljava/lang/String;)V
+	public final fun setUnit (Lspace/kscience/gdml/LUnit;)V
 	public final fun setX (Ljava/lang/Number;)V
 	public final fun setY (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
@@ -1128,16 +1137,16 @@ public final class space/kscience/gdml/GdmlRef$Companion {
 public final class space/kscience/gdml/GdmlRotation : space/kscience/gdml/GdmlDefine {
 	public static final field Companion Lspace/kscience/gdml/GdmlRotation$Companion;
 	public fun <init> ()V
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/AUnit;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/AUnit;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/AUnit;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun getName ()Ljava/lang/String;
-	public final fun getUnit ()Ljava/lang/String;
+	public final fun getUnit ()Lspace/kscience/gdml/AUnit;
 	public final fun getX ()Ljava/lang/Number;
 	public final fun getY ()Ljava/lang/Number;
 	public final fun getZ ()Ljava/lang/Number;
 	public fun setName (Ljava/lang/String;)V
-	public final fun setUnit (Ljava/lang/String;)V
+	public final fun setUnit (Lspace/kscience/gdml/AUnit;)V
 	public final fun setX (Ljava/lang/Number;)V
 	public final fun setY (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
@@ -1193,20 +1202,20 @@ public final class space/kscience/gdml/GdmlScale$Companion {
 
 public final class space/kscience/gdml/GdmlScaledSolid : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlScaledSolid$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun <init> (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Lspace/kscience/gdml/GdmlRef;
-	public final fun component3 ()Lspace/kscience/gdml/GdmlRef;
-	public final fun copy (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;)Lspace/kscience/gdml/GdmlScaledSolid;
-	public static synthetic fun copy$default (Lspace/kscience/gdml/GdmlScaledSolid;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlScaledSolid;
+	public final fun component3 ()Lspace/kscience/gdml/GdmlScale;
+	public final fun copy (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;)Lspace/kscience/gdml/GdmlScaledSolid;
+	public static synthetic fun copy$default (Lspace/kscience/gdml/GdmlScaledSolid;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlScaledSolid;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName ()Ljava/lang/String;
-	public final fun getScale ()Lspace/kscience/gdml/GdmlRef;
+	public final fun getScale ()Lspace/kscience/gdml/GdmlScale;
 	public final fun getSolidref ()Lspace/kscience/gdml/GdmlRef;
 	public fun hashCode ()I
 	public fun setName (Ljava/lang/String;)V
-	public final fun setScale (Lspace/kscience/gdml/GdmlRef;)V
+	public final fun setScale (Lspace/kscience/gdml/GdmlScale;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -1258,11 +1267,11 @@ public final class space/kscience/gdml/GdmlSetup$Companion {
 
 public abstract class space/kscience/gdml/GdmlSolid : space/kscience/gdml/GdmlNode {
 	public static final field Companion Lspace/kscience/gdml/GdmlSolid$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public final fun getAunit ()Ljava/lang/String;
-	public final fun getLunit ()Ljava/lang/String;
-	public final fun setAunit (Ljava/lang/String;)V
-	public final fun setLunit (Ljava/lang/String;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public final fun getAunit ()Lspace/kscience/gdml/AUnit;
+	public final fun getLunit ()Lspace/kscience/gdml/LUnit;
+	public final fun setAunit (Lspace/kscience/gdml/AUnit;)V
+	public final fun setLunit (Lspace/kscience/gdml/LUnit;)V
 }
 
 public final class space/kscience/gdml/GdmlSolid$Companion {
@@ -1294,8 +1303,8 @@ public final class space/kscience/gdml/GdmlSolidContainer : space/kscience/gdml/
 	public static synthetic fun polycone$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 	public final fun polyhedra (Ljava/lang/String;ILkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
 	public static synthetic fun polyhedra$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;ILkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun scaledSolid (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun scaledSolid$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun scaledSolid (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun scaledSolid$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 	public final fun sphere (Ljava/lang/String;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
 	public static synthetic fun sphere$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 	public final fun subtraction (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
@@ -1326,7 +1335,7 @@ public final class space/kscience/gdml/GdmlSolidContainer$Companion {
 
 public final class space/kscience/gdml/GdmlSphere : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlSphere$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
@@ -1402,7 +1411,7 @@ public final class space/kscience/gdml/GdmlStructure$Companion {
 
 public final class space/kscience/gdml/GdmlSubtraction : space/kscience/gdml/GdmlBoolSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlSubtraction$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Lspace/kscience/gdml/GdmlRef;
@@ -1438,7 +1447,7 @@ public final class space/kscience/gdml/GdmlSubtraction$Companion {
 
 public final class space/kscience/gdml/GdmlTorus : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlTorus$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
@@ -1484,7 +1493,7 @@ public final class space/kscience/gdml/GdmlTorus$Companion {
 
 public final class space/kscience/gdml/GdmlTrapezoid : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlTrapezoid$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/Number;
@@ -1529,7 +1538,7 @@ public final class space/kscience/gdml/GdmlTrapezoid$Companion {
 
 public final class space/kscience/gdml/GdmlTube : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlTube$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
@@ -1575,7 +1584,7 @@ public final class space/kscience/gdml/GdmlTube$Companion {
 
 public final class space/kscience/gdml/GdmlUnion : space/kscience/gdml/GdmlBoolSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlUnion$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Lspace/kscience/gdml/GdmlRef;
@@ -1667,7 +1676,7 @@ public final class space/kscience/gdml/GdmlVolume$Companion {
 
 public final class space/kscience/gdml/GdmlXtru : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlXtru$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun copy (Ljava/lang/String;)Lspace/kscience/gdml/GdmlXtru;
@@ -1821,6 +1830,15 @@ public final class space/kscience/gdml/LUnit : java/lang/Enum {
 	public static fun values ()[Lspace/kscience/gdml/LUnit;
 }
 
+public final class space/kscience/gdml/LUnitSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lspace/kscience/gdml/LUnitSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/LUnit;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lspace/kscience/gdml/LUnit;)V
+}
+
 public final class space/kscience/gdml/MaterialState : java/lang/Enum {
 	public static final field Companion Lspace/kscience/gdml/MaterialState$Companion;
 	public static final field GAS Lspace/kscience/gdml/MaterialState;
@@ -1863,6 +1881,7 @@ public final class space/kscience/gdml/NumberSerializer : kotlinx/serialization/
 public final class space/kscience/gdml/SerializationKt {
 	public static final fun decodeFromString (Lspace/kscience/gdml/Gdml$Companion;Ljava/lang/String;)Lspace/kscience/gdml/Gdml;
 	public static final fun encodeToString (Lspace/kscience/gdml/Gdml;)Ljava/lang/String;
+	public static final fun encodeToWriter (Lspace/kscience/gdml/Gdml;Lnl/adaptivity/xmlutil/XmlWriter;)V
 	public static final fun getGdmlModule ()Lkotlinx/serialization/modules/SerializersModule;
 }
 
@@ -1883,8 +1902,6 @@ public final class space/kscience/gdml/UnitsKt {
 	public static final fun ascale (Lspace/kscience/gdml/GdmlSolid;Lspace/kscience/gdml/AUnit;)F
 	public static synthetic fun ascale$default (Lspace/kscience/gdml/GdmlSolid;Lspace/kscience/gdml/AUnit;ILjava/lang/Object;)F
 	public static final fun lscale (Lspace/kscience/gdml/GdmlSolid;Lspace/kscience/gdml/LUnit;)F
-	public static final fun unit (Lspace/kscience/gdml/GdmlPosition;)Lspace/kscience/gdml/LUnit;
-	public static final fun unit (Lspace/kscience/gdml/GdmlRotation;)Lspace/kscience/gdml/AUnit;
 	public static final fun x (Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/LUnit;)F
 	public static final fun x (Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/AUnit;)F
 	public static synthetic fun x$default (Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/AUnit;ILjava/lang/Object;)F
