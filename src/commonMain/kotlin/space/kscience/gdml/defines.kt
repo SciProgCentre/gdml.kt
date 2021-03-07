@@ -5,7 +5,6 @@ package space.kscience.gdml
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 @Serializable
 public sealed class GdmlDefine : GdmlNode
@@ -40,7 +39,6 @@ public class GdmlPosition(
     public var x: Number = 0f,
     public var y: Number = 0f,
     public var z: Number = 0f,
-    @XmlSerialName("unit","","")
     public var unit: LUnit = LUnit.CM
 ) : GdmlDefine()
 
@@ -51,7 +49,6 @@ public class GdmlRotation(
     public var x: Number = 0f,
     public var y: Number = 0f,
     public var z: Number = 0f,
-    @XmlSerialName("unit","","")
     public var unit: AUnit = AUnit.DEG
 ) : GdmlDefine()
 

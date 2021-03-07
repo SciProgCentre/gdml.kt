@@ -1,10 +1,11 @@
 package space.kscience.gdml
 
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializer
-import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.modules.SerializersModule
@@ -13,15 +14,7 @@ import kotlinx.serialization.modules.subclass
 import nl.adaptivity.xmlutil.XmlWriter
 
 public object LUnitSerializer : KSerializer<LUnit> {
-    @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
-    override val descriptor: SerialDescriptor = buildSerialDescriptor("space.kscience.gdml.LUnit", SerialKind.ENUM){
-        enumValues<LUnit>().forEach {
-            val fqn = "$serialName.${it.name}"
-            val enumMemberDescriptor = buildSerialDescriptor(fqn, StructureKind.OBJECT)
-            element(it.name, enumMemberDescriptor)
-        }
-    }
-
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("lunit", PrimitiveKind.STRING)
 
     override fun deserialize(decoder: Decoder): LUnit {
         return LUnit.valueOf(decoder.decodeString().toUpperCase())
@@ -33,15 +26,7 @@ public object LUnitSerializer : KSerializer<LUnit> {
 }
 
 public object AUnitSerializer : KSerializer<AUnit> {
-    @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
-    override val descriptor: SerialDescriptor = buildSerialDescriptor("space.kscience.gdml.AUnit", SerialKind.ENUM){
-        enumValues<AUnit>().forEach {
-            val fqn = "$serialName.${it.name}"
-            val enumMemberDescriptor = buildSerialDescriptor(fqn, StructureKind.OBJECT)
-            element(it.name, enumMemberDescriptor)
-        }
-    }
-
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("aunit", PrimitiveKind.STRING)
 
     override fun deserialize(decoder: Decoder): AUnit {
         return AUnit.valueOf(decoder.decodeString().toUpperCase())

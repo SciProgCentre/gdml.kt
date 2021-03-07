@@ -12,9 +12,7 @@ import kotlin.math.PI
 
 @Serializable
 public sealed class GdmlSolid : GdmlNode {
-    @XmlSerialName("lunit","","")
     public var lunit: LUnit? = null
-    @XmlSerialName("aunit","","")
     public var aunit: AUnit? = null
 }
 
