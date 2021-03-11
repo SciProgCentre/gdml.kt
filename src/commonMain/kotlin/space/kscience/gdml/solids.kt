@@ -255,7 +255,7 @@ public data class GdmlCone(
     var z: Number,
     var rmax1: Number,
     var rmax2: Number,
-    var deltaphi: Number,
+    var deltaphi: Number = 2 * PI,
     var rmin1: Number = 0f,
     var rmin2: Number = 0f,
     var startphi: Number = 0f,
