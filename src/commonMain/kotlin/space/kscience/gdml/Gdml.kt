@@ -206,13 +206,13 @@ public class GdmlDefineContainer : GdmlContainer<GdmlDefine>() {
 public class GdmlMaterialContainer : GdmlContainer<GdmlMaterial>() {
     override val content: MutableList<GdmlMaterial> = ArrayList()
 
-    public inline fun isotope(name: String, build: GdmlIsotope.() -> Unit): GdmlRef<GdmlIsotope> =
+    public inline fun isotope(name: String, build: GdmlIsotope.() -> Unit = {}): GdmlRef<GdmlIsotope> =
         register(GdmlIsotope(name).apply(build))
 
-    public inline fun element(name: String, build: GdmlElement.() -> Unit): GdmlRef<GdmlElement> =
+    public inline fun element(name: String, build: GdmlElement.() -> Unit = {}): GdmlRef<GdmlElement> =
         register(GdmlElement(name).apply(build))
 
-    public inline fun composite(name: String, build: GdmlComposite.() -> Unit): GdmlRef<GdmlComposite> =
+    public inline fun composite(name: String, build: GdmlComposite.() -> Unit = {}): GdmlRef<GdmlComposite> =
         register(GdmlComposite(name).apply(build))
 
     public companion object {
@@ -355,7 +355,7 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
         rmax1: Number,
         rmax2: Number,
         deltaphi: Number,
-        block: GdmlCone.() -> Unit,
+        block: GdmlCone.() -> Unit = {},
     ): GdmlRef<GdmlCone> {
         val cone = GdmlCone(name, z, rmax1, rmax2, deltaphi).apply(block)
         return register(cone)
@@ -366,7 +366,7 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
         name: String,
         first: GdmlRef<GdmlSolid>,
         second: GdmlRef<GdmlSolid>,
-        block: GdmlUnion.() -> Unit,
+        block: GdmlUnion.() -> Unit = {},
     ): GdmlRef<GdmlUnion> {
         val union = GdmlUnion(name, first, second).apply(block)
         return register(union)
@@ -377,7 +377,7 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
         name: String,
         first: GdmlRef<GdmlSolid>,
         second: GdmlRef<GdmlSolid>,
-        block: GdmlIntersection.() -> Unit,
+        block: GdmlIntersection.() -> Unit = {},
     ): GdmlRef<GdmlIntersection> {
         val intersection = GdmlIntersection(name, first, second).apply(block)
         return register(intersection)
@@ -388,7 +388,7 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
         name: String,
         first: GdmlRef<GdmlSolid>,
         second: GdmlRef<GdmlSolid>,
-        block: GdmlSubtraction.() -> Unit,
+        block: GdmlSubtraction.() -> Unit = {},
     ): GdmlRef<GdmlSubtraction> {
         val subtraction = GdmlSubtraction(name, first, second).apply(block)
         return register(subtraction)

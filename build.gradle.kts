@@ -1,5 +1,5 @@
 plugins {
-    val toolsVersion = "0.9.1"
+    val toolsVersion = "0.9.2"
     id("ru.mipt.npm.gradle.project") version toolsVersion
     id("ru.mipt.npm.gradle.mpp") version toolsVersion
 //    id("ru.mipt.npm.gradle.native") version toolsVersion
@@ -7,17 +7,19 @@ plugins {
 }
 
 group = "space.kscience"
-version = "0.3.2"
+version = "0.3.3"
 
-kscience {
-    useSerialization{
-        xml()
+allprojects {
+    repositories {
+        jcenter()
+        maven("https://dl.bintray.com/pdvrieze/maven")
     }
 }
 
-repositories {
-    jcenter()
-    maven("https://dl.bintray.com/pdvrieze/maven")
+kscience {
+    useSerialization {
+        xml()
+    }
 }
 
 ksciencePublish{

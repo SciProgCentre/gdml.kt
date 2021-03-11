@@ -35,30 +35,30 @@ public class GdmlVariable(
 @Serializable
 @SerialName("position")
 public class GdmlPosition(
-    override var name: String = "",
     public var x: Number = 0f,
     public var y: Number = 0f,
     public var z: Number = 0f,
+    override var name: String = "",
     public var unit: LUnit = LUnit.CM
 ) : GdmlDefine()
 
 @Serializable
 @SerialName("rotation")
 public class GdmlRotation(
-    override var name: String = "",
     public var x: Number = 0f,
     public var y: Number = 0f,
     public var z: Number = 0f,
+    override var name: String = "",
     public var unit: AUnit = AUnit.DEG
 ) : GdmlDefine()
 
 @Serializable
 @SerialName("scale")
 public class GdmlScale(
-    override var name: String = "",
     public var x: Number = 1.0,
     public var y: Number = 1.0,
-    public var z: Number = 1.0
+    public var z: Number = 1.0,
+    override var name: String = ""
 ) : GdmlDefine()
 
 @Serializable

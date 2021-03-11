@@ -2,14 +2,18 @@
 
 ## [Unreleased]
 ### Added
+- Scripting support
 
 ### Changed
+- Refactor define builders to place the name in the last position
 
 ### Deprecated
+- Define builders in boolean solids.
 
 ### Removed
 
 ### Fixed
+- flush after stream write
 
 ### Security
 

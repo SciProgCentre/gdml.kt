@@ -27,8 +27,8 @@ class GdmlTest {
                 val myBox = box("myBox", 100.0, 100.0, 100.0)
                 val otherBox = box("otherBox", 100.0, 100.0, 100.0)
                 union("aUnion", myBox, otherBox) {
-                    firstposition = position(32.0, 0.0, 0.0)
-                    firstrotation = rotation(y = PI / 4)
+                    firstposition = GdmlPosition(x = 32.0, y = 0.0, z = 0.0)
+                    firstrotation = GdmlRotation(y = PI / 4)
                 }
             }
         }
@@ -41,5 +41,18 @@ class GdmlTest {
         assertEquals(gdml.solids.content[1], restored.solids.content[1])
         assertEquals(gdml.solids.content[2], restored.solids.content[2])
         assertEquals(gdml.solids, restored.solids)
+    }
+
+    @Test
+    fun testSubtraction() {
+        val gdml = Gdml {
+            val cube = solids.box("theBox", 100, 100, 100)
+            val orb = solids.orb("theOrb", 100)
+
+            val subtract = solids.subtraction("sub", cube, orb) {
+                position = GdmlPosition(x = 100, y = 0, z = 0)
+            }
+        }
+        println(gdml.encodeToString())
     }
 }

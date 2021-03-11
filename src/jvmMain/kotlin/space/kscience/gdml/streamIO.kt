@@ -39,5 +39,6 @@ public fun Gdml.encodeToStream(stream: OutputStream) {
 public fun Gdml.encodeToFile(path: Path) {
     Files.newOutputStream(path, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE).use {
         encodeToStream(it)
+        it.flush()
     }
 }

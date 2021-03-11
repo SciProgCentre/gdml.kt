@@ -4,9 +4,9 @@ package space.kscience.gdml
 fun cubes(): Gdml = Gdml {
     val center = define.position("center")
     structure {
-        val air = ref<GdmlMaterial>("G4_AIR")
-        val tubeMaterial = ref<GdmlMaterial>("tube")
-        val boxMaterial = ref<GdmlMaterial>("box")
+        val air = materials.isotope("G4_AIR")
+        val tubeMaterial = materials.element("tubeium")
+        val boxMaterial = materials.element("boxium")
 
         val segment = solids.tube("segment", 20, 5.0) {
             rmin = 17

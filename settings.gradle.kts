@@ -8,4 +8,4 @@ pluginManagement {
 }
 
 rootProject.name = "gdml"
-
+include("gdml-script")
