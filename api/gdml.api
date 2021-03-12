@@ -1516,6 +1516,7 @@ public abstract interface class space/kscience/gdml/GdmlTransformation {
 
 public final class space/kscience/gdml/GdmlTransformationKt {
 	public static final fun transform (Lspace/kscience/gdml/Gdml;[Lspace/kscience/gdml/GdmlTransformation;)Lspace/kscience/gdml/Gdml;
+	public static final fun withUnits (Lspace/kscience/gdml/Gdml;Lspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;)Lspace/kscience/gdml/Gdml;
 }
 
 public final class space/kscience/gdml/GdmlTrapezoid : space/kscience/gdml/GdmlSolid {
