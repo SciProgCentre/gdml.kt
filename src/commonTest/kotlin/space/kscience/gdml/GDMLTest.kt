@@ -9,11 +9,18 @@ import kotlin.test.assertEquals
 class GdmlTest {
     @Test
     fun recodeCubes() {
-        val gdml = cubes()
-        val string = gdml.encodeToString()
+        val string = GdmlShowCase.cubes.encodeToString()
         //println(string)
-        val restored: Gdml = Gdml.format.decodeFromString(string)
-        assertEquals(gdml.solids.content.size, restored.solids.content.size)
+        val restored: Gdml = Gdml.xmlFormat.decodeFromString(string)
+        assertEquals(GdmlShowCase.cubes.solids.content.size, restored.solids.content.size)
+    }
+
+    @Test
+    fun recodeIaxo() {
+        val string = GdmlShowCase.babyIaxo.encodeToString()
+        println(string)
+        val restored: Gdml = Gdml.xmlFormat.decodeFromString(string)
+        assertEquals(GdmlShowCase.babyIaxo.solids.content.size, restored.solids.content.size)
     }
 
     @Test
@@ -33,9 +40,9 @@ class GdmlTest {
             }
         }
 
-        val string = Gdml.format.encodeToString(gdml)
+        val string = Gdml.xmlFormat.encodeToString(gdml)
         println(string)
-        val restored: Gdml = Gdml.format.decodeFromString(string)
+        val restored: Gdml = Gdml.xmlFormat.decodeFromString(string)
         println(restored.toString())
         assertEquals(gdml.solids.content[0], restored.solids.content[0])
         assertEquals(gdml.solids.content[1], restored.solids.content[1])

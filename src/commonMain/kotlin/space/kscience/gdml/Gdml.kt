@@ -78,7 +78,7 @@ public class Gdml {
         set(value) {
             //Add world element if it is not registered
             structure {
-                if (getMember(value.name) == null) {
+                if (getItem(value.name) == null) {
                     add(value)
                 }
             }
@@ -86,7 +86,7 @@ public class Gdml {
         }
 
 
-    override fun toString(): String = format.encodeToString(serializer(), this)
+    override fun toString(): String = xmlFormat.encodeToString(serializer(), this)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -120,7 +120,7 @@ public class Gdml {
                 )
             }
 
-        public val format: XML = XML(gdmlModule) {
+        internal val xmlFormat: XML = XML(gdmlModule) {
             autoPolymorphic = true
             indent = 4
             unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
@@ -141,18 +141,27 @@ public sealed class GdmlContainer<T : GdmlNode> {
     @Transient
     private val cache: MutableMap<String, T?> = HashMap()
 
+    /**
+     * Directly add an item
+     */
     public fun add(item: T) {
         content.add(item)
     }
 
-    public fun <R : T> register(solid: R): GdmlRef<R> {
-        add(solid)
-        return solid.ref()
+    /**
+     * Register an item with appropriate type and return a reference
+     */
+    public fun <R : T> register(item: R): GdmlRef<R> {
+        add(item)
+        return item.ref()
     }
 
-    public fun getMember(ref: String): T? = cache.getOrPut(ref) { content.find { it.name == ref } }
+    /**
+     * Get an Item from th container
+     */
+    public fun getItem(ref: String): T? = cache.getOrPut(ref) { content.find { it.name == ref } }
 
-    public inline operator fun <reified R : T> get(ref: String): R? = getMember(ref) as? R
+    public inline operator fun <reified R : T> get(ref: String): R? = getItem(ref) as? R
 
     override fun equals(other: Any?): Boolean = this === other || this.content == (other as? GdmlContainer<*>)?.content
     override fun hashCode(): Int = content.hashCode()
@@ -341,7 +350,7 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
     ): GdmlRef<GdmlScaledSolid> = register(GdmlScaledSolid(name, solidref, scale).apply(block))
 
     @GdmlApi
-    public inline fun tube(name: String, rmax: Number, z: Number, block: GdmlTube.() -> Unit): GdmlRef<GdmlTube> =
+    public inline fun tube(name: String, rmax: Number, z: Number, block: GdmlTube.() -> Unit = {}): GdmlRef<GdmlTube> =
         register(GdmlTube(name, rmax, z).apply(block))
 
     @GdmlApi
@@ -354,10 +363,9 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
         z: Number,
         rmax1: Number,
         rmax2: Number,
-        deltaphi: Number,
         block: GdmlCone.() -> Unit = {},
     ): GdmlRef<GdmlCone> {
-        val cone = GdmlCone(name, z, rmax1, rmax2, deltaphi).apply(block)
+        val cone = GdmlCone(name, z, rmax1, rmax2).apply(block)
         return register(cone)
     }
 

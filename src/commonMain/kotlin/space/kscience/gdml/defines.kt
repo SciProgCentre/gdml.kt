@@ -39,7 +39,7 @@ public class GdmlPosition(
     public var y: Number = 0f,
     public var z: Number = 0f,
     override var name: String = "",
-    public var unit: LUnit = LUnit.CM
+    public var unit: LUnit? = null
 ) : GdmlDefine()
 
 @Serializable
@@ -49,7 +49,7 @@ public class GdmlRotation(
     public var y: Number = 0f,
     public var z: Number = 0f,
     override var name: String = "",
-    public var unit: AUnit = AUnit.DEG
+    public var unit: AUnit? = null
 ) : GdmlDefine()
 
 @Serializable

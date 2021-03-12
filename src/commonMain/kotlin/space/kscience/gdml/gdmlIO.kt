@@ -1,8 +1,6 @@
 package space.kscience.gdml
 
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Serializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -37,8 +35,6 @@ public object AUnitSerializer : KSerializer<AUnit> {
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializer(Number::class)
 public object NumberSerializer : KSerializer<Number> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("kotlin.Number", PrimitiveKind.DOUBLE)
 
@@ -51,7 +47,7 @@ public object NumberSerializer : KSerializer<Number> {
     }
 }
 
-public val gdmlModule: SerializersModule = SerializersModule {
+internal val gdmlModule: SerializersModule = SerializersModule {
     polymorphic(GdmlContainer::class) {
         subclass(GdmlDefineContainer.serializer())
         subclass(GdmlMaterialContainer.serializer())
@@ -100,6 +96,6 @@ public val gdmlModule: SerializersModule = SerializersModule {
     }
 }
 
-public fun Gdml.encodeToString(): String = Gdml.format.encodeToString(Gdml.serializer(), this)
-public fun Gdml.encodeToWriter(writer: XmlWriter): Unit = Gdml.format.encodeToWriter(writer, Gdml.serializer(), this)
-public fun Gdml.Companion.decodeFromString(string: String): Gdml = format.decodeFromString(Gdml.serializer(), string)
+public fun Gdml.encodeToString(): String = Gdml.xmlFormat.encodeToString(Gdml.serializer(), this)
+public fun Gdml.encodeToWriter(writer: XmlWriter): Unit = Gdml.xmlFormat.encodeToWriter(writer, Gdml.serializer(), this)
+public fun Gdml.Companion.decodeFromString(string: String): Gdml = xmlFormat.decodeFromString(Gdml.serializer(), string)

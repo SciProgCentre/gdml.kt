@@ -3,9 +3,12 @@
 ## [Unreleased]
 ### Added
 - Scripting support
+- GdmlShowcase singleton for test purposes
 
 ### Changed
 - Refactor define builders to place the name in the last position
+- `Gdml.format` and module made internal
+- Container `getMember` renamed to `getItem`
 
 ### Deprecated
 - Define builders in boolean solids.
@@ -14,6 +17,7 @@
 
 ### Fixed
 - flush after stream write
+- Default units. MM for LUnit and Rad for AUnit according to https://www.star.bnl.gov/public/comp/simu/GDML/V1.0/Geometry.html#element_position_Link02EA7560
 
 ### Security
 
