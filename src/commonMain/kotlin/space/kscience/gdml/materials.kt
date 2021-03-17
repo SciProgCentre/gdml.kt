@@ -5,6 +5,7 @@ package space.kscience.gdml
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import nl.adaptivity.xmlutil.serialization.XmlElement
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 @Serializable
@@ -21,7 +22,8 @@ public sealed class GdmlMaterial : GdmlNode {
     @XmlSerialName("N", "", "")
     public var n: Number? = null
 
-    public val state: MaterialState = MaterialState.UNKNOWN
+    @XmlElement(false)
+    public val state: MaterialState? = null
 
     @XmlSerialName("atom", "", "")
     public var atom: GdmlAtom? = null
@@ -34,27 +36,30 @@ public sealed class GdmlMaterial : GdmlNode {
 }
 
 @Serializable
+@SerialName("state")
 public enum class MaterialState {
-    @XmlSerialName("gas","","")
+    @SerialName("gas")
     GAS,
 
-    @XmlSerialName("liquid","","")
+    @SerialName("liquid")
     LIQUID,
 
-    @XmlSerialName("solid","","")
+    @SerialName("solid")
     SOLID,
 
-    @XmlSerialName("unknown","","")
+    @SerialName("unknown")
     UNKNOWN
 }
 
 @Serializable
 @SerialName("atom")
-public data class GdmlAtom(var value: Number, var unit: String = "g/mole")
+public data class GdmlAtom(var value: Number, var unit: String = "g/mole", val type: String = "A")
 
 @Serializable
 @SerialName("fraction")
-public data class GdmlFraction(var n: Double, var ref: String)
+public data class GdmlFraction(var n: Double, var ref: String) {
+    public fun resolve(gdml: Gdml): GdmlMaterial? = gdml.getMaterial<GdmlMaterial>(ref)
+}
 
 @Serializable
 @SerialName("isotope")
@@ -62,11 +67,29 @@ public data class GdmlIsotope(override var name: String) : GdmlMaterial()
 
 @Serializable
 @SerialName("element")
-public data class GdmlElement(override var name: String) : GdmlMaterial()
+public data class GdmlElement(override var name: String) : GdmlMaterial() {
+    @XmlSerialName("fraction", "", "")
+    public val fractions: ArrayList<GdmlFraction> = ArrayList()
+
+    /**
+     * Add isotope fraction to the element
+     */
+    public fun fraction(n: Double, ref: GdmlRef<GdmlIsotope>) {
+        fractions.add(GdmlFraction(n, ref.ref))
+    }
+}
 
 @Serializable
 @SerialName("material")
 public data class GdmlComposite(override var name: String) : GdmlMaterial() {
-    @XmlSerialName("fraction","","")
+    @XmlSerialName("fraction", "", "")
     public val fractions: ArrayList<GdmlFraction> = ArrayList()
+
+    /**
+     * Add fraction to the composite
+     */
+    public fun fraction(n: Double, ref: GdmlRef<GdmlMaterial>) {
+        fractions.add(GdmlFraction(n, ref.ref))
+    }
+
 }

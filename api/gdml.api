@@ -85,14 +85,16 @@ public final class space/kscience/gdml/GdmlAssembly$Companion {
 
 public final class space/kscience/gdml/GdmlAtom {
 	public static final field Companion Lspace/kscience/gdml/GdmlAtom$Companion;
-	public synthetic fun <init> (ILjava/lang/Number;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun <init> (Ljava/lang/Number;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/Number;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/Number;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/Number;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/Number;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/Number;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/Number;Ljava/lang/String;)Lspace/kscience/gdml/GdmlAtom;
-	public static synthetic fun copy$default (Lspace/kscience/gdml/GdmlAtom;Ljava/lang/Number;Ljava/lang/String;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlAtom;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Number;Ljava/lang/String;Ljava/lang/String;)Lspace/kscience/gdml/GdmlAtom;
+	public static synthetic fun copy$default (Lspace/kscience/gdml/GdmlAtom;Ljava/lang/Number;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlAtom;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getType ()Ljava/lang/String;
 	public final fun getUnit ()Ljava/lang/String;
 	public final fun getValue ()Ljava/lang/Number;
 	public fun hashCode ()I
@@ -201,6 +203,7 @@ public final class space/kscience/gdml/GdmlComposite : space/kscience/gdml/GdmlM
 	public final fun copy (Ljava/lang/String;)Lspace/kscience/gdml/GdmlComposite;
 	public static synthetic fun copy$default (Lspace/kscience/gdml/GdmlComposite;Ljava/lang/String;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlComposite;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun fraction (DLspace/kscience/gdml/GdmlRef;)V
 	public final fun getFractions ()Ljava/util/ArrayList;
 	public fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -505,12 +508,14 @@ public final class space/kscience/gdml/GdmlElTube$Companion {
 
 public final class space/kscience/gdml/GdmlElement : space/kscience/gdml/GdmlMaterial {
 	public static final field Companion Lspace/kscience/gdml/GdmlElement$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun copy (Ljava/lang/String;)Lspace/kscience/gdml/GdmlElement;
 	public static synthetic fun copy$default (Lspace/kscience/gdml/GdmlElement;Ljava/lang/String;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlElement;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun fraction (DLspace/kscience/gdml/GdmlRef;)V
+	public final fun getFractions ()Ljava/util/ArrayList;
 	public fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun setName (Ljava/lang/String;)V
@@ -591,6 +596,7 @@ public final class space/kscience/gdml/GdmlFraction {
 	public final fun getN ()D
 	public final fun getRef ()Ljava/lang/String;
 	public fun hashCode ()I
+	public final fun resolve (Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/GdmlMaterial;
 	public final fun setN (D)V
 	public final fun setRef (Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
@@ -625,7 +631,9 @@ public final class space/kscience/gdml/GdmlGroup$Companion {
 
 public final class space/kscience/gdml/GdmlIOKt {
 	public static final fun decodeFromString (Lspace/kscience/gdml/Gdml$Companion;Ljava/lang/String;)Lspace/kscience/gdml/Gdml;
+	public static final fun encodeToString (Lspace/kscience/gdml/Gdml$Companion;Lspace/kscience/gdml/Gdml;)Ljava/lang/String;
 	public static final fun encodeToString (Lspace/kscience/gdml/Gdml;)Ljava/lang/String;
+	public static final fun encodeToWriter (Lspace/kscience/gdml/Gdml$Companion;Lspace/kscience/gdml/Gdml;Lnl/adaptivity/xmlutil/XmlWriter;)V
 	public static final fun encodeToWriter (Lspace/kscience/gdml/Gdml;Lnl/adaptivity/xmlutil/XmlWriter;)V
 }
 
@@ -1855,6 +1863,23 @@ public final class space/kscience/gdml/InjectUnits : space/kscience/gdml/GdmlTra
 	public fun transform (Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/Gdml;
 }
 
+public final class space/kscience/gdml/JvmGdmlIOKt {
+	public static final fun decodeFromFile (Lspace/kscience/gdml/Gdml$Companion;Ljava/io/File;Z)Lspace/kscience/gdml/Gdml;
+	public static final fun decodeFromFile (Lspace/kscience/gdml/Gdml$Companion;Ljava/nio/file/Path;Z)Lspace/kscience/gdml/Gdml;
+	public static synthetic fun decodeFromFile$default (Lspace/kscience/gdml/Gdml$Companion;Ljava/io/File;ZILjava/lang/Object;)Lspace/kscience/gdml/Gdml;
+	public static synthetic fun decodeFromFile$default (Lspace/kscience/gdml/Gdml$Companion;Ljava/nio/file/Path;ZILjava/lang/Object;)Lspace/kscience/gdml/Gdml;
+	public static final fun decodeFromStream (Lspace/kscience/gdml/Gdml$Companion;Ljava/io/InputStream;Z)Lspace/kscience/gdml/Gdml;
+	public static synthetic fun decodeFromStream$default (Lspace/kscience/gdml/Gdml$Companion;Ljava/io/InputStream;ZILjava/lang/Object;)Lspace/kscience/gdml/Gdml;
+	public static final fun decodeFromUrl (Lspace/kscience/gdml/Gdml$Companion;Ljava/lang/String;)Lspace/kscience/gdml/Gdml;
+	public static final fun decodeFromUrl (Lspace/kscience/gdml/Gdml$Companion;Ljava/net/URL;)Lspace/kscience/gdml/Gdml;
+	public static final fun encodeToFile (Lspace/kscience/gdml/Gdml$Companion;Lspace/kscience/gdml/Gdml;Ljava/io/File;)V
+	public static final fun encodeToFile (Lspace/kscience/gdml/Gdml$Companion;Lspace/kscience/gdml/Gdml;Ljava/nio/file/Path;)V
+	public static final fun encodeToFile (Lspace/kscience/gdml/Gdml;Ljava/io/File;)V
+	public static final fun encodeToFile (Lspace/kscience/gdml/Gdml;Ljava/nio/file/Path;)V
+	public static final fun encodeToStream (Lspace/kscience/gdml/Gdml$Companion;Lspace/kscience/gdml/Gdml;Ljava/io/OutputStream;)V
+	public static final fun encodeToStream (Lspace/kscience/gdml/Gdml;Ljava/io/OutputStream;)V
+}
+
 public final class space/kscience/gdml/LUnit : java/lang/Enum {
 	public static final field CM Lspace/kscience/gdml/LUnit;
 	public static final field M Lspace/kscience/gdml/LUnit;
@@ -1872,6 +1897,12 @@ public final class space/kscience/gdml/LUnitSerializer : kotlinx/serialization/K
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lspace/kscience/gdml/LUnit;)V
+}
+
+public final class space/kscience/gdml/LoadMaterialsKt {
+	public static final fun loadMaterialsFromFile (Lspace/kscience/gdml/Gdml;Ljava/io/File;)V
+	public static final fun loadMaterialsFromUrl (Lspace/kscience/gdml/Gdml;Ljava/lang/String;)V
+	public static final fun loadMaterialsFromUrl (Lspace/kscience/gdml/Gdml;Ljava/net/URL;)V
 }
 
 public final class space/kscience/gdml/MaterialState : java/lang/Enum {
@@ -1915,17 +1946,6 @@ public final class space/kscience/gdml/NumberSerializer : kotlinx/serialization/
 
 public final class space/kscience/gdml/SolidsKt {
 	public static final fun plane (Lspace/kscience/gdml/ZPlaneHolder;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)V
-}
-
-public final class space/kscience/gdml/StreamIOKt {
-	public static final fun decodeFromFile (Lspace/kscience/gdml/Gdml$Companion;Ljava/io/File;Z)Lspace/kscience/gdml/Gdml;
-	public static final fun decodeFromFile (Lspace/kscience/gdml/Gdml$Companion;Ljava/nio/file/Path;Z)Lspace/kscience/gdml/Gdml;
-	public static synthetic fun decodeFromFile$default (Lspace/kscience/gdml/Gdml$Companion;Ljava/io/File;ZILjava/lang/Object;)Lspace/kscience/gdml/Gdml;
-	public static synthetic fun decodeFromFile$default (Lspace/kscience/gdml/Gdml$Companion;Ljava/nio/file/Path;ZILjava/lang/Object;)Lspace/kscience/gdml/Gdml;
-	public static final fun decodeFromStream (Lspace/kscience/gdml/Gdml$Companion;Ljava/io/InputStream;Z)Lspace/kscience/gdml/Gdml;
-	public static synthetic fun decodeFromStream$default (Lspace/kscience/gdml/Gdml$Companion;Ljava/io/InputStream;ZILjava/lang/Object;)Lspace/kscience/gdml/Gdml;
-	public static final fun encodeToFile (Lspace/kscience/gdml/Gdml;Ljava/nio/file/Path;)V
-	public static final fun encodeToStream (Lspace/kscience/gdml/Gdml;Ljava/io/OutputStream;)V
 }
 
 public final class space/kscience/gdml/UnitsKt {

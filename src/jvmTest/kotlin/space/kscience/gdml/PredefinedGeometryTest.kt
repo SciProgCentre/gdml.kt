@@ -2,6 +2,7 @@ package space.kscience.gdml
 
 import org.junit.jupiter.api.Test
 import java.io.File
+import kotlin.test.assertNotNull
 
 class PredefinedGeometryTest {
 
@@ -46,7 +47,8 @@ class PredefinedGeometryTest {
         val file = File("gdml-source/cubes.gdml")
 
         val gdml = Gdml.decodeFromStream(file.inputStream())
-        println(gdml.world)
+        //println(gdml.world)
+        assertNotNull(gdml.getSolid("segment"))
     }
 
     @Test
