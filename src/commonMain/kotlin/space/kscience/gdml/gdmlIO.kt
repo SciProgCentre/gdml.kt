@@ -96,6 +96,30 @@ internal val gdmlModule: SerializersModule = SerializersModule {
     }
 }
 
-public fun Gdml.encodeToString(): String = Gdml.xmlFormat.encodeToString(Gdml.serializer(), this)
-public fun Gdml.encodeToWriter(writer: XmlWriter): Unit = Gdml.xmlFormat.encodeToWriter(writer, Gdml.serializer(), this)
-public fun Gdml.Companion.decodeFromString(string: String): Gdml = xmlFormat.decodeFromString(Gdml.serializer(), string)
+/**
+ * Decode Gdml from an xml string
+ */
+public fun Gdml.Companion.decodeFromString(string: String): Gdml =
+    xmlFormat.decodeFromString(serializer(), string)
+
+/**
+ * Encode gdml to an xml string
+ */
+public fun Gdml.Companion.encodeToString(gdml: Gdml): String =
+    xmlFormat.encodeToString(serializer(), gdml)
+
+/**
+ * Write gdml to provided xml writer
+ */
+public fun Gdml.Companion.encodeToWriter(gdml: Gdml, writer: XmlWriter): Unit =
+    xmlFormat.encodeToWriter(writer, serializer(), gdml)
+
+/**
+ * A shortcut to encode gdml to string using [Gdml.Companion.encodeToString]
+ */
+public fun Gdml.encodeToString(): String = Gdml.encodeToString(this)
+
+/**
+ * A shortcut to write gdml to writer using [Gdml.Companion.encodeToWriter]
+ */
+public fun Gdml.encodeToWriter(writer: XmlWriter): Unit = Gdml.encodeToWriter(this, writer)

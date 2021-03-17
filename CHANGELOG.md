@@ -4,6 +4,7 @@
 ### Added
 - Scripting support
 - GdmlShowcase singleton for test purposes
+- `Gdml.decodeFromUrl` method to fetch data from url
 
 ### Changed
 - Refactor define builders to place the name in the last position
