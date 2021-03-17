@@ -15,31 +15,35 @@ In the future, it will be possible to add additional module to launch GEANT4 sim
 
 > #### Artifact:
 >
-> This module artifact: `space.kscience:gdml:0.3.3`.
+> This module artifact: `space.kscience:gdml:0.4.0-dev-1`.
 >
 >
 > **Gradle:**
 >
 > ```groovy
 > repositories {
->     maven { url 'https://repo.kotlin.link' }
+>     mavenCentral()
+>     maven { url "https://repo.kotlin.link" }
+>     maven { url "https://dl.bintray.com/pdvrieze/maven" } // could be replaced by jcenter()
 > //    maven { url "https://dl.bintray.com/kotlin/kotlin-eap" } // include for builds based on kotlin-eap
 > }
 > 
 > dependencies {
->     implementation 'space.kscience:gdml:0.3.3'
+>     implementation 'space.kscience:gdml:0.4.0-dev-1'
 > }
 > ```
 > **Gradle Kotlin DSL:**
 >
 > ```kotlin
 > repositories {
+>     mavenCentral()
 >     maven("https://repo.kotlin.link")
+>     maven("https://dl.bintray.com/pdvrieze/maven") // could be replaced by jcenter()
 > //    maven("https://dl.bintray.com/kotlin/kotlin-eap") // include for builds based on kotlin-eap
 > }
 > 
 > dependencies {
->     implementation("space.kscience:gdml:0.3.3")
+>     implementation("space.kscience:gdml:0.4.0-dev-1")
 > }
 > ```
 

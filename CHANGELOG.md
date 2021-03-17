@@ -5,6 +5,7 @@
 - Scripting support
 - GdmlShowcase singleton for test purposes
 - `Gdml.decodeFromUrl` method to fetch data from url
+- Automatic naming of all gdml builder nodes for absent names
 
 ### Changed
 - Refactor define builders to place the name in the last position
@@ -12,6 +13,7 @@
 - Container `getMember` renamed to `getItem`
 - Structure builders return GdmlRef instead of elements
 - `world` variable accepts ref instead of volume
+- All `Gdml` builder functions now have `name` in last position and nullable to allow for automatic naming.
 
 ### Deprecated
 - Define builders in boolean solids.
