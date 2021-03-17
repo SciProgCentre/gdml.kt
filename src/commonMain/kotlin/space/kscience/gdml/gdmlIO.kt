@@ -1,8 +1,6 @@
 package space.kscience.gdml
 
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Serializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -13,9 +11,30 @@ import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
 import nl.adaptivity.xmlutil.XmlWriter
 
+public object LUnitSerializer : KSerializer<LUnit> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("lunit", PrimitiveKind.STRING)
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializer(Number::class)
+    override fun deserialize(decoder: Decoder): LUnit {
+        return LUnit.valueOf(decoder.decodeString().toUpperCase())
+    }
+
+    override fun serialize(encoder: Encoder, value: LUnit) {
+        encoder.encodeString(value.title)
+    }
+}
+
+public object AUnitSerializer : KSerializer<AUnit> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("aunit", PrimitiveKind.STRING)
+
+    override fun deserialize(decoder: Decoder): AUnit {
+        return AUnit.valueOf(decoder.decodeString().toUpperCase())
+    }
+
+    override fun serialize(encoder: Encoder, value: AUnit) {
+        encoder.encodeString(value.title)
+    }
+}
+
 public object NumberSerializer : KSerializer<Number> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("kotlin.Number", PrimitiveKind.DOUBLE)
 
@@ -28,7 +47,7 @@ public object NumberSerializer : KSerializer<Number> {
     }
 }
 
-public val gdmlModule: SerializersModule = SerializersModule {
+internal val gdmlModule: SerializersModule = SerializersModule {
     polymorphic(GdmlContainer::class) {
         subclass(GdmlDefineContainer.serializer())
         subclass(GdmlMaterialContainer.serializer())
@@ -77,6 +96,30 @@ public val gdmlModule: SerializersModule = SerializersModule {
     }
 }
 
-public fun Gdml.encodeToString(): String = Gdml.format.encodeToString(Gdml.serializer(), this)
-public fun Gdml.encodeToWriter(writer: XmlWriter): Unit = Gdml.format.encodeToWriter(writer, Gdml.serializer(), this)
-public fun Gdml.Companion.decodeFromString(string: String): Gdml = format.decodeFromString(Gdml.serializer(), string)
+/**
+ * Decode Gdml from an xml string
+ */
+public fun Gdml.Companion.decodeFromString(string: String): Gdml =
+    xmlFormat.decodeFromString(serializer(), string)
+
+/**
+ * Encode gdml to an xml string
+ */
+public fun Gdml.Companion.encodeToString(gdml: Gdml): String =
+    xmlFormat.encodeToString(serializer(), gdml)
+
+/**
+ * Write gdml to provided xml writer
+ */
+public fun Gdml.Companion.encodeToWriter(gdml: Gdml, writer: XmlWriter): Unit =
+    xmlFormat.encodeToWriter(writer, serializer(), gdml)
+
+/**
+ * A shortcut to encode gdml to string using [Gdml.Companion.encodeToString]
+ */
+public fun Gdml.encodeToString(): String = Gdml.encodeToString(this)
+
+/**
+ * A shortcut to write gdml to writer using [Gdml.Companion.encodeToWriter]
+ */
+public fun Gdml.encodeToWriter(writer: XmlWriter): Unit = Gdml.encodeToWriter(this, writer)

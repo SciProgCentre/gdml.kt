@@ -12,8 +12,8 @@ import kotlin.math.PI
 
 @Serializable
 public sealed class GdmlSolid : GdmlNode {
-    public var lunit: String? = null
-    public var aunit: String? = null
+    public var lunit: LUnit? = null
+    public var aunit: AUnit? = null
 }
 
 @Serializable
@@ -255,7 +255,7 @@ public data class GdmlCone(
     var z: Number,
     var rmax1: Number,
     var rmax2: Number,
-    var deltaphi: Number,
+    var deltaphi: Number = 2 * PI,
     var rmin1: Number = 0f,
     var rmin2: Number = 0f,
     var startphi: Number = 0f,
@@ -308,12 +308,14 @@ public sealed class GdmlBoolSolid : GdmlSolid() {
     public fun resolveFirstPosition(root: Gdml): GdmlPosition? = firstposition ?: firstpositionref?.resolve(root)
     public fun resolveFirstRotation(root: Gdml): GdmlRotation? = firstrotation ?: firstrotationref?.resolve(root)
 
+    @Deprecated("Use GdmlPosition constructor instead")
     public fun position(x: Number = 0f, y: Number = 0f, z: Number = 0f): GdmlPosition = GdmlPosition().apply {
         this.x = x
         this.y = y
         this.z = z
     }
 
+    @Deprecated("Use GdmlRotation constructor instead")
     public fun rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f): GdmlRotation = GdmlRotation().apply {
         this.x = x
         this.y = y

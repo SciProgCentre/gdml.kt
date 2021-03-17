@@ -1,5 +1,5 @@
 plugins {
-    val toolsVersion = "0.8.3"
+    val toolsVersion = "0.9.2"
     id("ru.mipt.npm.gradle.project") version toolsVersion
     id("ru.mipt.npm.gradle.mpp") version toolsVersion
 //    id("ru.mipt.npm.gradle.native") version toolsVersion
@@ -7,22 +7,26 @@ plugins {
 }
 
 group = "space.kscience"
-version = "0.3.0"
+version = "0.4.0-dev-1"
+
+allprojects {
+    repositories {
+        jcenter()
+        maven("https://dl.bintray.com/pdvrieze/maven")
+    }
+}
 
 kscience {
-    useSerialization{
+    useSerialization {
         xml()
     }
 }
 
-repositories {
-    jcenter()
-    maven("https://dl.bintray.com/pdvrieze/maven")
+ksciencePublish{
+    github("gdml.kt")
+    space()
+    sonatype()
 }
-
-internal val githubProject by extra("gdml.kt")
-internal val spaceRepo by extra("https://maven.pkg.jetbrains.space/mipt-npm/p/sci/maven")
-internal val bintrayRepo by extra("kscience")
 
 kotlin {
     sourceSets {
