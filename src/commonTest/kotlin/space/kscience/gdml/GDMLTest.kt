@@ -27,13 +27,13 @@ class GdmlTest {
     fun testSerialization() {
         val gdml = Gdml {
             define {
-                rotation("a", y = PI / 6)
-                position("pos.b", z = 12)
+                rotation(name = "a", y = PI / 6)
+                position(name = "pos.b", z = 12)
             }
             solids {
-                val myBox = box("myBox", 100.0, 100.0, 100.0)
-                val otherBox = box("otherBox", 100.0, 100.0, 100.0)
-                union("aUnion", myBox, otherBox) {
+                val myBox = box(100.0, 100.0, 100.0, "myBox")
+                val otherBox = box(100.0, 100.0, 100.0, "otherBox")
+                union(myBox, otherBox, "aUnion") {
                     firstposition = GdmlPosition(x = 32.0, y = 0.0, z = 0.0)
                     firstrotation = GdmlRotation(y = PI / 4)
                 }
@@ -53,13 +53,33 @@ class GdmlTest {
     @Test
     fun testSubtraction() {
         val gdml = Gdml {
-            val cube = solids.box("theBox", 100, 100, 100)
-            val orb = solids.orb("theOrb", 100)
+            val cube = solids.box(100, 100, 100, "theBox")
+            val orb = solids.orb(100, "theOrb")
 
-            val subtract = solids.subtraction("sub", cube, orb) {
+            val subtract = solids.subtraction(cube, orb, "sub") {
                 position = GdmlPosition(x = 100, y = 0, z = 0)
             }
         }
         println(gdml.encodeToString())
+    }
+
+    @Test
+    fun testAutoNaming() {
+        val gdml = Gdml {
+            val cube1 = solids.box(100, 100, 100)
+            val cube2 = solids.box(100, 100, 100)
+            val cube3 = solids.box(100, 100, 100)
+            val air = materials.isotope("G4_AIR")
+            val volume1 = structure.volume(air, cube1)
+            val volume2 = structure.volume(air, cube2)
+            val volume3 = structure.volume(air, cube3)
+            world {
+                physVolume(volume1)
+                physVolume(volume2)
+                physVolume(volume3)
+            }
+        }
+        println(gdml)
+
     }
 }

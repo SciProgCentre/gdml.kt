@@ -5,21 +5,21 @@ package space.kscience.gdml
  */
 public object GdmlShowCase {
     public val cubes: Gdml = Gdml {
-        val center = define.position("center")
+        val center = define.position(name = "center")
         structure {
             val air = materials.isotope("G4_AIR")
             val tubeMaterial = materials.element("tubeium")
             val boxMaterial = materials.element("boxium")
 
-            val segment = solids.tube("segment", 20, 5.0) {
+            val segment = solids.tube(20, 5.0, "segment") {
                 rmin = 17
                 deltaphi = 60
                 aunit = AUnit.DEG
             }
-            val worldBox = solids.box("LargeBox", 200, 200, 200)
-            val smallBox = solids.box("smallBox", 30, 30, 30)
-            val segmentVolume = volume("segment", tubeMaterial, segment)
-            val circle = volume("composite", boxMaterial, smallBox) {
+            val worldBox = solids.box(200, 200, 200, "LargeBox")
+            val smallBox = solids.box(30, 30, 30, "smallBox")
+            val segmentVolume = volume(tubeMaterial, segment, "segment")
+            val circle = volume(boxMaterial, smallBox, "composite") {
                 for (i in 0 until 6) {
                     physVolume(segmentVolume) {
                         positionref = center
@@ -31,7 +31,7 @@ public object GdmlShowCase {
                 }
             }
 
-            world = volume("world", air, worldBox) {
+            world = volume(air, worldBox, "world") {
                 for (i in 0 until 3) {
                     for (j in 0 until 3) {
                         for (k in 0 until 3) {
@@ -130,7 +130,7 @@ public object GdmlShowCase {
 
         structure {
             val worldMaterial = materials.composite("G4_AIR")
-            val worldBox = solids.box("worldBox", worldSize, worldSize, worldSize)
+            val worldBox = solids.box(worldSize, worldSize, worldSize, "worldBox")
 
             val shieldingMaterial = materials.composite("G4_Pb")
             val scintillatorMaterial = materials.composite("BC408")
@@ -139,216 +139,216 @@ public object GdmlShowCase {
             // chamber
             val copperMaterial = materials.composite("G4_Cu")
             val chamberSolidBase =
-                solids.box("chamberSolidBase", chamberOuterSquareSide, chamberOuterSquareSide, chamberHeight)
-            val chamberSolidHole = solids.tube("chamberSolidHole", chamberDiameter / 2, chamberHeight)
-            val chamberSolid = solids.subtraction("chamberSolid", chamberSolidBase, chamberSolidHole)
-            val chamberBodyVolume = volume("chamberBodyVolume", copperMaterial, chamberSolid)
-            val chamberBackplateSolid = solids.box("chamberBackplateSolid",
+                solids.box(chamberOuterSquareSide, chamberOuterSquareSide, chamberHeight, "chamberSolidBase")
+            val chamberSolidHole = solids.tube(chamberDiameter / 2, chamberHeight, "chamberSolidHole")
+            val chamberSolid = solids.subtraction(chamberSolidBase, chamberSolidHole, "chamberSolid")
+            val chamberBodyVolume = volume(copperMaterial, chamberSolid, "chamberBodyVolume")
+            val chamberBackplateSolid = solids.box(chamberOuterSquareSide,
                 chamberOuterSquareSide,
-                chamberOuterSquareSide,
-                chamberBackplateThickness
+                chamberBackplateThickness,
+                "chamberBackplateSolid"
             )
-            val chamberBackplateVolume = volume("chamberBackplateVolume", copperMaterial, chamberBackplateSolid)
+            val chamberBackplateVolume = volume(copperMaterial, chamberBackplateSolid, "chamberBackplateVolume")
             // chamber teflon walls
             val teflonMaterial = materials.composite("G4_TEFLON")
-            val chamberTeflonWallSolid = solids.tube("chamberTeflonWallSolid", chamberDiameter / 2, chamberHeight) {
+            val chamberTeflonWallSolid = solids.tube(chamberDiameter / 2, chamberHeight, "chamberTeflonWallSolid") {
                 rmin = chamberDiameter / 2 - chamberTeflonWallThickness
             }
-            val chamberTeflonWallVolume = volume("chamberTeflonWallVolume", teflonMaterial, chamberTeflonWallSolid)
+            val chamberTeflonWallVolume = volume(teflonMaterial, chamberTeflonWallSolid, "chamberTeflonWallVolume")
             // cathode
             val cathodeCopperDiskMaterial = materials.composite("G4_Cu")
             val cathodeWindowMaterial = materials.composite("G4_MYLAR")
 
             val cathodeTeflonDiskSolidBase =
-                solids.tube("cathodeTeflonDiskSolidBase", chamberOuterSquareSide / 2, cathodeTeflonDiskThickness) {
+                solids.tube(chamberOuterSquareSide / 2, cathodeTeflonDiskThickness, "cathodeTeflonDiskSolidBase") {
                     rmin = cathodeTeflonDiskHoleRadius
                 }
             val cathodeCopperDiskSolid =
-                solids.tube("cathodeCopperDiskSolid", cathodeCopperSupportOuterRadius, cathodeCopperSupportThickness) {
+                solids.tube(cathodeCopperSupportOuterRadius, cathodeCopperSupportThickness, "cathodeCopperDiskSolid") {
                     rmin = cathodeCopperSupportInnerRadius
                 }
 
             val cathodeTeflonDiskSolid =
-                solids.subtraction("cathodeTeflonDiskSolid", cathodeTeflonDiskSolidBase, cathodeCopperDiskSolid)
-            val cathodeTeflonDiskVolume = volume("cathodeTeflonDiskVolume", teflonMaterial, cathodeTeflonDiskSolid)
+                solids.subtraction(cathodeTeflonDiskSolidBase, cathodeCopperDiskSolid, "cathodeTeflonDiskSolid")
+            val cathodeTeflonDiskVolume = volume(teflonMaterial, cathodeTeflonDiskSolid, "cathodeTeflonDiskVolume")
 
             val cathodeWindowSolid =
-                solids.tube("cathodeWindowSolid", cathodeTeflonDiskHoleRadius, mylarCathodeThickness)
-            val cathodeWindowVolume = volume("cathodeWindowVolume", cathodeWindowMaterial, cathodeWindowSolid)
+                solids.tube(cathodeTeflonDiskHoleRadius, mylarCathodeThickness, "cathodeWindowSolid")
+            val cathodeWindowVolume = volume(cathodeWindowMaterial, cathodeWindowSolid, "cathodeWindowVolume")
 
             val vacuumMaterial = materials.composite("G4_Galactic")
             val cathodeFillingSolidBase =
-                solids.tube("cathodeFillingSolidBase", cathodeTeflonDiskHoleRadius, cathodeTeflonDiskThickness)
+                solids.tube(cathodeTeflonDiskHoleRadius, cathodeTeflonDiskThickness, "cathodeFillingSolidBase")
 
             val cathodeFillingSolid =
-                solids.subtraction("cathodeFillingSolid", cathodeFillingSolidBase, cathodeCopperDiskSolid) {
+                solids.subtraction(cathodeFillingSolidBase, cathodeCopperDiskSolid, "cathodeFillingSolid") {
 
                     position = GdmlPosition(z = chamberHeight / 2 - mylarCathodeThickness / 2)
                 }
-            val cathodeFillingVolume = volume("cathodeFillingVolume", vacuumMaterial, cathodeFillingSolid)
+            val cathodeFillingVolume = volume(vacuumMaterial, cathodeFillingSolid, "cathodeFillingVolume")
 
             // pattern
             val cathodePatternLineAux = solids.box(
-                "cathodePatternLineAux",
                 cathodePatternLineWidth,
                 cathodeCopperSupportInnerRadius * 2,
-                cathodeCopperSupportThickness
+                cathodeCopperSupportThickness,
+                "cathodePatternLineAux"
             )
             val cathodePatternCentralHole = solids.tube(
-                "cathodePatternCentralHole",
                 cathodePatternDiskRadius - 0 * cathodePatternLineWidth,
-                cathodeCopperSupportThickness * 1.1
+                cathodeCopperSupportThickness * 1.1,
+                "cathodePatternCentralHole"
             )
             val cathodePatternLine =
-                solids.subtraction("cathodePatternLine", cathodePatternLineAux, cathodePatternCentralHole)
+                solids.subtraction(cathodePatternLineAux, cathodePatternCentralHole, "cathodePatternLine")
 
             val cathodePatternDisk = solids.tube(
-                "cathodePatternDisk",
                 cathodePatternDiskRadius,
-                cathodeCopperSupportThickness
+                cathodeCopperSupportThickness,
+                "cathodePatternDisk"
             ) { rmin = cathodePatternDiskRadius - cathodePatternLineWidth }
 
 
             val cathodeCopperDiskSolidAux0 =
-                solids.union("cathodeCopperDiskSolidAux0", cathodeCopperDiskSolid, cathodePatternLine) {
+                solids.union(cathodeCopperDiskSolid, cathodePatternLine, "cathodeCopperDiskSolidAux0") {
                     rotation = GdmlRotation(x = 0, y = 0, z = 0)
                 }
             val cathodeCopperDiskSolidAux1 =
-                solids.union("cathodeCopperDiskSolidAux1", cathodeCopperDiskSolidAux0, cathodePatternLine) {
+                solids.union(cathodeCopperDiskSolidAux0, cathodePatternLine, "cathodeCopperDiskSolidAux1") {
                     rotation = GdmlRotation(x = 0, y = 0, z = 45)
                 }
             val cathodeCopperDiskSolidAux2 =
-                solids.union("cathodeCopperDiskSolidAux2", cathodeCopperDiskSolidAux1, cathodePatternLine) {
+                solids.union(cathodeCopperDiskSolidAux1, cathodePatternLine, "cathodeCopperDiskSolidAux2") {
                     rotation = GdmlRotation(x = 0, y = 0, z = 90)
                 }
             val cathodeCopperDiskSolidAux3 =
-                solids.union("cathodeCopperDiskSolidAux3", cathodeCopperDiskSolidAux2, cathodePatternLine) {
+                solids.union(cathodeCopperDiskSolidAux2, cathodePatternLine, "cathodeCopperDiskSolidAux3") {
                     rotation = GdmlRotation(x = 0, y = 0, z = 135)
                 }
 
             val cathodeCopperDiskFinal =
-                solids.union("cathodeCopperDiskFinal", cathodeCopperDiskSolidAux3, cathodePatternDisk)
+                solids.union(cathodeCopperDiskSolidAux3, cathodePatternDisk, "cathodeCopperDiskFinal")
 
 
             val cathodeCopperDiskVolume =
-                volume("cathodeCopperDiskFinal", cathodeCopperDiskMaterial, cathodeCopperDiskFinal)
+                volume(cathodeCopperDiskMaterial, cathodeCopperDiskFinal, "cathodeCopperDiskFinal")
 
             val gasSolidOriginal = solids.tube(
-                "gasSolidOriginal",
                 chamberDiameter / 2 - chamberTeflonWallThickness,
-                chamberHeight
+                chamberHeight,
+                "gasSolidOriginal"
             )
 
             val kaptonReadoutMaterial = materials.composite("G4_KAPTON")
             val kaptonReadoutSolid =
-                solids.box("kaptonReadoutSolid", chamberOuterSquareSide, chamberOuterSquareSide, readoutKaptonThickness)
-            val kaptonReadoutVolume = volume("kaptonReadoutVolume", kaptonReadoutMaterial, kaptonReadoutSolid)
+                solids.box(chamberOuterSquareSide, chamberOuterSquareSide, readoutKaptonThickness, "kaptonReadoutSolid")
+            val kaptonReadoutVolume = volume(kaptonReadoutMaterial, kaptonReadoutSolid, "kaptonReadoutVolume")
 
             val copperReadoutSolid =
-                solids.box("copperReadoutSolid", readoutPlaneSide, readoutPlaneSide, readoutCopperThickness)
-            val copperReadoutVolume = volume("copperReadoutVolume", copperMaterial, copperReadoutSolid)
+                solids.box(readoutPlaneSide, readoutPlaneSide, readoutCopperThickness, "copperReadoutSolid")
+            val copperReadoutVolume = volume(copperMaterial, copperReadoutSolid, "copperReadoutVolume")
 
             val gasSolidAux =
-                solids.subtraction("gasSolidAux", gasSolidOriginal, copperReadoutSolid) {
+                solids.subtraction(gasSolidOriginal, copperReadoutSolid, "gasSolidAux") {
                     position = GdmlPosition(z = -chamberHeight / 2 + readoutCopperThickness / 2)
                 }
 
             val gasMaterial = materials.composite("G4_Ar")
             val gasSolid =
-                solids.subtraction("gasSolid", gasSolidAux, cathodeWindowSolid) {
+                solids.subtraction(gasSolidAux, cathodeWindowSolid, "gasSolid") {
                     position = GdmlPosition(z = chamberHeight / 2 - mylarCathodeThickness / 2)
                     rotation = GdmlRotation(z = 45)
                 }
-            val gasVolume = volume("gasVolume", gasMaterial, gasSolid)
+            val gasVolume = volume(gasMaterial, gasSolid, "gasVolume")
 
-            val leadBoxSolid = solids.box("leadBoxSolid", leadBoxSizeXY, leadBoxSizeXY, leadBoxSizeZ)
+            val leadBoxSolid = solids.box(leadBoxSizeXY, leadBoxSizeXY, leadBoxSizeZ, "leadBoxSolid")
             val leadBoxShaftSolid = solids.box(
-                "leadBoxShaftSolid",
                 leadBoxShaftShortSideX,
                 leadBoxShaftShortSideY,
-                leadBoxShaftLongSide
+                leadBoxShaftLongSide,
+                "leadBoxShaftSolid"
             )
-            val leadBoxWithShaftSolid = solids.subtraction("leadBoxWithShaftSolid", leadBoxSolid, leadBoxShaftSolid) {
+            val leadBoxWithShaftSolid = solids.subtraction(leadBoxSolid, leadBoxShaftSolid, "leadBoxWithShaftSolid") {
 
                 position = GdmlPosition(z = leadBoxSizeZ / 2 - leadBoxShaftLongSide / 2)
             }
-            val leadShieldingVolume = volume("ShieldingVolume", shieldingMaterial, leadBoxWithShaftSolid)
+            val leadShieldingVolume = volume(shieldingMaterial, leadBoxWithShaftSolid, "ShieldingVolume")
 
-            val detectorPipeChamberFlangeSolid = solids.tube("detectorPipeChamberFlangeSolid",
-                detectorPipeChamberFlangeRadius,
-                detectorPipeChamberFlangeThickness)
-            val detectorPipeTelescopeFlangeSolid = solids.tube("detectorPipeTelescopeFlangeSolid",
-                detectorPipeTelescopeFlangeRadius,
-                detectorPipeTelescopeFlangeThickness)
+            val detectorPipeChamberFlangeSolid = solids.tube(detectorPipeChamberFlangeRadius,
+                detectorPipeChamberFlangeThickness,
+                "detectorPipeChamberFlangeSolid")
+            val detectorPipeTelescopeFlangeSolid = solids.tube(detectorPipeTelescopeFlangeRadius,
+                detectorPipeTelescopeFlangeThickness,
+                "detectorPipeTelescopeFlangeSolid")
             val detectorPipeSection1of2Solid =
-                solids.tube("detectorPipeSection1of2Solid", detectorPipeOuterRadius1, detectorPipeSection1of2Length)
+                solids.tube(detectorPipeOuterRadius1, detectorPipeSection1of2Length, "detectorPipeSection1of2Solid")
             val detectorPipeSection2of2Solid =
-                solids.tube("detectorPipeSection2of2Solid", detectorPipeOuterRadius2, detectorPipeSection2of2Length)
+                solids.tube(detectorPipeOuterRadius2, detectorPipeSection2of2Length, "detectorPipeSection2of2Solid")
             val detectorPipeAux1 =
-                solids.union("detectorPipeAux1", detectorPipeChamberFlangeSolid, detectorPipeSection1of2Solid) {
+                solids.union(detectorPipeChamberFlangeSolid, detectorPipeSection1of2Solid, "detectorPipeAux1") {
 
                     position = GdmlPosition(z = detectorPipeUnion1Z)
                 }
-            val detectorPipeAux2 = solids.union("detectorPipeAux2", detectorPipeAux1, detectorPipeSection2of2Solid) {
+            val detectorPipeAux2 = solids.union(detectorPipeAux1, detectorPipeSection2of2Solid, "detectorPipeAux2") {
 
                 position = GdmlPosition(z = detectorPipeUnion2Z)
             }
             val detectorPipeNotEmpty =
-                solids.union("detectorPipeNotEmpty", detectorPipeAux2, detectorPipeTelescopeFlangeSolid) {
+                solids.union(detectorPipeAux2, detectorPipeTelescopeFlangeSolid, "detectorPipeNotEmpty") {
 
                     position = GdmlPosition(z = detectorPipeUnion3Z)
                 }
 
-            val detectorPipeInside1of3Solid = solids.tube("detectorPipeInside1of3Solid",
-                detectorPipeInsideSection1of3Radius,
-                detectorPipeInsideSection1of3Length)
-            val detectorPipeInside2of3Solid = solids.tube("detectorPipeInside2of3Solid",
-                detectorPipeInsideSection2of3Radius,
-                detectorPipeInsideSection2of3Length)
-            val detectorPipeInside3of3Solid = solids.tube("detectorPipeInside3of3Solid",
-                detectorPipeInsideSection3of3Radius,
-                detectorPipeInsideSection3of3Length)
+            val detectorPipeInside1of3Solid = solids.tube(detectorPipeInsideSection1of3Radius,
+                detectorPipeInsideSection1of3Length,
+                "detectorPipeInside1of3Solid")
+            val detectorPipeInside2of3Solid = solids.tube(detectorPipeInsideSection2of3Radius,
+                detectorPipeInsideSection2of3Length,
+                "detectorPipeInside2of3Solid")
+            val detectorPipeInside3of3Solid = solids.tube(detectorPipeInsideSection3of3Radius,
+                detectorPipeInsideSection3of3Length,
+                "detectorPipeInside3of3Solid")
 
             val detectorPipeInsideCone1of3Solid =
-                solids.cone("detectorPipeInsideCone1of3Solid", detectorPipeInsideCone1of3Length,
-                    detectorPipeInsideSection1of3Radius, detectorPipeInsideSection2of3Radius)
+                solids.cone(detectorPipeInsideCone1of3Length, detectorPipeInsideSection1of3Radius,
+                    detectorPipeInsideSection2of3Radius, "detectorPipeInsideCone1of3Solid")
             val detectorPipeInsideCone2of3Solid =
-                solids.cone("detectorPipeInsideCone2of3Solid", detectorPipeInsideCone2of3Length,
-                    detectorPipeInsideSection2of3Radius, detectorPipeInsideSection3of3Radius)
+                solids.cone(detectorPipeInsideCone2of3Length, detectorPipeInsideSection2of3Radius,
+                    detectorPipeInsideSection3of3Radius, "detectorPipeInsideCone2of3Solid")
             val detectorPipeInsideCone3of3Solid =
-                solids.cone("detectorPipeInsideCone3of3Solid", detectorPipeInsideCone3of3Length,
-                    detectorPipeInsideSection3of3Radius, detectorPipeInsideSectionTelescopeRadius)
+                solids.cone(detectorPipeInsideCone3of3Length, detectorPipeInsideSection3of3Radius,
+                    detectorPipeInsideSectionTelescopeRadius, "detectorPipeInsideCone3of3Solid")
 
             val detectorPipeInsideAux1 =
-                solids.union("detectorPipeInsideAux1", detectorPipeInside1of3Solid, detectorPipeInsideCone1of3Solid) {
+                solids.union(detectorPipeInside1of3Solid, detectorPipeInsideCone1of3Solid, "detectorPipeInsideAux1") {
                     position = GdmlPosition(z = detectorPipeInsideUnion1Z)
                 }
             val detectorPipeInsideAux2 =
-                solids.union("detectorPipeInsideAux2", detectorPipeInsideAux1, detectorPipeInside2of3Solid) {
+                solids.union(detectorPipeInsideAux1, detectorPipeInside2of3Solid, "detectorPipeInsideAux2") {
                     position = GdmlPosition(z = detectorPipeInsideUnion2Z)
                 }
             val detectorPipeInsideAux3 =
-                solids.union("detectorPipeInsideAux3", detectorPipeInsideAux2, detectorPipeInsideCone2of3Solid) {
+                solids.union(detectorPipeInsideAux2, detectorPipeInsideCone2of3Solid, "detectorPipeInsideAux3") {
                     position = GdmlPosition(z = detectorPipeInsideUnion3Z)
                 }
             val detectorPipeInsideAux4 =
-                solids.union("detectorPipeInsideAux4", detectorPipeInsideAux3, detectorPipeInside3of3Solid) {
+                solids.union(detectorPipeInsideAux3, detectorPipeInside3of3Solid, "detectorPipeInsideAux4") {
                     position = GdmlPosition(z = detectorPipeInsideUnion4Z)
                 }
             val detectorPipeInside =
-                solids.union("detectorPipeInside", detectorPipeInsideAux4, detectorPipeInsideCone3of3Solid) {
+                solids.union(detectorPipeInsideAux4, detectorPipeInsideCone3of3Solid, "detectorPipeInside") {
                     position = GdmlPosition(z = detectorPipeInsideUnion5Z)
                 }
-            val detectorPipeSolid = solids.subtraction("detectorPipeSolid", detectorPipeNotEmpty, detectorPipeInside) {
+            val detectorPipeSolid = solids.subtraction(detectorPipeNotEmpty, detectorPipeInside, "detectorPipeSolid") {
                 position = GdmlPosition(
                     z = detectorPipeInsideSection1of3Length / 2 - detectorPipeChamberFlangeThickness / 2
                 )
             }
-            val detectorPipeVolume = volume("detectorPipeVolume", copperMaterial, detectorPipeSolid)
-            val detectorPipeFillingVolume = volume("detectorPipeFillingVolume", vacuumMaterial, detectorPipeInside)
+            val detectorPipeVolume = volume(copperMaterial, detectorPipeSolid, "detectorPipeVolume")
+            val detectorPipeFillingVolume = volume(vacuumMaterial, detectorPipeInside, "detectorPipeFillingVolume")
 
             // world setup
-            world = volume("world", worldMaterial, worldBox) {
+            world = volume(worldMaterial, worldBox, "world") {
                 physVolume(gasVolume) {
                     name = "gas"
                 }

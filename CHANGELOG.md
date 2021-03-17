@@ -10,6 +10,8 @@
 - Refactor define builders to place the name in the last position
 - `Gdml.format` and module made internal
 - Container `getMember` renamed to `getItem`
+- Structure builders return GdmlRef instead of elements
+- `world` variable accepts ref instead of volume
 
 ### Deprecated
 - Define builders in boolean solids.

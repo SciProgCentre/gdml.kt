@@ -118,15 +118,15 @@ public sealed class GdmlGroup : GdmlNode {
     @XmlSerialName("physvol", "", "")
     public val physVolumes: ArrayList<GdmlPhysVolume> = ArrayList<GdmlPhysVolume>()
 
-    public fun physVolume(volumeref: GdmlRef<GdmlGroup>, block: GdmlPhysVolume.() -> Unit): GdmlPhysVolume {
+    public fun physVolume(volumeref: GdmlRef<GdmlGroup>, block: GdmlPhysVolume.() -> Unit = {}): GdmlPhysVolume {
         val res = GdmlPhysVolume(volumeref).apply(block)
         physVolumes.add(res)
         return res
     }
 }
 
-public fun GdmlGroup.physVolume(volume: GdmlGroup, block: GdmlPhysVolume.() -> Unit): GdmlPhysVolume =
-    physVolume(volume.ref(), block)
+//public fun GdmlGroup.physVolume(volume: GdmlGroup, block: GdmlPhysVolume.() -> Unit): GdmlPhysVolume =
+//    physVolume(volume.ref(), block)
 
 @Serializable
 @SerialName("assembly")

@@ -30,10 +30,10 @@ public final class space/kscience/gdml/Gdml {
 	public final fun getSetup ()Lspace/kscience/gdml/GdmlSetup;
 	public final fun getSolids ()Lspace/kscience/gdml/GdmlSolidContainer;
 	public final fun getStructure ()Lspace/kscience/gdml/GdmlStructure;
-	public final fun getWorld ()Lspace/kscience/gdml/GdmlGroup;
+	public final fun getWorld ()Lspace/kscience/gdml/GdmlRef;
 	public fun hashCode ()I
 	public final fun materials (Lkotlin/jvm/functions/Function1;)V
-	public final fun setWorld (Lspace/kscience/gdml/GdmlGroup;)V
+	public final fun setWorld (Lspace/kscience/gdml/GdmlRef;)V
 	public final fun solids (Lkotlin/jvm/functions/Function1;)V
 	public final fun structure (Lkotlin/jvm/functions/Function1;)V
 	public fun toString ()Ljava/lang/String;
@@ -309,6 +309,7 @@ public abstract class space/kscience/gdml/GdmlContainer {
 	public static final field Companion Lspace/kscience/gdml/GdmlContainer$Companion;
 	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public final fun add (Lspace/kscience/gdml/GdmlNode;)V
+	public final fun autoName (Lkotlin/reflect/KType;)Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public abstract fun getContent ()Ljava/util/List;
 	public final fun getItem (Ljava/lang/String;)Lspace/kscience/gdml/GdmlNode;
@@ -334,10 +335,10 @@ public final class space/kscience/gdml/GdmlDefineContainer : space/kscience/gdml
 	public fun <init> ()V
 	public synthetic fun <init> (ILjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun getContent ()Ljava/util/List;
-	public final fun position (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun position$default (Lspace/kscience/gdml/GdmlDefineContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun rotation (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun rotation$default (Lspace/kscience/gdml/GdmlDefineContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun position (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun position$default (Lspace/kscience/gdml/GdmlDefineContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun rotation (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun rotation$default (Lspace/kscience/gdml/GdmlDefineContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 }
 
 public final class space/kscience/gdml/GdmlDefineContainer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -623,6 +624,7 @@ public abstract class space/kscience/gdml/GdmlGroup : space/kscience/gdml/GdmlNo
 	public synthetic fun <init> (ILjava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public final fun getPhysVolumes ()Ljava/util/ArrayList;
 	public final fun physVolume (Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlPhysVolume;
+	public static synthetic fun physVolume$default (Lspace/kscience/gdml/GdmlGroup;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlPhysVolume;
 }
 
 public final class space/kscience/gdml/GdmlGroup$Companion {
@@ -794,7 +796,6 @@ public abstract interface class space/kscience/gdml/GdmlNode {
 }
 
 public final class space/kscience/gdml/GdmlNodeKt {
-	public static final fun physVolume (Lspace/kscience/gdml/GdmlGroup;Lspace/kscience/gdml/GdmlGroup;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlPhysVolume;
 	public static final fun position (Lspace/kscience/gdml/GdmlPhysVolume;Lkotlin/jvm/functions/Function1;)V
 	public static final fun ref (Ljava/lang/String;)Lspace/kscience/gdml/GdmlRef;
 	public static final fun ref (Lspace/kscience/gdml/GdmlNode;)Lspace/kscience/gdml/GdmlRef;
@@ -1304,43 +1305,43 @@ public final class space/kscience/gdml/GdmlSolidContainer : space/kscience/gdml/
 	public static final field Companion Lspace/kscience/gdml/GdmlSolidContainer$Companion;
 	public fun <init> ()V
 	public synthetic fun <init> (ILjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public final fun box (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun box$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun cone (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun cone$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun elcone (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun elcone$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun ellipsoid (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun ellipsoid$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun eltube (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun eltube$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun box (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun box$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun cone (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun cone$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun elcone (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun elcone$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun ellipsoid (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun ellipsoid$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun eltube (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun eltube$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 	public fun getContent ()Ljava/util/List;
-	public final fun intersection (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun intersection$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun orb (Ljava/lang/String;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun orb$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun para (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun para$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun paraboloid (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun paraboloid$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun intersection (Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun intersection$default (Lspace/kscience/gdml/GdmlSolidContainer;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun orb (Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun orb$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun para (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun para$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun paraboloid (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun paraboloid$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 	public final fun polycone (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
 	public static synthetic fun polycone$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun polyhedra (Ljava/lang/String;ILkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun polyhedra$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;ILkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun scaledSolid (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun scaledSolid$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun sphere (Ljava/lang/String;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun sphere$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun subtraction (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun subtraction$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun torus (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun torus$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun trd (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun trd$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun tube (Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun tube$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
-	public final fun union (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
-	public static synthetic fun union$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun polyhedra (ILjava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun polyhedra$default (Lspace/kscience/gdml/GdmlSolidContainer;ILjava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun scaledSolid (Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun scaledSolid$default (Lspace/kscience/gdml/GdmlSolidContainer;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun sphere (Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun sphere$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun subtraction (Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun subtraction$default (Lspace/kscience/gdml/GdmlSolidContainer;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun torus (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun torus$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun trd (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun trd$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun tube (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun tube$default (Lspace/kscience/gdml/GdmlSolidContainer;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
+	public final fun union (Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun union$default (Lspace/kscience/gdml/GdmlSolidContainer;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 	public final fun xtru (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
 }
 
@@ -1413,11 +1414,11 @@ public final class space/kscience/gdml/GdmlStructure : space/kscience/gdml/GdmlC
 	public static final field Companion Lspace/kscience/gdml/GdmlStructure$Companion;
 	public fun <init> ()V
 	public synthetic fun <init> (ILjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public final fun assembly (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlAssembly;
-	public static synthetic fun assembly$default (Lspace/kscience/gdml/GdmlStructure;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlAssembly;
+	public final fun assembly (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun assembly$default (Lspace/kscience/gdml/GdmlStructure;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 	public fun getContent ()Ljava/util/List;
-	public final fun volume (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlVolume;
-	public static synthetic fun volume$default (Lspace/kscience/gdml/GdmlStructure;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlVolume;
+	public final fun volume (Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlRef;
+	public static synthetic fun volume$default (Lspace/kscience/gdml/GdmlStructure;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlRef;
 }
 
 public final class space/kscience/gdml/GdmlStructure$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
