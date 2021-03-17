@@ -38,6 +38,7 @@ public sealed class GdmlPlacement
  */
 @Serializable
 @SerialName("physvol")
+@GdmlApi
 public class GdmlPhysVolume(
     @XmlSerialName("volumeref", "", "")
     public var volumeref: GdmlRef<GdmlGroup>,
@@ -103,6 +104,7 @@ unit=" xs:string [0..1]">
  */
 @Serializable
 @SerialName("divisionvol")
+@GdmlApi
 public class GdmlDivisionVolume(
     public var axis: String,
     public var number: Number,
@@ -114,9 +116,10 @@ public class GdmlDivisionVolume(
 ) : GdmlPlacement()
 
 @Serializable
+@GdmlApi
 public sealed class GdmlGroup : GdmlNode {
     @XmlSerialName("physvol", "", "")
-    public val physVolumes: ArrayList<GdmlPhysVolume> = ArrayList<GdmlPhysVolume>()
+    public val physVolumes: ArrayList<GdmlPhysVolume> = ArrayList()
 
     public fun physVolume(volumeref: GdmlRef<GdmlGroup>, block: GdmlPhysVolume.() -> Unit = {}): GdmlPhysVolume {
         val res = GdmlPhysVolume(volumeref).apply(block)
@@ -130,10 +133,12 @@ public sealed class GdmlGroup : GdmlNode {
 
 @Serializable
 @SerialName("assembly")
+@GdmlApi
 public class GdmlAssembly(override var name: String) : GdmlGroup()
 
 @Serializable
 @SerialName("volume")
+@GdmlApi
 public class GdmlVolume(
     override var name: String,
     @XmlSerialName("materialref", "", "")

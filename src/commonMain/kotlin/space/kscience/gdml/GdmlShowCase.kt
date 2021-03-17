@@ -182,7 +182,6 @@ public object GdmlShowCase {
 
             val cathodeFillingSolid =
                 solids.subtraction(cathodeFillingSolidBase, cathodeCopperDiskSolid, "cathodeFillingSolid") {
-
                     position = GdmlPosition(z = chamberHeight / 2 - mylarCathodeThickness / 2)
                 }
             val cathodeFillingVolume = volume(vacuumMaterial, cathodeFillingSolid, "cathodeFillingVolume")

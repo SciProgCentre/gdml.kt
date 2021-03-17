@@ -212,7 +212,6 @@ structure {
         "leadBoxShaftSolid"
     )
     val leadBoxWithShaftSolid = solids.subtraction(leadBoxSolid, leadBoxShaftSolid, "leadBoxWithShaftSolid") {
-
         position = GdmlPosition(z = leadBoxSizeZ / 2 - leadBoxShaftLongSide / 2)
     }
     val leadShieldingVolume = volume(shieldingMaterial, leadBoxWithShaftSolid, "ShieldingVolume")

@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "space.kscience"
-version = "0.3.4-dev-1"
+version = "0.4.0-dev-1"
 
 allprojects {
     repositories {

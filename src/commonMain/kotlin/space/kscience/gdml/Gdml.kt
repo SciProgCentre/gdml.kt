@@ -423,6 +423,7 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>() {
 }
 
 @Serializable
+@GdmlApi
 @SerialName("structure")
 public class GdmlStructure : GdmlContainer<GdmlGroup>() {
 

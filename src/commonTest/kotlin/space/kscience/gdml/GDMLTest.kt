@@ -24,7 +24,7 @@ class GdmlTest {
     }
 
     @Test
-    fun testSerialization() {
+    fun serialization() {
         val gdml = Gdml {
             define {
                 rotation(name = "a", y = PI / 6)
@@ -51,7 +51,7 @@ class GdmlTest {
     }
 
     @Test
-    fun testSubtraction() {
+    fun subtraction() {
         val gdml = Gdml {
             val cube = solids.box(100, 100, 100, "theBox")
             val orb = solids.orb(100, "theOrb")
@@ -64,7 +64,7 @@ class GdmlTest {
     }
 
     @Test
-    fun testAutoNaming() {
+    fun autoNaming() {
         val gdml = Gdml {
             val cube1 = solids.box(100, 100, 100)
             val cube2 = solids.box(100, 100, 100)
@@ -80,6 +80,32 @@ class GdmlTest {
             }
         }
         println(gdml)
+        assertEquals(3, gdml.world.resolve(gdml)?.physVolumes?.size)
+    }
 
+    @Test
+    fun rotationGroup() {
+        val gdml = Gdml {
+            val cube = solids.box(100, 100, 100)
+            val air = materials.isotope("G4_AIR")
+            structure {
+                val cubeVolume = volume(air, cube)
+                val group = assembly{
+                    repeat(5) { index ->
+                        physVolume(cubeVolume) {
+                            position { z = index * 100 }
+                        }
+                    }
+                }
+                world = assembly("rotated") {
+                    physVolume(group) {
+                        rotation {
+                            x = PI / 4
+                        }
+                    }
+                }
+            }
+        }
+        println(gdml)
     }
 }
