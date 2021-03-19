@@ -1,18 +1,18 @@
-val center = define.position("center")
+val center = define.position(name = "center")
 structure {
     val air = materials.isotope("G4_AIR")
     val tubeMaterial = materials.element("tubeium")
     val boxMaterial = materials.element("boxium")
 
-    val segment = solids.tube("segment", 20, 5.0) {
+    val segment = solids.tube(20, 5.0, "segment") {
         rmin = 17
         deltaphi = 60
         aunit = AUnit.DEG
     }
-    val worldBox = solids.box("LargeBox", 200, 200, 200)
-    val smallBox = solids.box("smallBox", 30, 30, 30)
-    val segmentVolume = volume("segment", tubeMaterial, segment)
-    val circle = volume("composite", boxMaterial, smallBox) {
+    val worldBox = solids.box(200, 200, 200, "LargeBox")
+    val smallBox = solids.box(30, 30, 30, "smallBox")
+    val segmentVolume = volume(tubeMaterial, segment, "segment")
+    val circle = volume(boxMaterial, smallBox, "composite") {
         for (i in 0 until 6) {
             physVolume(segmentVolume) {
                 positionref = center
@@ -24,7 +24,7 @@ structure {
         }
     }
 
-    world = volume("world", air, worldBox) {
+    world = volume(air, worldBox, "world") {
         for (i in 0 until 3) {
             for (j in 0 until 3) {
                 for (k in 0 until 3) {
