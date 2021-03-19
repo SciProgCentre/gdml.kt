@@ -197,7 +197,7 @@ public final class space/kscience/gdml/GdmlBox$Companion {
 
 public final class space/kscience/gdml/GdmlComposite : space/kscience/gdml/GdmlMaterial {
 	public static final field Companion Lspace/kscience/gdml/GdmlComposite$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Double;Ljava/lang/Integer;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun copy (Ljava/lang/String;)Lspace/kscience/gdml/GdmlComposite;
@@ -509,7 +509,7 @@ public final class space/kscience/gdml/GdmlElTube$Companion {
 
 public final class space/kscience/gdml/GdmlElement : space/kscience/gdml/GdmlMaterial {
 	public static final field Companion Lspace/kscience/gdml/GdmlElement$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Double;Ljava/lang/Integer;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Ljava/util/ArrayList;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun copy (Ljava/lang/String;)Lspace/kscience/gdml/GdmlElement;
@@ -677,7 +677,7 @@ public final class space/kscience/gdml/GdmlIntersection$Companion {
 
 public final class space/kscience/gdml/GdmlIsotope : space/kscience/gdml/GdmlMaterial {
 	public static final field Companion Lspace/kscience/gdml/GdmlIsotope$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Double;Ljava/lang/Integer;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun copy (Ljava/lang/String;)Lspace/kscience/gdml/GdmlIsotope;
@@ -712,20 +712,20 @@ public final class space/kscience/gdml/GdmlKt {
 
 public abstract class space/kscience/gdml/GdmlMaterial : space/kscience/gdml/GdmlNode {
 	public static final field Companion Lspace/kscience/gdml/GdmlMaterial$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Double;Ljava/lang/Integer;Lspace/kscience/gdml/MaterialState;Lspace/kscience/gdml/GdmlAtom;Lspace/kscience/gdml/GdmlDensity;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public final fun getAtom ()Lspace/kscience/gdml/GdmlAtom;
 	public final fun getDensity ()Lspace/kscience/gdml/GdmlDensity;
 	public final fun getDensityRef ()Lspace/kscience/gdml/GdmlRef;
 	public final fun getFormula ()Ljava/lang/String;
-	public final fun getN ()Ljava/lang/Number;
+	public final fun getN ()Ljava/lang/Integer;
 	public final fun getState ()Lspace/kscience/gdml/MaterialState;
-	public final fun getZ ()Ljava/lang/Number;
+	public final fun getZ ()Ljava/lang/Double;
 	public final fun setAtom (Lspace/kscience/gdml/GdmlAtom;)V
 	public final fun setDensity (Lspace/kscience/gdml/GdmlDensity;)V
 	public final fun setDensityRef (Lspace/kscience/gdml/GdmlRef;)V
 	public final fun setFormula (Ljava/lang/String;)V
-	public final fun setN (Ljava/lang/Number;)V
-	public final fun setZ (Ljava/lang/Number;)V
+	public final fun setN (Ljava/lang/Integer;)V
+	public final fun setZ (Ljava/lang/Double;)V
 }
 
 public final class space/kscience/gdml/GdmlMaterial$Companion {

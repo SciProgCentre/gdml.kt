@@ -97,10 +97,27 @@ class GdmlTest {
                         }
                     }
                 }
-                world = assembly("rotated") {
+                val rotated = assembly {
                     physVolume(group) {
                         rotation {
                             x = PI / 4
+                        }
+                    }
+                    physVolume(group) {
+                        rotation {
+                            x = -PI / 4
+                        }
+                    }
+                }
+                world = assembly{
+                    physVolume(rotated) {
+                        rotation {
+                            y = PI / 4
+                        }
+                    }
+                    physVolume(rotated) {
+                        rotation {
+                            y = -PI / 4
                         }
                     }
                 }

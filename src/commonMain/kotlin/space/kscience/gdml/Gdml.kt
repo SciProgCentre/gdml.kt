@@ -4,9 +4,8 @@
 package space.kscience.gdml
 
 import kotlinx.serialization.*
-import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
-import nl.adaptivity.xmlutil.serialization.XML
-import nl.adaptivity.xmlutil.serialization.XmlSerialName
+import nl.adaptivity.xmlutil.XmlDeclMode
+import nl.adaptivity.xmlutil.serialization.*
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
@@ -118,6 +117,12 @@ public class Gdml {
             autoPolymorphic = true
             indent = 4
             unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
+            xmlDeclMode = XmlDeclMode.Auto
+            policy = DefaultXmlSerializationPolicy(
+                pedantic = true,
+                autoPolymorphic = true,
+                encodeDefault = XmlSerializationPolicy.XmlEncodeDefault.NEVER
+            )
         }
     }
 }

@@ -17,10 +17,10 @@ public sealed class GdmlMaterial : GdmlNode {
     public var formula: String? = null
 
     @XmlSerialName("Z", "", "")
-    public var z: Number? = null
+    public var z: Double? = null
 
     @XmlSerialName("N", "", "")
-    public var n: Number? = null
+    public var n: Int? = null
 
     @XmlElement(false)
     public val state: MaterialState? = null

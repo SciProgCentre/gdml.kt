@@ -561,7 +561,7 @@ structure {
     fun vetoLayer(
         n: Int,
         separation: Double = Veto.SeparationAdjacent.mm,
-        length: VetoLengths = VetoLengths.LongSideStandard
+        length: VetoLengths = VetoLengths.LongSideStandard,
     ): GdmlRef<GdmlAssembly> {
         val step = Veto.Width.mm + 2 * Veto.WrappingThickness.mm + separation
         val offset = step * (n + 1) / 2.0

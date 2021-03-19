@@ -64,6 +64,7 @@ public fun Gdml.Companion.decodeFromUrl(@Language("http-url-reference") urlStrin
 public fun Gdml.Companion.encodeToStream(gdml: Gdml, stream: OutputStream) {
     val xmlWriter = StAXWriter(stream, "UTF-8", false, XmlDeclMode.Auto)
     xmlFormat.encodeToWriter(xmlWriter, serializer(), gdml)
+    xmlWriter.flush()
     stream.flush()
 }
 
