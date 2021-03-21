@@ -141,7 +141,8 @@ public object GdmlShowCase {
         //loadMaterialsFromUrl("https://raw.githubusercontent.com/rest-for-physics/materials/4e2e72017e83ab6c2947e77f04365fbb92c42dc7/materials.xml")
 
         val iaxoMaterials = object {
-            private fun resolve(tag: String): GdmlRef<GdmlMaterial> = getMaterial<GdmlMaterial>(tag)?.ref() ?: materials.composite(tag)
+            private fun resolve(tag: String): GdmlRef<GdmlMaterial> =
+                getMaterial<GdmlMaterial>(tag)?.ref() ?: materials.composite(tag)
 
             val world = resolve("G4_AIR")
             val gas = resolve("G4_Ar")
@@ -222,9 +223,11 @@ public object GdmlShowCase {
                 }
 
                 val cathodeTeflonDiskSolid =
-                    solids.subtraction(cathodeTeflonDiskBaseSolid,
+                    solids.subtraction(
+                        cathodeTeflonDiskBaseSolid,
                         cathodeCopperDiskSolid,
-                        "cathodeTeflonDiskSolid") {
+                        "cathodeTeflonDiskSolid"
+                    ) {
                         position(z = -Chamber.CathodeTeflonDiskThickness.mm / 2 + Chamber.CathodeCopperSupportThickness.mm / 2)
                     }
 
@@ -408,9 +411,11 @@ public object GdmlShowCase {
                     "detectorPipeInsideCone3of3Solid"
                 )
                 val detectorPipeInsideAux1 =
-                    solids.union(detectorPipeInside1of3Solid,
+                    solids.union(
+                        detectorPipeInside1of3Solid,
                         detectorPipeInsideCone1of3Solid,
-                        "detectorPipeInsideAux1") {
+                        "detectorPipeInsideAux1"
+                    ) {
                         position(z = DetectorPipe.InsideUnion1Z.mm)
                     }
                 val detectorPipeInsideAux2 =
@@ -418,9 +423,11 @@ public object GdmlShowCase {
                         position(z = DetectorPipe.InsideUnion2Z.mm)
                     }
                 val detectorPipeInsideAux3 =
-                    solids.union(detectorPipeInsideAux2,
+                    solids.union(
+                        detectorPipeInsideAux2,
                         detectorPipeInsideCone2of3Solid,
-                        "detectorPipeInsideAux3") {
+                        "detectorPipeInsideAux3"
+                    ) {
                         position(z = DetectorPipe.InsideUnion3Z.mm)
                     }
                 val detectorPipeInsideAux4 =
@@ -435,7 +442,7 @@ public object GdmlShowCase {
                     solids.subtraction(detectorPipeNotEmpty, detectorPipeInside, "detectorPipeSolid") {
                         position(z = DetectorPipe.InsideSection1of3Length.mm / 2 - DetectorPipe.ChamberFlangeThickness.mm / 2)
                     }
-                val detectorPipeVolume = volume(iaxoMaterials.copper!!, detectorPipeSolid, "detectorPipeVolume")
+                val detectorPipeVolume = volume(iaxoMaterials.copper, detectorPipeSolid, "detectorPipeVolume")
                 val detectorPipeFillingVolume =
                     volume(iaxoMaterials.vacuum, detectorPipeInside, "detectorPipeFillingVolume")
 
@@ -586,9 +593,11 @@ public object GdmlShowCase {
                 }
 
                 val scintillatorLightGuideVolume =
-                    volume(iaxoMaterials.lightGuide,
+                    volume(
+                        iaxoMaterials.lightGuide,
                         scintillatorLightGuideSolid,
-                        name = "scintillatorLightGuideVolume$label")
+                        name = "scintillatorLightGuideVolume$label"
+                    )
 
                 // this should be in a 'if (includePMT)' but we need to define an empty 'GdmlVolume' or equivalent...
                 // TODO: find out how
@@ -611,9 +620,9 @@ public object GdmlShowCase {
                     physVolume(captureLayerVolume) {
                         position(y = captureLayerYOffset)
                     }
-//                    physVolume(captureLayerVolume) {
-//                        position(y = -captureLayerYOffset)
-//                    }
+                    physVolume(captureLayerVolume) {
+                        position(y = -captureLayerYOffset)
+                    }
                     physVolume(scintillatorLightGuideVolume) {
                         position(z = -length.mm / 2 - Veto.LightGuide1Length.mm / 2)
                     }
@@ -731,7 +740,6 @@ public object GdmlShowCase {
                     physVolume(vetoLayer(4), name = "VetoLayerEast$i") {
                         position {
                             x = -yShieldingDistance - 130 - (Veto.FullThickness.mm + 20) * i
-                            y = 0
                             z = -Shielding.OffsetZ.mm - 30
                         }
                         rotation { unit = AUnit.DEG; x = -90; z = 90 }
@@ -741,7 +749,6 @@ public object GdmlShowCase {
                     physVolume(vetoLayer(4), name = "VetoLayerWest$i") {
                         position {
                             x = yShieldingDistance + 130 + (Veto.FullThickness.mm + 20) * i
-                            y = 0
                             z = -Shielding.OffsetZ.mm
                         }
                         rotation { unit = AUnit.DEG; x = 0; z = 90; y = 0 }
@@ -750,7 +757,6 @@ public object GdmlShowCase {
                 repeat(nLayers) { i ->
                     physVolume(vetoFrontLayer, name = "VetoLayerFront$i") {
                         position {
-                            y = 0
                             z = -Shielding.OffsetZ.mm + zShieldingDistance + 130 + (Veto.FullThickness.mm + 20) * i
                         }
                         rotation { unit = AUnit.DEG; x = -90; y = 90 }
