@@ -4,8 +4,7 @@
 package space.kscience.gdml
 
 import kotlinx.serialization.*
-import nl.adaptivity.xmlutil.XmlDeclMode
-import nl.adaptivity.xmlutil.serialization.*
+import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
@@ -79,7 +78,7 @@ public class Gdml {
         }
 
 
-    override fun toString(): String = xmlFormat.encodeToString(serializer(), this)
+    override fun toString(): String = encodeToString(this)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -101,29 +100,6 @@ public class Gdml {
 
     public companion object {
         public inline operator fun invoke(block: Gdml.() -> Unit): Gdml = Gdml().apply(block)
-
-        private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
-            { location, _, name, candidates ->
-                println(
-                    "Could not find a field for name $name${
-                        if (candidates.isNotEmpty()) candidates.joinToString(
-                            prefix = "\n  candidates: "
-                        ) else ""
-                    } at position $location"
-                )
-            }
-
-        internal val xmlFormat: XML = XML(gdmlModule) {
-            autoPolymorphic = true
-            indent = 4
-            unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
-            xmlDeclMode = XmlDeclMode.Auto
-            policy = DefaultXmlSerializationPolicy(
-                pedantic = true,
-                autoPolymorphic = true,
-                encodeDefault = XmlSerializationPolicy.XmlEncodeDefault.NEVER
-            )
-        }
     }
 }
 

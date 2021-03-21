@@ -9,7 +9,15 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
+import nl.adaptivity.xmlutil.XmlDeclMode
+import nl.adaptivity.xmlutil.XmlReader
+import nl.adaptivity.xmlutil.XmlStreaming
 import nl.adaptivity.xmlutil.XmlWriter
+import nl.adaptivity.xmlutil.core.impl.multiplatform.StringWriter
+import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
+import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
+import nl.adaptivity.xmlutil.serialization.XML
+import nl.adaptivity.xmlutil.serialization.XmlSerializationPolicy
 
 public object LUnitSerializer : KSerializer<LUnit> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("lunit", PrimitiveKind.STRING)
@@ -96,23 +104,69 @@ internal val gdmlModule: SerializersModule = SerializersModule {
     }
 }
 
+private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
+    { location, _, name, candidates ->
+        println(
+            "Could not find a field for name $name${
+                if (candidates.isNotEmpty()) candidates.joinToString(
+                    prefix = "\n  candidates: "
+                ) else ""
+            } at position $location"
+        )
+    }
+
+internal val gdmlFormat: XML = XML(gdmlModule) {
+    autoPolymorphic = true
+    indent = 4
+    unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
+    xmlDeclMode = XmlDeclMode.Auto
+    policy = DefaultXmlSerializationPolicy(
+        pedantic = true,
+        autoPolymorphic = true,
+        encodeDefault = XmlSerializationPolicy.XmlEncodeDefault.NEVER
+    )
+}
+
 /**
  * Decode Gdml from an xml string
  */
 public fun Gdml.Companion.decodeFromString(string: String): Gdml =
-    xmlFormat.decodeFromString(serializer(), string)
+    gdmlFormat.decodeFromString(serializer(), string)
 
 /**
- * Encode gdml to an xml string
+ * Decode Gdml from an xml reader
  */
-public fun Gdml.Companion.encodeToString(gdml: Gdml): String =
-    xmlFormat.encodeToString(serializer(), gdml)
+public fun Gdml.Companion.decodeFromReader(reader: XmlReader): Gdml =
+    gdmlFormat.decodeFromReader(serializer(), reader)
 
 /**
  * Write gdml to provided xml writer
  */
 public fun Gdml.Companion.encodeToWriter(gdml: Gdml, writer: XmlWriter): Unit =
-    xmlFormat.encodeToWriter(writer, serializer(), gdml)
+    gdmlFormat.encodeToWriter(GdmlPostProcessor(writer), serializer(), gdml)
+
+/**
+ * Encode gdml to an xml string
+ */
+public fun Gdml.Companion.encodeToString(gdml: Gdml): String {
+    val stringWriter = StringWriter()
+    val xmlWriter = XmlStreaming.newWriter(stringWriter, gdmlFormat.config.repairNamespaces, gdmlFormat.config.xmlDeclMode)
+
+    var ex: Throwable? = null
+    try {
+        encodeToWriter(gdml, xmlWriter)
+    } catch (e: Throwable) {
+        ex = e
+    } finally {
+        try {
+            xmlWriter.close()
+        } finally {
+            ex?.let { throw it }
+        }
+
+    }
+    return stringWriter.toString()
+}
 
 /**
  * A shortcut to encode gdml to string using [Gdml.Companion.encodeToString]

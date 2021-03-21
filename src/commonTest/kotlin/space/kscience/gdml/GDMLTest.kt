@@ -1,25 +1,26 @@
 package space.kscience.gdml
 
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
 import kotlin.math.PI
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class GdmlTest {
     @Test
     fun recodeCubes() {
         val string = GdmlShowCase.cubes.encodeToString()
         //println(string)
-        val restored: Gdml = Gdml.xmlFormat.decodeFromString(string)
+        assertTrue { string.isNotEmpty() }
+        val restored: Gdml = Gdml.decodeFromString(string)
         assertEquals(GdmlShowCase.cubes.solids.content.size, restored.solids.content.size)
     }
 
     @Test
     fun recodeIaxo() {
         val string = GdmlShowCase.babyIaxo.encodeToString()
-        println(string)
-        val restored: Gdml = Gdml.xmlFormat.decodeFromString(string)
+        //println(string)
+        assertTrue { string.isNotEmpty() }
+        val restored: Gdml = Gdml.decodeFromString(string)
         assertEquals(GdmlShowCase.babyIaxo.solids.content.size, restored.solids.content.size)
     }
 
@@ -34,15 +35,15 @@ class GdmlTest {
                 val myBox = box(100.0, 100.0, 100.0, "myBox")
                 val otherBox = box(100.0, 100.0, 100.0, "otherBox")
                 union(myBox, otherBox, "aUnion") {
-                    firstposition = GdmlPosition(x = 32.0, y = 0.0, z = 0.0)
+                    firstposition = GdmlPosition(x = 32.0)
                     firstrotation = GdmlRotation(y = PI / 4)
                 }
             }
         }
 
-        val string = Gdml.xmlFormat.encodeToString(gdml)
+        val string = Gdml.encodeToString(gdml)
         println(string)
-        val restored: Gdml = Gdml.xmlFormat.decodeFromString(string)
+        val restored: Gdml = Gdml.decodeFromString(string)
         println(restored.toString())
         assertEquals(gdml.solids.content[0], restored.solids.content[0])
         assertEquals(gdml.solids.content[1], restored.solids.content[1])
@@ -90,7 +91,7 @@ class GdmlTest {
             val air = materials.isotope("G4_AIR")
             structure {
                 val cubeVolume = volume(air, cube)
-                val group = assembly{
+                val group = assembly {
                     repeat(5) { index ->
                         physVolume(cubeVolume) {
                             position { z = index * 100 }
@@ -109,7 +110,7 @@ class GdmlTest {
                         }
                     }
                 }
-                world = assembly{
+                world = assembly {
                     physVolume(rotated) {
                         rotation {
                             y = PI / 4

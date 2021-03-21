@@ -632,6 +632,7 @@ public final class space/kscience/gdml/GdmlGroup$Companion {
 }
 
 public final class space/kscience/gdml/GdmlIOKt {
+	public static final fun decodeFromReader (Lspace/kscience/gdml/Gdml$Companion;Lnl/adaptivity/xmlutil/XmlReader;)Lspace/kscience/gdml/Gdml;
 	public static final fun decodeFromString (Lspace/kscience/gdml/Gdml$Companion;Ljava/lang/String;)Lspace/kscience/gdml/Gdml;
 	public static final fun encodeToString (Lspace/kscience/gdml/Gdml$Companion;Lspace/kscience/gdml/Gdml;)Ljava/lang/String;
 	public static final fun encodeToString (Lspace/kscience/gdml/Gdml;)Ljava/lang/String;
@@ -1088,6 +1089,11 @@ public final class space/kscience/gdml/GdmlPosition$$serializer : kotlinx/serial
 
 public final class space/kscience/gdml/GdmlPosition$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class space/kscience/gdml/GdmlPostProcessor : nl/adaptivity/xmlutil/XmlDelegatingWriter {
+	public fun <init> (Lnl/adaptivity/xmlutil/XmlWriter;)V
+	public fun startTag (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 }
 
 public final class space/kscience/gdml/GdmlQuantity : space/kscience/gdml/GdmlDefine {

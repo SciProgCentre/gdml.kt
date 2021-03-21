@@ -19,9 +19,9 @@ public fun Gdml.Companion.decodeFromStream(stream: InputStream, usePreprocessor:
     val xmlReader = StAXReader(stream, "UTF-8")
     return if (usePreprocessor) {
         val preprocessor = GdmlPreprocessor(xmlReader) { parseAndEvaluate(it) }
-        xmlFormat.decodeFromReader(serializer(), preprocessor)
+        Gdml.decodeFromReader(preprocessor)
     } else {
-        xmlFormat.decodeFromReader(serializer(), xmlReader)
+        Gdml.decodeFromReader(xmlReader)
     }
 }
 
@@ -63,7 +63,7 @@ public fun Gdml.Companion.decodeFromUrl(@Language("http-url-reference") urlStrin
  */
 public fun Gdml.Companion.encodeToStream(gdml: Gdml, stream: OutputStream) {
     val xmlWriter = StAXWriter(stream, "UTF-8", false, XmlDeclMode.Auto)
-    xmlFormat.encodeToWriter(xmlWriter, serializer(), gdml)
+    Gdml.encodeToWriter(gdml, xmlWriter)
     xmlWriter.flush()
     stream.flush()
 }
