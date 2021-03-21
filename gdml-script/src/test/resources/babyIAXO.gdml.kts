@@ -81,14 +81,6 @@ enum class Veto(val mm: Double) {
 }
 
 /*
-    We pull materials from remote GitHub repository
-    Currently I am organizing them into a map, but I don't think this is the best way.
-    Sadly I can't use an enum here, since I need to be in the 'Gdml' context and I can't declare a class there.
-    TODO: find a better way to organize materials which supports autocompletion
- */
-loadMaterialsFromUrl("https://raw.githubusercontent.com/rest-for-physics/materials/4e2e72017e83ab6c2947e77f04365fbb92c42dc7/materials.xml")
-
-/*
 We pull materials from remote GitHub repository
 Currently I am organizing them into a map, but I don't think this is the best way.
 Sadly I can't use an enum here, since I need to be in the 'Gdml' context and I can't declare a class there.
