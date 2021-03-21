@@ -308,20 +308,40 @@ public sealed class GdmlBoolSolid : GdmlSolid() {
     public fun resolveFirstPosition(root: Gdml): GdmlPosition? = firstposition ?: firstpositionref?.resolve(root)
     public fun resolveFirstRotation(root: Gdml): GdmlRotation? = firstrotation ?: firstrotationref?.resolve(root)
 
-    public fun position(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
-        position = GdmlPosition("$name.position", x, y, z)
+    public fun position(
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GdmlPosition.() -> Unit = {},
+    ) {
+        position = GdmlPosition("$name.position", x, y, z).apply(block)
     }
 
-    public fun rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
-        rotation = GdmlRotation("$name.rotation", x, y, z)
+    public fun rotation(
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GdmlRotation.() -> Unit = {},
+    ) {
+        rotation = GdmlRotation("$name.rotation", x, y, z).apply(block)
     }
 
-    public fun firstposition(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
-        firstposition = GdmlPosition("$name.firstPosition", x, y, z)
+    public fun firstposition(
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GdmlPosition.() -> Unit = {},
+    ) {
+        firstposition = GdmlPosition("$name.firstpostion", x, y, z).apply(block)
     }
 
-    public fun firstrotation(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
-        firstrotation = GdmlRotation("$name.firstRotation", x, y, z)
+    public fun firstrotation(
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GdmlRotation.() -> Unit = {},
+    ) {
+        firstrotation = GdmlRotation("$name.firstrotation", x, y, z).apply(block)
     }
 }
 

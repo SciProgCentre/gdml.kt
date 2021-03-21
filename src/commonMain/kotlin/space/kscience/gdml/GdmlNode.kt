@@ -77,32 +77,26 @@ public fun GdmlPhysVolume.resolveRotation(root: Gdml): GdmlRotation? = rotation 
  */
 public fun GdmlPhysVolume.resolveScale(root: Gdml): GdmlScale? = scale ?: scaleref?.resolve(root)
 
-@Deprecated("To be removed by function")
-public inline fun GdmlPhysVolume.position(block: GdmlPosition.() -> Unit) {
-    position = GdmlPosition("$name.position").apply(block)
+public fun GdmlPhysVolume.position(
+    x: Number = 0f,
+    y: Number = 0f,
+    z: Number = 0f,
+    block: GdmlPosition.() -> Unit = {},
+) {
+    position = GdmlPosition("$name.position", x, y, z).apply(block)
 }
 
-@Deprecated("To be removed by function")
-public inline fun GdmlPhysVolume.rotation(block: GdmlRotation.() -> Unit) {
-    rotation = GdmlRotation("$name.rotation").apply(block)
+public fun GdmlPhysVolume.rotation(
+    x: Number = 0f,
+    y: Number = 0f,
+    z: Number = 0f,
+    block: GdmlRotation.() -> Unit = {},
+) {
+    rotation = GdmlRotation("$name.rotation", x, y, z).apply(block)
 }
 
-@Deprecated("To be removed by function")
-public inline fun GdmlPhysVolume.scale(block: GdmlScale.() -> Unit) {
-    scale = GdmlScale("$name.scale").apply(block)
-}
-
-
-public fun GdmlPhysVolume.position(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
-    position = GdmlPosition("$name.position", x, y, z)
-}
-
-public fun GdmlPhysVolume.rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
-    rotation = GdmlRotation("$name.rotation", x, y, z)
-}
-
-public fun GdmlPhysVolume.scale(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
-    scale = GdmlScale("$name.scale", x, y, z)
+public fun GdmlPhysVolume.scale(x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GdmlScale.() -> Unit = {}) {
+    scale = GdmlScale("$name.scale", x, y, z).apply(block)
 }
 
 
