@@ -2,7 +2,10 @@
 
 package space.kscience.gdml
 
-import kotlinx.serialization.*
+import kotlinx.serialization.Polymorphic
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.UseSerializers
 import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
@@ -129,14 +132,12 @@ public sealed class GdmlGroup : GdmlNode {
     @XmlSerialName("physvol", "", "")
     public val physVolumes: ArrayList<GdmlPhysVolume> = ArrayList()
 
-    @Transient
-    private var autoNameCounter = 0
-
     public fun physVolume(
         volumeref: GdmlRef<GdmlGroup>,
-        name: String = "${this.name}-$autoNameCounter++",
+        name: String = "${this.name}.${volumeref.ref}",
         block: GdmlPhysVolume.() -> Unit = {},
     ): GdmlPhysVolume {
+        if (physVolumes.find { it.name == name } != null) error("PhysVolume with name $name redeclaration at volume ${this.name}")
         val res = GdmlPhysVolume(name, volumeref).apply(block)
         physVolumes.add(res)
         return res
@@ -165,4 +166,27 @@ public class GdmlVolume(
     @XmlPolyChildren(arrayOf("physvol", "divisionvol"))
     @Polymorphic
     public var placement: GdmlPlacement? = null
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as GdmlVolume
+
+        if (name != other.name) return false
+        if (materialref != other.materialref) return false
+        if (solidref != other.solidref) return false
+        if (placement != other.placement) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + materialref.hashCode()
+        result = 31 * result + solidref.hashCode()
+        result = 31 * result + (placement?.hashCode() ?: 0)
+        return result
+    }
+
 }

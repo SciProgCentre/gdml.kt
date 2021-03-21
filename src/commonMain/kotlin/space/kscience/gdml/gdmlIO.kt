@@ -14,10 +14,8 @@ import nl.adaptivity.xmlutil.XmlReader
 import nl.adaptivity.xmlutil.XmlStreaming
 import nl.adaptivity.xmlutil.XmlWriter
 import nl.adaptivity.xmlutil.core.impl.multiplatform.StringWriter
-import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
 import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
-import nl.adaptivity.xmlutil.serialization.XmlSerializationPolicy
 
 public object LUnitSerializer : KSerializer<LUnit> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("lunit", PrimitiveKind.STRING)
@@ -120,11 +118,6 @@ internal val gdmlFormat: XML = XML(gdmlModule) {
     indent = 4
     unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
     xmlDeclMode = XmlDeclMode.Auto
-    policy = DefaultXmlSerializationPolicy(
-        pedantic = true,
-        autoPolymorphic = true,
-        encodeDefault = XmlSerializationPolicy.XmlEncodeDefault.NEVER
-    )
 }
 
 /**

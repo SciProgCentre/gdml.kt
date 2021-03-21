@@ -8,20 +8,22 @@ import kotlin.test.assertTrue
 class GdmlTest {
     @Test
     fun recodeCubes() {
-        val string = GdmlShowCase.cubes.encodeToString()
+        val cubes = GdmlShowCase.cubes()
+        val string = cubes.encodeToString()
         //println(string)
         assertTrue { string.isNotEmpty() }
         val restored: Gdml = Gdml.decodeFromString(string)
-        assertEquals(GdmlShowCase.cubes.solids.content.size, restored.solids.content.size)
+        assertEquals(cubes.solids.content.size, restored.solids.content.size)
     }
 
     @Test
     fun recodeIaxo() {
-        val string = GdmlShowCase.babyIaxo.encodeToString()
-        //println(string)
+        val babyIaxo = GdmlShowCase.babyIaxo()
+        val string = babyIaxo.encodeToString()
+        println(string)
         assertTrue { string.isNotEmpty() }
         val restored: Gdml = Gdml.decodeFromString(string)
-        assertEquals(GdmlShowCase.babyIaxo.solids.content.size, restored.solids.content.size)
+        assertEquals(babyIaxo.solids.content.size, restored.solids.content.size)
     }
 
     @Test

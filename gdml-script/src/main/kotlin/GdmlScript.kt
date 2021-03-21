@@ -16,8 +16,7 @@ import kotlin.script.experimental.jvmhost.BasicJvmScriptingHost
 )
 abstract class GdmlScript
 
-
-class GdmlScriptCompilationConfiguration : ScriptCompilationConfiguration({
+object GdmlScriptCompilationConfiguration : ScriptCompilationConfiguration({
     baseClass(GdmlScript::class)
     implicitReceivers(Gdml::class)
     defaultImports(
@@ -39,26 +38,12 @@ internal fun Gdml(
     logger: Logger = LoggerFactory.getLogger("scripting"),
 ): Gdml {
 
-    val workspaceScriptConfiguration = ScriptCompilationConfiguration {
-        baseClass(GdmlScript::class)
-        implicitReceivers(Gdml::class)
-        defaultImports(
-            "kotlin.math.*",
-            "space.kscience.gdml.*"
-        )
-        jvm {
-            dependenciesFromCurrentContext(wholeClasspath = true)
-            compilerOptions.append("-jvm-target", Runtime.version().feature().toString())
-        }
-        hostConfiguration(defaultJvmScriptingHostConfiguration)
-    }
-
     return Gdml {
         val flow = this
         val evaluationConfiguration = ScriptEvaluationConfiguration {
             implicitReceivers(flow)
         }
-        BasicJvmScriptingHost().eval(source, workspaceScriptConfiguration, evaluationConfiguration).onFailure {
+        BasicJvmScriptingHost().eval(source, GdmlScriptCompilationConfiguration, evaluationConfiguration).onFailure {
             it.reports.forEach { scriptDiagnostic ->
                 when (scriptDiagnostic.severity) {
                     ScriptDiagnostic.Severity.FATAL, ScriptDiagnostic.Severity.ERROR -> {

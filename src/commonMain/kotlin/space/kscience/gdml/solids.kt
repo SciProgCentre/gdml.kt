@@ -5,6 +5,7 @@ package space.kscience.gdml
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import nl.adaptivity.xmlutil.serialization.XmlDefault
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import kotlin.math.PI
 
@@ -256,9 +257,9 @@ public data class GdmlCone(
     var rmax1: Number,
     var rmax2: Number,
     var deltaphi: Number = 2 * PI,
-    var rmin1: Number = 0f,
-    var rmin2: Number = 0f,
-    var startphi: Number = 0f,
+    @XmlDefault("0") var rmin1: Number = 0f,
+    @XmlDefault("0") var rmin2: Number = 0f,
+    @XmlDefault("0") var startphi: Number = 0f,
 ) : GdmlSolid()
 
 //boolean solids

@@ -127,7 +127,15 @@ public sealed class GdmlContainer<T : GdmlNode> {
      * Register an item with appropriate type and return a reference
      */
     public fun <R : T> register(item: R): GdmlRef<R> {
-        add(item)
+        val name = item.name
+        val existingItem = getItem(name)
+        if (existingItem == null) {
+            add(item)
+        } else if(existingItem == item) {
+            //ignore addition
+        } else {
+            error("Redeclaration of GDML node with name '$name'")
+        }
         return item.ref()
     }
 
