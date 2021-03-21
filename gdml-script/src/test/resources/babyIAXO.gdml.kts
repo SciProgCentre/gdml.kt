@@ -560,9 +560,9 @@ structure {
             physVolume(captureLayerVolume) {
                 position(y = captureLayerYOffset)
             }
-//                    physVolume(captureLayerVolume) {
-//                        position(y = -captureLayerYOffset)
-//                    }
+            physVolume(captureLayerVolume) {
+                position(y = -captureLayerYOffset)
+            }
             physVolume(scintillatorLightGuideVolume) {
                 position(z = -length.mm / 2 - Veto.LightGuide1Length.mm / 2)
             }
