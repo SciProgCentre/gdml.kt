@@ -680,7 +680,6 @@ structure {
             physVolume(vetoLayer(4), name = "VetoLayerEast$i") {
                 position {
                     x = -yShieldingDistance - 130 - (Veto.FullThickness.mm + 20) * i
-                    y = 0
                     z = -Shielding.OffsetZ.mm - 30
                 }
                 rotation { unit = AUnit.DEG; x = -90; z = 90 }
@@ -690,7 +689,6 @@ structure {
             physVolume(vetoLayer(4), name = "VetoLayerWest$i") {
                 position {
                     x = yShieldingDistance + 130 + (Veto.FullThickness.mm + 20) * i
-                    y = 0
                     z = -Shielding.OffsetZ.mm
                 }
                 rotation { unit = AUnit.DEG; x = 0; z = 90; y = 0 }
@@ -699,7 +697,6 @@ structure {
         repeat(nLayers) { i ->
             physVolume(vetoFrontLayer, name = "VetoLayerFront$i") {
                 position {
-                    y = 0
                     z = -Shielding.OffsetZ.mm + zShieldingDistance + 130 + (Veto.FullThickness.mm + 20) * i
                 }
                 rotation { unit = AUnit.DEG; x = -90; y = 90 }
