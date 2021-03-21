@@ -23,6 +23,7 @@
 ### Fixed
 - flush after stream write
 - Default units. MM for LUnit and Rad for AUnit according to https://www.star.bnl.gov/public/comp/simu/GDML/V1.0/Geometry.html#element_position_Link02EA7560
+- Geant incompatibilities #33, #34 and #35
 
 ### Security
 
