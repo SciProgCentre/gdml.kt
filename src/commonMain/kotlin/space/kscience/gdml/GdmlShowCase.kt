@@ -140,21 +140,22 @@ public object GdmlShowCase {
      */
         //loadMaterialsFromUrl("https://raw.githubusercontent.com/rest-for-physics/materials/4e2e72017e83ab6c2947e77f04365fbb92c42dc7/materials.xml")
 
-
         val iaxoMaterials = object {
-            val world = materials.composite("G4_AIR")
-            val gas = materials.composite("G4_Ar")
-            val vacuum = materials.composite("G4_Galactic")
-            val copper = materials.composite("G4_Cu")
-            val lead = materials.composite("G4_Pb")
-            val teflon = materials.composite("G4_TEFLON")
-            val kapton = materials.composite("G4_KAPTON")
-            val mylar = materials.composite("G4_MYLAR")
-            val scintillator = materials.composite("BC408")
-            val lightGuide = materials.composite("G4_LUCITE")
-            val neutronCapture = materials.composite("G4_Cd")
-            val scintillatorWrapping = materials.composite("G4_NEOPRENE")
-            val pmt = materials.composite("G4_STAINLESS-STEEL")
+            private fun resolve(tag: String): GdmlRef<GdmlMaterial> = getMaterial<GdmlMaterial>(tag)?.ref() ?: materials.composite(tag)
+
+            val world = resolve("G4_AIR")
+            val gas = resolve("G4_Ar")
+            val vacuum = resolve("G4_Galactic")
+            val copper = resolve("G4_Cu")
+            val lead = resolve("G4_Pb")
+            val teflon = resolve("G4_TEFLON")
+            val kapton = resolve("G4_KAPTON")
+            val mylar = resolve("G4_MYLAR")
+            val scintillator = resolve("BC408")
+            val lightGuide = resolve("G4_LUCITE")
+            val neutronCapture = resolve("G4_Cd")
+            val scintillatorWrapping = resolve("G4_NEOPRENE")
+            val pmt = resolve("G4_STAINLESS-STEEL")
         }
 
         structure {
