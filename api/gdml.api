@@ -122,10 +122,10 @@ public final class space/kscience/gdml/GdmlAtom$Companion {
 public abstract class space/kscience/gdml/GdmlBoolSolid : space/kscience/gdml/GdmlSolid {
 	public static final field Companion Lspace/kscience/gdml/GdmlBoolSolid$Companion;
 	public synthetic fun <init> (ILspace/kscience/gdml/LUnit;Lspace/kscience/gdml/AUnit;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public final fun firstposition (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
-	public static synthetic fun firstposition$default (Lspace/kscience/gdml/GdmlBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)V
-	public final fun firstrotation (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
-	public static synthetic fun firstrotation$default (Lspace/kscience/gdml/GdmlBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)V
+	public final fun firstposition (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun firstposition$default (Lspace/kscience/gdml/GdmlBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public final fun firstrotation (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun firstrotation$default (Lspace/kscience/gdml/GdmlBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public abstract fun getFirst ()Lspace/kscience/gdml/GdmlRef;
 	public final fun getFirstposition ()Lspace/kscience/gdml/GdmlPosition;
 	public final fun getFirstpositionref ()Lspace/kscience/gdml/GdmlRef;
@@ -136,14 +136,14 @@ public abstract class space/kscience/gdml/GdmlBoolSolid : space/kscience/gdml/Gd
 	public final fun getRotation ()Lspace/kscience/gdml/GdmlRotation;
 	public final fun getRotationref ()Lspace/kscience/gdml/GdmlRef;
 	public abstract fun getSecond ()Lspace/kscience/gdml/GdmlRef;
-	public final fun position (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
-	public static synthetic fun position$default (Lspace/kscience/gdml/GdmlBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)V
+	public final fun position (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun position$default (Lspace/kscience/gdml/GdmlBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final fun resolveFirstPosition (Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/GdmlPosition;
 	public final fun resolveFirstRotation (Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/GdmlRotation;
 	public final fun resolvePosition (Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/GdmlPosition;
 	public final fun resolveRotation (Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/GdmlRotation;
-	public final fun rotation (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
-	public static synthetic fun rotation$default (Lspace/kscience/gdml/GdmlBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)V
+	public final fun rotation (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun rotation$default (Lspace/kscience/gdml/GdmlBoolSolid;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public abstract fun setFirst (Lspace/kscience/gdml/GdmlRef;)V
 	public final fun setFirstposition (Lspace/kscience/gdml/GdmlPosition;)V
 	public final fun setFirstpositionref (Lspace/kscience/gdml/GdmlRef;)V
@@ -801,20 +801,17 @@ public abstract interface class space/kscience/gdml/GdmlNode {
 }
 
 public final class space/kscience/gdml/GdmlNodeKt {
-	public static final fun position (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
-	public static final fun position (Lspace/kscience/gdml/GdmlPhysVolume;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun position$default (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)V
+	public static final fun position (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun position$default (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public static final fun ref (Ljava/lang/String;)Lspace/kscience/gdml/GdmlRef;
 	public static final fun ref (Lspace/kscience/gdml/GdmlNode;)Lspace/kscience/gdml/GdmlRef;
 	public static final fun resolvePosition (Lspace/kscience/gdml/GdmlPhysVolume;Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/GdmlPosition;
 	public static final fun resolveRotation (Lspace/kscience/gdml/GdmlPhysVolume;Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/GdmlRotation;
 	public static final fun resolveScale (Lspace/kscience/gdml/GdmlPhysVolume;Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/GdmlScale;
-	public static final fun rotation (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
-	public static final fun rotation (Lspace/kscience/gdml/GdmlPhysVolume;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun rotation$default (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)V
-	public static final fun scale (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
-	public static final fun scale (Lspace/kscience/gdml/GdmlPhysVolume;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun scale$default (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ILjava/lang/Object;)V
+	public static final fun rotation (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun rotation$default (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static final fun scale (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun scale$default (Lspace/kscience/gdml/GdmlPhysVolume;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 }
 
 public final class space/kscience/gdml/GdmlOrb : space/kscience/gdml/GdmlSolid {
@@ -941,6 +938,7 @@ public final class space/kscience/gdml/GdmlPhysVolume : space/kscience/gdml/Gdml
 	public static final field Companion Lspace/kscience/gdml/GdmlPhysVolume$Companion;
 	public synthetic fun <init> (ILjava/lang/String;Lspace/kscience/gdml/GdmlRef;Ljava/lang/Integer;Lspace/kscience/gdml/GdmlPosition;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRotation;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlScale;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;)V
+	public synthetic fun <init> (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun getCopynumber ()Ljava/lang/Integer;
 	public final fun getName ()Ljava/lang/String;
 	public final fun getPosition ()Lspace/kscience/gdml/GdmlPosition;
@@ -1296,8 +1294,8 @@ public final class space/kscience/gdml/GdmlSetup$Companion {
 
 public final class space/kscience/gdml/GdmlShowCase {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlShowCase;
-	public final fun getBabyIaxo ()Lspace/kscience/gdml/Gdml;
-	public final fun getCubes ()Lspace/kscience/gdml/Gdml;
+	public final fun babyIaxo ()Lspace/kscience/gdml/Gdml;
+	public final fun cubes ()Lspace/kscience/gdml/Gdml;
 }
 
 public abstract class space/kscience/gdml/GdmlSolid : space/kscience/gdml/GdmlNode {
@@ -1697,10 +1695,12 @@ public final class space/kscience/gdml/GdmlVolume : space/kscience/gdml/GdmlGrou
 	public static final field Companion Lspace/kscience/gdml/GdmlVolume$Companion;
 	public synthetic fun <init> (ILjava/util/ArrayList;Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlPlacement;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Lspace/kscience/gdml/GdmlRef;Lspace/kscience/gdml/GdmlRef;)V
+	public fun equals (Ljava/lang/Object;)Z
 	public final fun getMaterialref ()Lspace/kscience/gdml/GdmlRef;
 	public fun getName ()Ljava/lang/String;
 	public final fun getPlacement ()Lspace/kscience/gdml/GdmlPlacement;
 	public final fun getSolidref ()Lspace/kscience/gdml/GdmlRef;
+	public fun hashCode ()I
 	public final fun setMaterialref (Lspace/kscience/gdml/GdmlRef;)V
 	public fun setName (Ljava/lang/String;)V
 	public final fun setPlacement (Lspace/kscience/gdml/GdmlPlacement;)V

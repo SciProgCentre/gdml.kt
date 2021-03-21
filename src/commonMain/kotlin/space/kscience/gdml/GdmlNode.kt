@@ -2,10 +2,7 @@
 
 package space.kscience.gdml
 
-import kotlinx.serialization.Polymorphic
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
+import kotlinx.serialization.*
 import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
@@ -132,9 +129,12 @@ public sealed class GdmlGroup : GdmlNode {
     @XmlSerialName("physvol", "", "")
     public val physVolumes: ArrayList<GdmlPhysVolume> = ArrayList()
 
+    @Transient
+    private var autoNameCounter = 0
+
     public fun physVolume(
         volumeref: GdmlRef<GdmlGroup>,
-        name: String = "${this.name}.${volumeref.ref}",
+        name: String = "${this.name}.${volumeref.ref}-${autoNameCounter++}",
         block: GdmlPhysVolume.() -> Unit = {},
     ): GdmlPhysVolume {
         if (physVolumes.find { it.name == name } != null) error("PhysVolume with name $name redeclaration at volume ${this.name}")
