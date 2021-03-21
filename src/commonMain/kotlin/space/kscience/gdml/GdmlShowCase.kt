@@ -182,7 +182,7 @@ public object GdmlShowCase {
 
             val cathodeFillingSolid =
                 solids.subtraction(cathodeFillingSolidBase, cathodeCopperDiskSolid, "cathodeFillingSolid") {
-                    position = GdmlPosition(z = chamberHeight / 2 - mylarCathodeThickness / 2)
+                    position(z = chamberHeight / 2 - mylarCathodeThickness / 2)
                 }
             val cathodeFillingVolume = volume(vacuumMaterial, cathodeFillingSolid, "cathodeFillingVolume")
 
@@ -210,19 +210,19 @@ public object GdmlShowCase {
 
             val cathodeCopperDiskSolidAux0 =
                 solids.union(cathodeCopperDiskSolid, cathodePatternLine, "cathodeCopperDiskSolidAux0") {
-                    rotation = GdmlRotation(x = 0, y = 0, z = 0)
+                    rotation(x = 0, y = 0, z = 0)
                 }
             val cathodeCopperDiskSolidAux1 =
                 solids.union(cathodeCopperDiskSolidAux0, cathodePatternLine, "cathodeCopperDiskSolidAux1") {
-                    rotation = GdmlRotation(x = 0, y = 0, z = 45)
+                    rotation(x = 0, y = 0, z = 45)
                 }
             val cathodeCopperDiskSolidAux2 =
                 solids.union(cathodeCopperDiskSolidAux1, cathodePatternLine, "cathodeCopperDiskSolidAux2") {
-                    rotation = GdmlRotation(x = 0, y = 0, z = 90)
+                    rotation(x = 0, y = 0, z = 90)
                 }
             val cathodeCopperDiskSolidAux3 =
                 solids.union(cathodeCopperDiskSolidAux2, cathodePatternLine, "cathodeCopperDiskSolidAux3") {
-                    rotation = GdmlRotation(x = 0, y = 0, z = 135)
+                    rotation(x = 0, y = 0, z = 135)
                 }
 
             val cathodeCopperDiskFinal =
@@ -249,14 +249,14 @@ public object GdmlShowCase {
 
             val gasSolidAux =
                 solids.subtraction(gasSolidOriginal, copperReadoutSolid, "gasSolidAux") {
-                    position = GdmlPosition(z = -chamberHeight / 2 + readoutCopperThickness / 2)
+                    position(z = -chamberHeight / 2 + readoutCopperThickness / 2)
                 }
 
             val gasMaterial = materials.composite("G4_Ar")
             val gasSolid =
                 solids.subtraction(gasSolidAux, cathodeWindowSolid, "gasSolid") {
-                    position = GdmlPosition(z = chamberHeight / 2 - mylarCathodeThickness / 2)
-                    rotation = GdmlRotation(z = 45)
+                    position(z = chamberHeight / 2 - mylarCathodeThickness / 2)
+                    rotation(z = 45)
                 }
             val gasVolume = volume(gasMaterial, gasSolid, "gasVolume")
 
@@ -269,7 +269,7 @@ public object GdmlShowCase {
             )
             val leadBoxWithShaftSolid = solids.subtraction(leadBoxSolid, leadBoxShaftSolid, "leadBoxWithShaftSolid") {
 
-                position = GdmlPosition(z = leadBoxSizeZ / 2 - leadBoxShaftLongSide / 2)
+                position(z = leadBoxSizeZ / 2 - leadBoxShaftLongSide / 2)
             }
             val leadShieldingVolume = volume(shieldingMaterial, leadBoxWithShaftSolid, "ShieldingVolume")
 
@@ -285,17 +285,14 @@ public object GdmlShowCase {
                 solids.tube(detectorPipeOuterRadius2, detectorPipeSection2of2Length, "detectorPipeSection2of2Solid")
             val detectorPipeAux1 =
                 solids.union(detectorPipeChamberFlangeSolid, detectorPipeSection1of2Solid, "detectorPipeAux1") {
-
-                    position = GdmlPosition(z = detectorPipeUnion1Z)
+                    position(z = detectorPipeUnion1Z)
                 }
             val detectorPipeAux2 = solids.union(detectorPipeAux1, detectorPipeSection2of2Solid, "detectorPipeAux2") {
-
-                position = GdmlPosition(z = detectorPipeUnion2Z)
+                position(z = detectorPipeUnion2Z)
             }
             val detectorPipeNotEmpty =
                 solids.union(detectorPipeAux2, detectorPipeTelescopeFlangeSolid, "detectorPipeNotEmpty") {
-
-                    position = GdmlPosition(z = detectorPipeUnion3Z)
+                    position(z = detectorPipeUnion3Z)
                 }
 
             val detectorPipeInside1of3Solid = solids.tube(detectorPipeInsideSection1of3Radius,
@@ -320,28 +317,26 @@ public object GdmlShowCase {
 
             val detectorPipeInsideAux1 =
                 solids.union(detectorPipeInside1of3Solid, detectorPipeInsideCone1of3Solid, "detectorPipeInsideAux1") {
-                    position = GdmlPosition(z = detectorPipeInsideUnion1Z)
+                    position(z = detectorPipeInsideUnion1Z)
                 }
             val detectorPipeInsideAux2 =
                 solids.union(detectorPipeInsideAux1, detectorPipeInside2of3Solid, "detectorPipeInsideAux2") {
-                    position = GdmlPosition(z = detectorPipeInsideUnion2Z)
+                    position(z = detectorPipeInsideUnion2Z)
                 }
             val detectorPipeInsideAux3 =
                 solids.union(detectorPipeInsideAux2, detectorPipeInsideCone2of3Solid, "detectorPipeInsideAux3") {
-                    position = GdmlPosition(z = detectorPipeInsideUnion3Z)
+                    position(z = detectorPipeInsideUnion3Z)
                 }
             val detectorPipeInsideAux4 =
                 solids.union(detectorPipeInsideAux3, detectorPipeInside3of3Solid, "detectorPipeInsideAux4") {
-                    position = GdmlPosition(z = detectorPipeInsideUnion4Z)
+                    position(z = detectorPipeInsideUnion4Z)
                 }
             val detectorPipeInside =
                 solids.union(detectorPipeInsideAux4, detectorPipeInsideCone3of3Solid, "detectorPipeInside") {
-                    position = GdmlPosition(z = detectorPipeInsideUnion5Z)
+                    position(z = detectorPipeInsideUnion5Z)
                 }
             val detectorPipeSolid = solids.subtraction(detectorPipeNotEmpty, detectorPipeInside, "detectorPipeSolid") {
-                position = GdmlPosition(
-                    z = detectorPipeInsideSection1of3Length / 2 - detectorPipeChamberFlangeThickness / 2
-                )
+                position(z = detectorPipeInsideSection1of3Length / 2 - detectorPipeChamberFlangeThickness / 2)
             }
             val detectorPipeVolume = volume(copperMaterial, detectorPipeSolid, "detectorPipeVolume")
             val detectorPipeFillingVolume = volume(vacuumMaterial, detectorPipeInside, "detectorPipeFillingVolume")
@@ -353,70 +348,51 @@ public object GdmlShowCase {
                 }
                 physVolume(kaptonReadoutVolume) {
                     name = "kaptonReadout"
-                    position {
-                        z = -chamberHeight / 2 - readoutKaptonThickness / 2
-                    }
+                    position(z = -chamberHeight / 2 - readoutKaptonThickness / 2)
+
                 }
                 physVolume(copperReadoutVolume) {
                     name = "copperReadout"
-                    position {
-                        z = -chamberHeight / 2 + readoutCopperThickness / 2
-                    }
-                    rotation { z = 45 }
+                    position(z = -chamberHeight / 2 + readoutCopperThickness / 2)
+                    rotation(z = 45)
                 }
                 physVolume(chamberBodyVolume) {
                     name = "chamberBody"
                 }
                 physVolume(chamberBackplateVolume) {
                     name = "chamberBackplate"
-                    position {
-                        z = -chamberHeight / 2 - readoutKaptonThickness - chamberBackplateThickness / 2
-                    }
+                    position(z = -chamberHeight / 2 - readoutKaptonThickness - chamberBackplateThickness / 2)
                 }
                 physVolume(chamberTeflonWallVolume) {
                     name = "chamberTeflonWall"
                 }
                 physVolume(cathodeTeflonDiskVolume) {
                     name = "cathodeTeflonDisk"
-                    position {
-                        z = chamberHeight / 2 + cathodeTeflonDiskThickness / 2
-                    }
+                    position(z = chamberHeight / 2 + cathodeTeflonDiskThickness / 2)
                 }
                 physVolume(cathodeCopperDiskVolume) {
                     name = "cathodeCopperDisk"
-                    position {
-                        z = chamberHeight / 2 + cathodeCopperSupportThickness / 2
-                    }
+                    position(z = chamberHeight / 2 + cathodeCopperSupportThickness / 2)
                 }
                 physVolume(cathodeWindowVolume) {
                     name = "cathodeWindow"
-                    position {
-                        z = chamberHeight / 2 - mylarCathodeThickness / 2
-                    }
+                    position(z = chamberHeight / 2 - mylarCathodeThickness / 2)
                 }
                 physVolume(cathodeFillingVolume) {
                     name = "cathodeFilling"
-                    position {
-                        z = chamberHeight / 2 + cathodeTeflonDiskThickness / 2
-                    }
+                    position(z = chamberHeight / 2 + cathodeTeflonDiskThickness / 2)
                 }
                 physVolume(leadShieldingVolume) {
                     name = "leadShielding"
-                    position {
-                        z = -shieldingOffset
-                    }
+                    position(z = -shieldingOffset)
                 }
                 physVolume(detectorPipeVolume) {
                     name = "detectorPipe"
-                    position {
-                        z = detectorPipeZinWorld
-                    }
+                    position(z = detectorPipeZinWorld)
                 }
                 physVolume(detectorPipeFillingVolume) {
                     name = "detectorPipeFilling"
-                    position {
-                        z = detectorPipeZinWorld + detectorPipeFillingOffsetWithPipe
-                    }
+                    position(z = detectorPipeZinWorld + detectorPipeFillingOffsetWithPipe)
                 }
             }
         }

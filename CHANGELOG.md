@@ -6,6 +6,7 @@
 - GdmlShowcase singleton for test purposes
 - `Gdml.decodeFromUrl` method to fetch data from url
 - Automatic naming of all gdml builder nodes for absent names
+- Returned position/rotation/firstPosition/firstRotation builders to boolean solids
 
 ### Changed
 - Refactor define builders to place the name in the last position
@@ -14,6 +15,7 @@
 - Structure builders return GdmlRef instead of elements
 - `world` variable accepts ref instead of volume
 - All `Gdml` builder functions now have `name` in last position and nullable to allow for automatic naming.
+- physVolume position/rotation builders replaced by functions
 
 ### Deprecated
 - Define builders in boolean solids.

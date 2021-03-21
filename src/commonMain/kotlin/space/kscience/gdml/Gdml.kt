@@ -141,7 +141,7 @@ public sealed class GdmlContainer<T : GdmlNode> {
     @PublishedApi
     internal fun autoName(type: KType): String {
         val serialName = kotlinx.serialization.serializer(type).descriptor.serialName
-        return "$serialName[${autoNameCounter++}]"
+        return "$serialName-${autoNameCounter++}"
     }
 
     /**
@@ -176,7 +176,7 @@ public class GdmlDefineContainer : GdmlContainer<GdmlDefine>() {
         name: String? = null,
         block: GdmlPosition.() -> Unit = {},
     ): GdmlRef<GdmlPosition> {
-        val position = GdmlPosition().apply(block).apply {
+        val position = GdmlPosition(resolveName<GdmlPosition>(name)).apply(block).apply {
             this.name = resolveName<GdmlPosition>(name)
             this.x = x
             this.y = y
@@ -194,7 +194,7 @@ public class GdmlDefineContainer : GdmlContainer<GdmlDefine>() {
         name: String? = null,
         block: GdmlRotation.() -> Unit = {},
     ): GdmlRef<GdmlRotation> {
-        val rotation = GdmlRotation().apply(block).apply {
+        val rotation = GdmlRotation(resolveName<GdmlRotation>(name)).apply(block).apply {
             this.name = resolveName<GdmlRotation>(name)
             this.x = x
             this.y = y

@@ -2,10 +2,7 @@
 
 package space.kscience.gdml
 
-import kotlinx.serialization.Polymorphic
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
+import kotlinx.serialization.*
 import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
@@ -40,9 +37,9 @@ public sealed class GdmlPlacement
 @SerialName("physvol")
 @GdmlApi
 public class GdmlPhysVolume(
+    public var name: String = "@undefined",
     @XmlSerialName("volumeref", "", "")
     public var volumeref: GdmlRef<GdmlGroup>,
-    public var name: String? = null
 ) : GdmlPlacement() {
     public var copynumber: Int? = null
 
@@ -80,17 +77,34 @@ public fun GdmlPhysVolume.resolveRotation(root: Gdml): GdmlRotation? = rotation 
  */
 public fun GdmlPhysVolume.resolveScale(root: Gdml): GdmlScale? = scale ?: scaleref?.resolve(root)
 
+@Deprecated("To be removed by function")
 public inline fun GdmlPhysVolume.position(block: GdmlPosition.() -> Unit) {
-    position = GdmlPosition().apply(block)
+    position = GdmlPosition("$name.position").apply(block)
 }
 
+@Deprecated("To be removed by function")
 public inline fun GdmlPhysVolume.rotation(block: GdmlRotation.() -> Unit) {
-    rotation = GdmlRotation().apply(block)
+    rotation = GdmlRotation("$name.rotation").apply(block)
 }
 
+@Deprecated("To be removed by function")
 public inline fun GdmlPhysVolume.scale(block: GdmlScale.() -> Unit) {
-    scale = GdmlScale().apply(block)
+    scale = GdmlScale("$name.scale").apply(block)
 }
+
+
+public fun GdmlPhysVolume.position(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
+    position = GdmlPosition("$name.position", x, y, z)
+}
+
+public fun GdmlPhysVolume.rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
+    rotation = GdmlRotation("$name.rotation", x, y, z)
+}
+
+public fun GdmlPhysVolume.scale(x: Number = 0f, y: Number = 0f, z: Number = 0f) {
+    scale = GdmlScale("$name.scale", x, y, z)
+}
+
 
 /**
 <...
@@ -112,7 +126,7 @@ public class GdmlDivisionVolume(
     public var offset: Number,
     @XmlSerialName("volumeref", "", "")
     public var volumeref: GdmlRef<GdmlVolume>,
-    public var unit: String = "mm"
+    public var unit: String = "mm",
 ) : GdmlPlacement()
 
 @Serializable
@@ -121,8 +135,15 @@ public sealed class GdmlGroup : GdmlNode {
     @XmlSerialName("physvol", "", "")
     public val physVolumes: ArrayList<GdmlPhysVolume> = ArrayList()
 
-    public fun physVolume(volumeref: GdmlRef<GdmlGroup>, block: GdmlPhysVolume.() -> Unit = {}): GdmlPhysVolume {
-        val res = GdmlPhysVolume(volumeref).apply(block)
+    @Transient
+    private var autoNameCounter = 0
+
+    public fun physVolume(
+        volumeref: GdmlRef<GdmlGroup>,
+        name: String = "${this.name}-$autoNameCounter++",
+        block: GdmlPhysVolume.() -> Unit = {},
+    ): GdmlPhysVolume {
+        val res = GdmlPhysVolume(name, volumeref).apply(block)
         physVolumes.add(res)
         return res
     }
@@ -144,7 +165,7 @@ public class GdmlVolume(
     @XmlSerialName("materialref", "", "")
     public var materialref: GdmlRef<GdmlMaterial>,
     @XmlSerialName("solidref", "", "")
-    public var solidref: GdmlRef<GdmlSolid>
+    public var solidref: GdmlRef<GdmlSolid>,
 ) : GdmlGroup() {
 
     @XmlPolyChildren(arrayOf("physvol", "divisionvol"))

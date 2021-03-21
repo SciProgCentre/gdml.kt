@@ -35,8 +35,8 @@ class GdmlTest {
                 val myBox = box(100.0, 100.0, 100.0, "myBox")
                 val otherBox = box(100.0, 100.0, 100.0, "otherBox")
                 union(myBox, otherBox, "aUnion") {
-                    firstposition = GdmlPosition(x = 32.0)
-                    firstrotation = GdmlRotation(y = PI / 4)
+                    firstposition(x = 32.0)
+                    firstrotation(y = PI / 4)
                 }
             }
         }
@@ -58,7 +58,7 @@ class GdmlTest {
             val orb = solids.orb(100, "theOrb")
 
             val subtract = solids.subtraction(cube, orb, "sub") {
-                position = GdmlPosition(x = 100, y = 0, z = 0)
+                position(x = 100, y = 0, z = 0)
             }
         }
         println(gdml.encodeToString())
