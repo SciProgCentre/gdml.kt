@@ -1,15 +1,14 @@
 plugins {
-    val toolsVersion = "0.9.2"
+    val toolsVersion = "0.9.3"
     id("ru.mipt.npm.gradle.project") version toolsVersion
     id("ru.mipt.npm.gradle.mpp") version toolsVersion
 //    id("ru.mipt.npm.gradle.native") version toolsVersion
-    id("ru.mipt.npm.gradle.publish") version toolsVersion
+    `maven-publish`
 }
 
-group = "space.kscience"
-version = "0.4.0-dev-3"
-
 allprojects {
+    group = "space.kscience"
+    version = "0.4.0-dev-5"
     repositories {
         jcenter()
         maven("https://dl.bintray.com/pdvrieze/maven")
@@ -22,7 +21,7 @@ kscience {
     }
 }
 
-ksciencePublish{
+ksciencePublish {
     github("gdml.kt")
     space()
     sonatype()

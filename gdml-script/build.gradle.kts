@@ -8,6 +8,10 @@ kscience{
     application()
 }
 
+repositories {
+    maven("https://dl.bintray.com/kotlin/kotlinx/")
+}
+
 dependencies {
     implementation(rootProject)
     implementation(kotlin("scripting-jvm-host"))
@@ -17,7 +21,7 @@ dependencies {
 }
 
 application{
-    mainClassName = "space.kscience.gdml.script.CliKt"
+    mainClass.set("space.kscience.gdml.script.CliKt")
 }
 
 readme{
