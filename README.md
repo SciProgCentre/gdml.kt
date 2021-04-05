@@ -15,7 +15,7 @@ In the future, it will be possible to add additional module to launch GEANT4 sim
 
 > #### Artifact:
 >
-> This module artifact: `space.kscience:gdml:0.4.0-dev-7`.
+> This module artifact: `space.kscience:gdml:0.4.0-dev-8`.
 >
 >
 > **Gradle:**
@@ -29,7 +29,7 @@ In the future, it will be possible to add additional module to launch GEANT4 sim
 > }
 > 
 > dependencies {
->     implementation 'space.kscience:gdml:0.4.0-dev-7'
+>     implementation 'space.kscience:gdml:0.4.0-dev-8'
 > }
 > ```
 > **Gradle Kotlin DSL:**
@@ -43,7 +43,7 @@ In the future, it will be possible to add additional module to launch GEANT4 sim
 > }
 > 
 > dependencies {
->     implementation("space.kscience:gdml:0.4.0-dev-7")
+>     implementation("space.kscience:gdml:0.4.0-dev-8")
 > }
 > ```
 
