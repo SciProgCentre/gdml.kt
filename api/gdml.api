@@ -21,7 +21,7 @@ public final class space/kscience/gdml/AUnitSerializer : kotlinx/serialization/K
 public final class space/kscience/gdml/Gdml : space/kscience/gdml/GdmlRegistry {
 	public static final field Companion Lspace/kscience/gdml/Gdml$Companion;
 	public fun <init> ()V
-	public synthetic fun <init> (ILjava/util/ArrayList;Lspace/kscience/gdml/GdmlSetup;Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public synthetic fun <init> (ILjava/util/ArrayList;Lspace/kscience/gdml/GdmlSetup;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public final fun define (Lkotlin/jvm/functions/Function1;)V
 	public fun equals (Ljava/lang/Object;)Z
 	public fun generateName (Ljava/lang/String;Lkotlin/reflect/KType;)Ljava/lang/String;
