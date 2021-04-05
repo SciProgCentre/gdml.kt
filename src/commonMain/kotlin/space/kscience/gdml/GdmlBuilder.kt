@@ -66,14 +66,11 @@ public class GdmlBuilder(public val registry: GdmlRegistry, public val parent: G
 
     @GdmlApi
     public inline fun <reified T : GdmlSolid> solid(
-        modifier: GdmlModifier,
-        namePrefix: String?,
-        builder: (String) -> T,
+        solidRef: GdmlRef<T>,
+        modifier: GdmlModifier = modifier(),
+        namePrefix: String? = null,
     ): GdmlPhysVolume {
         val type = typeOf<T>()
-        val name = registry.generateName(namePrefix?.let { "$namePrefix-solid" }, type)
-        val solid = builder(name)
-        val solidRef = registry.registerSolid(solid)
         val volume: GdmlVolume = GdmlVolume(
             registry.generateName(namePrefix?.let { "$namePrefix-volume" }, type),
             modifier.get() ?: registry.defaultMaterial,
@@ -83,6 +80,25 @@ public class GdmlBuilder(public val registry: GdmlRegistry, public val parent: G
         return physVolume(modifier, namePrefix, volumeRef, type)
     }
 
+    @GdmlApi
+    public inline fun <reified T : GdmlSolid> solid(
+        modifier: GdmlModifier,
+        namePrefix: String?,
+        builder: (String) -> T,
+    ): GdmlPhysVolume {
+        val type = typeOf<T>()
+        val name = registry.generateName(namePrefix?.let { "$namePrefix-solid" }, type)
+        val solid = builder(name)
+        val solidRef = registry.registerSolid(solid)
+        return solid<T>(solidRef, modifier, namePrefix)
+    }
+
+    @GdmlApi
+    public fun group(
+        groupRef: GdmlRef<GdmlGroup>,
+        modifier: GdmlModifier = modifier(),
+        namePrefix: String? = null,
+    ): GdmlPhysVolume = physVolume(modifier, namePrefix, groupRef, typeOf<GdmlAssembly>())
 
     @GdmlApi
     public inline fun group(
@@ -93,15 +109,18 @@ public class GdmlBuilder(public val registry: GdmlRegistry, public val parent: G
         val assembly =
             GdmlAssembly(registry.generateName(namePrefix?.let { "$namePrefix-group" }, typeOf<GdmlAssembly>()))
         GdmlBuilder(registry, assembly).apply(builder)
-        val assemblyRef = registry.registerGroup(assembly)
-        return physVolume(modifier, namePrefix, assemblyRef, typeOf<GdmlAssembly>())
+        val groupRef = registry.registerGroup(assembly)
+        return physVolume(modifier, namePrefix, groupRef, typeOf<GdmlAssembly>())
     }
 
 
 }
 
+/**
+ * Build and register a group in the Gdml structure
+ */
 @GdmlApi
-public fun Gdml.group(name: String = "world", @GdmlApi builder: GdmlBuilder.() -> Unit): GdmlRef<GdmlGroup> {
+public fun Gdml.buildGroup(name: String, @GdmlApi builder: GdmlBuilder.() -> Unit): GdmlRef<GdmlGroup> {
     val assembly = GdmlAssembly(name)
     GdmlBuilder(this, assembly).apply(builder)
     return registerGroup(assembly)

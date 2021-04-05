@@ -129,12 +129,29 @@ class GdmlTest {
         println(gdml)
     }
 
+    /**
+     * The same as [rotationGroup], but with a new builder
+     */
     @Test
-    fun groupBuilder(){
-        val gdml = Gdml{
-            world = group {
+    fun groupBuilder() {
+        val gdml = Gdml {
+            val cube = solids.box(100, 100, 100)
+            val air = materials.isotope("G4_AIR")
 
+            val inner = buildGroup("group") {
+                repeat(5) { index ->
+                    solid(cube, modifier = position(z = index * 100).material(air))
+                }
+            }
+            val rotated = buildGroup("rotated") {
+                group(inner, modifier = rotation(x = PI / 4))
+                group(inner, modifier = rotation(x = -PI / 4))
+            }
+            world = buildGroup("world") {
+                group(rotated, modifier = rotation(y = PI / 4))
+                group(rotated, modifier = rotation(y = -PI / 4))
             }
         }
+        println(gdml)
     }
 }
