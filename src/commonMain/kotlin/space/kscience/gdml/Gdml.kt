@@ -80,7 +80,7 @@ public class Gdml : GdmlRegistry {
 
     override fun <R : GdmlMaterial> registerMaterial(item: R): GdmlRef<R> = materials.registerMaterial(item)
 
-    override val defaultMaterial: GdmlRef<GdmlMaterial> = materials.defaultMaterial
+    override val defaultMaterial: GdmlRef<GdmlMaterial> get() = materials.defaultMaterial
 
     override fun generateName(providedName: String?, type: KType): String = structure.generateName(providedName, type)
 
