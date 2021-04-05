@@ -10,7 +10,7 @@ class GdmlTest {
     fun recodeCubes() {
         val cubes = GdmlShowCase.cubes()
         val string = cubes.encodeToString()
-        //println(string)
+        println(string)
         assertTrue { string.isNotEmpty() }
         val restored: Gdml = Gdml.decodeFromString(string)
         assertEquals(cubes.solids.content.size, restored.solids.content.size)

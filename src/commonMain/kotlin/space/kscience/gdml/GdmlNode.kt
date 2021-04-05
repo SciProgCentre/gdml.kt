@@ -134,9 +134,10 @@ public sealed class GdmlGroup : GdmlNode {
 
     public fun physVolume(
         volumeref: GdmlRef<GdmlGroup>,
-        name: String = "${this.name}.${volumeref.ref}-${autoNameCounter++}",
+        name: String = "${volumeref.ref}-${(this.name.hashCode() + autoNameCounter++).toUInt().toString(16)}",
         block: GdmlPhysVolume.() -> Unit = {},
     ): GdmlPhysVolume {
+        name.validateNCName()
         if (physVolumes.find { it.name == name } != null) error("PhysVolume with name $name redeclaration at volume ${this.name}")
         val res = GdmlPhysVolume(name, volumeref).apply(block)
         physVolumes.add(res)

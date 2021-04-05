@@ -19,9 +19,9 @@ public object GdmlShowCase {
             val worldBox = solids.box(200, 200, 200, "LargeBox")
             val smallBox = solids.box(30, 30, 30, "smallBox")
             val segmentVolume = volume(tubeMaterial, segment, "segment")
-            val circle = volume(boxMaterial, smallBox, "composite") {
+            val composite = volume(boxMaterial, smallBox, "composite") {
                 for (i in 0 until 6) {
-                    physVolume(segmentVolume) {
+                    physVolume(segmentVolume, "segment-$i") {
                         positionref = center
                         rotation {
                             z = 60 * i
@@ -35,7 +35,7 @@ public object GdmlShowCase {
                 for (i in 0 until 3) {
                     for (j in 0 until 3) {
                         for (k in 0 until 3) {
-                            physVolume(circle) {
+                            physVolume(composite, "composite-$i$j$k") {
                                 position {
                                     x = (-50 + i * 50)
                                     y = (-50 + j * 50)

@@ -17,9 +17,9 @@ internal fun String?.validateNCName(): String? {
     if(this != null){
         if(this.isBlank()) error("Empty names are not allowed")
         if(contains("[:@\$%&/+,;\\[\\](){} \t]".toRegex())){
-            error("NCName could not contain any of [:@\$%&/+,;[](){}]")
+            error("NCName '$this' could not contain any of [:@\$%&/+,;[](){}]")
         }
-        if(get(0) in "0123456789+.") error("NCName could not start with [0123456789+.]")
+        if(get(0) in "0123456789+.") error("NCName '$this' could not start with [0123456789+.]")
     }
     return this
 }

@@ -9,7 +9,7 @@ plugins {
 
 allprojects {
     group = "space.kscience"
-    version = "0.4.0-dev-7"
+    version = "0.4.0-dev-8"
     repositories {
         jcenter()
         maven("https://dl.bintray.com/pdvrieze/maven")
