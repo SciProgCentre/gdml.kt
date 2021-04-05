@@ -164,7 +164,7 @@ public sealed class GdmlContainer<T : GdmlNode> : GdmlNameGenerator {
      * Use [providedName] if it is not null or generate unique automatic name
      */
     override fun generateName(providedName: String?, type: KType): String {
-        return providedName ?: autoName(type)
+        return providedName.validateNCName() ?: autoName(type)
     }
 
     /**

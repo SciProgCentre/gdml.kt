@@ -9,6 +9,7 @@
 - Returned position/rotation/firstPosition/firstRotation builders to boolean solids
 - Interfaces for components registries
 - Convenient group builder
+- Basic NCName validation
 
 ### Changed
 - Refactor define builders to place the name in the last position

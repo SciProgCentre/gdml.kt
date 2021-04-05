@@ -12,3 +12,14 @@ public interface GdmlNameGenerator {
 
 public inline fun <reified T : GdmlNode> GdmlNameGenerator.generateName(providedName: String?): String =
     generateName(providedName, typeOf<T>())
+
+internal fun String?.validateNCName(): String? {
+    if(this != null){
+        if(this.isBlank()) error("Empty names are not allowed")
+        if(contains("[:@\$%&/+,;\\[\\](){} \t]".toRegex())){
+            error("NCName could not contain any of [:@\$%&/+,;[](){}]")
+        }
+        if(get(0) in "0123456789+.") error("NCName could not start with [0123456789+.]")
+    }
+    return this
+}
