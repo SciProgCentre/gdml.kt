@@ -128,4 +128,13 @@ class GdmlTest {
         }
         println(gdml)
     }
+
+    @Test
+    fun groupBuilder(){
+        val gdml = Gdml{
+            world = group {
+
+            }
+        }
+    }
 }

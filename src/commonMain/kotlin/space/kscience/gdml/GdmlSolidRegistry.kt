@@ -1,18 +1,9 @@
-package space.kscience.gdml.builder
+package space.kscience.gdml
 
-import space.kscience.gdml.*
-import kotlin.reflect.KType
-import kotlin.reflect.typeOf
-
-@GdmlApi
-public interface GdmlSolidRegistry{
+public interface GdmlSolidRegistry : GdmlNameGenerator {
     public fun <R : GdmlSolid> registerSolid(item: R): GdmlRef<R>
-    public fun resolveName(providedName: String?, type: KType): String
 }
 
-
-public inline fun <reified T : GdmlNode> GdmlSolidRegistry.resolveName(providedName: String?): String =
-    resolveName(providedName, typeOf<T>())
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.box(
@@ -21,14 +12,14 @@ public inline fun GdmlSolidRegistry.box(
     z: Number,
     name: String? = null,
     block: GdmlBox.() -> Unit = {},
-): GdmlRef<GdmlBox> = registerSolid(GdmlBox(resolveName<GdmlBox>(name), x, y, z).apply(block))
+): GdmlRef<GdmlBox> = registerSolid(GdmlBox(generateName<GdmlBox>(name), x, y, z).apply(block))
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.sphere(
     rmax: Number,
     name: String? = null,
     block: GdmlSphere.() -> Unit = {},
-): GdmlRef<GdmlSphere> = registerSolid(GdmlSphere(resolveName<GdmlSphere>(name), rmax = rmax).apply(block))
+): GdmlRef<GdmlSphere> = registerSolid(GdmlSphere(generateName<GdmlSphere>(name), rmax = rmax).apply(block))
 
 
 @GdmlApi
@@ -36,7 +27,7 @@ public inline fun GdmlSolidRegistry.orb(
     r: Number,
     name: String? = null,
     block: GdmlOrb.() -> Unit = {},
-): GdmlRef<GdmlOrb> = registerSolid(GdmlOrb(resolveName<GdmlOrb>(name), r).apply(block))
+): GdmlRef<GdmlOrb> = registerSolid(GdmlOrb(generateName<GdmlOrb>(name), r).apply(block))
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.ellipsoid(
@@ -45,7 +36,7 @@ public inline fun GdmlSolidRegistry.ellipsoid(
     cz: Number,
     name: String? = null,
     block: GdmlEllipsoid.() -> Unit = {},
-): GdmlRef<GdmlEllipsoid> = registerSolid(GdmlEllipsoid(resolveName<GdmlEllipsoid>(name), ax, by, cz).apply(block))
+): GdmlRef<GdmlEllipsoid> = registerSolid(GdmlEllipsoid(generateName<GdmlEllipsoid>(name), ax, by, cz).apply(block))
 
 
 @GdmlApi
@@ -55,7 +46,7 @@ public inline fun GdmlSolidRegistry.eltube(
     dz: Number,
     name: String? = null,
     block: GdmlElTube.() -> Unit = {},
-): GdmlRef<GdmlElTube> = registerSolid(GdmlElTube(resolveName<GdmlElTube>(name), dx, dy, dz).apply(block))
+): GdmlRef<GdmlElTube> = registerSolid(GdmlElTube(generateName<GdmlElTube>(name), dx, dy, dz).apply(block))
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.elcone(
@@ -65,7 +56,7 @@ public inline fun GdmlSolidRegistry.elcone(
     zcut: Number,
     name: String? = null,
     block: GdmlElCone.() -> Unit = {},
-): GdmlRef<GdmlElCone> = registerSolid(GdmlElCone(resolveName<GdmlElCone>(name), dx, dy, zmax, zcut).apply(block))
+): GdmlRef<GdmlElCone> = registerSolid(GdmlElCone(generateName<GdmlElCone>(name), dx, dy, zmax, zcut).apply(block))
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.paraboloid(
@@ -75,7 +66,7 @@ public inline fun GdmlSolidRegistry.paraboloid(
     name: String? = null,
     block: GdmlParaboloid.() -> Unit = {},
 ): GdmlRef<GdmlParaboloid> = registerSolid(
-    GdmlParaboloid(resolveName<GdmlParaboloid>(name), rlo, rhi, dz).apply(block)
+    GdmlParaboloid(generateName<GdmlParaboloid>(name), rlo, rhi, dz).apply(block)
 )
 
 @GdmlApi
@@ -89,7 +80,7 @@ public inline fun GdmlSolidRegistry.para(
     phi: Number,
     block: GdmlParallelepiped.() -> Unit = {},
 ): GdmlRef<GdmlParallelepiped> = registerSolid(GdmlParallelepiped(
-    resolveName<GdmlParallelepiped>(name),
+    generateName<GdmlParallelepiped>(name),
     x, y, z, alpha, theta, phi
 ).apply(block))
 
@@ -100,7 +91,7 @@ public inline fun GdmlSolidRegistry.torus(
     rtor: Number,
     name: String? = null,
     block: GdmlTorus.() -> Unit = {},
-): GdmlRef<GdmlTorus> = registerSolid(GdmlTorus(resolveName<GdmlTorus>(name), rmin, rmax, rtor).apply(block))
+): GdmlRef<GdmlTorus> = registerSolid(GdmlTorus(generateName<GdmlTorus>(name), rmin, rmax, rtor).apply(block))
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.trd(
@@ -112,7 +103,7 @@ public inline fun GdmlSolidRegistry.trd(
     name: String? = null,
     block: GdmlTrapezoid.() -> Unit = {},
 ): GdmlRef<GdmlTrapezoid> = registerSolid(
-    GdmlTrapezoid(resolveName<GdmlTrapezoid>(name), x1, x2, y1, y2, z).apply(block)
+    GdmlTrapezoid(generateName<GdmlTrapezoid>(name), x1, x2, y1, y2, z).apply(block)
 )
 
 @GdmlApi
@@ -120,13 +111,13 @@ public inline fun GdmlSolidRegistry.polyhedra(
     numsides: Int,
     name: String? = null,
     block: GdmlPolyhedra.() -> Unit = {},
-): GdmlRef<GdmlPolyhedra> = registerSolid(GdmlPolyhedra(resolveName<GdmlPolyhedra>(name), numsides).apply(block))
+): GdmlRef<GdmlPolyhedra> = registerSolid(GdmlPolyhedra(generateName<GdmlPolyhedra>(name), numsides).apply(block))
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.polycone(
     name: String? = null,
     block: GdmlPolycone.() -> Unit = {},
-): GdmlRef<GdmlPolycone> = registerSolid(GdmlPolycone(resolveName<GdmlPolycone>(name)).apply(block))
+): GdmlRef<GdmlPolycone> = registerSolid(GdmlPolycone(generateName<GdmlPolycone>(name)).apply(block))
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.scaledSolid(
@@ -135,21 +126,24 @@ public inline fun GdmlSolidRegistry.scaledSolid(
     name: String? = null,
     block: GdmlScaledSolid.() -> Unit = {},
 ): GdmlRef<GdmlScaledSolid> = registerSolid(
-    GdmlScaledSolid(resolveName<GdmlScaledSolid>(name), solidref, scale).apply(block)
+    GdmlScaledSolid(generateName<GdmlScaledSolid>(name), solidref, scale).apply(block)
 )
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.tube(
     rmax: Number,
     z: Number,
-    name: String,
+    name: String? = null,
     block: GdmlTube.() -> Unit = {},
 ): GdmlRef<GdmlTube> =
-    registerSolid(GdmlTube(name, rmax, z).apply(block))
+    registerSolid(GdmlTube(generateName<GdmlTube>(name), rmax, z).apply(block))
 
 @GdmlApi
-public inline fun GdmlSolidRegistry.xtru(name: String, block: GdmlXtru.() -> Unit): GdmlRef<GdmlXtru> =
-    registerSolid(GdmlXtru(name).apply(block))
+public inline fun GdmlSolidRegistry.xtru(
+    name: String? = null,
+    block: GdmlXtru.() -> Unit,
+): GdmlRef<GdmlXtru> =
+    registerSolid(GdmlXtru(generateName<GdmlXtru>(name)).apply(block))
 
 @GdmlApi
 public inline fun GdmlSolidRegistry.cone(
@@ -159,7 +153,7 @@ public inline fun GdmlSolidRegistry.cone(
     name: String? = null,
     block: GdmlCone.() -> Unit = {},
 ): GdmlRef<GdmlCone> {
-    val cone = GdmlCone(resolveName<GdmlCone>(name), z, rmax1, rmax2).apply(block)
+    val cone = GdmlCone(generateName<GdmlCone>(name), z, rmax1, rmax2).apply(block)
     return registerSolid(cone)
 }
 
@@ -170,7 +164,7 @@ public inline fun GdmlSolidRegistry.union(
     name: String? = null,
     block: GdmlUnion.() -> Unit = {},
 ): GdmlRef<GdmlUnion> {
-    val union = GdmlUnion(resolveName<GdmlUnion>(name), first, second).apply(block)
+    val union = GdmlUnion(generateName<GdmlUnion>(name), first, second).apply(block)
     return registerSolid(union)
 }
 
@@ -181,7 +175,7 @@ public inline fun GdmlSolidRegistry.intersection(
     name: String? = null,
     block: GdmlIntersection.() -> Unit = {},
 ): GdmlRef<GdmlIntersection> {
-    val intersection = GdmlIntersection(resolveName<GdmlIntersection>(name), first, second).apply(block)
+    val intersection = GdmlIntersection(generateName<GdmlIntersection>(name), first, second).apply(block)
     return registerSolid(intersection)
 }
 
@@ -192,7 +186,7 @@ public inline fun GdmlSolidRegistry.subtraction(
     name: String? = null,
     block: GdmlSubtraction.() -> Unit = {},
 ): GdmlRef<GdmlSubtraction> {
-    val subtraction = GdmlSubtraction(resolveName<GdmlSubtraction>(name), first, second).apply(block)
+    val subtraction = GdmlSubtraction(generateName<GdmlSubtraction>(name), first, second).apply(block)
     return registerSolid(subtraction)
 }
 

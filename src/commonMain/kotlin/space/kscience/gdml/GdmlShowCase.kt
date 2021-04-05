@@ -4,7 +4,7 @@ package space.kscience.gdml
  * A complete gdml examples for demonstrations and tests
  */
 public object GdmlShowCase {
-    public fun cubes(): Gdml = Gdml {
+    public fun cubes(): Gdml = Gdml{
         val center = define.position(name = "center")
         structure {
             val air = materials.isotope("G4_AIR")

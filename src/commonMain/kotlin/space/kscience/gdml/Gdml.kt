@@ -5,16 +5,14 @@ package space.kscience.gdml
 
 import kotlinx.serialization.*
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
-import space.kscience.gdml.builder.GdmlSolidRegistry
 import kotlin.reflect.KType
-import kotlin.reflect.typeOf
 
 @DslMarker
 public annotation class GdmlApi
 
 @Serializable
 @SerialName("gdml")
-public class Gdml {
+public class Gdml : GdmlRegistry {
 
     public val containers: ArrayList<GdmlContainer<*>> = arrayListOf(
         GdmlDefineContainer(),
@@ -78,6 +76,17 @@ public class Gdml {
             setup.world = value
         }
 
+    override fun <R : GdmlDefine> registerDefine(item: R): GdmlRef<R> = define.registerDefine(item)
+
+    override fun <R : GdmlMaterial> registerMaterial(item: R): GdmlRef<R> = materials.registerMaterial(item)
+
+    override val defaultMaterial: GdmlRef<GdmlMaterial> = materials.defaultMaterial
+
+    override fun generateName(providedName: String?, type: KType): String = structure.generateName(providedName, type)
+
+    override fun <R : GdmlGroup> registerGroup(item: R): GdmlRef<R> = structure.registerGroup(item)
+
+    override fun <R : GdmlSolid> registerSolid(item: R): GdmlRef<R> = solids.registerSolid(item)
 
     override fun toString(): String = encodeToString(this)
 
@@ -99,10 +108,10 @@ public class Gdml {
         return result
     }
 
-    public companion object {
-        public inline operator fun invoke(block: Gdml.() -> Unit): Gdml = Gdml().apply(block)
-    }
+    public companion object
 }
+
+public inline fun Gdml(block: Gdml.() -> Unit): Gdml  = Gdml().apply(block)
 
 public inline fun <reified T : GdmlDefine> GdmlRef<T>.resolve(root: Gdml): T? = root.getDefine(ref)
 public inline fun <reified T : GdmlSolid> GdmlRef<T>.resolve(root: Gdml): T? = root.getSolid(ref)
@@ -110,7 +119,7 @@ public inline fun <reified T : GdmlMaterial> GdmlRef<T>.resolve(root: Gdml): T? 
 public inline fun <reified T : GdmlGroup> GdmlRef<T>.resolve(root: Gdml): T? = root.getGroup(ref)
 
 @Serializable
-public sealed class GdmlContainer<T : GdmlNode> {
+public sealed class GdmlContainer<T : GdmlNode> : GdmlNameGenerator {
 
     public abstract val content: MutableList<T>
 
@@ -146,8 +155,7 @@ public sealed class GdmlContainer<T : GdmlNode> {
     private var autoNameCounter = 0
 
     @OptIn(ExperimentalSerializationApi::class)
-    @PublishedApi
-    internal fun autoName(type: KType): String {
+    private fun autoName(type: KType): String {
         val serialName = serializer(type).descriptor.serialName
         return "$serialName-${autoNameCounter++}"
     }
@@ -155,9 +163,9 @@ public sealed class GdmlContainer<T : GdmlNode> {
     /**
      * Use [providedName] if it is not null or generate unique automatic name
      */
-    @PublishedApi
-    internal inline fun <reified T : GdmlNode> resolveName(providedName: String?): String =
-        providedName ?: autoName(typeOf<T>())
+    override fun generateName(providedName: String?, type: KType): String {
+        return providedName ?: autoName(type)
+    }
 
     /**
      * Get an Item from th container
@@ -172,64 +180,21 @@ public sealed class GdmlContainer<T : GdmlNode> {
 
 @Serializable
 @SerialName("define")
-public class GdmlDefineContainer : GdmlContainer<GdmlDefine>() {
-
+public class GdmlDefineContainer : GdmlContainer<GdmlDefine>(), GdmlDefineRegistry {
     override val content: MutableList<GdmlDefine> = ArrayList()
 
-    @GdmlApi
-    public inline fun position(
-        x: Number = 0f,
-        y: Number = 0f,
-        z: Number = 0f,
-        name: String? = null,
-        block: GdmlPosition.() -> Unit = {},
-    ): GdmlRef<GdmlPosition> {
-        val position = GdmlPosition(resolveName<GdmlPosition>(name)).apply(block).apply {
-            this.name = resolveName<GdmlPosition>(name)
-            this.x = x
-            this.y = y
-            this.z = z
-        }
+    override fun <R : GdmlDefine> registerDefine(item: R): GdmlRef<R> = register(item)
 
-        return register(position)
-    }
-
-    @GdmlApi
-    public inline fun rotation(
-        x: Number = 0f,
-        y: Number = 0f,
-        z: Number = 0f,
-        name: String? = null,
-        block: GdmlRotation.() -> Unit = {},
-    ): GdmlRef<GdmlRotation> {
-        val rotation = GdmlRotation(resolveName<GdmlRotation>(name)).apply(block).apply {
-            this.name = resolveName<GdmlRotation>(name)
-            this.x = x
-            this.y = y
-            this.z = z
-        }
-
-        return register(rotation)
-    }
 }
 
 @Serializable
 @SerialName("materials")
-public class GdmlMaterialContainer : GdmlContainer<GdmlMaterial>() {
+public class GdmlMaterialContainer : GdmlContainer<GdmlMaterial>(), GdmlMaterialRegistry {
     override val content: MutableList<GdmlMaterial> = ArrayList()
 
-    public inline fun isotope(name: String? = null, build: GdmlIsotope.() -> Unit = {}): GdmlRef<GdmlIsotope> =
-        register(GdmlIsotope(resolveName<GdmlIsotope>(name)).apply(build))
+    override fun <R : GdmlMaterial> registerMaterial(item: R): GdmlRef<R> = register(item)
 
-    public inline fun element(name: String? = null, build: GdmlElement.() -> Unit = {}): GdmlRef<GdmlElement> =
-        register(GdmlElement(resolveName<GdmlIsotope>(name)).apply(build))
-
-    public inline fun composite(name: String? = null, build: GdmlComposite.() -> Unit = {}): GdmlRef<GdmlComposite> =
-        register(GdmlComposite(resolveName<GdmlIsotope>(name)).apply(build))
-
-    public companion object {
-        public val defaultMaterial: GdmlElement = GdmlElement("default")
-    }
+    override val defaultMaterial: GdmlRef<GdmlMaterial> get() = GdmlRef("G4_Galactic")
 }
 
 @Serializable
@@ -238,36 +203,15 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>(), GdmlSolidRegistry 
     override val content: MutableList<GdmlSolid> = ArrayList()
 
     override fun <R : GdmlSolid> registerSolid(item: R): GdmlRef<R> = register(item)
-
-    override fun resolveName(providedName: String?, type: KType): String = providedName ?: autoName(type)
 }
 
 @Serializable
 @GdmlApi
 @SerialName("structure")
-public class GdmlStructure : GdmlContainer<GdmlGroup>() {
-
+public class GdmlStructure : GdmlContainer<GdmlGroup>(), GdmlGroupRegistry {
     override val content: MutableList<GdmlGroup> = ArrayList()
 
-    @GdmlApi
-    public inline fun volume(
-        materialref: GdmlRef<GdmlMaterial>,
-        solidref: GdmlRef<GdmlSolid>,
-        name: String? = null,
-        block: GdmlVolume.() -> Unit = {},
-    ): GdmlRef<GdmlVolume> {
-        val res = GdmlVolume(resolveName<GdmlVolume>(name), materialref, solidref).apply(block)
-        return register(res)
-    }
-
-    @GdmlApi
-    public inline fun assembly(
-        name: String? = null,
-        block: GdmlAssembly.() -> Unit = {},
-    ): GdmlRef<GdmlAssembly> {
-        val res = GdmlAssembly(resolveName<GdmlAssembly>(name)).apply(block)
-        return register(res)
-    }
+    override fun <R : GdmlGroup> registerGroup(item: R): GdmlRef<R> = register(item)
 }
 
 @Serializable
@@ -285,6 +229,6 @@ public fun Gdml.world(
     block: GdmlAssembly.() -> Unit,
 ) {
     structure {
-        assembly(name, block).also { setup.world = it }
+        assembly(name, block).also { this@world.setup.world = it }
     }
 }

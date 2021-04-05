@@ -7,6 +7,8 @@
 - `Gdml.decodeFromUrl` method to fetch data from url
 - Automatic naming of all gdml builder nodes for absent names
 - Returned position/rotation/firstPosition/firstRotation builders to boolean solids
+- Interfaces for components registries
+- Convenient group builder
 
 ### Changed
 - Refactor define builders to place the name in the last position

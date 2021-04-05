@@ -1,6 +1,7 @@
 plugins {
     val toolsVersion = "0.9.3"
     id("ru.mipt.npm.gradle.project") version toolsVersion
+    kotlin("multiplatform") version "1.5.0-M2"
     id("ru.mipt.npm.gradle.mpp") version toolsVersion
 //    id("ru.mipt.npm.gradle.native") version toolsVersion
     `maven-publish`
