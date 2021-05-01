@@ -9,8 +9,6 @@
 > repositories {
 >     mavenCentral()
 >     maven { url "https://repo.kotlin.link" }
->     maven { url "https://dl.bintray.com/pdvrieze/maven" } // could be replaced by jcenter()
-> //    maven { url "https://dl.bintray.com/kotlin/kotlin-eap" } // include for builds based on kotlin-eap
 > }
 > 
 > dependencies {
@@ -23,8 +21,6 @@
 > repositories {
 >     mavenCentral()
 >     maven("https://repo.kotlin.link")
->     maven("https://dl.bintray.com/pdvrieze/maven") // could be replaced by jcenter()
-> //    maven("https://dl.bintray.com/kotlin/kotlin-eap") // include for builds based on kotlin-eap
 > }
 > 
 > dependencies {

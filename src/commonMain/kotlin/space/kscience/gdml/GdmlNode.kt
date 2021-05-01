@@ -2,10 +2,7 @@
 
 package space.kscience.gdml
 
-import kotlinx.serialization.Polymorphic
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
+import kotlinx.serialization.*
 import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
@@ -40,9 +37,9 @@ public sealed class GdmlPlacement
 @SerialName("physvol")
 @GdmlApi
 public class GdmlPhysVolume(
+    public var name: String = "@undefined",
     @XmlSerialName("volumeref", "", "")
     public var volumeref: GdmlRef<GdmlGroup>,
-    public var name: String? = null
 ) : GdmlPlacement() {
     public var copynumber: Int? = null
 
@@ -80,17 +77,28 @@ public fun GdmlPhysVolume.resolveRotation(root: Gdml): GdmlRotation? = rotation 
  */
 public fun GdmlPhysVolume.resolveScale(root: Gdml): GdmlScale? = scale ?: scaleref?.resolve(root)
 
-public inline fun GdmlPhysVolume.position(block: GdmlPosition.() -> Unit) {
-    position = GdmlPosition().apply(block)
+public fun GdmlPhysVolume.position(
+    x: Number = 0f,
+    y: Number = 0f,
+    z: Number = 0f,
+    block: GdmlPosition.() -> Unit = {},
+) {
+    position = GdmlPosition("$name.position", x, y, z).apply(block)
 }
 
-public inline fun GdmlPhysVolume.rotation(block: GdmlRotation.() -> Unit) {
-    rotation = GdmlRotation().apply(block)
+public fun GdmlPhysVolume.rotation(
+    x: Number = 0f,
+    y: Number = 0f,
+    z: Number = 0f,
+    block: GdmlRotation.() -> Unit = {},
+) {
+    rotation = GdmlRotation("$name.rotation", x, y, z).apply(block)
 }
 
-public inline fun GdmlPhysVolume.scale(block: GdmlScale.() -> Unit) {
-    scale = GdmlScale().apply(block)
+public fun GdmlPhysVolume.scale(x: Number = 0f, y: Number = 0f, z: Number = 0f, block: GdmlScale.() -> Unit = {}) {
+    scale = GdmlScale("$name.scale", x, y, z).apply(block)
 }
+
 
 /**
 <...
@@ -112,7 +120,7 @@ public class GdmlDivisionVolume(
     public var offset: Number,
     @XmlSerialName("volumeref", "", "")
     public var volumeref: GdmlRef<GdmlVolume>,
-    public var unit: String = "mm"
+    public var unit: String = "mm",
 ) : GdmlPlacement()
 
 @Serializable
@@ -121,8 +129,17 @@ public sealed class GdmlGroup : GdmlNode {
     @XmlSerialName("physvol", "", "")
     public val physVolumes: ArrayList<GdmlPhysVolume> = ArrayList()
 
-    public fun physVolume(volumeref: GdmlRef<GdmlGroup>, block: GdmlPhysVolume.() -> Unit = {}): GdmlPhysVolume {
-        val res = GdmlPhysVolume(volumeref).apply(block)
+    @Transient
+    private var autoNameCounter = 0
+
+    public fun physVolume(
+        volumeref: GdmlRef<GdmlGroup>,
+        name: String = "${volumeref.ref}-${(this.name.hashCode() + autoNameCounter++).toUInt().toString(16)}",
+        block: GdmlPhysVolume.() -> Unit = {},
+    ): GdmlPhysVolume {
+        name.validateNCName()
+        if (physVolumes.find { it.name == name } != null) error("PhysVolume with name $name redeclaration at volume ${this.name}")
+        val res = GdmlPhysVolume(name, volumeref).apply(block)
         physVolumes.add(res)
         return res
     }
@@ -144,10 +161,33 @@ public class GdmlVolume(
     @XmlSerialName("materialref", "", "")
     public var materialref: GdmlRef<GdmlMaterial>,
     @XmlSerialName("solidref", "", "")
-    public var solidref: GdmlRef<GdmlSolid>
+    public var solidref: GdmlRef<GdmlSolid>,
 ) : GdmlGroup() {
 
     @XmlPolyChildren(arrayOf("physvol", "divisionvol"))
     @Polymorphic
     public var placement: GdmlPlacement? = null
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as GdmlVolume
+
+        if (name != other.name) return false
+        if (materialref != other.materialref) return false
+        if (solidref != other.solidref) return false
+        if (placement != other.placement) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + materialref.hashCode()
+        result = 31 * result + solidref.hashCode()
+        result = 31 * result + (placement?.hashCode() ?: 0)
+        return result
+    }
+
 }

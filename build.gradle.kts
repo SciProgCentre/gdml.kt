@@ -1,28 +1,25 @@
 plugins {
-    val toolsVersion = "0.9.2"
+    val toolsVersion = "0.9.5"
     id("ru.mipt.npm.gradle.project") version toolsVersion
     id("ru.mipt.npm.gradle.mpp") version toolsVersion
 //    id("ru.mipt.npm.gradle.native") version toolsVersion
-    id("ru.mipt.npm.gradle.publish") version toolsVersion
+    `maven-publish`
 }
 
-group = "space.kscience"
-version = "0.4.0-dev-1"
-
 allprojects {
+    group = "space.kscience"
+    version = "0.4.0"
     repositories {
-        jcenter()
-        maven("https://dl.bintray.com/pdvrieze/maven")
+        mavenCentral()
+        maven("https://repo.kotlin.link")
     }
 }
 
 kscience {
-    useSerialization {
-        xml()
-    }
+    useSerialization()
 }
 
-ksciencePublish{
+ksciencePublish {
     github("gdml.kt")
     space()
     sonatype()
@@ -30,10 +27,15 @@ ksciencePublish{
 
 kotlin {
     sourceSets {
+        commonMain {
+            dependencies {
+                api("io.github.pdvrieze.xmlutil:serialization:0.82.0")
+                implementation("com.github.h0tk3y.betterParse:better-parse:0.4.2")
+            }
+        }
         jvmMain {
             dependencies {
-                api("com.fasterxml.woodstox:woodstox-core:6.2.3")
-                implementation("com.github.h0tk3y.betterParse:better-parse:0.4.1")
+                implementation("com.fasterxml.woodstox:woodstox-core:6.2.3")
             }
         }
     }
@@ -43,4 +45,8 @@ readme {
     readmeTemplate = file("docs/templates/README-TEMPLATE.md")
     maturity = ru.mipt.npm.gradle.Maturity.DEVELOPMENT
     propertyByTemplate("artifact", rootProject.file("docs/templates/ARTIFACT-TEMPLATE.md"))
+}
+
+changelog{
+    version = project.version.toString()
 }

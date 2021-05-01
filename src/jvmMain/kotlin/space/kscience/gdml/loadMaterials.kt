@@ -10,17 +10,22 @@ import java.net.URL
  */
 public fun Gdml.loadMaterialsFromUrl(url: URL): Unit = url.openStream().use { stream ->
     val xmlReader = StAXReader(stream, "UTF-8")
-    val loadedMaterials = Gdml.xmlFormat.decodeFromReader(GdmlMaterialContainer.serializer(), xmlReader)
-    containers.add(loadedMaterials)
+    val loadedMaterials = gdmlFormat.decodeFromReader(GdmlMaterialContainer.serializer(), xmlReader)
+    materials.apply {
+        loadedMaterials.content.forEach {
+            add(it)
+        }
+    }
 }
 
-public fun Gdml.loadMaterialsFromUrl(@Language("http-url-reference") urlString: String): Unit = loadMaterialsFromUrl(URL(urlString))
+public fun Gdml.loadMaterialsFromUrl(@Language("http-url-reference") urlString: String): Unit =
+    loadMaterialsFromUrl(URL(urlString))
 
 /**
  * Load materials from a [file]
  */
 public fun Gdml.loadMaterialsFromFile(file: File): Unit = file.inputStream().use { stream ->
     val xmlReader = StAXReader(stream, "UTF-8")
-    val loadedMaterials = Gdml.xmlFormat.decodeFromReader(GdmlMaterialContainer.serializer(), xmlReader)
+    val loadedMaterials = gdmlFormat.decodeFromReader(GdmlMaterialContainer.serializer(), xmlReader)
     containers.add(loadedMaterials)
 }

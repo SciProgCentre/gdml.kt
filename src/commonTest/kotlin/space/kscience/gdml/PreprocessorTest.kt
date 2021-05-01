@@ -1,9 +1,10 @@
 package space.kscience.gdml
 
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class PreprocessorTest {
+
     @Test
     fun testGdmlVariable() {
         val gdmlString = """
@@ -19,7 +20,7 @@ class PreprocessorTest {
             </gdml>
         """.trimIndent()
 
-        val gdml = Gdml.decodeFromStream(gdmlString.byteInputStream(),true)
+        val gdml = Gdml.decodeFromString(gdmlString,true)
         assertEquals(14.998, gdml.getDefine<GdmlPosition>("mylarCathodePosition")?.z)
     }
 }

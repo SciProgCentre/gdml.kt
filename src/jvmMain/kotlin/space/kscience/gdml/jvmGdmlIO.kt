@@ -17,12 +17,7 @@ import java.nio.file.StandardOpenOption
  */
 public fun Gdml.Companion.decodeFromStream(stream: InputStream, usePreprocessor: Boolean = false): Gdml {
     val xmlReader = StAXReader(stream, "UTF-8")
-    return if (usePreprocessor) {
-        val preprocessor = GdmlPreprocessor(xmlReader) { parseAndEvaluate(it) }
-        xmlFormat.decodeFromReader(serializer(), preprocessor)
-    } else {
-        xmlFormat.decodeFromReader(serializer(), xmlReader)
-    }
+    return decodeFromReader(xmlReader, usePreprocessor)
 }
 
 /**
@@ -30,12 +25,10 @@ public fun Gdml.Companion.decodeFromStream(stream: InputStream, usePreprocessor:
  *
  * **NOTE**: Preprocessor options could be expanded in future
  */
-public fun Gdml.Companion.decodeFromFile(
-    path: Path,
-    usePreprocessor: Boolean = false,
-): Gdml = Files.newInputStream(path, StandardOpenOption.READ).use {
-    decodeFromStream(it, usePreprocessor)
-}
+public fun Gdml.Companion.decodeFromFile(path: Path, usePreprocessor: Boolean = false): Gdml =
+    Files.newInputStream(path, StandardOpenOption.READ).use {
+        decodeFromStream(it, usePreprocessor)
+    }
 
 /**
  * Parse the file at [file] optionally using variable pre-processor with [usePreprocessor] flag
@@ -43,7 +36,7 @@ public fun Gdml.Companion.decodeFromFile(
  * **NOTE**: Preprocessor options could be expanded in future
  */
 public fun Gdml.Companion.decodeFromFile(file: File, usePreprocessor: Boolean = false): Gdml =
-    decodeFromFile(file.toPath(), usePreprocessor = false)
+    decodeFromFile(file.toPath(), usePreprocessor)
 
 /**
  * Fetch a gdml xml from given remote [url]
@@ -63,7 +56,8 @@ public fun Gdml.Companion.decodeFromUrl(@Language("http-url-reference") urlStrin
  */
 public fun Gdml.Companion.encodeToStream(gdml: Gdml, stream: OutputStream) {
     val xmlWriter = StAXWriter(stream, "UTF-8", false, XmlDeclMode.Auto)
-    xmlFormat.encodeToWriter(xmlWriter, serializer(), gdml)
+    Gdml.encodeToWriter(gdml, xmlWriter)
+    xmlWriter.flush()
     stream.flush()
 }
 

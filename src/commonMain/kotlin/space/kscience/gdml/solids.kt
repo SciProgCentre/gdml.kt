@@ -5,6 +5,7 @@ package space.kscience.gdml
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import nl.adaptivity.xmlutil.serialization.XmlDefault
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import kotlin.math.PI
 
@@ -223,7 +224,7 @@ public data class GdmlScaledSolid(
     override var name: String,
     @XmlSerialName("solidref", "", "")
     val solidref: GdmlRef<GdmlSolid>,
-    var scale: GdmlScale
+    var scale: GdmlScale,
 ) : GdmlSolid()
 
 /*
@@ -256,9 +257,9 @@ public data class GdmlCone(
     var rmax1: Number,
     var rmax2: Number,
     var deltaphi: Number = 2 * PI,
-    var rmin1: Number = 0f,
-    var rmin2: Number = 0f,
-    var startphi: Number = 0f,
+    @XmlDefault("0") var rmin1: Number = 0f,
+    @XmlDefault("0") var rmin2: Number = 0f,
+    @XmlDefault("0") var startphi: Number = 0f,
 ) : GdmlSolid()
 
 //boolean solids
@@ -308,18 +309,40 @@ public sealed class GdmlBoolSolid : GdmlSolid() {
     public fun resolveFirstPosition(root: Gdml): GdmlPosition? = firstposition ?: firstpositionref?.resolve(root)
     public fun resolveFirstRotation(root: Gdml): GdmlRotation? = firstrotation ?: firstrotationref?.resolve(root)
 
-    @Deprecated("Use GdmlPosition constructor instead")
-    public fun position(x: Number = 0f, y: Number = 0f, z: Number = 0f): GdmlPosition = GdmlPosition().apply {
-        this.x = x
-        this.y = y
-        this.z = z
+    public fun position(
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GdmlPosition.() -> Unit = {},
+    ) {
+        position = GdmlPosition("$name.position", x, y, z).apply(block)
     }
 
-    @Deprecated("Use GdmlRotation constructor instead")
-    public fun rotation(x: Number = 0f, y: Number = 0f, z: Number = 0f): GdmlRotation = GdmlRotation().apply {
-        this.x = x
-        this.y = y
-        this.z = z
+    public fun rotation(
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GdmlRotation.() -> Unit = {},
+    ) {
+        rotation = GdmlRotation("$name.rotation", x, y, z).apply(block)
+    }
+
+    public fun firstposition(
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GdmlPosition.() -> Unit = {},
+    ) {
+        firstposition = GdmlPosition("$name.firstpostion", x, y, z).apply(block)
+    }
+
+    public fun firstrotation(
+        x: Number = 0f,
+        y: Number = 0f,
+        z: Number = 0f,
+        block: GdmlRotation.() -> Unit = {},
+    ) {
+        firstrotation = GdmlRotation("$name.firstrotation", x, y, z).apply(block)
     }
 }
 
