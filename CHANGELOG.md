@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [0.4.0]
+### Added
 - Scripting support
 - GdmlShowcase singleton for test purposes
 - `Gdml.decodeFromUrl` method to fetch data from url

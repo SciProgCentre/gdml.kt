@@ -46,3 +46,7 @@ readme {
     maturity = ru.mipt.npm.gradle.Maturity.DEVELOPMENT
     propertyByTemplate("artifact", rootProject.file("docs/templates/ARTIFACT-TEMPLATE.md"))
 }
+
+changelog{
+    version = project.version.toString()
+}
