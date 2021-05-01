@@ -10,6 +10,7 @@
 - Interfaces for components registries
 - Convenient group builder
 - Basic NCName validation
+- Preprocessor in common
 
 ### Changed
 - Refactor define builders to place the name in the last position

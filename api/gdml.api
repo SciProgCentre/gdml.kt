@@ -723,8 +723,10 @@ public final class space/kscience/gdml/GdmlGroupRegistryKt {
 }
 
 public final class space/kscience/gdml/GdmlIOKt {
-	public static final fun decodeFromReader (Lspace/kscience/gdml/Gdml$Companion;Lnl/adaptivity/xmlutil/XmlReader;)Lspace/kscience/gdml/Gdml;
-	public static final fun decodeFromString (Lspace/kscience/gdml/Gdml$Companion;Ljava/lang/String;)Lspace/kscience/gdml/Gdml;
+	public static final fun decodeFromReader (Lspace/kscience/gdml/Gdml$Companion;Lnl/adaptivity/xmlutil/XmlReader;Z)Lspace/kscience/gdml/Gdml;
+	public static synthetic fun decodeFromReader$default (Lspace/kscience/gdml/Gdml$Companion;Lnl/adaptivity/xmlutil/XmlReader;ZILjava/lang/Object;)Lspace/kscience/gdml/Gdml;
+	public static final fun decodeFromString (Lspace/kscience/gdml/Gdml$Companion;Ljava/lang/String;Z)Lspace/kscience/gdml/Gdml;
+	public static synthetic fun decodeFromString$default (Lspace/kscience/gdml/Gdml$Companion;Ljava/lang/String;ZILjava/lang/Object;)Lspace/kscience/gdml/Gdml;
 	public static final fun encodeToString (Lspace/kscience/gdml/Gdml$Companion;Lspace/kscience/gdml/Gdml;)Ljava/lang/String;
 	public static final fun encodeToString (Lspace/kscience/gdml/Gdml;)Ljava/lang/String;
 	public static final fun encodeToWriter (Lspace/kscience/gdml/Gdml$Companion;Lspace/kscience/gdml/Gdml;Lnl/adaptivity/xmlutil/XmlWriter;)V

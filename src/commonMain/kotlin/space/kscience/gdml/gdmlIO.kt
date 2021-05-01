@@ -121,16 +121,26 @@ internal val gdmlFormat: XML = XML(gdmlModule) {
 }
 
 /**
- * Decode Gdml from an xml string
+ * Decode Gdml from an xml string.
  */
-public fun Gdml.Companion.decodeFromString(string: String): Gdml =
-    gdmlFormat.decodeFromString(serializer(), string)
+public fun Gdml.Companion.decodeFromString(string: String, usePreprocessor: Boolean = false): Gdml =
+    if (usePreprocessor) {
+        val preprocessor = GdmlPreprocessor( XmlStreaming.newReader(string)) { parseAndEvaluate(it) }
+        gdmlFormat.decodeFromReader(serializer(), preprocessor)
+    } else {
+        gdmlFormat.decodeFromString(serializer(), string)
+    }
 
 /**
  * Decode Gdml from an xml reader
  */
-public fun Gdml.Companion.decodeFromReader(reader: XmlReader): Gdml =
-    gdmlFormat.decodeFromReader(serializer(), reader)
+public fun Gdml.Companion.decodeFromReader(reader: XmlReader, usePreprocessor: Boolean = false): Gdml =
+    if (usePreprocessor) {
+        val preprocessor = GdmlPreprocessor(reader) { parseAndEvaluate(it) }
+        gdmlFormat.decodeFromReader(serializer(), preprocessor)
+    } else {
+        gdmlFormat.decodeFromReader(serializer(), reader)
+    }
 
 /**
  * Write gdml to provided xml writer
