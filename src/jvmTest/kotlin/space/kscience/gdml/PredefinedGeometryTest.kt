@@ -3,6 +3,9 @@ package space.kscience.gdml
 import org.junit.jupiter.api.Test
 import java.io.File
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 class PredefinedGeometryTest {
 
@@ -54,7 +57,21 @@ class PredefinedGeometryTest {
     @Test
     fun readIAXO() {
         val file = File("gdml-source/babyIAXO.gdml")
-        val gdml = Gdml.decodeFromStream(file.inputStream(),true)
+        val gdml = Gdml.decodeFromStream(file.inputStream(), true)
         println(gdml.world)
+    }
+
+    @Test
+    fun testRemoveUnusedMaterials() {
+        val file = File("gdml-source/babyIAXO.gdml")
+        var gdml = Gdml.decodeFromStream(file.inputStream(), true)
+        assertNotNull(gdml.materials.get<GdmlMaterial>("G4_WATER"))
+        val gdmlAfter = GdmlMaterialPostProcessor.removeUnusedMaterials(gdml)
+        // assertNull(gdmlAfter.materials.get<GdmlMaterial>("G4_WATER")) TODO: shouldn't this be null? its not on the gdml
+        // assertNotEquals(gdmlAfter, gdml) TODO: not sure why this doesn't work either
+        val gdmlAfterAgain = GdmlMaterialPostProcessor.removeUnusedMaterials(gdmlAfter)
+        assertEquals(gdmlAfter, gdmlAfterAgain)
+
+        println(gdml)
     }
 }
