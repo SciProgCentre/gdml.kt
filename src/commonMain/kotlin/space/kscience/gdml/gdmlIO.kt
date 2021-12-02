@@ -125,7 +125,7 @@ internal val gdmlFormat: XML = XML(gdmlModule) {
  */
 public fun Gdml.Companion.decodeFromString(string: String, usePreprocessor: Boolean = false): Gdml =
     if (usePreprocessor) {
-        val preprocessor = GdmlPreprocessor( XmlStreaming.newReader(string)) { parseAndEvaluate(it) }
+        val preprocessor = GdmlPreprocessor(XmlStreaming.newReader(string)) { parseAndEvaluate(it) }
         gdmlFormat.decodeFromReader(serializer(), preprocessor)
     } else {
         gdmlFormat.decodeFromString(serializer(), string)
@@ -153,7 +153,8 @@ public fun Gdml.Companion.encodeToWriter(gdml: Gdml, writer: XmlWriter): Unit =
  */
 public fun Gdml.Companion.encodeToString(gdml: Gdml): String {
     val stringWriter = StringWriter()
-    val xmlWriter = XmlStreaming.newWriter(stringWriter, gdmlFormat.config.repairNamespaces, gdmlFormat.config.xmlDeclMode)
+    val xmlWriter =
+        XmlStreaming.newWriter(stringWriter, gdmlFormat.config.repairNamespaces, gdmlFormat.config.xmlDeclMode)
 
     var ex: Throwable? = null
     try {

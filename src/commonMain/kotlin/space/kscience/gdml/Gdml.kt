@@ -111,7 +111,7 @@ public class Gdml : GdmlRegistry {
     public companion object
 }
 
-public inline fun Gdml(block: Gdml.() -> Unit): Gdml  = Gdml().apply(block)
+public inline fun Gdml(block: Gdml.() -> Unit): Gdml = Gdml().apply(block)
 
 public inline fun <reified T : GdmlDefine> GdmlRef<T>.resolve(root: Gdml): T? = root.getDefine(ref)
 public inline fun <reified T : GdmlSolid> GdmlRef<T>.resolve(root: Gdml): T? = root.getSolid(ref)
