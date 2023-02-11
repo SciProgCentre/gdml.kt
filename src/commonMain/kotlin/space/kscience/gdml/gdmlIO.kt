@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalXmlUtilApi::class)
+
 package space.kscience.gdml
 
 import kotlinx.serialization.KSerializer
@@ -9,10 +11,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
-import nl.adaptivity.xmlutil.XmlDeclMode
-import nl.adaptivity.xmlutil.XmlReader
-import nl.adaptivity.xmlutil.XmlStreaming
-import nl.adaptivity.xmlutil.XmlWriter
+import nl.adaptivity.xmlutil.*
 import nl.adaptivity.xmlutil.core.impl.multiplatform.StringWriter
 import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
@@ -21,7 +20,7 @@ public object LUnitSerializer : KSerializer<LUnit> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("lunit", PrimitiveKind.STRING)
 
     override fun deserialize(decoder: Decoder): LUnit {
-        return LUnit.valueOf(decoder.decodeString().toUpperCase())
+        return LUnit.valueOf(decoder.decodeString().uppercase())
     }
 
     override fun serialize(encoder: Encoder, value: LUnit) {
@@ -33,7 +32,7 @@ public object AUnitSerializer : KSerializer<AUnit> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("aunit", PrimitiveKind.STRING)
 
     override fun deserialize(decoder: Decoder): AUnit {
-        return AUnit.valueOf(decoder.decodeString().toUpperCase())
+        return AUnit.valueOf(decoder.decodeString().uppercase())
     }
 
     override fun serialize(encoder: Encoder, value: AUnit) {
@@ -103,14 +102,15 @@ internal val gdmlModule: SerializersModule = SerializersModule {
 }
 
 private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
-    { location, _, name, candidates ->
+    UnknownChildHandler { input, _, _, name, candidates ->
         println(
             "Could not find a field for name $name${
                 if (candidates.isNotEmpty()) candidates.joinToString(
                     prefix = "\n  candidates: "
                 ) else ""
-            } at position $location"
+            } at position ${input.locationInfo}"
         )
+        emptyList()
     }
 
 internal val gdmlFormat: XML = XML(gdmlModule) {
