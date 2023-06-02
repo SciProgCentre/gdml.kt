@@ -1,4 +1,5 @@
 public final class space/kscience/gdml/AUnit : java/lang/Enum {
+	public static final field Companion Lspace/kscience/gdml/AUnit$Companion;
 	public static final field DEG Lspace/kscience/gdml/AUnit;
 	public static final field DEGREE Lspace/kscience/gdml/AUnit;
 	public static final field RAD Lspace/kscience/gdml/AUnit;
@@ -7,6 +8,10 @@ public final class space/kscience/gdml/AUnit : java/lang/Enum {
 	public final fun getValue ()F
 	public static fun valueOf (Ljava/lang/String;)Lspace/kscience/gdml/AUnit;
 	public static fun values ()[Lspace/kscience/gdml/AUnit;
+}
+
+public final class space/kscience/gdml/AUnit$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class space/kscience/gdml/AUnitSerializer : kotlinx/serialization/KSerializer {
@@ -43,11 +48,11 @@ public final class space/kscience/gdml/Gdml : space/kscience/gdml/GdmlRegistry {
 	public final fun solids (Lkotlin/jvm/functions/Function1;)V
 	public final fun structure (Lkotlin/jvm/functions/Function1;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/Gdml;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/Gdml$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/Gdml$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/Gdml;
@@ -70,11 +75,11 @@ public final class space/kscience/gdml/GdmlAssembly : space/kscience/gdml/GdmlGr
 	public fun <init> (Ljava/lang/String;)V
 	public fun getName ()Ljava/lang/String;
 	public fun setName (Ljava/lang/String;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlAssembly;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlAssembly$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlAssembly$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlAssembly;
@@ -106,11 +111,11 @@ public final class space/kscience/gdml/GdmlAtom {
 	public final fun setUnit (Ljava/lang/String;)V
 	public final fun setValue (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlAtom;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlAtom$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlAtom$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlAtom;
@@ -159,6 +164,7 @@ public abstract class space/kscience/gdml/GdmlBoolSolid : space/kscience/gdml/Gd
 	public final fun setRotation (Lspace/kscience/gdml/GdmlRotation;)V
 	public final fun setRotationref (Lspace/kscience/gdml/GdmlRef;)V
 	public abstract fun setSecond (Lspace/kscience/gdml/GdmlRef;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlBoolSolid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlBoolSolid$Companion {
@@ -186,11 +192,11 @@ public final class space/kscience/gdml/GdmlBox : space/kscience/gdml/GdmlSolid {
 	public final fun setY (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlBox;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlBox$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlBox$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlBox;
@@ -281,11 +287,11 @@ public final class space/kscience/gdml/GdmlComposite : space/kscience/gdml/GdmlM
 	public fun hashCode ()I
 	public fun setName (Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlComposite;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlComposite$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlComposite$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlComposite;
@@ -333,11 +339,11 @@ public final class space/kscience/gdml/GdmlCone : space/kscience/gdml/GdmlSolid 
 	public final fun setStartphi (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlCone;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlCone$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlCone$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlCone;
@@ -359,11 +365,11 @@ public final class space/kscience/gdml/GdmlConstant : space/kscience/gdml/GdmlDe
 	public final fun getValue ()Ljava/lang/Number;
 	public fun setName (Ljava/lang/String;)V
 	public final fun setValue (Ljava/lang/Number;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlConstant;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlConstant$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlConstant$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlConstant;
@@ -387,6 +393,7 @@ public abstract class space/kscience/gdml/GdmlContainer : space/kscience/gdml/Gd
 	public final fun getItem (Ljava/lang/String;)Lspace/kscience/gdml/GdmlNode;
 	public fun hashCode ()I
 	public final fun register (Lspace/kscience/gdml/GdmlNode;)Lspace/kscience/gdml/GdmlRef;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlContainer;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlinx/serialization/KSerializer;)V
 }
 
 public final class space/kscience/gdml/GdmlContainer$Companion {
@@ -396,6 +403,7 @@ public final class space/kscience/gdml/GdmlContainer$Companion {
 public abstract class space/kscience/gdml/GdmlDefine : space/kscience/gdml/GdmlNode {
 	public static final field Companion Lspace/kscience/gdml/GdmlDefine$Companion;
 	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlDefine;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlDefine$Companion {
@@ -408,11 +416,11 @@ public final class space/kscience/gdml/GdmlDefineContainer : space/kscience/gdml
 	public synthetic fun <init> (ILjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun getContent ()Ljava/util/List;
 	public fun registerDefine (Lspace/kscience/gdml/GdmlDefine;)Lspace/kscience/gdml/GdmlRef;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlDefineContainer;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlDefineContainer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlDefineContainer$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlDefineContainer;
@@ -453,11 +461,11 @@ public final class space/kscience/gdml/GdmlDensity {
 	public final fun setUnit (Ljava/lang/String;)V
 	public final fun setValue (D)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlDensity;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlDensity$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlDensity$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlDensity;
@@ -488,11 +496,11 @@ public final class space/kscience/gdml/GdmlDivisionVolume : space/kscience/gdml/
 	public final fun setUnit (Ljava/lang/String;)V
 	public final fun setVolumeref (Lspace/kscience/gdml/GdmlRef;)V
 	public final fun setWidth (Ljava/lang/Number;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlDivisionVolume;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlDivisionVolume$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlDivisionVolume$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlDivisionVolume;
@@ -530,11 +538,11 @@ public final class space/kscience/gdml/GdmlElCone : space/kscience/gdml/GdmlSoli
 	public final fun setZcut (Ljava/lang/Number;)V
 	public final fun setZmax (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlElCone;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlElCone$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlElCone$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlElCone;
@@ -569,11 +577,11 @@ public final class space/kscience/gdml/GdmlElTube : space/kscience/gdml/GdmlSoli
 	public final fun setDz (Ljava/lang/Number;)V
 	public fun setName (Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlElTube;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlElTube$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlElTube$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlElTube;
@@ -601,11 +609,11 @@ public final class space/kscience/gdml/GdmlElement : space/kscience/gdml/GdmlMat
 	public fun hashCode ()I
 	public fun setName (Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlElement;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlElement$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlElement$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlElement;
@@ -647,11 +655,11 @@ public final class space/kscience/gdml/GdmlEllipsoid : space/kscience/gdml/GdmlS
 	public final fun setZcut1 (Ljava/lang/Number;)V
 	public final fun setZcut2 (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlEllipsoid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlEllipsoid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlEllipsoid$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlEllipsoid;
@@ -681,11 +689,11 @@ public final class space/kscience/gdml/GdmlFraction {
 	public final fun setN (D)V
 	public final fun setRef (Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlFraction;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlFraction$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlFraction$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlFraction;
@@ -705,6 +713,7 @@ public abstract class space/kscience/gdml/GdmlGroup : space/kscience/gdml/GdmlNo
 	public final fun getPhysVolumes ()Ljava/util/ArrayList;
 	public final fun physVolume (Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lspace/kscience/gdml/GdmlPhysVolume;
 	public static synthetic fun physVolume$default (Lspace/kscience/gdml/GdmlGroup;Lspace/kscience/gdml/GdmlRef;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lspace/kscience/gdml/GdmlPhysVolume;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlGroup;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlGroup$Companion {
@@ -751,11 +760,11 @@ public final class space/kscience/gdml/GdmlIntersection : space/kscience/gdml/Gd
 	public fun setName (Ljava/lang/String;)V
 	public fun setSecond (Lspace/kscience/gdml/GdmlRef;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlIntersection;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlIntersection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlIntersection$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlIntersection;
@@ -781,11 +790,11 @@ public final class space/kscience/gdml/GdmlIsotope : space/kscience/gdml/GdmlMat
 	public fun hashCode ()I
 	public fun setName (Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlIsotope;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlIsotope$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlIsotope$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlIsotope;
@@ -821,6 +830,7 @@ public abstract class space/kscience/gdml/GdmlMaterial : space/kscience/gdml/Gdm
 	public final fun setFormula (Ljava/lang/String;)V
 	public final fun setN (Ljava/lang/Integer;)V
 	public final fun setZ (Ljava/lang/Double;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlMaterial;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlMaterial$Companion {
@@ -834,11 +844,11 @@ public final class space/kscience/gdml/GdmlMaterialContainer : space/kscience/gd
 	public fun getContent ()Ljava/util/List;
 	public fun getDefaultMaterial ()Lspace/kscience/gdml/GdmlRef;
 	public fun registerMaterial (Lspace/kscience/gdml/GdmlMaterial;)Lspace/kscience/gdml/GdmlRef;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlMaterialContainer;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlMaterialContainer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlMaterialContainer$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlMaterialContainer;
@@ -850,6 +860,10 @@ public final class space/kscience/gdml/GdmlMaterialContainer$$serializer : kotli
 
 public final class space/kscience/gdml/GdmlMaterialContainer$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class space/kscience/gdml/GdmlMaterialPostProcessorKt {
+	public static final fun removeUnusedMaterials (Lspace/kscience/gdml/Gdml;)Lspace/kscience/gdml/Gdml;
 }
 
 public abstract interface class space/kscience/gdml/GdmlMaterialRegistry : space/kscience/gdml/GdmlNameGenerator {
@@ -876,11 +890,11 @@ public final class space/kscience/gdml/GdmlMatrix : space/kscience/gdml/GdmlDefi
 	public final fun setColdim (I)V
 	public fun setName (Ljava/lang/String;)V
 	public final fun setValues (Ljava/lang/String;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlMatrix;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlMatrix$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlMatrix$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlMatrix;
@@ -897,6 +911,7 @@ public final class space/kscience/gdml/GdmlMatrix$Companion {
 public final class space/kscience/gdml/GdmlModifier {
 	public fun <init> (Lspace/kscience/gdml/GdmlRegistry;Ljava/util/Map;)V
 	public synthetic fun <init> (Lspace/kscience/gdml/GdmlRegistry;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getPropertyMap ()Ljava/util/Map;
 	public final fun getRegistry ()Lspace/kscience/gdml/GdmlRegistry;
 }
 
@@ -957,11 +972,11 @@ public final class space/kscience/gdml/GdmlOrb : space/kscience/gdml/GdmlSolid {
 	public fun setName (Ljava/lang/String;)V
 	public final fun setR (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlOrb;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlOrb$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlOrb$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlOrb;
@@ -996,11 +1011,11 @@ public final class space/kscience/gdml/GdmlParaboloid : space/kscience/gdml/Gdml
 	public final fun setRhi (Ljava/lang/Number;)V
 	public final fun setRlo (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlParaboloid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlParaboloid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlParaboloid$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlParaboloid;
@@ -1044,11 +1059,11 @@ public final class space/kscience/gdml/GdmlParallelepiped : space/kscience/gdml/
 	public final fun setY (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlParallelepiped;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlParallelepiped$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlParallelepiped$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlParallelepiped;
@@ -1085,11 +1100,11 @@ public final class space/kscience/gdml/GdmlPhysVolume : space/kscience/gdml/Gdml
 	public final fun setScale (Lspace/kscience/gdml/GdmlScale;)V
 	public final fun setScaleref (Lspace/kscience/gdml/GdmlRef;)V
 	public final fun setVolumeref (Lspace/kscience/gdml/GdmlRef;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlPhysVolume;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlPhysVolume$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlPhysVolume$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlPhysVolume;
@@ -1106,6 +1121,7 @@ public final class space/kscience/gdml/GdmlPhysVolume$Companion {
 public abstract class space/kscience/gdml/GdmlPlacement {
 	public static final field Companion Lspace/kscience/gdml/GdmlPlacement$Companion;
 	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlPlacement;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlPlacement$Companion {
@@ -1133,11 +1149,11 @@ public final class space/kscience/gdml/GdmlPolycone : space/kscience/gdml/GdmlSo
 	public fun setName (Ljava/lang/String;)V
 	public final fun setStartphi (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlPolycone;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlPolycone$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlPolycone$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlPolycone;
@@ -1174,11 +1190,11 @@ public final class space/kscience/gdml/GdmlPolyhedra : space/kscience/gdml/GdmlS
 	public fun setName (Ljava/lang/String;)V
 	public final fun setStartphi (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlPolyhedra;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlPolyhedra$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlPolyhedra$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlPolyhedra;
@@ -1207,11 +1223,11 @@ public final class space/kscience/gdml/GdmlPosition : space/kscience/gdml/GdmlDe
 	public final fun setX (Ljava/lang/Number;)V
 	public final fun setY (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlPosition;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlPosition$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlPosition$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlPosition;
@@ -1243,11 +1259,11 @@ public final class space/kscience/gdml/GdmlQuantity : space/kscience/gdml/GdmlDe
 	public final fun setType (Ljava/lang/String;)V
 	public final fun setUnit (Ljava/lang/String;)V
 	public final fun setValue (Ljava/lang/Number;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlQuantity;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlQuantity$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlQuantity$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlQuantity;
@@ -1273,10 +1289,10 @@ public final class space/kscience/gdml/GdmlRef {
 	public fun hashCode ()I
 	public final fun setRef (Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlRef;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;Lkotlinx/serialization/KSerializer;)V
 }
 
 public final class space/kscience/gdml/GdmlRef$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun <init> (Lkotlinx/serialization/KSerializer;)V
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
@@ -1310,11 +1326,11 @@ public final class space/kscience/gdml/GdmlRotation : space/kscience/gdml/GdmlDe
 	public final fun setX (Ljava/lang/Number;)V
 	public final fun setY (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlRotation;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlRotation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlRotation$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlRotation;
@@ -1341,11 +1357,11 @@ public final class space/kscience/gdml/GdmlScale : space/kscience/gdml/GdmlDefin
 	public final fun setX (Ljava/lang/Number;)V
 	public final fun setY (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlScale;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlScale$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlScale$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlScale;
@@ -1376,11 +1392,11 @@ public final class space/kscience/gdml/GdmlScaledSolid : space/kscience/gdml/Gdm
 	public fun setName (Ljava/lang/String;)V
 	public final fun setScale (Lspace/kscience/gdml/GdmlScale;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlScaledSolid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlScaledSolid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlScaledSolid$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlScaledSolid;
@@ -1406,11 +1422,11 @@ public final class space/kscience/gdml/GdmlSetup {
 	public final fun setName (Ljava/lang/String;)V
 	public final fun setVersion (Ljava/lang/String;)V
 	public final fun setWorld (Lspace/kscience/gdml/GdmlRef;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlSetup;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlSetup$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlSetup$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlSetup;
@@ -1437,6 +1453,7 @@ public abstract class space/kscience/gdml/GdmlSolid : space/kscience/gdml/GdmlNo
 	public final fun getLunit ()Lspace/kscience/gdml/LUnit;
 	public final fun setAunit (Lspace/kscience/gdml/AUnit;)V
 	public final fun setLunit (Lspace/kscience/gdml/LUnit;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlSolid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlSolid$Companion {
@@ -1449,11 +1466,11 @@ public final class space/kscience/gdml/GdmlSolidContainer : space/kscience/gdml/
 	public synthetic fun <init> (ILjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun getContent ()Ljava/util/List;
 	public fun registerSolid (Lspace/kscience/gdml/GdmlSolid;)Lspace/kscience/gdml/GdmlRef;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlSolidContainer;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlSolidContainer$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlSolidContainer$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlSolidContainer;
@@ -1543,11 +1560,11 @@ public final class space/kscience/gdml/GdmlSphere : space/kscience/gdml/GdmlSoli
 	public final fun setStartphi (Ljava/lang/Number;)V
 	public final fun setStarttheta (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlSphere;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlSphere$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlSphere$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlSphere;
@@ -1567,11 +1584,11 @@ public final class space/kscience/gdml/GdmlStructure : space/kscience/gdml/GdmlC
 	public synthetic fun <init> (ILjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun getContent ()Ljava/util/List;
 	public fun registerGroup (Lspace/kscience/gdml/GdmlGroup;)Lspace/kscience/gdml/GdmlRef;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlStructure;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlStructure$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlStructure$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlStructure;
@@ -1603,11 +1620,11 @@ public final class space/kscience/gdml/GdmlSubtraction : space/kscience/gdml/Gdm
 	public fun setName (Ljava/lang/String;)V
 	public fun setSecond (Lspace/kscience/gdml/GdmlRef;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlSubtraction;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlSubtraction$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlSubtraction$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlSubtraction;
@@ -1649,11 +1666,11 @@ public final class space/kscience/gdml/GdmlTorus : space/kscience/gdml/GdmlSolid
 	public final fun setRtor (Ljava/lang/Number;)V
 	public final fun setStartphi (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlTorus;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlTorus$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlTorus$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlTorus;
@@ -1703,11 +1720,11 @@ public final class space/kscience/gdml/GdmlTrapezoid : space/kscience/gdml/GdmlS
 	public final fun setY2 (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlTrapezoid;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlTrapezoid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlTrapezoid$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlTrapezoid;
@@ -1749,11 +1766,11 @@ public final class space/kscience/gdml/GdmlTube : space/kscience/gdml/GdmlSolid 
 	public final fun setStartphi (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlTube;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlTube$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlTube$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlTube;
@@ -1785,11 +1802,11 @@ public final class space/kscience/gdml/GdmlUnion : space/kscience/gdml/GdmlBoolS
 	public fun setName (Ljava/lang/String;)V
 	public fun setSecond (Lspace/kscience/gdml/GdmlRef;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlUnion;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlUnion$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlUnion$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlUnion;
@@ -1811,11 +1828,11 @@ public final class space/kscience/gdml/GdmlVariable : space/kscience/gdml/GdmlDe
 	public final fun getValue ()Ljava/lang/String;
 	public fun setName (Ljava/lang/String;)V
 	public final fun setValue (Ljava/lang/String;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlVariable;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlVariable$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlVariable$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlVariable;
@@ -1843,11 +1860,11 @@ public final class space/kscience/gdml/GdmlVolume : space/kscience/gdml/GdmlGrou
 	public fun setName (Ljava/lang/String;)V
 	public final fun setPlacement (Lspace/kscience/gdml/GdmlPlacement;)V
 	public final fun setSolidref (Lspace/kscience/gdml/GdmlRef;)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlVolume;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlVolume$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlVolume$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlVolume;
@@ -1878,11 +1895,11 @@ public final class space/kscience/gdml/GdmlXtru : space/kscience/gdml/GdmlSolid 
 	public fun setName (Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
 	public final fun vertex (DD)V
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlXtru;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlXtru$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlXtru$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlXtru;
@@ -1921,11 +1938,11 @@ public final class space/kscience/gdml/GdmlXtru$Section {
 	public final fun setZOrder (I)V
 	public final fun setZPosition (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlXtru$Section;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlXtru$Section$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlXtru$Section$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlXtru$Section;
@@ -1952,11 +1969,11 @@ public final class space/kscience/gdml/GdmlXtru$TwoDimVertex {
 	public final fun getY ()D
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlXtru$TwoDimVertex;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlXtru$TwoDimVertex$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlXtru$TwoDimVertex$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlXtru$TwoDimVertex;
@@ -1989,11 +2006,11 @@ public final class space/kscience/gdml/GdmlZPlane {
 	public final fun setRmin (Ljava/lang/Number;)V
 	public final fun setZ (Ljava/lang/Number;)V
 	public fun toString ()Ljava/lang/String;
+	public static final synthetic fun write$Self (Lspace/kscience/gdml/GdmlZPlane;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class space/kscience/gdml/GdmlZPlane$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lspace/kscience/gdml/GdmlZPlane$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/GdmlZPlane;
@@ -2033,12 +2050,17 @@ public final class space/kscience/gdml/JvmGdmlIOKt {
 
 public final class space/kscience/gdml/LUnit : java/lang/Enum {
 	public static final field CM Lspace/kscience/gdml/LUnit;
+	public static final field Companion Lspace/kscience/gdml/LUnit$Companion;
 	public static final field M Lspace/kscience/gdml/LUnit;
 	public static final field MM Lspace/kscience/gdml/LUnit;
 	public final fun getTitle ()Ljava/lang/String;
 	public final fun getValue ()F
 	public static fun valueOf (Ljava/lang/String;)Lspace/kscience/gdml/LUnit;
 	public static fun values ()[Lspace/kscience/gdml/LUnit;
+}
+
+public final class space/kscience/gdml/LUnit$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class space/kscience/gdml/LUnitSerializer : kotlinx/serialization/KSerializer {
@@ -2064,18 +2086,6 @@ public final class space/kscience/gdml/MaterialState : java/lang/Enum {
 	public static final field UNKNOWN Lspace/kscience/gdml/MaterialState;
 	public static fun valueOf (Ljava/lang/String;)Lspace/kscience/gdml/MaterialState;
 	public static fun values ()[Lspace/kscience/gdml/MaterialState;
-}
-
-public final class space/kscience/gdml/MaterialState$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lspace/kscience/gdml/MaterialState$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lspace/kscience/gdml/MaterialState;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lspace/kscience/gdml/MaterialState;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class space/kscience/gdml/MaterialState$Companion {

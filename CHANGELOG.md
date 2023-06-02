@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+- Upgrade to Kotlin 1.8.0 and Gradle 0.7.6
 
 ### Deprecated
 

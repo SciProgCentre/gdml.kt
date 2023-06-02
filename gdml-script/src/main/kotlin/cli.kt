@@ -9,7 +9,7 @@ import java.io.File
 import java.nio.file.Path
 import kotlin.script.experimental.host.toScriptSource
 
-fun main(args: Array<String>) {
+public fun main(args: Array<String>) {
     val parser = ArgParser("gdml-script")
     val input by parser.argument(ArgType.String, description = "Input file path")
     val output by parser.argument(ArgType.String, description = "Output file path").optional()

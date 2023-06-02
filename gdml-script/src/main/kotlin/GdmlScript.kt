@@ -14,9 +14,9 @@ import kotlin.script.experimental.jvmhost.BasicJvmScriptingHost
     fileExtension = "gdml.kts",
     compilationConfiguration = GdmlScriptCompilationConfiguration::class
 )
-abstract class GdmlScript
+public abstract class GdmlScript
 
-object GdmlScriptCompilationConfiguration : ScriptCompilationConfiguration({
+public object GdmlScriptCompilationConfiguration : ScriptCompilationConfiguration({
     baseClass(GdmlScript::class)
     implicitReceivers(Gdml::class)
     defaultImports(

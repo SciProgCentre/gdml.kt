@@ -17,6 +17,8 @@ public class InjectUnits(public val lUnit: LUnit?, public val aUnit: AUnit?) : G
             when (it) {
                 is GdmlPosition -> if (it.unit == null) it.unit = lUnit
                 is GdmlRotation -> if (it.unit == null) it.unit = aUnit
+
+                else -> { /*do nothing*/ }
             }
         }
         gdml.containers.filterIsInstance<GdmlSolidContainer>().flatMap { it.content }.forEach { solid ->

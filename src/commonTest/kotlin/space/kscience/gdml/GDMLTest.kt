@@ -53,6 +53,7 @@ class GdmlTest {
         assertEquals(gdml.solids, restored.solids)
     }
 
+    @Suppress("UNUSED_VARIABLE")
     @Test
     fun subtraction() {
         val gdml = Gdml {

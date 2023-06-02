@@ -1,10 +1,40 @@
+rootProject.name = "gdml"
+include("gdml-script")
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
+
+    val toolsVersion: String by extra
+
     repositories {
-        gradlePluginPortal()
-        mavenCentral()
+        mavenLocal()
         maven("https://repo.kotlin.link")
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    plugins {
+        id("space.kscience.gradle.project") version toolsVersion
+        id("space.kscience.gradle.mpp") version toolsVersion
+        id("space.kscience.gradle.jvm") version toolsVersion
+        id("space.kscience.gradle.js") version toolsVersion
     }
 }
 
-rootProject.name = "gdml"
-include("gdml-script")
+dependencyResolutionManagement {
+
+    val toolsVersion: String by extra
+
+    repositories {
+        mavenLocal()
+        maven("https://repo.kotlin.link")
+        mavenCentral()
+    }
+
+    versionCatalogs {
+        create("spclibs") {
+            from("space.kscience:version-catalog:$toolsVersion")
+        }
+    }
+}
