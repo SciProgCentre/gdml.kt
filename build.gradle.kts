@@ -22,7 +22,7 @@ kscience {
         implementation("com.github.h0tk3y.betterParse:better-parse:0.4.4")
     }
     jvmMain {
-        implementation("com.fasterxml.woodstox:woodstox-core:6.5.0")
+        implementation("com.fasterxml.woodstox:woodstox-core:6.5.1")
     }
     useSerialization{
         xml()
