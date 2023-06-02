@@ -6,7 +6,6 @@ import space.kscience.gradle.useSPCTeam
 plugins {
     id("space.kscience.gradle.project")
     id("space.kscience.gradle.mpp")
-//    id("ru.mipt.npm.gradle.native") version toolsVersion
     `maven-publish`
 }
 
@@ -17,14 +16,15 @@ allprojects {
 
 kscience {
     jvm()
-    js ()
+    js()
+    native()
     commonMain {
         implementation("com.github.h0tk3y.betterParse:better-parse:0.4.4")
     }
     jvmMain {
         implementation("com.fasterxml.woodstox:woodstox-core:6.5.1")
     }
-    useSerialization{
+    useSerialization {
         xml()
     }
 }

@@ -13,6 +13,7 @@ import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
 import nl.adaptivity.xmlutil.*
 import nl.adaptivity.xmlutil.core.impl.multiplatform.StringWriter
+import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
 import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
 
@@ -114,10 +115,13 @@ private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
     }
 
 internal val gdmlFormat: XML = XML(gdmlModule) {
-    autoPolymorphic = true
     indent = 4
-    unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
     xmlDeclMode = XmlDeclMode.Auto
+    policy = DefaultXmlSerializationPolicy(
+        pedantic = false,
+        autoPolymorphic = true,
+        unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
+    )
 }
 
 /**
