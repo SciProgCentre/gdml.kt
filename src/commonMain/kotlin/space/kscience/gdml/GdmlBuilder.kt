@@ -7,7 +7,6 @@ import kotlin.reflect.typeOf
 /**
  * A builder for GDML structure groups
  */
-@GdmlApi
 public class GdmlBuilder(public val registry: GdmlRegistry, public val parent: GdmlGroup) {
 
     public fun physVolume(
@@ -64,7 +63,6 @@ public class GdmlBuilder(public val registry: GdmlRegistry, public val parent: G
      */
     public fun scale(ref: GdmlRef<GdmlScale>): GdmlModifier = modifier().scale(ref)
 
-    @GdmlApi
     public inline fun <reified T : GdmlSolid> solid(
         solidRef: GdmlRef<T>,
         modifier: GdmlModifier = modifier(),
@@ -80,7 +78,6 @@ public class GdmlBuilder(public val registry: GdmlRegistry, public val parent: G
         return physVolume(modifier, namePrefix, volumeRef, type)
     }
 
-    @GdmlApi
     public inline fun <reified T : GdmlSolid> solid(
         modifier: GdmlModifier,
         namePrefix: String?,
@@ -93,18 +90,17 @@ public class GdmlBuilder(public val registry: GdmlRegistry, public val parent: G
         return solid<T>(solidRef, modifier, namePrefix)
     }
 
-    @GdmlApi
     public fun group(
         groupRef: GdmlRef<GdmlGroup>,
         modifier: GdmlModifier = modifier(),
         namePrefix: String? = null,
     ): GdmlPhysVolume = physVolume(modifier, namePrefix, groupRef, typeOf<GdmlAssembly>())
 
-    @GdmlApi
+
     public inline fun group(
         modifier: GdmlModifier = modifier(),
         namePrefix: String? = null,
-        @GdmlApi builder: GdmlBuilder.() -> Unit,
+        builder: GdmlBuilder.() -> Unit,
     ): GdmlPhysVolume {
         val assembly =
             GdmlAssembly(registry.generateName(namePrefix?.let { "$namePrefix-group" }, typeOf<GdmlAssembly>()))
@@ -119,14 +115,12 @@ public class GdmlBuilder(public val registry: GdmlRegistry, public val parent: G
 /**
  * Build and register a group in the Gdml structure
  */
-@GdmlApi
-public fun Gdml.buildGroup(name: String, @GdmlApi builder: GdmlBuilder.() -> Unit): GdmlRef<GdmlGroup> {
+public fun Gdml.buildGroup(name: String, builder: GdmlBuilder.() -> Unit): GdmlRef<GdmlGroup> {
     val assembly = GdmlAssembly(name)
     GdmlBuilder(this, assembly).apply(builder)
     return registerGroup(assembly)
 }
 
-@GdmlApi
 public inline fun GdmlBuilder.box(
     x: Number,
     y: Number,
@@ -136,7 +130,6 @@ public inline fun GdmlBuilder.box(
     block: GdmlBox.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlBox(it, x, y, z).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.sphere(
     rmax: Number,
     modifier: GdmlModifier = modifier(),
@@ -144,8 +137,6 @@ public inline fun GdmlBuilder.sphere(
     block: GdmlSphere.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlSphere(it, rmax = rmax).apply(block) }
 
-
-@GdmlApi
 public inline fun GdmlBuilder.orb(
     r: Number,
     modifier: GdmlModifier = modifier(),
@@ -153,7 +144,6 @@ public inline fun GdmlBuilder.orb(
     block: GdmlOrb.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlOrb(it, r).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.ellipsoid(
     ax: Number,
     by: Number,
@@ -163,8 +153,6 @@ public inline fun GdmlBuilder.ellipsoid(
     block: GdmlEllipsoid.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlEllipsoid(it, ax, by, cz).apply(block) }
 
-
-@GdmlApi
 public inline fun GdmlBuilder.eltube(
     dx: Number,
     dy: Number,
@@ -174,7 +162,6 @@ public inline fun GdmlBuilder.eltube(
     block: GdmlElTube.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlElTube(it, dx, dy, dz).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.elcone(
     dx: Number,
     dy: Number,
@@ -185,7 +172,6 @@ public inline fun GdmlBuilder.elcone(
     block: GdmlElCone.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlElCone(it, dx, dy, zmax, zcut).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.paraboloid(
     rlo: Number,
     rhi: Number,
@@ -197,7 +183,6 @@ public inline fun GdmlBuilder.paraboloid(
     GdmlParaboloid(it, rlo, rhi, dz).apply(block)
 }
 
-@GdmlApi
 public inline fun GdmlBuilder.para(
     x: Number,
     y: Number,
@@ -212,7 +197,6 @@ public inline fun GdmlBuilder.para(
     GdmlParallelepiped(it, x, y, z, alpha, theta, phi).apply(block)
 }
 
-@GdmlApi
 public inline fun GdmlBuilder.torus(
     rmin: Number,
     rmax: Number,
@@ -222,7 +206,6 @@ public inline fun GdmlBuilder.torus(
     block: GdmlTorus.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlTorus(it, rmin, rmax, rtor).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.trd(
     x1: Number,
     x2: Number,
@@ -236,7 +219,6 @@ public inline fun GdmlBuilder.trd(
     GdmlTrapezoid(it, x1, x2, y1, y2, z).apply(block)
 }
 
-@GdmlApi
 public inline fun GdmlBuilder.polyhedra(
     numsides: Int,
     modifier: GdmlModifier = modifier(),
@@ -244,14 +226,12 @@ public inline fun GdmlBuilder.polyhedra(
     block: GdmlPolyhedra.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlPolyhedra(it, numsides).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.polycone(
     modifier: GdmlModifier = modifier(),
     name: String? = null,
     block: GdmlPolycone.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlPolycone(it).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.scaledSolid(
     solidref: GdmlRef<GdmlSolid>,
     scale: GdmlScale,
@@ -262,7 +242,6 @@ public inline fun GdmlBuilder.scaledSolid(
     GdmlScaledSolid(it, solidref, scale).apply(block)
 }
 
-@GdmlApi
 public inline fun GdmlBuilder.tube(
     rmax: Number,
     z: Number,
@@ -271,14 +250,12 @@ public inline fun GdmlBuilder.tube(
     block: GdmlTube.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { (GdmlTube(it, rmax, z).apply(block)) }
 
-@GdmlApi
 public inline fun GdmlBuilder.xtru(
     modifier: GdmlModifier = modifier(),
     name: String? = null,
     block: GdmlXtru.() -> Unit,
 ): GdmlPhysVolume = solid(modifier, name) { (GdmlXtru(it).apply(block)) }
 
-@GdmlApi
 public inline fun GdmlBuilder.cone(
     z: Number,
     rmax1: Number,
@@ -288,7 +265,6 @@ public inline fun GdmlBuilder.cone(
     block: GdmlCone.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlCone(it, z, rmax1, rmax2).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.union(
     first: GdmlRef<GdmlSolid>,
     second: GdmlRef<GdmlSolid>,
@@ -296,7 +272,6 @@ public inline fun GdmlBuilder.union(
     block: GdmlUnion.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlUnion(it, first, second).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.intersection(
     first: GdmlRef<GdmlSolid>,
     second: GdmlRef<GdmlSolid>,
@@ -304,7 +279,6 @@ public inline fun GdmlBuilder.intersection(
     block: GdmlIntersection.() -> Unit = {},
 ): GdmlPhysVolume = solid(modifier, name) { GdmlIntersection(it, first, second).apply(block) }
 
-@GdmlApi
 public inline fun GdmlBuilder.subtraction(
     first: GdmlRef<GdmlSolid>,
     second: GdmlRef<GdmlSolid>,

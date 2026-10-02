@@ -1,8 +1,9 @@
 package space.kscience.gdml
 
-import nl.adaptivity.xmlutil.StAXReader
-import nl.adaptivity.xmlutil.StAXWriter
 import nl.adaptivity.xmlutil.XmlDeclMode
+import nl.adaptivity.xmlutil.core.impl.multiplatform.URI
+import nl.adaptivity.xmlutil.jdk.StAXReader
+import nl.adaptivity.xmlutil.jdk.StAXWriter
 import org.intellij.lang.annotations.Language
 import java.io.File
 import java.io.InputStream
@@ -49,7 +50,7 @@ public fun Gdml.Companion.decodeFromUrl(url: URL): Gdml = url.openStream().use {
  * A shortcut to read [URL] with [urlString]
  */
 public fun Gdml.Companion.decodeFromUrl(@Language("http-url-reference") urlString: String): Gdml =
-    decodeFromUrl(URL(urlString))
+    decodeFromUrl(URI.create(urlString).toURL())
 
 /**
  * Write [gdml] to a given [stream] and flush stream afterwards.

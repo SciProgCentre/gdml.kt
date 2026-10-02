@@ -12,8 +12,6 @@ import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
 import nl.adaptivity.xmlutil.*
-import nl.adaptivity.xmlutil.core.impl.multiplatform.StringWriter
-import nl.adaptivity.xmlutil.serialization.DefaultXmlSerializationPolicy
 import nl.adaptivity.xmlutil.serialization.UnknownChildHandler
 import nl.adaptivity.xmlutil.serialization.XML
 
@@ -109,19 +107,19 @@ private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
                 if (candidates.isNotEmpty()) candidates.joinToString(
                     prefix = "\n  candidates: "
                 ) else ""
-            } at position ${input.locationInfo}"
+            } at position ${input.extLocationInfo?.toString()}"
         )
         emptyList()
     }
 
-internal val gdmlFormat: XML = XML(gdmlModule) {
+internal val gdmlFormat: XML = XML {
     indent = 4
     xmlDeclMode = XmlDeclMode.Auto
-    policy = DefaultXmlSerializationPolicy(
-        pedantic = false,
-        autoPolymorphic = true,
+    defaultPolicy {
+        pedantic = false
+        autoPolymorphic = true
         unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER
-    )
+    }
 }
 
 /**
@@ -129,7 +127,7 @@ internal val gdmlFormat: XML = XML(gdmlModule) {
  */
 public fun Gdml.Companion.decodeFromString(string: String, usePreprocessor: Boolean = false): Gdml =
     if (usePreprocessor) {
-        val preprocessor = GdmlPreprocessor(XmlStreaming.newReader(string)) { parseAndEvaluate(it) }
+        val preprocessor = GdmlPreprocessor(xmlStreaming.newReader(string)) { parseAndEvaluate(it) }
         gdmlFormat.decodeFromReader(serializer(), preprocessor)
     } else {
         gdmlFormat.decodeFromString(serializer(), string)
@@ -156,9 +154,12 @@ public fun Gdml.Companion.encodeToWriter(gdml: Gdml, writer: XmlWriter): Unit =
  * Encode gdml to an xml string
  */
 public fun Gdml.Companion.encodeToString(gdml: Gdml): String {
-    val stringWriter = StringWriter()
-    val xmlWriter =
-        XmlStreaming.newWriter(stringWriter, gdmlFormat.config.repairNamespaces, gdmlFormat.config.xmlDeclMode)
+    val stringWriter = StringBuilder()
+    val xmlWriter = xmlStreaming.newGenericWriter(
+        output = stringWriter,
+        isRepairNamespaces = gdmlFormat.config.repairNamespaces,
+        xmlDeclMode = gdmlFormat.config.xmlDeclMode
+    )
 
     var ex: Throwable? = null
     try {

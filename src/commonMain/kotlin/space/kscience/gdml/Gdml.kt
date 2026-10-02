@@ -7,9 +7,6 @@ import kotlinx.serialization.*
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import kotlin.reflect.KType
 
-@DslMarker
-public annotation class GdmlApi
-
 @Serializable
 @SerialName("gdml")
 public class Gdml : GdmlRegistry {
@@ -36,22 +33,18 @@ public class Gdml : GdmlRegistry {
         get() = (containers.filterIsInstance<GdmlStructure>().firstOrNull()
             ?: GdmlStructure().also { containers.add(it) })
 
-    @GdmlApi
     public inline fun define(block: GdmlDefineContainer.() -> Unit) {
         define.apply(block)
     }
 
-    @GdmlApi
     public inline fun materials(block: GdmlMaterialContainer.() -> Unit) {
         materials.apply(block)
     }
 
-    @GdmlApi
     public inline fun solids(block: GdmlSolidContainer.() -> Unit) {
         solids.apply(block)
     }
 
-    @GdmlApi
     public inline fun structure(block: GdmlStructure.() -> Unit) {
         structure.apply(block)
     }
@@ -206,7 +199,6 @@ public class GdmlSolidContainer : GdmlContainer<GdmlSolid>(), GdmlSolidRegistry 
 }
 
 @Serializable
-@GdmlApi
 @SerialName("structure")
 public class GdmlStructure : GdmlContainer<GdmlGroup>(), GdmlGroupRegistry {
     override val content: MutableList<GdmlGroup> = ArrayList()
@@ -223,7 +215,6 @@ public class GdmlSetup(
     public var world: GdmlRef<GdmlGroup>? = null,
 )
 
-@GdmlApi
 public fun Gdml.world(
     name: String = "world",
     block: GdmlAssembly.() -> Unit,

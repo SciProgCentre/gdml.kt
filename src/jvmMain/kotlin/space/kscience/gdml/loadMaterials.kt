@@ -1,8 +1,9 @@
 package space.kscience.gdml
 
-import nl.adaptivity.xmlutil.StAXReader
+import nl.adaptivity.xmlutil.jdk.StAXReader
 import org.intellij.lang.annotations.Language
 import java.io.File
+import java.net.URI
 import java.net.URL
 
 /**
@@ -19,7 +20,7 @@ public fun Gdml.loadMaterialsFromUrl(url: URL): Unit = url.openStream().use { st
 }
 
 public fun Gdml.loadMaterialsFromUrl(@Language("http-url-reference") urlString: String): Unit =
-    loadMaterialsFromUrl(URL(urlString))
+    loadMaterialsFromUrl(URI.create(urlString).toURL())
 
 /**
  * Load materials from a [file]

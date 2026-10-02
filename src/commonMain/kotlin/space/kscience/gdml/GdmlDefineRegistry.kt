@@ -1,11 +1,9 @@
 package space.kscience.gdml
 
-
 public interface GdmlDefineRegistry: GdmlNameGenerator {
     public fun <R : GdmlDefine> registerDefine(item: R): GdmlRef<R>
 }
 
-@GdmlApi
 public inline fun GdmlDefineRegistry.position(
     x: Number = 0f,
     y: Number = 0f,
@@ -23,7 +21,6 @@ public inline fun GdmlDefineRegistry.position(
     return registerDefine(position)
 }
 
-@GdmlApi
 public inline fun GdmlDefineRegistry.rotation(
     x: Number = 0f,
     y: Number = 0f,

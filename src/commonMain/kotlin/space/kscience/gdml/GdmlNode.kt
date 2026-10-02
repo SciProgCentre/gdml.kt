@@ -3,7 +3,6 @@
 package space.kscience.gdml
 
 import kotlinx.serialization.*
-import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 public interface GdmlNode {
@@ -35,7 +34,6 @@ public sealed class GdmlPlacement
  */
 @Serializable
 @SerialName("physvol")
-@GdmlApi
 public class GdmlPhysVolume(
     public var name: String = "@undefined",
     @XmlSerialName("volumeref", "", "")
@@ -112,7 +110,6 @@ unit=" xs:string [0..1]">
  */
 @Serializable
 @SerialName("divisionvol")
-@GdmlApi
 public class GdmlDivisionVolume(
     public var axis: String,
     public var number: Number,
@@ -124,9 +121,8 @@ public class GdmlDivisionVolume(
 ) : GdmlPlacement()
 
 @Serializable
-@GdmlApi
 public sealed class GdmlGroup : GdmlNode {
-    @XmlSerialName("physvol", "", "")
+    @XmlSerialName("physvol")
     public val physVolumes: ArrayList<GdmlPhysVolume> = ArrayList()
 
     @Transient
@@ -150,12 +146,10 @@ public sealed class GdmlGroup : GdmlNode {
 
 @Serializable
 @SerialName("assembly")
-@GdmlApi
 public class GdmlAssembly(override var name: String) : GdmlGroup()
 
 @Serializable
 @SerialName("volume")
-@GdmlApi
 public class GdmlVolume(
     override var name: String,
     @XmlSerialName("materialref", "", "")
@@ -164,7 +158,6 @@ public class GdmlVolume(
     public var solidref: GdmlRef<GdmlSolid>,
 ) : GdmlGroup() {
 
-    @XmlPolyChildren(arrayOf("physvol", "divisionvol"))
     @Polymorphic
     public var placement: GdmlPlacement? = null
 

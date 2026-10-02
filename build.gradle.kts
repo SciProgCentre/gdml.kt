@@ -1,5 +1,4 @@
 import space.kscience.gradle.Maturity
-import space.kscience.gradle.isInDevelopment
 import space.kscience.gradle.useApache2Licence
 import space.kscience.gradle.useSPCTeam
 
@@ -11,7 +10,7 @@ plugins {
 
 allprojects {
     group = "space.kscience"
-    version = "0.5.0"
+    version = "0.5.1"
 }
 
 kscience {
@@ -22,32 +21,25 @@ kscience {
         implementation("com.github.h0tk3y.betterParse:better-parse:0.4.4")
     }
     jvmMain {
-        implementation("com.fasterxml.woodstox:woodstox-core:6.5.1")
+        implementation("com.fasterxml.woodstox:woodstox-core:7.2.2")
+        implementation("io.github.pdvrieze.xmlutil:core-jdk:${spclibs.versions.xmlutil.get()}")
     }
     useSerialization {
         xml()
     }
 }
 
-ksciencePublish {
+kscienceProject {
     pom("https://github.com/SciProgCentre/gdml.kt") {
         useApache2Licence()
         useSPCTeam()
     }
-    github(githubProject = "gdml.kt", githubOrg = "SciProgCentre")
-    space(
-        if (isInDevelopment) {
-            "https://maven.pkg.jetbrains.space/spc/p/sci/dev"
-        } else {
-            "https://maven.pkg.jetbrains.space/spc/p/sci/maven"
-        }
-    )
-    sonatype()
+    publishTo("spc", "https://maven.sciprog.center/kscience")
+    publishToCentral()
 }
 
 
+
 readme {
-    readmeTemplate = file("docs/templates/README-TEMPLATE.md")
     maturity = Maturity.DEVELOPMENT
-    propertyByTemplate("artifact", rootProject.file("docs/templates/ARTIFACT-TEMPLATE.md"))
 }
