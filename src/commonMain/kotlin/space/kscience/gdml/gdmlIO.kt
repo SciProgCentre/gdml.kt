@@ -112,10 +112,10 @@ private val WARNING_UNKNOWN_CHILD_HANDLER: UnknownChildHandler =
         emptyList()
     }
 
-internal val gdmlFormat: XML = XML {
-    indent = 4
+internal val gdmlFormat: XML = XML.v1 {
+    setIndent(4)
     xmlDeclMode = XmlDeclMode.Auto
-    defaultPolicy {
+    policy {
         pedantic = false
         autoPolymorphic = true
         unknownChildHandler = WARNING_UNKNOWN_CHILD_HANDLER

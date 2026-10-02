@@ -18,7 +18,7 @@
 
 ### Changed
 
-- Upgrade to Kotlin 2.4.0
+- Upgrade to Kotlin 2.4.20
 - Update XmlUtil
 
 ## 0.4.0
